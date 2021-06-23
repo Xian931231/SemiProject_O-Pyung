@@ -1,8 +1,8 @@
 # Semi_Project_Opyung
 Semi_Project Opyung입니다.
-
-Server(Apache Tomcat)
-  localhost port:8383
-DB(ORACLE)
-  ID: OPYUNG
-  PW: OPYUNG
+<br>
+Server(Apache Tomcat) <br>
+  localhost port:8383 <br>
+DB(ORACLE) <br>
+  ID: OPYUNG <br>
+  PW: OPYUNG <br>
