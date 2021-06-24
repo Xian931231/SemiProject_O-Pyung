@@ -26,7 +26,9 @@ public class OpyungController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("[command:"+command+"]");
 	
-		
+		if(command.equals("main")) {
+			response.sendRedirect("main.jsp");
+		}
 		
 	
 	}
