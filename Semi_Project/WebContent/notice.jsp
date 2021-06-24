@@ -1,11 +1,11 @@
-<!-- 메인페이지 -->
+<!-- 공지사항(고객센터) 페이지 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<!-- 인코딩 처리 -->    
+   
+<!-- 인코딩 처리 -->       
 <% request.setCharacterEncoding("UTF-8"); %>    
-<% response.setContentType("text/html; charset=UTF-8"); %>    
+<% response.setContentType("text/html; charset=UTF-8"); %>
     
 <!DOCTYPE html>
 <html>
@@ -14,6 +14,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-		
+
 </body>
 </html>
