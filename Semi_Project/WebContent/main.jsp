@@ -1,12 +1,8 @@
-<!-- 메인페이지 -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<!-- 인코딩 처리 -->    
-<% request.setCharacterEncoding("UTF-8"); %>    
-<% response.setContentType("text/html; charset=UTF-8"); %>    
     
+<% request.setCharacterEncoding("UTF-8"); %>
+<% response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +14,8 @@
     <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous"></script>
 </head>
 <body>
+	<%@ include file="header/header.jsp" %>
+	
     <div class="container">
 
         <!-- 홈-->
@@ -590,4 +588,7 @@
         </div>
     </div>
 </body>
+</html>
+	
+	</body>
 </html>
