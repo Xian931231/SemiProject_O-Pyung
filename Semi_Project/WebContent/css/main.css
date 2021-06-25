@@ -216,6 +216,31 @@ em{
     padding-top: 5%;
 }
 
+/* 카테고리 이미지 수정(시작) */
+.img_box{
+    width: 40%;
+    margin-left: 30%;
+}
+
+#graphic_background{
+    background-image: url('../img/main/graphicbackgroundcolor.png');
+    
+}
+
+#mouse_background{
+    background-image: url('../img/main/mousebackgroundcolor.png');
+}
+
+#ram_background{
+    background-image: url('../img/main/rambackgroundcolor.png');
+}
+
+#case_background{
+    background-image: url('../img/main/casebackgroundcolor.png');
+}
+
+/* 카테고리 이미지 수정(끝) */
+
 
 
 @media screen and ( max-width: 100px){

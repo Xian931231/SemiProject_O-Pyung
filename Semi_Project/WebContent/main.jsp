@@ -1,8 +1,12 @@
+<!-- 메인페이지 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+<!-- 인코딩 처리 -->    
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +21,7 @@
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
 	
+	<!-- container -->
     <div class="container">
 
         <!-- 홈-->
@@ -49,7 +54,7 @@
                         <div class="product_item">
                             <a href="#" class="item_inner">
                                 <div class="product">
-                                    <img src="./img/1.jpg" alt="" class="product_img">
+                                    <img src="./img/main/1.jpg" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
@@ -211,11 +216,11 @@
             <!--그래픽 카테고리 배너-->
             <div class="banner">
                 <div class="banner_item" style="background-color: #1d8174;">
-                    <class class="item_inner">
+                    <div id="graphic_background" class="item_inner">
                         <div class="img_box">
-                            <img src="img/grphic.png" alt="" class="banner_img">
+                            <img src="img/main/graphic.png" alt="" class="banner_img">
                         </div>
-                    </class>
+                    </div>
                 </div>
             </div>
 
@@ -267,7 +272,7 @@
                         <div class="product_item">
                             <a href="#" class="item_inner">
                                 <div class="product">
-                                    <img src="./img/1.jpg" alt="" class="product_img">
+                                    <img src="./img/main/1.jpg" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
@@ -296,7 +301,7 @@
                         <div class="product_item">
                             <a href="#" class="item_inner">
                                 <div class="product">
-                                    <img src="./img/1.jpg" alt="" class="product_img">
+                                    <img src="./img/main/1.jpg" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
@@ -388,11 +393,11 @@
             <!--마우스 카테고리 배너-->
             <div class="banner">
                 <div class="banner_item" style="background-color: #1d8174;">
-                    <class class="item_inner">
+                    <div id="mouse_background" class="item_inner">
                         <div class="img_box">
-                            <img src="img/mouse.png" alt="" class="banner_img">
+                            <img src="img/main/mouse.png" alt="" class="banner_img">
                         </div>
-                    </class>
+                    </div>
                 </div>
             </div>
 
@@ -451,11 +456,11 @@
             <!--렘 카테고리 배너-->
             <div class="banner">
                 <div class="banner_item" style="background-color: #1d8174;">
-                    <class class="item_inner">
+                    <div id="ram_background" class="item_inner">
                         <div class="img_box">
-                            <img src="img/ram.png" alt="" class="banner_img">
+                            <img src="img/main/ram.png" alt="" class="banner_img">
                         </div>
-                    </class>
+                    </div>
                 </div>
             </div>
 
@@ -515,11 +520,11 @@
             <!--케이스 카테고리 배너-->
             <div class="banner">
                 <div class="banner_item" style="background-color: #1d8174;">
-                    <class class="item_inner">
+                    <div id="case_background" class="item_inner">
                         <div class="img_box">
-                            <img src="img/case.png" alt="" class="banner_img">
+                            <img src="img/main/case.png" alt="" class="banner_img">
                         </div>
-                    </class>
+                    </div>
                 </div>
             </div>
 
