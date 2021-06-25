@@ -170,4 +170,14 @@
     .navbar_search_bar.active{
         display: flex;
     }
+    
+    
+
 }
+
+
+@media screen and ( max-width: 1024px){
+    .product_list_wrap .product_list{
+        flex: 1 1 50%;
+        max-width: 50%;
+    }

@@ -51,7 +51,7 @@
                                     <div class="brand">
                                         <p>브랜드</p>
                                     </div>
-                                    <p class="name">TEST</p>
+                                    <pre class="name">TESTasfasdfasdfasdfsadfasdfsdfasfasdfsdafsda</pre>
                                 </div>
                                 <div class="price">
                                     <div class="amount">

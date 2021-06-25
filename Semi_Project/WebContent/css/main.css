@@ -4,11 +4,6 @@
     --iteminner-bgcolor : #fff;
 }
 
-
-.header_body{
-	z-index: 2;
-}
-
 *{
     box-sizing: border-box;
     margin: 0;
@@ -215,8 +210,10 @@ em{
 
 
 
-@media screen and ( max-width: 1024px){
-    .product_list_wrap .product_list{
+@media screen and ( max-width: 100px){
+    .product_list{
         flex: 1 1 50%;
+        
+        max-width: 50%;
     }
 }
