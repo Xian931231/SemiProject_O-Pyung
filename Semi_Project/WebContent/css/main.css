@@ -241,12 +241,19 @@ em{
 
 /* 카테고리 이미지 수정(끝) */
 
-
-
-@media screen and ( max-width: 100px){
-    .product_list{
-        flex: 1 1 50%;
+@media screen and ( max-width: 480px){
+    .product_list_wrap .product_list{
+        flex: 1 1 100%;
+        max-width: 100%;
         
+        
+    }
+}
+
+@media screen and (min-width : 481px) and ( max-width: 1024px){
+    .product_list_wrap .product_list{
+        flex: 1 1 50%;
         max-width: 50%;
+        
     }
 }
