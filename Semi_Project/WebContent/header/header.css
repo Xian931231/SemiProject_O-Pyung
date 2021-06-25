@@ -11,6 +11,7 @@
 	width : 100%;
 	top:0;
 	left:0;
+	height: 100px;
 	
 }
 .header_body a{
@@ -23,9 +24,13 @@
 	background-color : #ebebeb;
 	display: flex;
 	justify-content:flex-end;
-	padding : 2px 12px;
+	padding : 8px 32px;
+	height: 32px;
+	
+
 }
 .header a{
+	font-size: 12px;
     color:#897a86;
     padding : 0px 12px;
 }
@@ -37,7 +42,8 @@
     justify-content: space-between;
     align-items: center;
     background-color: var(--background-color);
-    padding: 4px 12px;
+    padding: 4px 25px;
+    height: 68px;
 }
 
 .navbar_logo{
@@ -98,23 +104,32 @@
 	display: flex;
 	padding: 0;
 	border-radius: 8px;
+	height: 30px;
+	
 }
 
 .navbar_search_bar li {
 	flex-direction: row;
 	list-style: none;
-    padding: 8px;
+    margin: 0px;
+    padding-right: 10px;
 }
 
 .navbar_search_li{
 	flex : 2;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
 }
 
 .navbar_search_bar li>input {
 	background-color : var(--searchvar-bgcolor);
 	border: 0px none;
-	font-size : 20px;
-	width : 100%;
+	font-size : 17px;
+	width: 99%;
+	position: absolute;
+	top: 5px;
+	
 }
 
 .navbar_search_bar li>input:focus{

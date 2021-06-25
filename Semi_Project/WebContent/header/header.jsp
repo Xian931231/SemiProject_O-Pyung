@@ -10,14 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./header/header.css">
     <title>Document</title>
-	<link rel="stylesheet" type="text/css" href="./fontawesome/css/all.css">
+	<link rel="stylesheet" type="text/css" href="./img/fontawesome/css/all.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="./header/header.js" defer></script>
 </head>
 <body>
 <div class="header_body">
 	<header class="header">
-		<a href="">공지사항</a>
+		<a href="">고객센터</a>
 		<a href="">마이페이지</a>
 		<a href="">로그인</a>
 	</header>

@@ -14,12 +14,16 @@
     <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous"></script>
 </head>
 <body>
-	<%@ include file="header/header.jsp" %>
+	<!-- header 추가 -->
+	<%@ include file="header/header.jsp" %> 
 	
     <div class="container">
 
         <!-- 홈-->
         <div class="home">
+
+			<!-- header 공간 확보 -->
+			<div id="header_space" style="background-color: black"></div>
 
             <!-- 배너-->
             <div class="banner" style="background-color: aqua;">
