@@ -12,6 +12,7 @@
 	top:0;
 	left:0;
 	height: 100px;
+	z-index : 2;
 	
 }
 .header_body a{
