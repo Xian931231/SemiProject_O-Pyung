@@ -147,18 +147,19 @@
 
 
 @media screen and ( max-width: 768px){
-	
+		
     .navbar{
         flex-direction: column;
         align-items: flex-start;
         padding: 8px 24px;
+        height : auto;
     }
     .navbar_menu{
         display: none;
         flex-direction: column;
         align-items:  center;
         width: 100%;
-        padding-left:0;
+        padding: 1em 0;
     }
 
     .navbar_menu li {
@@ -170,6 +171,7 @@
 		order : 3;
         width: 100%;
         align-items:  left;
+        padding : 0.5em 0;
 	}
     .navbar_search_bar{
     	margin : 0;
@@ -187,13 +189,6 @@
         display: flex;
     }
     
-    
 
 }
 
-
-@media screen and ( max-width: 1024px){
-    .product_list_wrap .product_list{
-        flex: 1 1 50%;
-        max-width: 50%;
-    }
