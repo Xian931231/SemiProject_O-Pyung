@@ -1,0 +1,76 @@
+div{
+    border: 1px solid black;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrap{
+
+    position: relative;
+    left: 15%;
+    width: 1280px;
+    height: 940px;
+
+}
+
+#chat_area{
+    
+    position: relative;
+    float: left;
+    width: 270px;
+    height: 930px;
+    margin: 5px;
+    
+}
+
+#deal_area{
+
+    position: relative;
+    left: 277px;
+    height: 200px;
+   
+}
+
+#notice_area{
+
+    position: relative;
+    left: 277px;
+    height: 350px;
+    
+
+}
+
+
+#map_button_area{
+
+    position: relative;
+    left: 277px;
+    height: 365px;
+  
+
+}
+
+.common{
+    width: 990px;
+    margin: 5px;
+}
+
+#map_area{
+
+    position: relative;
+    width: 600px;
+    height: 365px;
+    
+}
+
+#button_area{
+    position: absolute;
+    top: 300px;
+    left: 610px;
+    width: 380px;
+    height: 65px;
+}
+
