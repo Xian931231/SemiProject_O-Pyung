@@ -1,0 +1,135 @@
+div{
+    border: 1px solid black;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrap{
+
+    position: relative;
+    left: 15vw;
+    width: 66.6vw;
+    height: 855px;
+    /* max-width: 1280px; */
+    /* max-height: 855px; */
+}
+
+#chat_area{
+    
+    position: relative;
+    float: left;
+    width: 14vw;
+    height: 845px;
+    margin: 5px;
+  
+    
+}
+
+#deal_area{
+
+    position: relative;
+    left: 14.5vw;
+    height: 180px;
+  
+   
+}
+
+#notice_area{
+
+    position: relative;
+    left: 14.5vw;
+    height: 320px;
+    
+
+}
+
+
+#map_button_area{
+
+    position: relative;
+    left: 14.5vw;
+    height: 330px;
+    
+
+}
+
+.common{
+    width: 51.5vw;
+    /* max-width: 990px; */
+    margin: 5px;
+   
+}
+
+#map_area{
+
+    position: relative;
+    width: 31.5vw;
+    height: 330px;
+   
+    
+}
+
+#button_area{
+    position: absolute;
+    top: 275px;
+    left: 31.8vw;
+    width: 19.7vw;
+    height: 55px;
+
+}
+
+
+/* 세로 사이즈는 고정, 가로 사이즈는 비율에 맞춰 줄어들다가 브라우저창이 1500px보다 작아질시 고정 */
+@media only screen and (max-width:1500px){
+    
+    #wrap{
+        left: 15%;
+        width: 1000px;
+    }
+
+
+    #chat_area{
+    
+        width: 210px;
+        
+    }
+
+    #deal_area{
+
+        left: 217px;
+
+    }
+
+    
+    #notice_area{
+
+        left: 217px;
+    
+    }
+    
+    #map_button_area{
+        left: 217px;
+    
+    }
+    
+    .common{
+        width: 771px;
+    }
+
+    #map_area{
+
+        width: 472px;
+        
+    }
+
+    #button_area{
+        top: 275px;
+        left: 475px;
+        width: 295px;
+    }
+    
+
+}
