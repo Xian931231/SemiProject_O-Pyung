@@ -1,12 +1,3 @@
-<!-- 커뮤니티 페이지 -->
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<!-- 인코딩 처리 -->    
-<% request.setCharacterEncoding("UTF-8"); %>    
-<% response.setContentType("text/html; charset=UTF-8"); %>    
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,16 +9,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/community.css">
-    <script src="./js/community/masonry.pkgd.min.js"></script>
-    <script src="./js/community/imagesLoaded.js"></script>
-    <script src="./js/community/community.js" defer></script>
+    <link rel="stylesheet" href="commu.css">
+    <script src="masonry.pkgd.min.js"></script>
+    <script src="imagesLoaded.js"></script>
+    <script src="commu.js" defer></script>
 </head>
 <body>
-
-	<!-- header 추가 -->
-	<%@ include file="header/header.jsp" %> 
-
     <div class="container">
         <!--작성버튼-->
         <button type="button" class="write btn btn-primary" data-bs-toggle="modal" data-bs-target=".modal">글</button>
@@ -41,7 +28,7 @@
                             <a href="#" class="card-header-user">
                                 <!--프로필 사진-->
                                 <div class="profile-write-img">
-                                    <img src="./img/community/1.jpg" alt="" class="profile-user-img-img">
+                                    <img src="../img/1.jpg" alt="" class="profile-user-img-img">
                                 </div>   
                                 <!--작성자 정보-->
                                 <div class="card-write-div">
@@ -114,13 +101,13 @@
                 <a href="" class="card-item">
                     <div class="card" >
                         <!--게시글 사진-->
-                        <img src="./img/community/1.jpg" class="card-img-top" alt="...">
+                        <img src="../img/1.jpg" class="card-img-top" alt="...">
                         <!--게시글 사진 아래부분-->
                         <div class="card-body">
                             <div class="card-body-user">
                                 <!--작성자 프로필 사진-->
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>          
                                 <!--작성자 이름-->              
                                 <h5 class="card-user">UserName</h5>
@@ -155,11 +142,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/4.jpg" class="card-img-top" alt="...">
+                        <img src="../img/4.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -182,11 +169,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/18.jpg" class="card-img-top" alt="...">
+                        <img src="../img/18.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -209,11 +196,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/1.jpg" class="card-img-top" alt="...">
+                        <img src="../img/다운로드 (1).jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -236,11 +223,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/19.jpg" class="card-img-top" alt="...">
+                        <img src="../img/19.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -263,11 +250,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/7.jpg" class="card-img-top" alt="...">
+                        <img src="../img/7.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -290,11 +277,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/20.png" class="card-img-top" alt="...">
+                        <img src="../img/20.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -317,11 +304,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/21.jpg" class="card-img-top" alt="...">
+                        <img src="../img/21.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -344,11 +331,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/14.jpg" class="card-img-top" alt="...">
+                        <img src="../img/14.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -371,11 +358,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/case.png" class="card-img-top" alt="...">
+                        <img src="../img/case.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -398,11 +385,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/16.jpg" class="card-img-top" alt="...">
+                        <img src="../img/16.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -424,38 +411,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/8.jpg" class="card-img-top" alt="...">
+                        <img src="../img/8.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
-                                </div>                        
-                                <h5 class="card-user">UserName</h5>
-                            </div>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="card-footer">
-                            <span class="card-footer-heart">
-                                <i class="far fa-heart"></i>
-                                <span class="card-heart-cnt">13</span>
-                            </span>
-                            <span class="card-footer-comment">
-                                <i class="far fa-comment"></i>
-                                <span class="card-comment-cnt">123</span>
-                            </span>                
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="card-post" >
-                <a href="" class="card-item">
-                    <div class="card" >
-                        <img src="./img/community/11.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="card-body-user">
-                                <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -478,11 +438,38 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/19.jpg" class="card-img-top" alt="...">
+                        <img src="../img/11.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
+                                </div>                        
+                                <h5 class="card-user">UserName</h5>
+                            </div>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-footer-heart">
+                                <i class="far fa-heart"></i>
+                                <span class="card-heart-cnt">13</span>
+                            </span>
+                            <span class="card-footer-comment">
+                                <i class="far fa-comment"></i>
+                                <span class="card-comment-cnt">123</span>
+                            </span>                
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card-post" >
+                <a href="" class="card-item">
+                    <div class="card" >
+                        <img src="../img/19.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="card-body-user">
+                                <div class="profile-user-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -506,11 +493,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/14.jpg" class="card-img-top" alt="...">
+                        <img src="../img/14.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -533,11 +520,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/20.jpg" class="card-img-top" alt="...">
+                        <img src="../img/20.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -560,11 +547,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/12.jpg" class="card-img-top" alt="...">
+                        <img src="../img/12.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -587,11 +574,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/16.jpg" class="card-img-top" alt="...">
+                        <img src="../img/16.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -614,11 +601,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/17.jpg" class="card-img-top" alt="...">
+                        <img src="../img/17.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -641,11 +628,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/21.jpg" class="card-img-top" alt="...">
+                        <img src="../img/21.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -668,11 +655,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/9.jpg" class="card-img-top" alt="...">
+                        <img src="../img/9.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>
@@ -695,11 +682,11 @@
             <div class="card-post" >
                 <a href="" class="card-item">
                     <div class="card" >
-                        <img src="./img/community/1.jpg" class="card-img-top" alt="...">
+                        <img src="../img/1.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="card-body-user">
                                 <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                    <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                 </div>                        
                                 <h5 class="card-user">UserName</h5>
                             </div>

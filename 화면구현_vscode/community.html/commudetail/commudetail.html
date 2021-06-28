@@ -1,12 +1,3 @@
-<!-- 커뮤니티 상세 페이지 -->
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-   
-<!-- 인코딩 처리 -->    
-<% request.setCharacterEncoding("UTF-8"); %>    
-<% response.setContentType("text/html; charset=UTF-8"); %>    
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,15 +9,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/community_detail.css">
-    <script src="./js/community_detail.js" defer></script>
+    <link rel="stylesheet" href="commudetail.css">
+    <script src="commudetail.js" defer></script>
     
 </head>
 <body>
-
-	<!-- header 추가 -->
-	<%@ include file="header/header.jsp" %> 
-    
     <article class="container">
         <!--조작버튼-->
         <div class="operation">
@@ -46,22 +33,23 @@
                             <!-- 카드 헤더부분-->
                             <div class="card-header">
                                 <a href="#" class="card-body-user">
-                                	<!--프로필 사진-->
+                                    <!--프로필 사진-->
                                     <div class="profile-user-img">
-                                        <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                        <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                     </div>   
                                     <!--작성자 정보-->
                                     <div class="card-user-div">
-                                    	<!--작성자 이름-->
-                                        <div class="card-user-name">UserName</div>
-                                        <!--작성날짜-->
-                                        <div class="card-date">21/11/11</div>
+                                            <!--작성자 이름-->
+                                            <div class="card-user-name">UserName</div>
+                                            <!--작성날짜-->
+                                            <div class="card-date">21/11/11</div>
                                     </div>                     
                                     <!--팔로워 버튼-->
+
                                 </a>
                             </div>
                             <!--본문 사진-->
-                            <img src="./img/community/21.jpg" class="card-img-top" alt="...">
+                            <img src="../img/21.jpg" class="card-img-top" alt="...">
                             <!--본문 내용-->
                             <div class="card-body">     
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit inventore rem fugiat, eius neque consectetur nam ipsum dicta delectus? Accusamus iure vel hic adipisci dolorem officiis autem ducimus voluptates tempore.</p>
@@ -86,7 +74,7 @@
                                 </section> 
                                 <!--좋아요 수 세션-->
                                 <section class="card-like-cnt">
-                                   	좋아요 <span class="like-cnt">123</span>개
+                                    좋아요 <span class="like-cnt">123</span>개
                                 </section>
 
                             </div>
@@ -96,7 +84,7 @@
                                     <!-- 댓글 리스트 li 한개 프로그래밍 반복-->
                                     <li class="card-comment-li">
                                         <a href="#" class="comment-user-img">
-                                            <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                            <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                         </a> 
                                         <div class="card-comment-li-div">
                                                 
@@ -114,7 +102,7 @@
                                                     <a href="#" class="comment-report-btn">
                                                         <span class="comment-report">
                                                             <i class="fas fa-paper-plane"></i>
-                                                            	신고
+                                                            신고
                                                         </span>
                                                     </a>                                                    
                                                 </span>
@@ -123,13 +111,13 @@
                                                     <a href="#">
                                                         <span>
                                                             <i class="fas fa-pencil-alt"></i>
-                                                            	수정
+                                                            수정
                                                         </span>
                                                     </a>
                                                     <a href="#">
                                                         <span>
                                                             <i class="fas fa-eraser"></i>
-                                                            	삭제
+                                                            삭제
                                                         </span>
                                                     </a>
                                                 </span>
@@ -140,7 +128,7 @@
 
                                     <li class="card-comment-li">
                                         <a href="#" class="comment-user-img">
-                                            <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                            <img src="../img/grphic.png" alt="" class="profile-user-img-img">
                                         </a> 
                                         <div class="card-comment-li-div">
                                                 
@@ -158,7 +146,7 @@
                                                     <a href="#" class="comment-report-btn">
                                                         <span class="comment-report">
                                                             <i class="fas fa-paper-plane"></i>
-                                                            	신고
+                                                            신고
                                                         </span>
                                                     </a>                                                    
                                                 </span>
@@ -167,13 +155,13 @@
                                                     <a href="#">
                                                         <span>
                                                             <i class="fas fa-pencil-alt"></i>
-                                                            	수정
+                                                            수정
                                                         </span>
                                                     </a>
                                                     <a href="#">
                                                         <span>
                                                             <i class="fas fa-eraser"></i>
-                                                            	삭제
+                                                            삭제
                                                         </span>
                                                     </a>
                                                 </span>
