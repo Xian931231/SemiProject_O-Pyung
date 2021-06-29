@@ -1,12 +1,3 @@
-<!-- 마이페이지 -->
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<!-- 인코딩 처리 -->    
-<% request.setCharacterEncoding("UTF-8"); %>    
-<% response.setContentType("text/html; charset=UTF-8"); %>    
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,17 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
     <!--css-->
-    <link rel="stylesheet" href="./css/mypage.css" type="text/css"/>
+    <link rel="stylesheet" href="./resources/MYPAGEcss.css" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
-
 </head>
 
-	<!-- header 추가 -->
-	<%@ include file="header/header.jsp" %> 
 
 <body>
     <div id="mypage">
@@ -79,7 +66,7 @@
                             <p>회원등급</p>
                         </div>
                         <div id="grade_img">
-                            <img id="img" src="./img/mypage/등급 없음.png" alt="등급">
+                            <img id="img" src="../mypage/image/등급 없음.png" alt="등급">
                         </div>
                         <div id="grade_score">
                             <p>회원점수</p>
