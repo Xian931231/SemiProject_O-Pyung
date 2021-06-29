@@ -28,7 +28,7 @@
         <div class="navbar_logo">
         <a href="">
         <i class="fab fa-500px"></i>
-            tsetLogo22
+            testLogo22
         </a>
         </div>
         
