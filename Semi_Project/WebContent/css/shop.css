@@ -32,9 +32,13 @@
 
 .header{
     grid-area: header;
+    background-color: rgba(0,0,0,1);
 }
 
 .navigation{
+	position : sticky;
+	top : 120px;
+	background-color : white;
     grid-area: navigation;
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }

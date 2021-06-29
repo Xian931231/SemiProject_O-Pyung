@@ -42,7 +42,6 @@
 
 <div class="container">
     <!-- header 영역 -->
-    <div class="header">Header</div>
 
     <!-- navigation 영역 -->
   <div class="navigation">
@@ -256,6 +255,391 @@
                 </a>
             </div>
 
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="./img/shop/keyboard_example.jpg">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            <p>브랜드</p>
+
+                        </div>
+                        <div class="name">Just Pink Keyboard</div>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+                <a href="" class="btn_heart">
+                    <i class="fas fa-heart heart"></i>
+                </a>
+            </div>
             <div class="product_item">
                 <a class="item_inner">
                     <div class="product">
