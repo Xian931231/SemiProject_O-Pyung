@@ -5,53 +5,103 @@ div{
 *{
     margin: 0px;
     padding: 0px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
+
+/* 전체 영역 */
 #wrap{
 
     position: relative;
     left: 15vw;
     width: 66.6vw;
-    height: 855px;
-    /* max-width: 1280px; */
-    /* max-height: 855px; */
+    height: 940px;
 }
 
+/* 채팅영역 */
 #chat_area{
     
     position: relative;
     float: left;
     width: 14vw;
-    height: 845px;
+    height: 925px;
     margin: 5px;
   
     
 }
 
+#chatInput_area{
+    position: absolute;
+    top: 800px;
+    width: 14vw;
+    height: 125px;
+}
+
+#chatInput_button{
+    position: relative;
+    width: 14vw;
+    height: 22px;
+
+}
+
+#chatInput_button > input{
+    float: right;
+}
+
+#chatInput_text{
+    position: relative;
+    width: 14vw;
+    height: 100px;
+}
+
+#chatInput_text > textarea{
+    width: 100%;
+    height: 100%;
+    border: none;
+    
+}
+
+/* 판매상품 영역 */
 #deal_area{
 
     position: relative;
     left: 14.5vw;
-    height: 180px;
-  
-   
+    height: 230px;
 }
 
+#deal_area > table{
+    position: relative;
+    top: 30px;
+    left: -10vw;
+    font-size: 20px;
+}
+
+
+
+#product_name{
+    font-size: 17px;
+}
+
+
+
+/* 공지사항 영역 */
 #notice_area{
 
     position: relative;
-    left: 14.5vw;
+    left: 0.1vw;
     height: 320px;
+    overflow: scroll;
     
 
 }
 
 
+/* 지도 & 버튼 영역 */
 #map_button_area{
 
     position: relative;
     left: 14.5vw;
-    height: 330px;
+    height: 360px;
     
 
 }
@@ -65,21 +115,31 @@ div{
 
 #map_area{
 
-    position: relative;
+    position: absolute;
     width: 31.5vw;
-    height: 330px;
+    height: 360px;
    
     
 }
 
 #button_area{
     position: absolute;
-    top: 275px;
+    top: 320px;
     left: 31.8vw;
     width: 19.7vw;
-    height: 55px;
+    height: 40px;
 
 }
+
+#button_area > input {
+    
+    float: right;
+    font-size: 20px;
+    margin: 5px;
+ 
+}
+
+
 
 
 /* 세로 사이즈는 고정, 가로 사이즈는 비율에 맞춰 줄어들다가 브라우저창이 1500px보다 작아질시 고정 */
@@ -97,16 +157,32 @@ div{
         
     }
 
+    #chatInput_area{
+        width: 210px;
+    }
+    
+    #chatInput_button{
+        width: 210px;
+    }
+    
+    #chatInput_text{
+        width: 210px;
+    }
+
     #deal_area{
 
         left: 217px;
 
     }
 
+    #deal_area > table{
+        left: -150px;
+    }
+
     
     #notice_area{
-
-        left: 217px;
+        left: -0.3px;
+        
     
     }
     
@@ -126,7 +202,7 @@ div{
     }
 
     #button_area{
-        top: 275px;
+        top: 320px;
         left: 475px;
         width: 295px;
     }
