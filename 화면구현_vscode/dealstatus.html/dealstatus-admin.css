@@ -1,0 +1,171 @@
+:root{
+    --black-color: #34455F;
+    --white-color : #F2F2F2;
+
+}
+
+*{
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h3{
+    border-top: 1px solid var(--black-color);
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 1rem 0;
+    padding-left: 1rem;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.container{
+    width: 1280px;
+    margin-top: 100px;
+}
+
+.container form{
+    display: flex;
+}
+
+.left{
+    position: sticky;
+    width: 100%;
+    margin-right: 30px;
+    max-width: 250px;
+    top: 100px;
+    padding: 1rem;
+    height: 100%;
+    border-radius: 5px;
+    border : 1px solid var(--black-color);
+    background-color: var(--black-color);
+}
+
+
+.form-check{
+    margin-bottom: 1rem;
+}
+
+.form-check-input:hover,.form-check-label:hover{
+    cursor: pointer;
+}
+.status{
+    width: 100%;
+}
+
+.calendar{
+    border : 1px solid var(--black-color);
+    width: 100%;
+    border-radius: 5px;
+    padding: 0.5rem;
+    height: 300px;
+    margin-bottom: 3rem;
+}
+
+.check-box{
+    border-radius: 5px;
+    margin-bottom: 3rem;
+    padding: 1rem;
+}
+
+.check{
+    border : 1px solid var(--black-color);
+    width: 100%;
+    min-height: 100px;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+.status-img{
+    margin-bottom: 3rem;
+}
+.status-img img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+
+
+
+.right{
+    position: sticky;
+    width: 100%;
+    margin-left: 30px;
+    max-width: 295px;
+    background-color: var(--black-color);
+    top: 100px;
+    padding: 2rem 1rem ;
+    height: 100%;
+    border-radius: 5px;
+    color: var(--white-color);
+
+}
+
+.deal-info{
+    padding-bottom: 5rem;
+}
+
+.deal-info table{
+    border-top: 2px solid var(--white-color);
+}
+
+td{
+    padding: 0.5rem 0;
+}
+
+.td2{
+    text-align: right
+}
+
+.tr-price{
+    font-size: 1.1rem;
+    border-top: 2px solid var(--white-color);
+    font-weight: bold;
+}
+
+.btns{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn{
+    font-weight: bold;
+    font-size: 1.2rem;    
+}
+
+
+
+@media screen and (max-width : 780px) {
+    .container{
+        max-width: 100%;;
+    }
+    .container form{
+        flex-direction: column;
+    }
+
+    .left{
+        position: static;
+        max-width: 100%;
+    }
+
+    .right{
+        position: static;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .order{
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+
+}
