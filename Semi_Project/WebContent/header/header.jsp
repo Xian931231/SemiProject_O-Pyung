@@ -19,14 +19,14 @@
 <body>
 <div class="header_body">
 	<header class="header">
-		<a href="">고객센터</a>
-		<a href="">마이페이지</a>
-		<a href="">로그인</a>
+		<a href="notice.jsp">고객센터</a>
+		<a href="mypage.jsp">마이페이지</a>
+		<a href="login.jsp">로그인</a>
 	</header>
 	
     <nav class="navbar">
         <div class="navbar_logo">
-        <a href="">
+        <a href="main.jsp">
         <i class="fab fa-500px"></i>
             testLogo22
         </a>
@@ -43,8 +43,8 @@
         
         
         <ul class="navbar_menu">
-            <li><a href="#"><span class="navbar_submenu">COMMUNITY</span></a></li>
-            <li><a href="#"><span class="navbar_submenu">SHOP</span></a></li>
+            <li><a href="community.jsp"><span class="navbar_submenu">COMMUNITY</span></a></li>
+            <li><a href="shop.jsp"><span class="navbar_submenu">SHOP</span></a></li>
         </ul>
 
         
