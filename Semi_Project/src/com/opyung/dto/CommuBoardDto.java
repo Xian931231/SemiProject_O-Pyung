@@ -1,3 +1,4 @@
+//커뮤니티 테이블
 package com.opyung.dto;
 
 import java.util.Date;
@@ -6,7 +7,6 @@ public class CommuBoardDto {
 	
 	//필드
 	private int cmb_no;
-	private String cmb_title;
 	private String cmb_content;
 	private String cmb_id;
 	private Date cmb_date;
@@ -19,11 +19,10 @@ public class CommuBoardDto {
 	}
 	
 	//매개변수 생성자
-	public CommuBoardDto(int cmb_no, String cmb_title, String cmb_content, String cmb_id, Date cmb_date, int cmb_like,
+	public CommuBoardDto(int cmb_no, String cmb_content, String cmb_id, Date cmb_date, int cmb_like,
 			int cmb_cnt) {
 		super();
 		this.cmb_no = cmb_no;
-		this.cmb_title = cmb_title;
 		this.cmb_content = cmb_content;
 		this.cmb_id = cmb_id;
 		this.cmb_date = cmb_date;
@@ -39,14 +38,6 @@ public class CommuBoardDto {
 
 	public void setCmb_no(int cmb_no) {
 		this.cmb_no = cmb_no;
-	}
-
-	public String getCmb_title() {
-		return cmb_title;
-	}
-
-	public void setCmb_title(String cmb_title) {
-		this.cmb_title = cmb_title;
 	}
 
 	public String getCmb_content() {
