@@ -11,8 +11,7 @@
 </head>
 <body>
 <%
-	String id = (String)session.getAttribute("id");
-	String name = (String)session.getAttribute("name");
+	MemberBoardDto memdto = (MemberBoardDto)session.getAttribute("memdto");
 %>
 
 <div class="header_body">
@@ -24,17 +23,17 @@
 
 	<header class="header">
 		<%
-			if(id != null){
+			if(memdto != null){
 			
 		%>
-		<span><%= id %>님</span>
+		<span><%= memdto.getMb_id() %>님</span>
 		<%
 			}
 		%>
 		<a href="notice.jsp">고객센터</a>
 		<a href="mypage.jsp">마이페이지</a>
 		<%
-			if(id==null){
+			if(memdto==null){
 		%>
 		<a href="login.jsp">로그인</a>
 		<%

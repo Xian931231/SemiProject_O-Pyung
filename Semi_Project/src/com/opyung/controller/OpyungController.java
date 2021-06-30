@@ -42,9 +42,7 @@ public class OpyungController extends HttpServlet {
 			MemberBoardDto memdto = biz.login(id,pw);
 			
 			if(memdto.getMb_id() != null) {
-				
-				session.setAttribute("id", memdto.getMb_id());
-				session.setAttribute("name", memdto.getMb_name());
+				session.setAttribute("memdto", memdto);
 				session.setMaxInactiveInterval(60*60);
 						
 				response.sendRedirect("main.jsp");
