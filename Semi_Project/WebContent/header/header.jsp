@@ -32,7 +32,7 @@
 			}
 		%>
 		<a href="notice.jsp">고객센터</a>
-		<a href="location.href='mypage.jsp'">마이페이지</a>
+		<a href="mypage.jsp">마이페이지</a>
 		<%
 			if(id==null){
 		%>
