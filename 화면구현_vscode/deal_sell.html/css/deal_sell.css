@@ -1,0 +1,19 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* deal_button */
+.deal_button{
+    float: right;
+}
+
+.deal_sell{
+    margin: 30px;
+    width: 802px;
+    height: 830px;
+}
+
+.deal_sell_title{
+    text-align: center;
+    font-size: 28px;
+}
