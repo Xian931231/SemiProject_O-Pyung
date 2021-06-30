@@ -1,0 +1,167 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.container{
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "title title"
+      "image content"
+      "web_editor web_editor"
+      "naver_blog naver_blog"
+      "footer footer";
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 100px 200px 0.5fr 1fr 700px 100px;
+    grid-gap:10px;
+    max-width: 1280px;
+    margin: 0 auto;
+    height:100%;
+    
+
+
+  }
+  .header{
+    grid-area:header;
+    background-color: gray;
+  }
+  
+  .title{
+    grid-area:title;
+    /*background-color: gray;*/
+  }
+  
+  .image{
+    grid-area: image;
+    /*background-color: gray;*/
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+  .content{
+    grid-area:content;
+    /*background-color: gray;*/
+  }
+  
+  .web_editor{
+    grid-area:web_editor;
+    /*background-color: gray;*/
+  }
+
+  .naver_blog{
+    grid-area: naver_blog
+  }
+
+  .footer{
+    grid-area:footer;
+    background-color: gray;
+  }
+
+  hr{
+      opacity: 20%;
+  }
+  /* title 영역 ------------------------------------------------------*/
+
+  .add_title{
+      font-size: 30px;
+      font-weight: 600;
+      text-align: center;
+  }
+
+  /* image 영역----------------------------------------------------- */
+
+  .image{
+      text-align: center;
+  }
+
+  .image_center{
+    position: relative;
+    margin: auto;
+    top: 45%;
+    left: 5%;
+  }
+
+  /* content 영역 ------------------------------------------------------*/
+  .content{
+      float: left;
+  }
+
+  .product_title{
+    width: 200px;
+    height: 16px;
+  }
+
+  #p_content{
+      width: 500px;
+      height: 200px;
+  }
+
+  .content_title{
+      margin: 30px;
+  }
+
+  .content_select{
+      margin: 30px;
+  }
+
+  .content_info{
+      margin: 30px;
+  }
+
+  .content_location{
+      margin: 30px;
+  }
+
+  .product_info{
+      width: 300px;
+      height: 100px;
+  }
+
+  /* web_editor ---------------------------------------------------------*/
+/*  .editor4{
+
+  }*/
+
+  .product_detail_info{
+      font-size: 30px;
+      text-align: center;
+      font-weight: 400;
+  }
+  
+  /* naver_blog -----------------------------------------------------------*/
+
+  .naver_blog{
+
+  }
+
+  .naver_blog_title{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 400;
+  }
+
+  .naver_blog_info{
+    margin: 100px;
+  }
+
+  .bloggername{
+    font-weight: 100;
+    font-size: 12px;
+
+  }
+
+  .blog_title{
+    font-weight: 450;
+    font-size: 20px;
+  }
+
+  .blog_info{
+    font-weight: 200;
+    font-size: 14px;
+  }
+
+  .postdate{
+    font-weight: 100;
+    font-size: 10px;
+
+
+  }
