@@ -17,9 +17,9 @@ a,a:hover,a:link,a:visited,a:focus{
 	left:0;
     width: 100%;
     height: 125px;
-    background-color: seashell;
     z-index: 1;
     text-align: center;
+    background-color: white;
 }
 
 .commu-content{

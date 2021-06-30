@@ -1,3 +1,4 @@
+<%@page import="com.opyung.dto.MemberBoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -7,28 +8,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./header/header.css">
-    <title>Document</title>
+</head>
+<body>
+<%
+	String id = (String)session.getAttribute("id");
+	String name = (String)session.getAttribute("name");
+%>
+
+<div class="header_body">
+	<link rel="stylesheet" type="text/css" href="./header/header.css">
 	<link rel="stylesheet" type="text/css" href="./img/fontawesome/css/all.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="./header/header.js" defer></script>
-</head>
-<body>
-<div class="header_body">
+	
+
 	<header class="header">
+		<%
+			if(id != null){
+			
+		%>
+		<span><%= id %>님</span>
+		<%
+			}
+		%>
 		<a href="notice.jsp">고객센터</a>
-		<a href="mypage.jsp">마이페이지</a>
+		<a href="location.href='mypage.jsp'">마이페이지</a>
+		<%
+			if(id==null){
+		%>
 		<a href="login.jsp">로그인</a>
+		<%
+			}else{
+		%>
+		<a href="controller.do?command=logout">로그아웃</a>
+		<%
+			}
+		%>
 	</header>
 	
     <nav class="navbar">
         <div class="navbar_logo">
         <a href="main.jsp">
-        <i class="fab fa-500px"></i>
-            testLogo22
+        <img src="img/product/assets/2222.ico">
+        <img alt="logo" src="img/product/img/logo.png">
         </a>
         </div>
         

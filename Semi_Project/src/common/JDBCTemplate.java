@@ -22,8 +22,8 @@ public class JDBCTemplate {
 
 		//계정 연결
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String id = "KH";
-		String pw = "KH";
+		String id = "OPYUNG";
+		String pw = "OPYUNG";
 		
 		Connection con = null;
 		

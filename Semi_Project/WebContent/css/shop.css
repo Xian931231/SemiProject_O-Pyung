@@ -89,6 +89,8 @@ ul{
 }
 
 
+
+
 /* side(category) ------------------------------------*/
 
 #price1, #price2{
@@ -106,6 +108,20 @@ ul{
 
 .checkbox{
  display: none;
+ padding : 12px 0;
+}
+
+.checkbox li{
+	border-bottom : 1px solid rgba(0,0,0,0.1);
+}
+
+.side-cate ul{
+	padding-left: 20px;
+	margin : 16px 0;
+}
+
+.side-cate{
+	padding-top : 20px;
 }
 
 /* main(content) ---------------------------------------*/

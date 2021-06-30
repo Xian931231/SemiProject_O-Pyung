@@ -6,6 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.opyung.biz.MemberBiz;
+import com.opyung.dto.MemberBoardDto;
+
 
 // controller.do로 매핑
 @WebServlet("/OpyungController")
@@ -17,16 +22,36 @@ public class OpyungController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		//인코딩 처리
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		HttpSession session = request.getSession();
 		
 		//command 출력
 		String command = request.getParameter("command");
 		System.out.println("[command:"+command+"]");
 	
 		if(command.equals("main")) {
+			response.sendRedirect("main.jsp");
+		}else if(command.equals("login")) {
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			
+			MemberBiz biz = new MemberBiz();
+			MemberBoardDto memdto = biz.login(id,pw);
+			
+			if(memdto.getMb_id() != null) {
+				
+				session.setAttribute("id", memdto.getMb_id());
+				session.setAttribute("name", memdto.getMb_name());
+				session.setMaxInactiveInterval(60*60);
+						
+				response.sendRedirect("main.jsp");
+			}
+		}else if(command.equals("logout")) {
+			//세션 정보 삭제
+			session.invalidate();
 			response.sendRedirect("main.jsp");
 		}
 		
