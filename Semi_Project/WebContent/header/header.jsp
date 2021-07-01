@@ -1,9 +1,12 @@
-<%@page import="com.opyung.dto.MemberBoardDto"%>
+<!-- header 페이지 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
+
+<%@ page import="com.opyung.dto.MemberBoardDto"%>
+
 
 <!DOCTYPE html>
 <html>
