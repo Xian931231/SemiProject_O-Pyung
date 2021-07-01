@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.opyung.biz.MemberBiz;
-import com.opyung.dto.MemberBoardDto;
+import com.opyung.dto.MemberDto;
 
 
 // controller.do로 매핑
@@ -44,7 +44,7 @@ public class OpyungController extends HttpServlet {
 			String pw = request.getParameter("pw");
 			
 			MemberBiz biz = new MemberBiz();
-			MemberBoardDto memdto = biz.login(id,pw);
+			MemberDto memdto = biz.login(id,pw);
 			
 			if(memdto.getMb_id() != null) {
 				session.setAttribute("memdto", memdto);

@@ -2,10 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<% request.setCharacterEncoding("UTF-8"); %>
-<% response.setContentType("text/html; charset=UTF-8"); %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<%
+	response.setContentType("text/html; charset=UTF-8");
+%>
 
-<%@ page import="com.opyung.dto.MemberBoardDto"%>
+<%@ page import="com.opyung.dto.MemberDto"%>
 
 
 <!DOCTYPE html>
@@ -14,7 +18,7 @@
 </head>
 <body>
 <%
-	MemberBoardDto memdto = (MemberBoardDto)session.getAttribute("memdto");
+	MemberDto memdto = (MemberDto)session.getAttribute("memdto");
 %>
 
 <div class="header_body">
