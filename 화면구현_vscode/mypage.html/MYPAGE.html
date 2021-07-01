@@ -6,10 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!--css-->
-    <link rel="stylesheet" href="../mypage.html/resources/mypage.css" type="text/css"/>
+    <link rel="stylesheet" href="../mypage.html/css/mypage.css" type="text/css"/>
+    
+    <!--font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
+
+    <!--jQuery-->
+    <script type="text/javascript" src="../mypage.html/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //숨김
+            $("#ph_area").css("display","none");
+            $("#sh_area").css("display","none");
+
+            //클릭
+            $("#pur").click(function(){
+                $("#content_area").hide();
+
+                $("#ph_area").show();
+            });
+
+            $("#sel").click(function(){
+                $("#content_area").hide();
+
+                $("#sh_area").show();
+            });
+
+
+            //마이페이지
+        });
+
+
+
+
+        //purchase_history-jQuery
+        $(function() {
+            $("#ph_end_table").css("display","none");
+            $("#ph_continue").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+            $("#ph_con_link").click(function() {
+               $("#ph_end_table").hide();
+               $("#ph_continue_table").show();
+               
+               $("#ph_continue").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+               $("#ph_end").css("background-color","whitesmoke");
+            });
+            $("#ph_end_link").click(function() {
+               $("#ph_continue_table").hide();
+               $("#ph_end_table").show();
+                
+               $("#ph_end").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+               $("#ph_continue").css("background-color","whitesmoke");
+            });
+            
+        });
+
+        //sell_history-jQuery   
+        $(function() {
+            $("#sh_end_table").css("display","none");
+            $("#sh_continue").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+            $("#sh_con_link").click(function() {
+               $("#sh_end_table").hide();
+               $("#sh_continue_table").show();
+               
+               $("#sh_continue").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+               $("#sh_end").css("background-color","whitesmoke");
+            });
+            $("#sh_end_link").click(function() {
+               $("#sh_continue_table").hide();
+               $("#sh_end_table").show();
+                
+               $("#sh_end").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+               $("#sh_continue").css("background-color","whitesmoke");
+            });
+        });
+
+
+    </script>
 
 </head>
 
@@ -21,10 +95,10 @@
                 <strong class="info">쇼핑 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="" class="menu_link">구매 내역</a>
+                        <a class="menu_link" id="pur">구매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">판매 내역</a>
+                        <a class="menu_link" id="sel">판매 내역</a>
                     </li>
                     <li class="menu_item">
                         <a href="" class="menu_link">관심 상품</a>
@@ -77,17 +151,17 @@
                     </div>
                 </div>
 
-                <!--구매 내역 이름-->
+                
                 <div class="tit">
                     <div>
                         <h3>구매 내역</h3>
                     </div>
                     <div class="add">
-                        <a href="" class="add_text">더보기 ></a>
+                        <a class="add_text" id="pur">더보기 ></a>
                     </div>
                 </div>
 
-                <!-- 거래 내역 표-->
+                
                 <div id="buy">
                     <div class="table">
                         <div class="item">
@@ -109,7 +183,7 @@
                             </dl>
                         </div>
                     </div>
-                    <!--거래 내역-->
+                    
                     <div>
                         <div class="empty_area">
                             <p class="empty">거래 내역이 없습니다.</p>
@@ -117,17 +191,17 @@
                     </div>
                 </div>
 
-                <!--판매 내역 이름-->
+                
                 <div class="tit">
                     <div>
                         <h3>판매 내역</h3>
                     </div>
                     <div class="add">
-                        <a href="" class="add_text">더보기 ></a>
+                        <a class="add_text" id="sel">더보기 ></a>
                     </div>
                 </div>
 
-                <!--판매 내역 표-->
+                
                 <div id="sell">
                     <div class="table">
                         <div class="item">
@@ -149,7 +223,7 @@
                             </dl>
                         </div>
                     </div>
-                    <!--거래 내역-->
+                    
                     <div>
                         <div class="empty_area" id="empty_area_selling">
                             <p class="empty">거래 내역이 없습니다.</p>
@@ -159,6 +233,196 @@
 
             </div>
         </div>
+
+
+
+
+
+
+        <!--구매 내역-->
+        <div id="ph_area">
+            <div>
+                <div id="ph_title">
+                    <h1>구매 내역</h1>
+                </div>
+
+                <div id="ph_list">
+                    <div id="ph_continue">
+                        <a id="ph_con_link">
+                            <dl>
+                                <dt class="ph_title">진행 중</dt>
+                                <dt class="ph_count">0</dt>
+                            </dl> 
+                        </a>
+                    </div>
+
+                    <div id="ph_end">
+                        <a id="ph_end_link">
+                            <dl>
+                                <dt class="ph_title">종료</dt>
+                                <dt class="ph_count">0</dt>
+                            </dl>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div id="ph_continue_table">
+                <table border="1">
+                    <colgroup>
+                        <col width="190px">
+                        <col width="200px">
+                        <col width="100px">
+                        <col width="150px">
+                        <col width="100px">
+                    </colgroup>
+
+                    <thead>
+                        <tr class="ph_head">
+                            <th>이미지</th>
+                            <th>제목</th>
+                            <th>가격</th>
+                            <th>판매자</th>
+                            <th>거래일정</th>
+                        </tr>
+                    </thead>
+                    
+                    <tr class="ph_content">
+                        <th><img src="../mapage_purchaseHistory.html/image/k150551p1n8-s.jpg" alt="컴퓨터 부품" width="150px" height="150px"></th>
+                        <th>조립 컴퓨터 부품</th>
+                        <th>100,000</th>
+                        <th>sellermen</th>
+                        <th>???</th>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="ph_end_table">
+                <table border="1">
+                    <colgroup>
+                        <col width="190px">
+                        <col width="200px">
+                        <col width="100px">
+                        <col width="150px">
+                        <col width="100px">
+                    </colgroup>
+
+                    <thead>
+                        <tr class="ph_head">
+                            <th>이미지</th> 
+                            <th>제목</th>
+                            <th>가격</th>
+                            <th>판매자</th>
+                            <th>거래 종료일</th>
+                        </tr>
+                    </thead>
+                    
+                    <tr class="ph_content">
+                        <th><img src="../mapage_purchaseHistory.html/image/k150551p1n8-s.jpg" alt="컴퓨터 부품" width="150px" height="150px"></th>
+                        <th>컴퓨터</th>
+                        <th>300 ,000</th>
+                        <th>sell5678</th>
+                        <th>21/07/17</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+
+
+
+        <!--판매 내역-->
+        <div id="sh_area">
+            <div>
+                <div id="sh_title">
+                    <h1>판매 내역</h1>
+                </div>
+
+                <div id="sh_list">
+                    <div id="sh_continue">
+                        <a id="sh_con_link">
+                            <dl>
+                                <dt class="sh_title">진행 중</dt>
+                                <dt class="sh_count">0</dt>
+                            </dl> 
+                        </a>
+                    </div>
+
+                    <div id="sh_end">
+                        <a id="sh_end_link">
+                            <dl>
+                                <dt class="sh_title">종료</dt>
+                                <dt class="sh_count">0</dt>
+                            </dl>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div id="sh_continue_table">
+                <table border="1">
+                    <colgroup>
+                        <col width="190px">
+                        <col width="200px">
+                        <col width="100px">
+                        <col width="150px">
+                        <col width="100px">
+                    </colgroup>
+
+                    <thead>
+                        <tr class="sh_head">
+                            <th>이미지</th>
+                            <th>제목</th>
+                            <th>가격</th>
+                            <th>구매자</th>
+                            <th>거래일정</th>
+                        </tr>
+                    </thead>
+                    
+                    <tr class="sh_content">
+                        <th><img src="../mapage_purchaseHistory.html/image/k150551p1n8-s.jpg" alt="컴퓨터 부품" width="150px" height="150px"></th>
+                        <th>조립 컴퓨터 부품</th>
+                        <th>100,000</th>
+                        <th>buyermen</th>
+                        <th>???</th>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="sh_end_table">
+                <table border="1">
+                    <colgroup>
+                        <col width="190px">
+                        <col width="200px">
+                        <col width="100px">
+                        <col width="150px">
+                        <col width="100px">
+                    </colgroup>
+
+                    <thead>
+                        <tr class="sh_head">
+                            <th>이미지</th>
+                            <th>제목</th>
+                            <th>가격</th>
+                            <th>구매자</th>
+                            <th>거래 종료일</th>
+                        </tr>
+                    </thead>
+                    
+                    <tr class="sh_content">
+                        <th><img src="../mapage_purchaseHistory.html/image/k150551p1n8-s.jpg" alt="컴퓨터 부품" width="150px" height="150px"></th>
+                        <th>컴퓨터</th>
+                        <th>300,000</th>
+                        <th>buy1234</th>
+                        <th>21/07/17</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
     </div>
 
 </body>
