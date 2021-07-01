@@ -2,6 +2,8 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+
+
 #sell_history {
     max-width: 1280px;
     margin: 0 auto;
@@ -20,11 +22,6 @@
     font-size: 25px;
     text-decoration-line: none;
     color: black;
-}
-
-#list_title:hover {
-    text-decoration-line: underline;
-
 }
 
 #shop_list {
@@ -60,15 +57,24 @@ ul {
     color: gray;
 }
 
-.menu_link:hover {
-    text-decoration-line: underline;
-}
-
 #my_list {
     margin-top: 40px;
 }
 
+#my_info{
+    margin-bottom: 0px;
+    display: inline-block;
+    font-size: 18px;
+    letter-spacing: -.16px;
+}
 
+#list_title:hover {
+    text-decoration-line: underline;
+}
+
+.menu_link:hover {
+    text-decoration-line: underline;
+}
 
 
 
@@ -79,8 +85,10 @@ ul {
 }
 
 #sh_title{
-    text-align: center;
+    text-align: left;
     margin-bottom: 80px;
+    border-bottom: 3px solid black;
+    text-align: left;
 }
 
 #sh_list {

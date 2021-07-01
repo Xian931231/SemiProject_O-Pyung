@@ -4,7 +4,7 @@
 
 
 
-#purchase_history {
+#deal_progress {
     max-width: 1280px;
     margin: 0 auto;
     display: grid;
@@ -76,86 +76,14 @@ ul {
     text-decoration-line: underline;
 }
 
-
-#ph_area {
-    left: 700px;
-    top: 300px;
+#TS_area{
+    left: 550px;
+    top: 250px;
     position: absolute;
 }
 
-#ph_title{
+#TS_title{
     text-align: left;
+    margin-bottom: 30px;
     border-bottom: 3px solid black;
-    margin-bottom: 80px;
-}
-
-#ph_list {
-    margin-top: 20px;
-    display: table;
-    table-layout: fixed;
-    width: 750px;
-    background-color: whitesmoke;
-    border-radius: 12px;
-}
-
-#ph_continue {
-    display: table-cell;
-}
-
-#ph_end{
-    display: table-cell;
-}
-
-#ph_con_link{
-    text-align: center;
-    position: relative;
-    display: block;
-}
-
-#ph_end_link{
-    text-align: center;
-    position: relative;
-    display: block;
-}
-
-
-.ph_title {
-    font-weight: 700;
-    color: black;
-    font-size: 20px;
-}
-
-.ph_count{
-    font-weight: 700;
-    color: black;
-    font-size: 20px;
-}
-
-div{
-    margin: 0px;
-    padding: 0px;
-}
-
-a{
-    text-decoration-line: none;
-}
-
-#ph_continue_table {
-    margin-top: 50px;
-    color: black;
-}
-
-.ph_head{
-    font-weight: 800;
-    font-size: 18px;
-}
-
-.ph_content{
-    font-weight: 400;
-    font-size: 20px;
-}
-
-#ph_end_table{
-    margin-top: 50px;
-    color: black;
 }

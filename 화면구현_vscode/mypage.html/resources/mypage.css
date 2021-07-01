@@ -68,6 +68,15 @@ ul {
     letter-spacing: -.16px;
 }
 
+#list_title:hover {
+    text-decoration-line: underline;
+}
+
+.menu_link:hover {
+    text-decoration-line: underline;
+}
+
+
 
 
 
