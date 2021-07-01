@@ -20,9 +20,17 @@
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
     $(function() {
+    	$(".content_01").css("display","none");
         $(".content_02").css("display","none");
         $(".content_03").css("display","none");
+        $(".side_maintitle").click(function(){
+        	$(".content_main").show();
+            $(".content_01").hide();
+            $(".content_02").hide();
+            $(".content_03").hide();
+        });
         $("#report").click(function() {
+           $(".content_main").hide();
            $(".content_01").hide();
            $(".content_02").show();
            $(".content_03").hide();
@@ -30,17 +38,34 @@
 
         });
         $("#transactionStatus").click(function() {
-           $(".content_01").hide();
-           $(".content_02").hide();
-           $(".content_03").show();
+        	$(".content_main").hide();
+            $(".content_01").hide();
+            $(".content_02").hide();
+            $(".content_03").show();
           
 
         });
         $("#userinfo").click(function(){
+        	$(".content_main").hide();
             $(".content_01").show();
             $(".content_02").hide();
             $(".content_03").hide();
         });
+        
+       $("#addbnt1").click(function(){
+    	   $(".content_main").hide();
+           $(".content_01").hide();
+           $(".content_02").show();
+           $(".content_03").hide();
+       });
+       
+       $("#addbnt2").click(function(){
+    	   $(".content_main").hide();
+           $(".content_01").hide();
+           $(".content_02").hide();
+           $(".content_03").show();
+       });
+        
         $("#bl_btn").click(function(){
            var con = confirm("정말 블랙처리 하시겠습니까?");
            if(con = true){
@@ -49,8 +74,7 @@
                alert("취소되었습니다.");
            }
         });
-        
-        
+      
     });
     </script>
 </head>
@@ -65,7 +89,7 @@
     
     <div id="main">
         <div id="sidebar">
-            <h2 class="side_maintitle">ADMIN</h2>
+           <h2 class="side_maintitle">ADMIN</h2>
             
             <ul class="side_ul">
                 <li class="side_li" id="userinfo"><a href="#">유저정보</a></li>
@@ -73,6 +97,89 @@
                 <li class="side_li" id="transactionStatus"><a href="#">거래상태</a></li>
             </ul>
         </div>
+        	<div class="content_main">
+        		                <!--신고-->
+                <div class="tit">
+                    <div>
+                        <h3>신고 내역</h3>
+                    </div>
+                    <div class="add">
+                        <a class="add_text" id="addbnt1">더보기 ></a>
+                    </div>
+                </div>
+
+                <!-- 신고 표-->
+                <div id="buy">
+                    <div class="table">
+                        <div class="item">
+                            <dl>
+                                <dt class="title">전체</dt>
+                                <dd class="count" id="count_buy_all">0</dd>
+                            </dl>
+                        </div>
+                        <div class="item">
+                            <dl>
+                                <dt class="title">진행 중</dt>
+                                <dd class="count">0</dd>
+                            </dl>
+                        </div>
+                        <div class="item">
+                            <dl>
+                                <dt class="title">종료</dt>
+                                <dd class="count">0</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <!--거래 내역-->
+                    <div>
+                        <div class="empty_area">
+                            <p class="empty">신고 내역이 없습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--거래진행 상태-->
+                <div class="tit">
+                    <div>
+                        <h3>거래 상태</h3>
+                    </div>
+                    <div class="add">
+                        <a class="add_text" id="addbnt2" >더보기 ></a>
+                    </div>
+                </div>
+
+                <!--거래진행 상태-->
+                <div id="sell">
+                    <div class="table">
+                        <div class="item">
+                            <dl>
+                                <dt class="title">전체</dt>
+                                <dd class="count" id="count_sell_all">0</dd>
+                            </dl>
+                        </div>
+                        <div class="item">
+                            <dl>
+                                <dt class="title">진행 중</dt>
+                                <dd class="count">0</dd>
+                            </dl>
+                        </div>
+                        <div class="item">
+                            <dl>
+                                <dt class="title">종료</dt>
+                                <dd class="count">0</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <!--거래 내역-->
+                    <div>
+                        <div class="empty_area" id="empty_area_selling">
+                            <p class="empty">거래 내역이 없습니다.</p>
+                        </div>
+                    </div>
+                </div>
+        		
+        	</div>
+        
             <div class="content_01">
                 
                 <h2>유저정보</h2>
@@ -101,8 +208,9 @@
                         <col width="100px">
                         <col width="150px">
                         <col width="150px">
+                        <col width="100px">
                         <col width="150px">
-                        <col width="150px">
+                        <col width="100px">
                         <thead>
                         <tr>
                             <th><input type="checkbox"></th>
@@ -113,7 +221,7 @@
                             <th>전화번호</th>
                             <th>점수</th>
                             <th>로그인여부</th>
-                            <th>블랙처리</th>
+                            <th>블랙</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -126,7 +234,7 @@
                             <td>USER_PONE</td>
                             <td>00</td>
                             <td><a>접속가능/불가능</a></td>
-                            <td><input type="button" value="블랙" id="bl_btn"></td>
+                            <td><input type="button" value="블랙처리" id="bl_btn"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -140,7 +248,7 @@
                     <div class="tap_item">
                         <dl>
                             <dt class="tap_title">
-                                신고처리
+                              	  신고처리
                             </dt>
                             <dd class="tap_count">
                                 0
@@ -150,7 +258,7 @@
                     <div class="tap_item">
                         <dl>
                             <dt class="tap_title">
-                                처리완료
+                                	처리완료
                             </dt>
                             <dd class="tap_count">
                                 0

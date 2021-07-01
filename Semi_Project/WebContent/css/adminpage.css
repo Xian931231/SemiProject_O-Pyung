@@ -1,3 +1,7 @@
+/*글씨체*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');    
+
+
 *{
     font-family: 'Noto Sans KR', sans-serif;
 }
@@ -28,12 +32,20 @@ td{
     
 
 #main {
+	
     max-width: 1280px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 0.5fr 3.5fr;   
 
 }
+
+.content_01,.content_02,.content_03{
+	margin-top: 50px;
+}
+
+
+
 .content_ul{
     padding: 0;
     list-style: none;
@@ -44,6 +56,10 @@ td{
     border-bottom: 1px solid rgb(235, 231, 231);
 }
 
+#sidebar{
+	margin-top: 50px;
+}
+
 
 .side_ul{
     list-style: none;
@@ -52,7 +68,7 @@ td{
     padding-inline-start: 0px;
 }
 .side_maintitle{
-    
+    cursor:pointer;
     font-size: 30px;
 }
 
@@ -80,6 +96,89 @@ hr{
     height: 3px;
     background-color: black;
 }
+.tit{
+    margin-top: 100px;
+    padding-bottom: 14px;
+    display: flex;
+    max-width: 100%;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.add {
+    margin-left: 950px;
+    margin-top: 20px;
+}
+
+.add_text {
+    text-decoration-line: none;
+    color: rgb(70, 68, 68);
+}
+
+
+.table {
+    display: table;
+    width: 1100px;
+    height: 150px;
+    background-color: whitesmoke;
+    border-radius: 12px;
+}
+
+.item {
+    display: table-cell;
+    text-align: center;
+}
+
+dl {
+    position: relative;
+    display: block;
+    padding-top: 20px;
+    height: 80px;
+}
+
+
+.title {
+    font-size: 20px;
+    text-align: center;
+}
+
+.count {
+    margin-left: 0px;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+#count_buy_all {
+    color: red;
+}
+
+#count_sell_all {
+    color: green;
+}
+
+
+div {
+    margin: 0px;
+    padding: 0px;
+}
+
+.empty_area {
+    padding-top: 80px;
+    text-align: center;
+}
+
+.empty{
+    font-size: 15px;
+    color: rgba(34, 34, 34, .5);
+}
+
+#empty_area_selling {
+    margin-bottom: 100px;
+}
+
 
 
 #footer {
@@ -151,6 +250,12 @@ hr{
     letter-spacing: -.09px;
     font-weight: 700;
 }
+
+
+.add_text:hover{
+	cursor: pointer;
+}
+
 
 
 @media (max-width:600px){ /*가로 너비가 600px 이하일 때 아래 스타일 적용*/
