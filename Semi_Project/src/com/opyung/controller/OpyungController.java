@@ -32,8 +32,13 @@ public class OpyungController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("[command:"+command+"]");
 	
+		
+		//메인페이지
 		if(command.equals("main")) {
 			response.sendRedirect("main.jsp");
+		
+		
+		//로그인 기능
 		}else if(command.equals("login")) {
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
@@ -47,6 +52,8 @@ public class OpyungController extends HttpServlet {
 						
 				response.sendRedirect("main.jsp");
 			}
+		
+		//로그아웃 기능
 		}else if(command.equals("logout")) {
 			//세션 정보 삭제
 			session.invalidate();

@@ -16,7 +16,7 @@ public class MemberBoardDao extends JDBCTemplate{
 		ResultSet rs = null;
 		MemberBoardDto res = new MemberBoardDto();
 		
-		String sql = "SELECT * FROM MEMBERBOARD WHERE MB_ID=? AND MB_PW=?";
+		String sql = " SELECT * FROM MEMBERBOARD WHERE MB_ID=? AND MB_PW=? ";
 		
 		try {
 			pstm = con.prepareStatement(sql);
