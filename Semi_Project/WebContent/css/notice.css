@@ -1,7 +1,7 @@
 /*글씨체*/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');    
 
-body{
+*{
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -33,6 +33,12 @@ a{
     grid-template-columns: 0.5fr 3.5fr;  
 
 }
+.content_01,.content_02{
+	margin-top: 50px;
+}
+
+
+
 .content_ul{
     
     flex: 1 1 25%;
@@ -46,6 +52,9 @@ a{
     border-bottom: 1px solid rgb(235, 231, 231);
 }
 
+#sidebar{
+	margin-top: 50px;
+}
 
 .side_ul{
     
