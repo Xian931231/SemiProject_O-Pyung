@@ -21,6 +21,10 @@
     <title>Document</title>
 </head>
 <body>
+	<!-- header 추가 -->
+	<%@ include file="header/header.jsp" %> 
+
+   	<!-- header 공간 확보 -->
     <article class="container">
         <section class="left">
             <div class="chat">

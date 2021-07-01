@@ -23,6 +23,9 @@
     
 </head>
 <body>
+	<!-- header 추가 -->
+	<%@ include file="header/header.jsp" %> 
+	
     <article class="container">
         <form action="">
             <div class="card-detail">

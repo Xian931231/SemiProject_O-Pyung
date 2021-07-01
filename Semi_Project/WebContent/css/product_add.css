@@ -1,5 +1,6 @@
 *{
     font-family: 'Noto Sans KR', sans-serif;
+    margin : 0;
 }
 
 .container{
@@ -29,6 +30,8 @@
   .title{
     grid-area:title;
     /*background-color: gray;*/
+    
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
   
   .image{

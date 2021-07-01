@@ -25,11 +25,13 @@
     <title>제품등록</title>
 </head>
 <body>
+	<!-- header 추가 -->
+	<%@ include file="header/header.jsp" %> 
+
+   	<!-- header 공간 확보 -->
     <form action="" method="post">
     <div class="container">
         <!-- header 영역 -->
-        <div class="header">Header</div>
-       
         <!-- title 영역 -->
         <div class="title">
             <p class="add_title">제품등록</p>
