@@ -6,17 +6,96 @@
   </welcome-file-list>
   
   <servlet>
-  	<servlet-name>OpyungController</servlet-name>
-  	<servlet-class>com.opyung.controller.OpyungController</servlet-class>
+  	<servlet-name>MainController</servlet-name>
+  	<servlet-class>com.opyung.controller.MainController</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>OpyungController</servlet-name>
-    <url-pattern>/controller.do</url-pattern>
+  	<servlet-name>MainController</servlet-name>
+    <url-pattern>/main.do</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+  	<servlet-name>ChatController</servlet-name>
+  	<servlet-class>com.opyung.controller.ChatController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ChatController</servlet-name>
+    <url-pattern>/chat.do</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+  	<servlet-name>CommunityController</servlet-name>
+  	<servlet-class>com.opyung.controller.CommunityController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>CommunityController</servlet-name>
+    <url-pattern>/community.do</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+  	<servlet-name>CommentController</servlet-name>
+  	<servlet-class>com.opyung.controller.CommentController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>CommentController</servlet-name>
+    <url-pattern>/comment.do</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+  	<servlet-name>DealController</servlet-name>
+  	<servlet-class>com.opyung.controller.DealController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>DealController</servlet-name>
+    <url-pattern>/deal.do</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+  	<servlet-name>LoginController</servlet-name>
+  	<servlet-class>com.opyung.controller.LoginController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>LoginController</servlet-name>
+    <url-pattern>/login.do</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+  	<servlet-name>MemberinfoController</servlet-name>
+  	<servlet-class>com.opyung.controller.MemberinfoController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>MemberinfoController</servlet-name>
+    <url-pattern>/memberinfo.do</url-pattern>
   </servlet-mapping>  
   
   
+  <servlet>
+  	<servlet-name>ProductController</servlet-name>
+  	<servlet-class>com.opyung.controller.ProductController</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+  	<servlet-name>ProductController</servlet-name>
+    <url-pattern>/product.do</url-pattern>
+  </servlet-mapping>  
+  
+  
+  <servlet>
+  	<servlet-name>ReportController</servlet-name>
+  	<servlet-class>com.opyung.controller.ReportController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ReportController</servlet-name>
+    <url-pattern>/report.do</url-pattern>
+  </servlet-mapping>  
   
   
 </web-app>
