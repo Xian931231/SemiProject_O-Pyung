@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--css-->
+    <link rel="stylesheet" href="resources/MYPAGEcss.css" type="text/css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Script -->
+<script type="text/javascript">
+
+    $(function(){
+        $("#account_owner_input").change(function(){
+            $("#save_btn").attr("disabled",false);
+    });
+});
+</script>
+
+</head>
+
+
+<body>
+    <div id="mypage">
+        <nav id="list">
+            <a href="" id="list_title"><h2>MY PAGE</h2></a>
+            <div id="shop_list">
+                <strong class="info">쇼핑 정보</strong>
+                <ul>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">구매 내역</a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">판매 내역</a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">관심 상품</a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">거래 진행</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="my_list">
+                <strong class="info">내 정보</strong>
+                <ul>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">프로필 정보</a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="" class="menu_link">판매 정산 계좌</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+        <!-- <div id="content_area">
+            <div id="my_home">
+                <div id="profile">
+                    <div id="my_profile">
+                        <div id="profile_name">
+                            <h2 id="id">example</h2>
+                            <p id="email">example@google.com</p>
+                            <button>프로필 수정</button>
+                        </div>
+                    </div>
+
+                    <div id="grade">
+                        <div id="grade_rank">
+                            <p>회원등급</p>
+                        </div>
+                        <div id="grade_img">
+                            <img id="img" src="../mypage.html/image/등급 없음.png" alt="등급">
+                        </div>
+                        <div id="grade_score">
+                            <p>회원점수</p>
+                        </div>
+                        <div id="grade_num">
+                            <strong id="num">0</strong>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!--구매 내역 이름-->
+                <!-- <div class="tit">
+                    <div>
+                        <h3>구매 내역</h3>
+                    </div>
+                    <div class="add">
+                        <a href="" class="add_text">더보기 ></a>
+                    </div>
+                </div> -->
+
+                <!-- 거래 내역 표-->
+                <!-- <div id="buy">
+                    <div class="table">
+                        <div class="item">
+                            <dl>
+                                <dt class="title">전체</dt>
+                                <dd class="count" id="count_buy_all">0</dd>
+                            </dl>
+                        </div>
+                        <div class="item">
+                            <dl>
+                                <dt class="title">진행 중</dt>
+                                <dd class="count">0</dd>
+                            </dl>
+                        </div>
+                        <div class="item">
+                            <dl>
+                                <dt class="title">종료</dt>
+                                <dd class="count">0</dd>
+                            </dl>
+                        </div>
+                    </div> -->
+                    <!--거래 내역-->
+                    <!-- <div>
+                        <div class="empty_area">
+                            <p class="empty">거래 내역이 없습니다.</p>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!--판매 내역 이름-->
+                <!-- <div class="tit">
+                    <div>
+                        <h3>판매 내역</h3>
+                    </div>
+                    <div class="add">
+                        <a href="" class="add_text">더보기 ></a>
+                    </div>
+                </div> -->
+
+                <!--판매 내역 표-->
+                <!-- <div id="sell">
+                    <div class="table">
+                        <div class="item">
+                            <dl>
+                                <dt class="title">전체</dt>
+                                <dd class="count" id="count_sell_all">0</dd>
+                            </dl>
+                        </div>
+                        <div class="item">
+                            <dl>
+                                <dt class="title">진행 중</dt>
+                                <dd class="count">0</dd>
+                            </dl>
+                        </div>
+                        <div class="item">
+                            <dl>
+                                <dt class="title">종료</dt>
+                                <dd class="count">0</dd>
+                            </dl>
+                        </div>
+                    </div> -->
+                    <!--거래 내역-->
+                    <!-- <div>
+                        <div class="empty_area" id="empty_area_selling">
+                            <p class="empty">거래 내역이 없습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div> -->
+
+        <!-- 판매 정산 계좌 등록 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+
+        <!-- <div id="mypage_account">
+
+            <div id="mypage_account_title">
+                <p>정산 계좌 등록</p>
+            </div>
+
+            <br>
+
+            <div id="mypage_account_bank">
+                <p>은행명</p>
+                <div class="bank_select">
+                    <select name='used_bankname' class='used_bankname'>
+                        <option value=''>선택하세요</option>
+                         <option value='SC제일은행'>SC제일은행</option>
+                         <option value='경남은행'>경남은행</option>
+                         <option value='광주은행'>광주은행</option>
+                         <option value='국민은행'>국민은행</option>
+                         <option value='굿모닝신한증권'>굿모닝신한증권</option>
+                         <option value='기업은행'>기업은행</option>
+                         <option value='농협중앙회'>농협중앙회</option>
+                         <option value='농협회원조합'>농협회원조합</option>
+                         <option value='대구은행'>대구은행</option>
+                         <option value='대신증권'>대신증권</option>
+                         <option value='대우증권'>대우증권</option>
+                         <option value='동부증권'>동부증권</option>
+                         <option value='동양종합금융증권'>동양종합금융증권</option>
+                         <option value='메리츠증권'>메리츠증권</option>
+                         <option value='미래에셋증권'>미래에셋증권</option>
+                         <option value='뱅크오브아메리카(BOA)'>뱅크오브아메리카(BOA)</option>
+                         <option value='부국증권'>부국증권</option>
+                         <option value='부산은행'>부산은행</option>
+                         <option value='산림조합중앙회'>산림조합중앙회</option>
+                         <option value='산업은행'>산업은행</option>
+                         <option value='삼성증권'>삼성증권</option>
+                         <option value='상호신용금고'>상호신용금고</option>
+                         <option value='새마을금고'>새마을금고</option>
+                         <option value='수출입은행'>수출입은행</option>
+                         <option value='수협중앙회'>수협중앙회</option>
+                         <option value='신영증권'>신영증권</option>
+                         <option value='신한은행'>신한은행</option>
+                         <option value='신협중앙회'>신협중앙회</option>
+                         <option value='에스케이증권'>에스케이증권</option>
+                         <option value='에이치엠씨투자증권'>에이치엠씨투자증권</option>
+                         <option value='엔에이치투자증권'>엔에이치투자증권</option>
+                         <option value='엘아이지투자증권'>엘아이지투자증권</option>
+                         <option value='외환은행'>외환은행</option>
+                         <option value='우리은행'>우리은행</option>
+                         <option value='우리투자증권'>우리투자증권</option>
+                         <option value='우체국'>우체국</option>
+                         <option value='유진투자증권'>유진투자증권</option>
+                         <option value='전북은행'>전북은행</option>
+                         <option value='제주은행'>제주은행</option>
+                         <option value='키움증권'>키움증권</option>
+                         <option value='하나대투증권'>하나대투증권</option>
+                         <option value='하나은행'>하나은행</option>
+                         <option value='하이투자증권'>하이투자증권</option>
+                         <option value='한국씨티은행'>한국씨티은행</option>
+                         <option value='한국투자증권'>한국투자증권</option>
+                         <option value='한화증권'>한화증권</option>
+                         <option value='현대증권'>현대증권</option>
+                         <option value='홍콩상하이은행'>홍콩상하이은행</option>
+                        </select>
+                </div>
+
+            </div>
+
+            <div id="mypage_account_acc">
+                <p>계좌번호</p>
+                <div class="account_num">
+                    <input type="text" name="account_num" placeholder="-없이 입력하세요" id="account_num_input">
+                </div>
+
+            </div>
+
+            <div id="mypage_account_owner">
+                <p>예금주</p>
+                <div class="account_owner">
+                    <input type="text" name="account_owner" placeholder="예금주명을 정확히 입력하세요" id="account_owner_input">
+                </div>
+            </div>
+
+            <div id="mypage_account_btn">
+                <input type="submit" value="저장하기" id="save_btn" disabled>
+            </div> -->
+
+
+            <!-- 내 프로필 정보@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+           <!-- <form action="" method="post">
+            
+        <div id="mypage_profile_info">
+
+                <div id="mypage_profile_title">
+                    <p>프로필 정보</p>
+                </div>
+
+                
+                <div id="mypage_profile_id">
+                    <p>exampleID</p>
+                </div>
+
+            <div class="mypage_login_info">
+
+                <div id="mypage_login">
+                    <p>로그인 정보</p>
+                </div>
+
+                <div id="mypage_profile_email">
+                    <p>이메일 주소</p>
+                    <input type="email" class="my_email" name="my_email" placeholder="example@gmail.com">
+                </div>
+
+                <div id="mypage_profile_pw">
+                    <p>비밀번호</p>
+                    <input type="password" class="my_pw" name="my_pw">
+                </div>
+
+            </div>
+
+            <div id="mypage_personal_info">
+
+                <div id="mypage_personal">
+                    <p>개인정보</p>
+                </div>
+
+                <div id="mypage_name">
+                    <p>이름</p>
+                    <input type="text" class="my_name" name="my_name">
+                </div>
+
+                <div id="mypage_phone">
+                    <p>휴대폰 번호</p>
+                    <input type="text" class="my_phone" name="my_phone">
+                </div>
+
+                <div id="mypage_add">
+                    <p>주소*</p>
+                    <input type="text" class="my_add" name="my_add">
+                </div>
+
+            </div>
+
+                <br>
+
+                <div id="mypage_profile_btn">
+                    <input type="submit" value="수정하기">
+                </div>
+
+                <br><br>
+
+                <a href="" class="user_out">회원탈퇴</a>
+
+                <br><br><br><br>
+
+            </div>
+
+            </form> -->
+
+            <!-- 관심 상품@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+            <div id="mypage_product">
+                
+                <div class="mypage_product_title">
+                    <p>관심 상품</p>
+                </div>
+
+                <div class="product_info">
+                    <div class="product_list">
+                        <div class="product_item">
+                            <a class="item_inner">
+                                <div class="product">
+                                    <img class="product_img" src="image/프로필.png">
+                                </div>
+                                <div class="infobox">
+                                    <div class="브랜드">
+                                        
+                                        <p>브랜드</p>
+                                    </div>
+                                    <a href="" class="name">Just Pink Keyboard</a>
+                                </div>
+                                <div class="price">
+                                    <div class="amount">
+                                        <b class="num">10,000</b>
+                                    <span class="won"><b>원</b></span>
+                                    </div>
+                                    <div class="desc">즉시 구매가</div>
+                                </div>
+                            </a>
+                        </div>
+
+                </div>
+
+            </div>
+
+
+            
+            <div class="product_info">
+                <div class="product_list">
+                    <div class="product_item">
+                        <a class="item_inner">
+                            <div class="product">
+                                <img class="product_img" src="image/프로필.png">
+                            </div>
+                            <div class="infobox">
+                                <div class="브랜드">
+                                    
+                                    <p>브랜드</p>
+                                </div>
+                                <a href="" class="name">Just Pink Keyboard</a>
+                            </div>
+                            <div class="price">
+                                <div class="amount">
+                                    <b class="num">10,000</b>
+                                <span class="won"><b>원</b></span>
+                                </div>
+                                <div class="desc">즉시 구매가</div>
+                            </div>
+                        </a>
+                    </div>
+            </div>
+        </div>
+
+
+        
+        <div class="product_info">
+            <div class="product_list">
+                <div class="product_item">
+                    <a class="item_inner">
+                        <div class="product">
+                            <img class="product_img" src="image/프로필.png">
+                        </div>
+                        <div class="infobox">
+                            <div class="브랜드">
+                                
+                                <p>브랜드</p>
+                            </div>
+                            <a href="" class="name">Just Pink Keyboard</a>
+                        </div>
+                        <div class="price">
+                            <div class="amount">
+                                <b class="num">10,000</b>
+                            <span class="won"><b>원</b></span>
+                            </div>
+                            <div class="desc">즉시 구매가</div>
+                        </div>
+                    </a>
+                </div>
+        </div>
+    </div>
+
+
+    <div class="product_info">
+        <div class="product_list">
+            <div class="product_item">
+                <a class="item_inner">
+                    <div class="product">
+                        <img class="product_img" src="image/프로필.png">
+                    </div>
+                    <div class="infobox">
+                        <div class="브랜드">
+                            
+                            <p>브랜드</p>
+                        </div>
+                        <a href="" class="name">Just Pink Keyboard</a>
+                    </div>
+                    <div class="price">
+                        <div class="amount">
+                            <b class="num">10,000</b>
+                        <span class="won"><b>원</b></span>
+                        </div>
+                        <div class="desc">즉시 구매가</div>
+                    </div>
+                </a>
+            </div>
+    </div>
+</div>
+
+
+
+    </div>
+
+</body>
+</html>
