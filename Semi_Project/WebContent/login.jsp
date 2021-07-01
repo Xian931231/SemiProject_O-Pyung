@@ -35,7 +35,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="controller.do?command=login" method="post">
+				<form class="login100-form validate-form" action="login.do?command=login" method="post">
 					<span class="login100-form-title p-b-26">
 						O-PYUNG
 					</span>
