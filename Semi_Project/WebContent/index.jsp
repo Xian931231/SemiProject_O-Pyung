@@ -11,7 +11,7 @@
 <body>
 	
 	<%-- action태그 --%>
-	<jsp:forward page="controller.do?command=main"></jsp:forward>
+	<jsp:forward page="main.do?command=main"></jsp:forward>
 
 </body>
 </html>

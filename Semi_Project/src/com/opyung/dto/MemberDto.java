@@ -1,8 +1,10 @@
+//회원정보 테이블, 계좌 테이블, 관심상품
+
 package com.opyung.dto;
 
-public class MemberBoardDto {
+public class MemberDto {
 	
-	//필드
+	//MemberBoard(회원정보)
 	private int mb_no;
 	private String mb_id;
 	private String mb_pw;
@@ -13,14 +15,24 @@ public class MemberBoardDto {
 	private String mb_able;
 	private String mb_role;
 	
+	//BankBoard(계좌 테이블)
+	private int bank_no;
+	private int bank_id;
+	private String bank_account;
+	
+	//LikeProductBoard(관심상품)
+	private int likept_memberNo;		//좋아요 누른 사용자
+	private int likept_productNo;		//좋아요 눌린 상품 ID
+	
 	//생성자
-	public MemberBoardDto() {
+	public MemberDto() {
 		super();
 	}
-	
+
 	//매개변수 생성자
-	public MemberBoardDto(int mb_no, String mb_id, String mb_pw, String mb_name, String mb_email, String mb_phone,
-			String mb_addr, String mb_able, String mb_role) {
+	public MemberDto(int mb_no, String mb_id, String mb_pw, String mb_name, String mb_email, String mb_phone,
+			String mb_addr, String mb_able, String mb_role, int bank_no, int bank_id, String bank_account,
+			int likept_memberNo, int likept_productNo) {
 		super();
 		this.mb_no = mb_no;
 		this.mb_id = mb_id;
@@ -31,8 +43,14 @@ public class MemberBoardDto {
 		this.mb_addr = mb_addr;
 		this.mb_able = mb_able;
 		this.mb_role = mb_role;
+		this.bank_no = bank_no;
+		this.bank_id = bank_id;
+		this.bank_account = bank_account;
+		this.likept_memberNo = likept_memberNo;
+		this.likept_productNo = likept_productNo;
 	}
 
+	
 	//getter & setter
 	public int getMb_no() {
 		return mb_no;
@@ -105,16 +123,46 @@ public class MemberBoardDto {
 	public void setMb_role(String mb_role) {
 		this.mb_role = mb_role;
 	}
-	
-	
-	 
-	
-	
-	
 
-	
-	
-	
+	public int getBank_no() {
+		return bank_no;
+	}
+
+	public void setBank_no(int bank_no) {
+		this.bank_no = bank_no;
+	}
+
+	public int getBank_id() {
+		return bank_id;
+	}
+
+	public void setBank_id(int bank_id) {
+		this.bank_id = bank_id;
+	}
+
+	public String getBank_account() {
+		return bank_account;
+	}
+
+	public void setBank_account(String bank_account) {
+		this.bank_account = bank_account;
+	}
+
+	public int getLikept_memberNo() {
+		return likept_memberNo;
+	}
+
+	public void setLikept_memberNo(int likept_memberNo) {
+		this.likept_memberNo = likept_memberNo;
+	}
+
+	public int getLikept_productNo() {
+		return likept_productNo;
+	}
+
+	public void setLikept_productNo(int likept_productNo) {
+		this.likept_productNo = likept_productNo;
+	}
 	
 	
 }
