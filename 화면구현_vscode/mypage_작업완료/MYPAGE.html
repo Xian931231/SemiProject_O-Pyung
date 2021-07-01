@@ -18,10 +18,19 @@
 <script type="text/javascript">
 
     $(function(){
-        $("#account_owner_input").change(function(){
-            $("#save_btn").attr("disabled",false);
+        
+        //정산 계좌 등록 입력 다 될경우
+        $(".used_bankname, #account_num_input, #account_owner_input").change(function(){
+            if($(".used_bankname").val() != 0 && $("#account_num_input").val() != 0 && $("#account_owner_input").val() != 0){
+                $("#save_btn").attr("disabled", false);
+            }else{
+                $("#save_btn").attr("disabled", true);
+            }
+
+        });
+
     });
-});
+
 </script>
 
 </head>
