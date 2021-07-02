@@ -20,22 +20,205 @@
             //숨김
             $("#ph_area").css("display","none");
             $("#sh_area").css("display","none");
+            $("#mypage_product").css("display","none");
+            $("#TS_area").css("display","none");
+            $("#pi_area").css("display","none");
+            $("#mypage_account").css("display","none");
 
-            //클릭
+            //마이페이지 -> []
+                //구매 내역 ph_area
             $("#pur").click(function(){
                 $("#content_area").hide();
-
                 $("#ph_area").show();
+
+                $("#list_title").click(function(){
+                    $("#ph_area").hide();
+                    $("#content_area").show();
+                });
+
+                $("#sel").click(function(){
+                    $("#ph_area").hide();
+                    $("#sh_area").show();
+                });
+                $("#itm").click(function(){
+                    $("#ph_area").hide();
+                    $("#mypage_product").show();
+                });
+                $("#dal").click(function(){
+                    $("#ph_area").hide();
+                    $("#TS_area").show();
+                });
+                $("#pro").click(function(){
+                    $("#ph_area").hide();
+                    $("#pi_area").show();
+                });
+                $("#acc").click(function(){
+                    $("#ph_area").hide();
+                    $("#mypage_account").show();
+                });
             });
 
+                //판매 내역
             $("#sel").click(function(){
                 $("#content_area").hide();
-
                 $("#sh_area").show();
+
+                $("#list_title").click(function(){
+                    $("#sh_area").hide();
+                    $("#content_area").show();
+                });
+
+                $("#pur").click(function(){
+                    $("#sh_area").hide();
+                    $("#ph_area").show();
+                });
+                $("#itm").click(function(){
+                    $("#sh_area").hide();
+                    $("#mypage_product").show();
+                });
+                $("#dal").click(function(){
+                    $("#sh_area").hide();
+                    $("#TS_area").show();
+                });
+                $("#pro").click(function(){
+                    $("#sh_area").hide();
+                    $("#pi_area").show();
+                });
+                $("#acc").click(function(){
+                    $("#sh_area").hide();
+                    $("#mypage_account").show();
+                });
             });
 
+                //관심 상품
+            $("#itm").click(function(){
+                $("#content_area").hide();
+                $("#mypage_product").show();
 
-            //마이페이지
+                $("#list_title").click(function(){
+                    $("#mypage_product").hide();
+                    $("#content_area").show();
+                });
+
+                $("#pur").click(function(){
+                    $("#mypage_product").hide();
+                    $("#ph_area").show();
+                });
+                $("#sel").click(function(){
+                    $("#mypage_product").hide();
+                    $("#sh_area").show();
+                });
+                $("#dal").click(function(){
+                    $("#mypage_product").hide();
+                    $("#TS_area").show();
+                });
+                $("#pro").click(function(){
+                    $("#mypage_product").hide();
+                    $("#pi_area").show();
+                });
+                $("#acc").click(function(){
+                    $("#mypage_product").hide();
+                    $("#mypage_account").show();
+                });
+            });
+
+                //거래 진행
+            $("#dal").click(function(){
+                $("#content_area").hide();
+                $("#TS_area").show();
+
+                $("#list_title").click(function(){
+                    $("#TS_area").hide();
+                    $("#content_area").show();
+                });
+
+                $("#pur").click(function(){
+                    $("#TS_area").hide();
+                    $("#ph_area").show();
+                });
+                $("#sel").click(function(){
+                    $("#TS_area").hide();
+                    $("#sh_area").show();
+                });
+                $("#itm").click(function(){
+                    $("#TS_area").hide();
+                    $("#mypage_product").show();
+                });
+                $("#pro").click(function(){
+                    $("#TS_area").hide();
+                    $("#pi_area").show();
+                });
+                $("#acc").click(function(){
+                    $("#TS_area").hide();
+                    $("#mypage_account").show();
+                });
+            });
+
+                //내 프로필 정보
+            $("#pro").click(function(){
+                $("#content_area").hide();
+                $("#pi_area").show();
+
+                $("#list_title").click(function(){
+                    $("#pi_area").hide();
+                    $("#content_area").show();
+                });
+
+                $("#pur").click(function(){
+                    $("#pi_area").hide();
+                    $("#ph_area").show();
+                });
+                $("#sel").click(function(){
+                    $("#pi_area").hide();
+                    $("#sh_area").show();
+                });
+                $("#itm").click(function(){
+                    $("#pi_area").hide();
+                    $("#mypage_product").show();
+                });
+                $("#dal").click(function(){
+                    $("#pi_area").hide();
+                    $("#TS_area").show();
+                });
+                $("#acc").click(function(){
+                    $("#pi_area").hide();
+                    $("#mypage_account").show();
+                });
+            });
+
+                //정산 계좌 등록
+            $("#acc").click(function(){
+                $("#content_area").hide();
+                $("#mypage_account").show();
+
+                $("#list_title").click(function(){
+                    $("#mypage_account").hide();
+                    $("#content_area").show();
+                });
+
+                $("#pur").click(function(){
+                    $("#mypage_account").hide();
+                    $("#ph_area").show();
+                });
+                $("#sel").click(function(){
+                    $("#mypage_account").hide();
+                    $("#sh_area").show();
+                });
+                $("#itm").click(function(){
+                    $("#mypage_account").hide();
+                    $("#mypage_product").show();
+                });
+                $("#dal").click(function(){
+                    $("#mypage_account").hide();
+                    $("#TS_area").show();
+                });
+                $("#pro").click(function(){
+                    $("#mypage_account").hide();
+                    $("#pi_area").show();
+                });
+            });
+
+            
         });
 
 
@@ -90,7 +273,7 @@
 <body>
     <div id="mypage">
         <nav id="list">
-            <a href="" id="list_title"><h2>MY PAGE</h2></a>
+            <a id="list_title"><h2>MY PAGE</h2></a>
             <div id="shop_list">
                 <strong class="info">쇼핑 정보</strong>
                 <ul>
@@ -101,10 +284,10 @@
                         <a class="menu_link" id="sel">판매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">관심 상품</a>
+                        <a class="menu_link" id="itm">관심 상품</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">거래 진행</a>
+                        <a class="menu_link" id="dal">거래 진행</a>
                     </li>
                 </ul>
             </div>
@@ -113,17 +296,17 @@
                 <strong class="info">내 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="" class="menu_link">프로필 정보</a>
+                        <a class="menu_link" id="pro">프로필 정보</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">판매 정산 계좌</a>
+                        <p id="acc">판매 정산 계좌</p>
                     </li>
                 </ul>
             </div>
         </nav>
 
 
-
+        <!--마이페이지-->
         <div id="content_area">
             <div id="my_home">
                 <div id="profile">
@@ -131,7 +314,6 @@
                         <div id="profile_name">
                             <h2 id="id">example</h2>
                             <p id="email">example@google.com</p>
-                            <button>프로필 수정</button>
                         </div>
                     </div>
 
@@ -155,9 +337,6 @@
                 <div class="tit">
                     <div>
                         <h3>구매 내역</h3>
-                    </div>
-                    <div class="add">
-                        <a class="add_text" id="pur">더보기 ></a>
                     </div>
                 </div>
 
@@ -195,9 +374,6 @@
                 <div class="tit">
                     <div>
                         <h3>판매 내역</h3>
-                    </div>
-                    <div class="add">
-                        <a class="add_text" id="sel">더보기 ></a>
                     </div>
                 </div>
 
@@ -239,7 +415,7 @@
 
 
 
-        <!--구매 내역-->
+        <!--구매 내역------------------------------------------------>
         <div id="ph_area">
             <div>
                 <div id="ph_title">
@@ -333,7 +509,7 @@
 
 
 
-        <!--판매 내역-->
+        <!--판매 내역---------------------------------------------------->
         <div id="sh_area">
             <div>
                 <div id="sh_title">
@@ -423,7 +599,334 @@
             </div>
         </div>
 
-    </div>
 
+
+
+
+        <!--관심 상품------------------------------------------------->
+        <div id="mypage_product">
+                
+            <div class="mypage_product_title">
+                <h1>관심 상품</h1>
+            </div>
+
+            <div class="product_info">
+                <div class="product_list">
+                    <div class="product_item">
+                        <a class="item_inner">
+                            <div class="product">
+                                <img class="product_img" src="image/프로필.png">
+                            </div>
+                            <div class="infobox">
+                                <div class="브랜드">
+                                    <p>브랜드</p>
+                                </div>
+                                <a href="" class="name">Just Pink Keyboard</a>
+                            </div>
+                            <div class="price">
+                                <div class="amount">
+                                    <b class="num">10,000</b>
+                                    <span class="won"><b>원</b></span>
+                                </div>
+                                <div class="desc">즉시 구매가</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product_info">
+                <div class="product_list">
+                    <div class="product_item">
+                        <a class="item_inner">
+                            <div class="product">
+                                <img class="product_img" src="image/프로필.png">
+                            </div>
+                            <div class="infobox">
+                                <div class="브랜드">
+                                    <p>브랜드</p>
+                                </div>
+                                <a href="" class="name">Just Pink Keyboard</a>
+                            </div>
+                            <div class="price">
+                                <div class="amount">
+                                    <b class="num">10,000</b>
+                                    <span class="won"><b>원</b></span>
+                                </div>
+                                <div class="desc">즉시 구매가</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+        
+            <div class="product_info">
+                <div class="product_list">
+                    <div class="product_item">
+                        <a class="item_inner">
+                            <div class="product">
+                                <img class="product_img" src="image/프로필.png">
+                            </div>
+                            <div class="infobox">
+                                <div class="브랜드">
+                                    <p>브랜드</p>
+                                </div>
+                                <a href="" class="name">Just Pink Keyboard</a>
+                            </div>
+                            <div class="price">
+                                <div class="amount">
+                                    <b class="num">10,000</b>
+                                    <span class="won"><b>원</b></span>
+                                </div>
+                                <div class="desc">즉시 구매가</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="product_info">
+                <div class="product_list">
+                    <div class="product_item">
+                        <a class="item_inner">
+                            <div class="product">
+                                <img class="product_img" src="image/프로필.png">
+                            </div>
+                            <div class="infobox">
+                                <div class="브랜드">    
+                                    <p>브랜드</p>
+                                </div>
+                                <a href="" class="name">Just Pink Keyboard</a>
+                            </div>
+                            <div class="price">
+                                <div class="amount">
+                                    <b class="num">10,000</b>
+                                <span class="won"><b>원</b></span>
+                                </div>
+                                <div class="desc">즉시 구매가</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!--거래 진행----------------------------------------------->
+        <div id="TS_area">
+            <div id="TS_title">
+                <h1>거래 진행 상황</h1>
+            </div>
+
+            <div class="TS_table">
+                <table border="1">
+                    <col width="50px">
+                    <col width="300px">
+                    <col width="100px">
+                    <col width="100px">
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="100px">
+                    
+                    <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>상품</th>
+                        <th>판매자</th>
+                        <th>구매자</th>
+                        <th>거래상태</th>
+                        <th>검수시작</th>
+                        <th>완료</th>
+                        <th>검수자</th>
+                        
+                    </tr>
+                    </thead>
+                    <tr>
+                        <th>1</th>
+                        <th><a href="" id="product_click">상품명</a></th>
+                        <th>seller5678</th>
+                        <th>buyer1234</th>
+                        <th></th>
+                        <th>YY/MM/DD</th>
+                        <th>YY/MM/DD</th>
+                        <th>관리자</th>
+                        
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+
+        
+
+
+        <!--내 프로필 정보-------------------------------------------->
+        <form action="" method="post" id="pi_area">
+            <div id="mypage_profile_info">
+                <div id="mypage_profile_title">
+                    <h1>프로필 정보</h1>
+                </div>
+    
+                <div id="mypage_profile_id">
+                    <p>exampleID</p>
+                </div>
+
+            <div class="mypage_login_info">
+
+                <div id="mypage_login">
+                    <p>로그인 정보</p>
+                </div>
+    
+                <div id="mypage_profile_email">
+                    <p>이메일 주소</p>
+                    <input type="email" class="my_email" name="my_email" placeholder="example@gmail.com">
+                </div>
+    
+                <div id="mypage_profile_pw">
+                    <p>비밀번호</p>
+                    <input type="password" class="my_pw" name="my_pw">
+                </div>
+    
+            </div>
+    
+            <div id="mypage_personal_info">
+    
+                <div id="mypage_personal">
+                    <p>개인정보</p>
+                </div>
+    
+                <div id="mypage_name">
+                    <p>이름</p>
+                    <input type="text" class="my_name" name="my_name">
+                </div>
+    
+                <div id="mypage_phone">
+                    <p>휴대폰 번호</p>
+                    <input type="text" class="my_phone" name="my_phone">
+                </div>
+    
+                <div id="mypage_add">
+                    <p>주소*</p>
+                    <input type="text" class="my_add" name="my_add">
+                </div>
+    
+            </div>
+    
+                <br>
+    
+                <div id="mypage_profile_btn">
+                    <input type="submit" value="수정하기">
+                </div>
+    
+                <br><br>
+    
+                <a href="" class="user_out">회원탈퇴</a>
+    
+                <br><br><br><br>
+    
+            </div>
+    
+        </form>
+
+
+
+        <!--정산 계좌 등록-->
+        <div id="mypage_account">
+
+            <div id="mypage_account_title">
+                <h1>정산 계좌 등록</h1>
+            </div>
+
+            <br>
+
+            <div id="mypage_account_bank">
+                <p>은행명</p>
+                <div class="bank_select">
+                    <select name='used_bankname' class='used_bankname'>
+                        <option value=''>선택하세요</option>
+                         <option value='SC제일은행'>SC제일은행</option>
+                         <option value='경남은행'>경남은행</option>
+                         <option value='광주은행'>광주은행</option>
+                         <option value='국민은행'>국민은행</option>
+                         <option value='굿모닝신한증권'>굿모닝신한증권</option>
+                         <option value='기업은행'>기업은행</option>
+                         <option value='농협중앙회'>농협중앙회</option>
+                         <option value='농협회원조합'>농협회원조합</option>
+                         <option value='대구은행'>대구은행</option>
+                         <option value='대신증권'>대신증권</option>
+                         <option value='대우증권'>대우증권</option>
+                         <option value='동부증권'>동부증권</option>
+                         <option value='동양종합금융증권'>동양종합금융증권</option>
+                         <option value='메리츠증권'>메리츠증권</option>
+                         <option value='미래에셋증권'>미래에셋증권</option>
+                         <option value='뱅크오브아메리카(BOA)'>뱅크오브아메리카(BOA)</option>
+                         <option value='부국증권'>부국증권</option>
+                         <option value='부산은행'>부산은행</option>
+                         <option value='산림조합중앙회'>산림조합중앙회</option>
+                         <option value='산업은행'>산업은행</option>
+                         <option value='삼성증권'>삼성증권</option>
+                         <option value='상호신용금고'>상호신용금고</option>
+                         <option value='새마을금고'>새마을금고</option>
+                         <option value='수출입은행'>수출입은행</option>
+                         <option value='수협중앙회'>수협중앙회</option>
+                         <option value='신영증권'>신영증권</option>
+                         <option value='신한은행'>신한은행</option>
+                         <option value='신협중앙회'>신협중앙회</option>
+                         <option value='에스케이증권'>에스케이증권</option>
+                         <option value='에이치엠씨투자증권'>에이치엠씨투자증권</option>
+                         <option value='엔에이치투자증권'>엔에이치투자증권</option>
+                         <option value='엘아이지투자증권'>엘아이지투자증권</option>
+                         <option value='외환은행'>외환은행</option>
+                         <option value='우리은행'>우리은행</option>
+                         <option value='우리투자증권'>우리투자증권</option>
+                         <option value='우체국'>우체국</option>
+                         <option value='유진투자증권'>유진투자증권</option>
+                         <option value='전북은행'>전북은행</option>
+                         <option value='제주은행'>제주은행</option>
+                         <option value='키움증권'>키움증권</option>
+                         <option value='하나대투증권'>하나대투증권</option>
+                         <option value='하나은행'>하나은행</option>
+                         <option value='하이투자증권'>하이투자증권</option>
+                         <option value='한국씨티은행'>한국씨티은행</option>
+                         <option value='한국투자증권'>한국투자증권</option>
+                         <option value='한화증권'>한화증권</option>
+                         <option value='현대증권'>현대증권</option>
+                         <option value='홍콩상하이은행'>홍콩상하이은행</option>
+                        </select>
+                </div>
+
+            </div>
+
+            <div id="mypage_account_acc">
+                <p>계좌번호</p>
+                <div class="account_num">
+                    <input type="text" name="account_num" placeholder="-없이 입력하세요" id="account_num_input">
+                </div>
+
+            </div>
+
+            <div id="mypage_account_owner">
+                <p>예금주</p>
+                <div class="account_owner">
+                    <input type="text" name="account_owner" placeholder="예금주명을 정확히 입력하세요" id="account_owner_input">
+                </div>
+            </div>
+
+            <div id="mypage_account_btn">
+                <input type="submit" value="저장하기" id="save_btn" disabled>
+            </div>
+        </div>
+
+
+
+    </div>
 </body>
 </html>
