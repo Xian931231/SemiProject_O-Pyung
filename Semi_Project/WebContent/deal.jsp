@@ -84,7 +84,7 @@
         <div id="map_button_area" class="common">
             
             <!-- 카카오 api 영역 -->
-            <div id="map_area">
+            <div id="map_area">		<!-- 지도 담는 영역 태그 id값 -->
                 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8582c94d0c3acdae42928406badb7847"></script>
                 <script type="text/javascript">
                     var container = document.getElementById('map_area');
