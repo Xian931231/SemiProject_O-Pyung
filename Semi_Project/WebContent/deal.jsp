@@ -164,10 +164,11 @@
                     customOverlay1.setMap(map);
                     
                     //선 그리기 
-	                var clickLine;
-                    var distanceOverlay;
+	                var line;				//선
+                    var distanceOverlay;	//선의 거리정보를 표시할 커스텀오버레이
+                   
                     
-					clickLine = new kakao.maps.Polyline({
+					line = new kakao.maps.Polyline({
 						map: map,
 						path: [points[0],points[1]],
 						strokeWeight: 3,
@@ -175,11 +176,32 @@
 						strokeOpacity: 1,
 						strokeStyle: 'solid'
 					});
-					
-					
                     
-				 	
-				 	
+					var distance = Math.round(line.getLength()),
+						content = '<div class="dotOverlay distanceInfo">총거리 <span class="number">' + distance + '</span>m</div>';
+/*
+					var middle_latitude = (user1_latitude + user2_latitude)/2;
+					alert(middle_latitude);
+					
+					var middle_longitude = (user1_longitude + user2_longitude)/2;
+					
+					var middle = new kakao.maps.LatLng(middle_latitude, middle_longitude);
+*/					
+	
+					var latlng = map.getCenter();
+	
+					distanceOverlay = new kakao.maps.CustomOverlay({
+						map: map,
+						content: content,
+						position: points[0],
+						xAnchor: -2,
+						yAnchor: 3
+					});
+					
+								 
+					
+
+					
                     
                 </script>
             </div>
