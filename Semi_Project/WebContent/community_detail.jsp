@@ -1,15 +1,12 @@
 <!-- 커뮤니티 상세 페이지 -->
 
+<%@page import="com.opyung.dto.CommuBoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    
 <!-- 인코딩 처리 -->    
-<%
-    	request.setCharacterEncoding("UTF-8");
-    %>    
-<%
-    	response.setContentType("text/html; charset=UTF-8");
-    %>    
+<%request.setCharacterEncoding("UTF-8");%>    
+<%response.setContentType("text/html; charset=UTF-8");%>    
     
 <!DOCTYPE html>
 <html lang="en">
@@ -28,19 +25,22 @@
     
 </head>
 <body>
-
+<%
+	CommuBoardDto commudto = (CommuBoardDto)request.getAttribute("commudto");
+%>
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
     
     <article class="container">
-        <!--조작버튼-->
+    <%   	
+    if(commudto.getCmb_id().equals(id)){
+    %>
+		 <!--조작버튼-->
         <div class="operation">
-            <button type="button" class="btn btn-primary" >수정</button>
-            <button type="button" class="btn btn-primary" >삭제</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='community.do?command=updateform&cmb_no=<%=commudto.getCmb_no()%>'">수정</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='community.do?command=delete&cmb_no=<%=commudto.getCmb_no()%>'">삭제</button>
         </div>
-
-
-
+	<%} %>
 
         <form action="">
             <div class="card-detail">
@@ -53,23 +53,23 @@
                                 <a href="#" class="card-body-user">
                                 	<!--프로필 사진-->
                                     <div class="profile-user-img">
-                                        <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
+                                        <img src="upload/<%=commudto.getCimg_name() %><%=commudto.getCimg_type() %>" alt="" class="profile-user-img-img">
                                     </div>   
                                     <!--작성자 정보-->
                                     <div class="card-user-div">
                                     	<!--작성자 이름-->
-                                        <div class="card-user-name">UserName</div>
+                                        <div class="card-user-name"><%=commudto.getCmb_id() %></div>
                                         <!--작성날짜-->
-                                        <div class="card-date">21/11/11</div>
+                                        <div class="card-date"><%=commudto.getCmb_date() %></div>
                                     </div>                     
                                     <!--팔로워 버튼-->
                                 </a>
                             </div>
                             <!--본문 사진-->
-                            <img src="./img/community/21.jpg" class="card-img-top" alt="...">
+                            <img src="upload/<%=commudto.getCimg_name() %><%=commudto.getCimg_type() %>" class="card-img-top" alt="...">
                             <!--본문 내용-->
                             <div class="card-body">     
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit inventore rem fugiat, eius neque consectetur nam ipsum dicta delectus? Accusamus iure vel hic adipisci dolorem officiis autem ducimus voluptates tempore.</p>
+                                <p class="card-text"><%=commudto.getCmb_content() %></p>
                                 <!--하단 아이콘 세션-->
                                 <section class="card-icons">
                                     <!--좋아요 아이콘-->
@@ -91,7 +91,7 @@
                                 </section> 
                                 <!--좋아요 수 세션-->
                                 <section class="card-like-cnt">
-                                   	좋아요 <span class="like-cnt">123</span>개
+                                   	좋아요 <span class="like-cnt"><%=commudto.getCmb_like() %></span>개
                                 </section>
 
                             </div>

@@ -1,4 +1,5 @@
 <!-- 커뮤니티 수정 페이지 -->
+<%@page import="com.opyung.dto.CommuBoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -27,11 +28,14 @@
     
 </head>
 <body>
+<%
+	CommuBoardDto commudto = (CommuBoardDto)request.getAttribute("commudto");
+%>
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
 	
     <article class="container">
-        <form action="">
+        <form action="community.do?command=update&cmb_no=<%=commudto.getCmb_no() %>" method="post" enctype="multipart/form-data">>
             <div class="card-detail">
                 <!-- 여기부터 쭉 반복문 코딩 -->
                 <div class="card-post" >
@@ -47,22 +51,22 @@
                                     <!--작성자 정보-->
                                     <div class="card-user-div">
                                         <!--작성자 이름-->
-                                        <div class="card-user-name">UserName</div>
+                                        <div class="card-user-name"><%=commudto.getCmb_id() %></div>
                                     </div> 
                                 </a>
                             </div>
                             <div>
                                 <!--본문 사진 src에 이미지 주소/이름.확장자 전송-->
-                                <img class="modal-img" src="./img/community/18.jpg" alt="image" id="imgPreview">
+                                <img class="modal-img" src="upload/<%=commudto.getCimg_name() %><%=commudto.getCimg_type() %>" alt="image" id="imgPreview">
                             </div>
                             <!--본문 내용-->
                             
                             <div class="card-body">    
                                 
-                                <textarea id="textarea" class="card-write-text ">서버에서 가져온 텍스트 내용</textarea>
+                                <textarea id="textarea" class="card-write-text" name="content"><%=commudto.getCmb_content() %></textarea>
                             </div>
                             <div class="card-footer">
-                                <input type="file" accept="image/*" name="" id="imageupload" onchange="getImage(this.value);">
+                                <input type="file" accept="image/*" name="file" id="imageupload" onchange="getImage(this.value);">
                             <!--이미지 아이콘-->
                             
                             <label for="imageupload" class="card-icon">
@@ -71,8 +75,8 @@
                                 </span>                          
                             </label>
                             <div class="opration">                            
-                                <button type="button" class="btn btn-primary">취소하기</button>
-                                <button type="submit" class="btn btn-primary">수정하기</button>
+                                <button type="button" class="btn btn-primary" onclick="location.href='community.do?command=detail&cmb_no=<%=commudto.getCmb_no()%>'">취소하기</button>
+                                <input type="submit" class="btn btn-primary" value="수정하기">
                             </div>
 
                         </div>

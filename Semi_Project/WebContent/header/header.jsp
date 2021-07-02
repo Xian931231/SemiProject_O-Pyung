@@ -17,7 +17,9 @@
 </head>
 <body>
 <%
-	MemberDto memdto = (MemberDto)session.getAttribute("memdto");
+	String id = (String)session.getAttribute("id");
+	String name = (String)session.getAttribute("name");
+	String role = (String)session.getAttribute("role");
 %>
 
 <div class="header_body">
@@ -29,17 +31,17 @@
 
 	<header class="header">
 		<%
-			if(memdto != null){
+			if(id != null){
 			
 		%>
-		<span><%= memdto.getMb_id() %>님</span>
+		<span><%=id %>님</span>
 		<%
 			}
 		%>
 		<a href="main.do?command=notice">고객센터</a>
 		<a href="main.do?command=mypage">마이페이지</a>
 		<%
-			if(memdto==null){
+			if(id == null){
 		%>
 		<a href="main.do?command=login">로그인</a>
 		<%
@@ -70,7 +72,7 @@
         
         
         <ul class="navbar_menu">
-            <li><a href="main.do?command=community"><span class="navbar_submenu">COMMUNITY</span></a></li>
+            <li><a href="community.do?command=commulike"><span class="navbar_submenu">COMMUNITY</span></a></li>
             <li><a href="main.do?command=shop"><span class="navbar_submenu">SHOP</span></a></li>
         </ul>
 
