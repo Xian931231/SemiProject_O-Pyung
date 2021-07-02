@@ -87,3 +87,8 @@ ul {
     margin-bottom: 30px;
     border-bottom: 3px solid black;
 }
+
+#product_click:hover {
+    text-decoration-line: underline;
+    color: gray;
+}
