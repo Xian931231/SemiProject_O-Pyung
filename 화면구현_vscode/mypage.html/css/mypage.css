@@ -78,12 +78,12 @@ ul {
 
 
 
-
-
+/*내용------------------------------------------------------------*/
+/*마이페이지*/
 #content_area {
-    left: 700px;
-    top: 300px;
-    position: absolute;
+    left: 300px;
+    top: 250px;
+    position: relative; 
 }
 
 #profile {
@@ -104,6 +104,10 @@ ul {
 
 #email {
     margin-top: 0px;
+}
+
+#edi {
+    color: gray;
 }
 
 #grade{
@@ -160,6 +164,10 @@ h3 {
 .add_text {
     text-decoration-line: none;
     color: rgb(70, 68, 68);
+}
+
+.add_text:hover {
+    text-decoration-line: underline;
 }
 
 
@@ -228,11 +236,11 @@ div {
 
 
 
-/*purchase_history*/
+/*구매 내역------------------------------------------------*/
 #ph_area {
-    left: 700px;
+    left: 300px;
     top: 300px;
-    position: absolute;
+    position: relative;
 }
 
 #ph_title{
@@ -310,11 +318,11 @@ a{
 
 
 
-/*sell_history*/
+/*판매내역---------------------------------------------------*/
 #sh_area {
-    left: 700px;
+    left: 300px;
     top: 300px;
-    position: absolute;
+    position: relative;
 }
 
 #sh_title{
@@ -385,4 +393,266 @@ a{
 #sh_end_table{
     margin-top: 50px;
     color: black;
+}
+
+
+
+
+/*관심상품---------------------------------------------------------*/
+#mypage_product{
+    left: 300px;
+    top: 300px;
+    position: relative;
+    width: 750px;
+    height: 500px;
+}
+
+.mypage_product_title{
+    text-align: left;
+    margin-bottom: 80px;
+    border-bottom: 3px solid black;
+    text-align: left;
+}
+
+.product_img{
+    width: 150px;
+    height: 150px;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.product_item{
+    float: left;
+    margin-left: 6px;
+}
+
+.heart{
+    color: black;
+}
+
+.name{
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.desc{
+    font-size: 11px;
+}
+
+
+
+
+/*거래 진행--------------------------------------------------------*/
+#TS_area{
+    left: 300px;
+    top: 300px;
+    position: relative;
+    width: 1000px;
+}
+
+#TS_title{
+    text-align: left;
+    margin-bottom: 30px;
+    border-bottom: 3px solid black;
+}
+
+#product_click:hover {
+    text-decoration-line: underline;
+    color: gray;
+}
+
+
+
+
+/*내 프로필 정보------------------------------------------------*/
+#mypage_profile_info{
+    left: 300px;
+    top: 300px;
+    position: relative;
+    width: 800px;
+    height: 500px;
+}
+
+#mypage_profile_title{
+    font-size: 15px;
+    font-weight: 400;
+    border-bottom: 3px solid black;
+}
+
+#mypage_profile_id{
+    font-size: 20px;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+#mypage_login{
+    font-size: 17px;
+    font-weight: 400;
+
+}
+
+#mypage_profile_email{
+    font-size: 13px;
+    opacity: 70%;
+}
+
+#mypage_profile_email{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.my_email{
+    width: 500px;
+    height: 40px;
+    border-width: 0;
+    font-size: 13pt;
+}
+
+#mypage_profile_pw{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: 300;
+    font-size: 13px;
+    opacity: 70%;
+}
+
+.my_pw{
+    width: 500px;
+    height: 40px;
+    border-width: 0;
+    font-size: 13pt;
+}
+
+#mypage_personal{
+    font-size: 17px;
+    font-weight: 400;
+}
+
+#mypage_name{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 70%;
+}
+
+.my_name{
+    width: 500px;
+    height: 40px;
+    border-width: 0;
+    font-size: 13pt;
+}
+
+#mypage_phone{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 70%;
+}
+
+.my_phone{
+    width: 500px;
+    height: 40px;
+    border-width: 0;
+    font-size: 13pt;
+}
+
+#mypage_add{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 70%;
+}
+
+.my_add{
+    width: 500px;
+    height: 40px;
+    border-width: 0;
+    font-size: 13pt;
+}
+
+.user_out{
+    font-size: 12px;
+    font-weight: 300;
+}
+
+
+
+
+
+/*정산 계좌 등록-------------------------------------------------------------*/
+#mypage_account{
+    left: 300px;
+    top: 300px;
+    position: relative;
+
+    width: 700px;
+    height: 500px;
+}
+
+#mypage_account_title{
+    font-size: 15px;
+    font-weight: 400;
+    border-bottom: 3px solid black;
+}
+
+.used_bankname{
+    width: 700px;
+    height: 40px; 
+    border-width: 0;
+    font-size: 13pt;
+}
+
+#mypage_account_bank{
+
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: 300;
+}
+
+#mypage_account_acc{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: 300;
+}
+#mypage_account_owner{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: 300;
+}
+
+#mypage_account_btn{
+    text-align: center;
+    padding-top: 40px;
+}
+
+#save_btn{
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    opacity: 70%;
+}
+
+#account_num_input{
+    width: 500px;
+    height: 40px;
+    border-width: 0;
+    font-size: 13pt;
+}
+
+#account_owner_input{
+    width: 500px;
+    height: 40px;
+    border-width: 0;
+    font-size: 13pt;
 }
