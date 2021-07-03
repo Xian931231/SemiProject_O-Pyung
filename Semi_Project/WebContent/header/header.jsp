@@ -16,6 +16,10 @@
 <head>
 </head>
 <body>
+	<link rel="stylesheet" type="text/css" href="./header/header.css">
+	<link rel="stylesheet" type="text/css" href="./img/fontawesome/css/all.css">
+	<script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
+	<script src="./header/header.js" defer></script>
 <%
 	String id = (String)session.getAttribute("id");
 	String name = (String)session.getAttribute("name");
@@ -23,10 +27,6 @@
 %>
 
 <div class="header_body">
-	<link rel="stylesheet" type="text/css" href="./header/header.css">
-	<link rel="stylesheet" type="text/css" href="./img/fontawesome/css/all.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="./header/header.js" defer></script>
 	
 
 	<header class="header">

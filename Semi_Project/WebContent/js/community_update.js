@@ -1,7 +1,4 @@
 $(document).ready(function(){
-	
-	$('#textarea').focus();
-	document.form.textarea.value = document.form.textarea.value;
 });
 
 function getImage(imagename){

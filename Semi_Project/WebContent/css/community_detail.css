@@ -28,6 +28,7 @@ ul{
 }
 .card-post{
     width: 720px;
+    margin-bottom: 10%;
 }
 
 
@@ -152,12 +153,17 @@ ul{
 
 .card-comment-li-div{
     padding-left: 0.5rem;
+    flex : 2;
 }
 
 .comment-user-name{
     font-weight: bold;
+    padding-right: 0.5rem;
 }
 
+.comment-date{
+	padding-right : 0.5rem;
+}
 
 
 

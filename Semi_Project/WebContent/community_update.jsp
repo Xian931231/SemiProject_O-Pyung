@@ -21,7 +21,7 @@
 	<title>오늘도 평화로운</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="jQurey/jquery-3.6.0.min.js"></script>
+    <script src="./jQuery/jquery-3.6.0.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/community_update.css">
     <script src="./js/community_update.js" defer></script>
@@ -63,7 +63,7 @@
                             
                             <div class="card-body">    
                                 
-                                <textarea id="textarea" class="card-write-text" name="content"><%=commudto.getCmb_content() %></textarea>
+                                <textarea id="conmentarea" class="card-write-text" name="content"><%=commudto.getCmb_content() %></textarea>
                             </div>
                             <div class="card-footer">
                                 <input type="file" accept="image/*" name="file" id="imageupload" onchange="getImage(this.value);">
