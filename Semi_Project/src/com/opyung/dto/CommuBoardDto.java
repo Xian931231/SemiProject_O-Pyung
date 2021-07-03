@@ -28,6 +28,18 @@ public class CommuBoardDto {
 	private String ccom_content;
 	private Date ccom_date;
 	
+	
+	//댓글 수 카운트
+	private int ccom_cnt;
+	
+	public int getCcom_cnt() {
+		return ccom_cnt;
+	}
+
+	public void setCcom_cnt(int ccom_cnt) {
+		this.ccom_cnt = ccom_cnt;
+	}
+
 	//생성자
 	public CommuBoardDto() {
 		super();
@@ -36,7 +48,7 @@ public class CommuBoardDto {
 	//매개변수 생성자
 	public CommuBoardDto(int cmb_no, String cmb_content, String cmb_id, Date cmb_date, int cmb_like, int cmb_cnt,
 			int cimg_no, int cimg_cmbNo, String cimg_src, String cimg_name, String cimg_type, int cimg_size,
-			int ccom_no, int ccom_cmbNo, String ccom_id, String ccom_content, Date ccom_date) {
+			int ccom_no, int ccom_cmbNo, String ccom_id, String ccom_content, Date ccom_date , int ccom_cnt) {
 		super();
 		this.cmb_no = cmb_no;
 		this.cmb_content = cmb_content;
@@ -55,6 +67,7 @@ public class CommuBoardDto {
 		this.ccom_id = ccom_id;
 		this.ccom_content = ccom_content;
 		this.ccom_date = ccom_date;
+		this.ccom_cnt = ccom_cnt;
 	}
 	
 	

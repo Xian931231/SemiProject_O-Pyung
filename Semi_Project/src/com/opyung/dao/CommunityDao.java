@@ -21,7 +21,7 @@ public class CommunityDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<CommuBoardDto> res = new ArrayList<CommuBoardDto>();
 		
-		String sql = "SELECT * FROM COMMUBOARD,CMBIMGBOARD  WHERE CMB_NO = CIMG_CMBNO ORDER BY CMB_NO DESC";
+		String sql = "SELECT COMMUBOARD.*,CMBIMGBOARD.*,(SELECT COUNT(*) FROM CMBCOMMENTBOARD WHERE CCOM_CMBNO=CMB_NO) AS CCOM_CNT FROM COMMUBOARD,CMBIMGBOARD  WHERE CMB_NO = CIMG_CMBNO ORDER BY CMB_NO DESC";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -44,7 +44,7 @@ public class CommunityDao extends JDBCTemplate{
 				dto.setCimg_name(rs.getString(10));
 				dto.setCimg_type(rs.getString(11));
 				dto.setCimg_size(rs.getInt(12));
-				
+				dto.setCcom_cnt(rs.getInt(13));
 				res.add(dto);
 			}
 			
@@ -66,7 +66,7 @@ public class CommunityDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<CommuBoardDto> res = new ArrayList<CommuBoardDto>();
 		
-		String sql = "SELECT * FROM COMMUBOARD,CMBIMGBOARD  WHERE CMB_NO = CIMG_CMBNO ORDER BY CMB_LIKE DESC";
+		String sql = "SELECT COMMUBOARD.*,CMBIMGBOARD.*,(SELECT COUNT(*) FROM CMBCOMMENTBOARD WHERE CCOM_CMBNO=CMB_NO) AS CCOM_CNT FROM COMMUBOARD,CMBIMGBOARD  WHERE CMB_NO = CIMG_CMBNO ORDER BY CMB_NO DESC";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -89,7 +89,7 @@ public class CommunityDao extends JDBCTemplate{
 				dto.setCimg_name(rs.getString(10));
 				dto.setCimg_type(rs.getString(11));
 				dto.setCimg_size(rs.getInt(12));
-				
+				dto.setCcom_cnt(rs.getInt(13));
 				res.add(dto);
 			}
 			

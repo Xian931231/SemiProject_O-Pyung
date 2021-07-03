@@ -156,7 +156,7 @@
 			                            <span class="card-footer-comment">
 			                                <i class="far fa-comment"></i>
 			                                <!--댓글 숫자-->
-			                                <span class="card-comment-cnt">123</span>
+			                                <span class="card-comment-cnt">${commudto.ccom_cnt }</span>
 			                            </span>                
 			                        </div>
 			                    </div>
