@@ -2,14 +2,14 @@ const CommenttoggleBtn = document.querySelector('.card-footer-comment');
 const commumenu = document.querySelector('.card-commentlist');
 const commusearch = document.querySelector('.card-footer');
 
-
+//댓글 리스트 온오프
 CommenttoggleBtn.addEventListener('click',function(){
     
     commumenu.classList.toggle('active');
     commusearch.classList.toggle('active');
 });
 
-
+//댓글 리스트 출력
 function getCommentList(){
 	$.ajax({
 		url:"comment.do?command=list",
@@ -20,14 +20,16 @@ function getCommentList(){
 		dataType:"json",
 		success : function(data){
 			$('#commentul').empty();
-			
+			var id = $.trim($("#id").val())
+			console.log(id);
 			 $.each(data, function(key, val){
              <!-- 로그 찍어주는 부분 -->
              console.log('key:' + key + ' / ' + 'ccom_no:' + val['ccom_no'] + ', ccom_cmbno :' + val['ccom_cmbNo']
 						 + ', ccom_id:' + val['ccom_id'] + ', ccom_content:' + val['ccom_content'] + ', ccom_date:' + val['ccom_date']);
 			
+			var ccomid = $.trim(val['ccom_id'])
 			
-			$('#commentul').append('\
+			var append = '\
 				<li class="card-comment-li">\
 				<a href="#" class="comment-user-img">\
 				<img src="./img/community/grphic.png" alt="" class="profile-user-img-img">\
@@ -38,15 +40,21 @@ function getCommentList(){
 				</div>\
 				<div class="comment-data">\
 				<span class="date-report">\
-				<span class="comment-date">'+val['ccom_date']+'</span>\
-				<a href="#" class="comment-report-btn">\
+				<span class="comment-date">'+val['ccom_date']+'</span>'
+				
+			if(id.length != 0){	
+				append+= '<a href="#" class="comment-report-btn" data-bs-toggle="modal" data-bs-target="#report-madal" data-bs-whatever='+val['ccom_id']+'>\
 				<span class="comment-report">\
 				<i class="fas fa-paper-plane"></i>\
 				신고\
 				</span>\
-				</a>\
-				</span>\
-				<span class="comment-oper">\
+				</a>'
+				}
+				
+				append+= '</span>'
+			if(ccomid == id){	
+				console.log(ccomid)
+				append+=	'<span class="comment-oper">\
 				<a href="javascript:commentUpdate('+val['ccom_no']+');" class="comment-update">\
 				<span>\
 				<i class="fas fa-pencil-alt"></i>\
@@ -58,13 +66,18 @@ function getCommentList(){
 				<i class="fas fa-eraser"></i>\
 				삭제\
 				</span>\
-				</a>\
-				</span>\
+				</a>'
+			}	
+			
+				
+			append+= '</span>\
 				</div>\
 				</div>\
 				</li>\
-				');			
+				'	
+			$('#commentul').append(append);		
 			});
+			
 		},
 		error:function(){
 			alert("실패");
@@ -74,7 +87,7 @@ function getCommentList(){
 getCommentList();
 
 
-
+//댓글 달기
 $(document).on('click','#comment-btn',function(){
 	if($("#comment-content").val().trim() ===""){
 		alert("댓글을 입력해주세요");
@@ -119,6 +132,7 @@ function update(index){
 		success : function(){
 			$('.card-comment-submit').remove();
 			$('.card-comment-div').append('<input type="button" class="card-comment-submit" id="comment-btn" value="게시">');
+			$('#comment-content').val("");
 			alert("성공");
 			getCommentList();
 		},
@@ -147,3 +161,13 @@ function commentDel(index){
 		}
 	})
 }
+
+
+//신고 모달에 대상 아이디보내기
+var myModalEl = document.getElementById('report-madal')
+myModalEl.addEventListener('show.bs.modal', function (event) {
+	var button = event.relatedTarget
+  	var recipient = button.getAttribute('data-bs-whatever')
+	var input = document.getElementById('reportid')
+  	input.value = recipient
+})

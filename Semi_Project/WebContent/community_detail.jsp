@@ -26,6 +26,43 @@
     
 </head>
 <body>
+	<!-- 신고 모달 -->
+	<div class="modal" tabindex="-1" id="report-madal">
+	<form action="report.do?command=report" method="post">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">신고</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">	      	
+	      	<input type="hidden" name="id" value="${id }">
+	      	<p><b>신고 대상 </b> : 
+				<input id="reportid" class="form-control" name="tid" type="text" readOnly>
+			</p>
+	      	<p><b>신고 사유 </b> :
+		     	<select class="form-select" name="title">
+		     		<option value=" " selected>신고 사유</option>
+		     		<option value="사기">사기</option>
+		     		<option value="불법광고 게시물 게시">불법광고 게시물 게시</option>
+		    		<option value="음란성 게시물 게시">음란성 게시물 게시</option>
+		    		<option value="기타">기타</option>
+		    	</select>
+	      	</p>
+	      	<p><b>신고 내용 </b> : 
+	      		<textarea class="form-control" name="content" rows="5" placeholder="해당 게시글의 주소와 신고내용을 적어주세요"></textarea>
+	      	</p>     		
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+	        <input type="submit" class="btn btn-primary" value="신고">
+	      </div>
+	    </div>
+	  </div>
+	  </form>
+	</div>
+	
+	
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
     <article class="container">
@@ -57,9 +94,14 @@
                                         <div class="card-user-name">${commudto.cmb_id }</div>
                                         <!--작성날짜-->
                                         <div class="card-date">${commudto.cmb_date }</div>
-                                    </div>                     
-                                    <!--팔로워 버튼-->
+                                    </div>    
                                 </a>
+                                <c:if test="${id != NULL }">
+	                                <!--신고 버튼-->
+	                                <div class="card-user-report" data-bs-toggle="modal" data-bs-target="#report-madal" data-bs-whatever="${commudto.cmb_id }">
+	                                	<i class="fas fa-paper-plane fa-2x"></i>
+	                                </div>
+                                </c:if>
                             </div>
                             <!--본문 사진-->
                             <img src="upload/${commudto.cimg_name}${commudto.cimg_type}" class="card-img-top" alt="...">

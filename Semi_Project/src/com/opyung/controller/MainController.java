@@ -33,6 +33,8 @@ public class MainController extends HttpServlet {
 				}else if(command.equals("notice")) {
 					response.sendRedirect("notice.jsp");
 				}else if(command.equals("login")) {
+					String referer = request.getHeader("Referer");
+					request.getSession().setAttribute("redirectURI", referer);
 					response.sendRedirect("login.jsp");
 				}else if(command.equals("community")) {
 					response.sendRedirect("community.jsp");

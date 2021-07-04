@@ -52,6 +52,12 @@ ul{
     display: inline-flex;
     font-weight: bold;
 }
+
+.card-user-report :hover{
+	cursor: pointer;
+}
+
+
 .card-date{
     color: lightslategray;
     line-height: 0.7rem;
@@ -133,7 +139,7 @@ ul{
 
 
 .card-commentlist{
-    max-height: 150px;
+    max-height: 300px;
     overflow: auto;
     scrollbar-width: 0px;
     -ms-overflow-style: none;
