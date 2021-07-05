@@ -95,8 +95,6 @@
                 <script type="text/javascript">
                 
                 
-                	
-                
                     var mapContainer = document.getElementById('map_area');		<!-- 지도를 담을 영역의 DOM 레퍼런스 -->
                     
                     <!-- 지도를 생성할 때 필요한 기본 옵션 -->
@@ -113,24 +111,23 @@
                     
                  	<!-- 지도 타입 컨트롤을 지도에 표시합니다 -->
                     map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-                    
-                	
-                    //주소로 좌표 얻어내기
-                    var Number test;
-                    
+					
+					//주소 - 좌표 변환
+					var geocoder = new kakao.maps.services.Geocoder();
+					
 					var geocoder = new kakao.maps.services.Geocoder();
 
-					var user1 = function(result, status) {
-    				if (status === kakao.maps.services.Status.OK) {
-    					    test = result[0].x;
-   				 		}	
+					var callback = function(result, status) {
+					    if (status === kakao.maps.services.Status.OK) {
+					    	//document.getElementById('user1_longitude').value = result[0].x;
+					        
+					    }
 					};
 
-				
-					geocoder.addressSearch('서울 강남구 테헤란로14길 6', user1);
-					console.log(test);
-					
-					//유저1 좌표
+					geocoder.addressSearch('서울 강남구 테헤란로14길 6 남도빌딩', callback);
+                    
+                    
+                    //유저1 좌표
                 	var user1_latitude = "37.49909512221489";
                 	var user1_longitude = "127.03286608288428";
 
@@ -141,7 +138,6 @@
                 	//중간좌표
                     var middle_latitude = (parseFloat(user1_latitude) + parseFloat(user2_latitude)) / 2; 
                     var middle_longitude = (parseFloat(user1_longitude) + parseFloat(user2_longitude)) / 2;
-                    
                     
                     
                     
@@ -214,7 +210,7 @@
 
 					});
 					
-								 
+					
 					
 
 					
@@ -226,9 +222,10 @@
             <div id="button_area">
                 <input type="button" value="거래취소">
                 <input type="button" value="거래하기">
-
+				<input type="text" id="user1_latitude">
+				<input type="text" id="user1_longitude">
+				
             </div>
-
 
         </div>
    
