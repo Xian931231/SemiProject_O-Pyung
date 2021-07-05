@@ -90,19 +90,12 @@
             <div id="map_area">		<!-- 지도 담는 영역 태그 id값 -->
             
             	<!-- 발급받은 app key 넣기 -->
-                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8582c94d0c3acdae42928406badb7847"></script>
-                
-                <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
-				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8582c94d0c3acdae42928406badb7847&libraries=services"></script> 
                 
                 <script type="text/javascript">
                 
+                
                 	
-                	var user1_latitude = "37.49909512221489";
-                	var user1_longitude = "127.03286608288428";
-                	
-                	var user2_latitude = "37.500606922890086";
-                	var user2_longitude = "127.03676965260385";
                 
                     var mapContainer = document.getElementById('map_area');		<!-- 지도를 담을 영역의 DOM 레퍼런스 -->
                     
@@ -120,6 +113,37 @@
                     
                  	<!-- 지도 타입 컨트롤을 지도에 표시합니다 -->
                     map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+                    
+                	
+                    //주소로 좌표 얻어내기
+                    var Number test;
+                    
+					var geocoder = new kakao.maps.services.Geocoder();
+
+					var user1 = function(result, status) {
+    				if (status === kakao.maps.services.Status.OK) {
+    					    test = result[0].x;
+   				 		}	
+					};
+
+				
+					geocoder.addressSearch('서울 강남구 테헤란로14길 6', user1);
+					console.log(test);
+					
+					//유저1 좌표
+                	var user1_latitude = "37.49909512221489";
+                	var user1_longitude = "127.03286608288428";
+
+                	//유저2 좌표
+                	var user2_latitude = "37.500606922890086";
+                	var user2_longitude = "127.03676965260385";
+                	
+                	//중간좌표
+                    var middle_latitude = (parseFloat(user1_latitude) + parseFloat(user2_latitude)) / 2; 
+                    var middle_longitude = (parseFloat(user1_longitude) + parseFloat(user2_longitude)) / 2;
+                    
+                    
+                    
                     
                     <!-- 유저1과 유저2의 위치를 기준으로 전체 맵 보여주기 -->
                     var points = [
@@ -166,7 +190,6 @@
                     //선 그리기 
 	                var line;				//선
                     var distanceOverlay;	//선의 거리정보를 표시할 커스텀오버레이
-                   
                     
 					line = new kakao.maps.Polyline({
 						map: map,
@@ -178,24 +201,17 @@
 					});
                     
 					var distance = Math.round(line.getLength()),
-						content = '<div class="dotOverlay distanceInfo">총거리 <span class="number">' + distance + '</span>m</div>';
-/*
-					var middle_latitude = (user1_latitude + user2_latitude)/2;
-					alert(middle_latitude);
-					
-					var middle_longitude = (user1_longitude + user2_longitude)/2;
-					
+						content = '<div style="background-color:white; font-size:10px">총거리 <span style="font-size:10px;">' + distance + '</span>m</div>';
+			
+						
 					var middle = new kakao.maps.LatLng(middle_latitude, middle_longitude);
-*/					
-	
-					var latlng = map.getCenter();
-	
+						
+						
 					distanceOverlay = new kakao.maps.CustomOverlay({
 						map: map,
 						content: content,
-						position: points[0],
-						xAnchor: -2,
-						yAnchor: 3
+						position: middle
+
 					});
 					
 								 
