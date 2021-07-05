@@ -1,6 +1,5 @@
 *{
     font-family: 'Noto Sans KR', sans-serif;
-    margin : 0;
 }
 
 .container{
@@ -30,8 +29,6 @@
   .title{
     grid-area:title;
     /*background-color: gray;*/
-    
-    border: 1px solid rgba(0, 0, 0, 0.1);
   }
   
   .image{
@@ -42,8 +39,11 @@
 
   .content{
     grid-area:content;
+    
     /*background-color: gray;*/
   }
+
+  
   
   .web_editor{
     grid-area:web_editor;
@@ -73,51 +73,58 @@
   /* image 영역----------------------------------------------------- */
 
   .image{
-      text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    height: 700px;
   }
 
-  .image_center{
-    position: relative;
-    margin: auto;
-    top: 45%;
-    left: 5%;
+  .img-div img{
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 662px;
+
   }
 
   /* content 영역 ------------------------------------------------------*/
   .content{
-      float: left;
+    height: 700px;
   }
 
-  .product_title{
-    width: 200px;
-    height: 16px;
-  }
 
   #p_content{
       width: 500px;
       height: 200px;
   }
 
-  .content_title{
-      margin: 30px;
+
+
+
+  .form-label{
+    padding-left: 12px;
+    padding-top: 12px;
   }
 
-  .content_select{
-      margin: 30px;
+  .state{
+    display: flex;
   }
 
-  .content_info{
-      margin: 30px;
+  .state div{
+    flex: 1;
   }
 
-  .content_location{
-      margin: 30px;
+  .btns{
+    padding: 1rem;
+    display: flex;
   }
 
-  .product_info{
-      width: 300px;
-      height: 100px;
+  .btn{
+    width: 100%;
+    margin: 0.2rem;
   }
+
+
 
   /* web_editor ---------------------------------------------------------*/
 /*  .editor4{
@@ -129,6 +136,7 @@
       text-align: center;
       font-weight: 400;
   }
+
   
   /* naver_blog -----------------------------------------------------------*/
 

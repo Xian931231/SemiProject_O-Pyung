@@ -39,7 +39,9 @@ public class LoginController extends HttpServlet {
 			MemberDto memdto = biz.login(id,pw);
 			
 			if(memdto.getMb_id() != null) {
-				session.setAttribute("memdto", memdto);
+				session.setAttribute("id", memdto.getMb_id());
+				session.setAttribute("name", memdto.getMb_name());
+				session.setAttribute("role", memdto.getMb_role());
 				session.setMaxInactiveInterval(60*60);
 						
 				response.sendRedirect("main.do?command=main");

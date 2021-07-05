@@ -1,3 +1,7 @@
+window.onload = function(){
+	
+}
+
 var msnry = new Masonry('.card-list',{
     itemSelector: '.card-post',
     percentPosition: true,

@@ -28,6 +28,7 @@ ul{
 }
 .card-post{
     width: 720px;
+    margin-bottom: 10%;
 }
 
 
@@ -51,6 +52,12 @@ ul{
     display: inline-flex;
     font-weight: bold;
 }
+
+.card-user-report :hover{
+	cursor: pointer;
+}
+
+
 .card-date{
     color: lightslategray;
     line-height: 0.7rem;
@@ -132,7 +139,7 @@ ul{
 
 
 .card-commentlist{
-    max-height: 150px;
+    max-height: 300px;
     overflow: auto;
     scrollbar-width: 0px;
     -ms-overflow-style: none;
@@ -152,12 +159,17 @@ ul{
 
 .card-comment-li-div{
     padding-left: 0.5rem;
+    flex : 2;
 }
 
 .comment-user-name{
     font-weight: bold;
+    padding-right: 0.5rem;
 }
 
+.comment-date{
+	padding-right : 0.5rem;
+}
 
 
 
