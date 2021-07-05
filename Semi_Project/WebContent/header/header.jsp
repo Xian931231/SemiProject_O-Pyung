@@ -72,8 +72,8 @@
         
         
         <ul class="navbar_menu">
-            <li><a href="community.do?command=commulike"><span class="navbar_submenu">COMMUNITY</span></a></li>
-            <li><a href="main.do?command=shop"><span class="navbar_submenu">SHOP</span></a></li>
+            <li><a href="community.do?command=commu"><span class="navbar_submenu">COMMUNITY</span></a></li>
+            <li><a href="product.do?command=shop"><span class="navbar_submenu">SHOP</span></a></li>
         </ul>
 
         

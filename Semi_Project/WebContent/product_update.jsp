@@ -1,5 +1,6 @@
 <!-- 제품 등록 페이지 -->
 
+<%@page import="com.opyung.dto.ProductBoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -29,6 +30,8 @@
     <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/product_add.js" defer></script>
+    <script src="./jQuery/jquery-3.6.0.min.js"></script>
+    
     <title>제품등록</title>
 </head>
 <body>
@@ -36,7 +39,7 @@
 	<%@ include file="header/header.jsp" %> 
 	
 	<!-- 정보 -->
-    <form action="product.do?command=insert" method="post" enctype="multipart/form-data">
+    <form action="product.do?command=update&ptno=${ptdto.product_no }" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${id }">
     <div class="container">
 
@@ -51,7 +54,7 @@
             <!-- image 영역 -->
             <div class="image">
                 <div class="img-div">
-                    <img src="" alt="" id="imgPreview">
+                    <img src="upload/${ptdto.ptimg_name }${ptdto.ptimg_type}" alt="" id="imgPreview">
                 </div>
                 <div class="file-div ">
                     <input class="form-control" type="file" name="file" id="imageupload" onchange="getImage(this.value);">
@@ -64,7 +67,7 @@
             <div class="content_title">
                 제품 이름:
                 <br>
-                <input type="text" class="form-control" name="title" placeholder="모델명 기재">
+                <input type="text" class="form-control" name="title" placeholder="모델명 기재" value="${ptdto.product_title }">
             </div>
 
             <hr>
@@ -74,8 +77,8 @@
                 <br>
                 <div>
                     <label for="" class="form-label">데스크탑</label>
-                    <select name="catogory-desk" id="" class="form-select">
-                        <option value=""  selected>품목선택</option>
+                    <select name="catogory-desk" id="catogory-desk" class="form-select">
+                        <option value=""  >품목선택</option>
                         <option value="CPU">CPU</option>
                         <option value="RAM">RAM</option>
                         <option value="그래픽카드">그래픽카드</option>
@@ -83,15 +86,15 @@
                         <option value="케이스">케이스</option>
                     </select>
                     <label for="" class="form-label">주변기기</label>
-                    <select name="catogory-out" id="" class="form-select">
-                        <option value="" selected>품목선택</option>
+                    <select name="catogory-out" id="catogory-out" class="form-select">
+                        <option value="" >품목선택</option>
                         <option value="모니터">모니터</option>
                         <option value="키보드">키보드</option>
                         <option value="마우스">마우스</option>
                     </select>
                     <label for="" class="form-label">브랜드</label>
-                    <select class="form-select" name="brand">
-                        <option value="" selected>브랜드선택</option>
+                    <select class="form-select" id="brand" name="brand">
+                        <option value="" >브랜드선택</option>
                         <option value="INTEL">INTEL</option>
                         <option value="AMD">AMD</option>
                         <option value="ASUS">ASUS</option>
@@ -101,6 +104,7 @@
                         <option value="BENQ">BENQ</option>
                         <option value="LG">LG</option>
                     </select>
+                    
                 </div>
                 
             </div>
@@ -110,51 +114,62 @@
             <div class="content_location">
                 희망 거래지역:
                 <br>
-                <input type="text" class="deal_location form-control" name="location" placeholder="시,구 등의 간략한 위치 기재">
+                <input type="text" class="deal_location form-control" name="location" value="${ptdto.product_addr }" placeholder="시,구 등의 간략한 위치 기재">
             </div>
             <hr>
 
             <div class="price">
                 <label for="">예상가격 :</label><br>
-                <input type="text" class="form-control" placeholder="숫자만 입력" name="price" numberOnly>
+                <input type="text" class="form-control" placeholder="숫자만 입력" name="price" value="${ptdto.product_price }" numberOnly>
             </div>
 
             <hr>
             <div class="state">
                 <div>
                     분류:
-                    <select class="product_select form-select" name="newvar">
-                        <option selected>분류</option>
+                    <select class="product_select form-select" name="newvar" id="newvar">
+                        <option>분류</option>
                         <option value="Y">새 제품</option>
                         <option value="N">중고 제품</option>
                     </select>
                 </div>  
                 <div class="btns">
                     <button class="btn btn-secondary btn-lg">취소</button>
-                    <input type="submit" class="btn btn-primary btn-lg" value="등록">
+                    <input type="submit" class="btn btn-primary btn-lg" value="수정">
                 </div>
             </div>
         </div>
 
+        <script type="text/javascript">
+   			$("#catogory-desk").val('${ptdto.product_category}').prop("selected",true);
+   			$("#catogory-out").val('${ptdto.product_category}').prop("selected",true);
+        	$("#brand").val('${ptdto.product_brand}').prop("selected",true);
+          	$("#newvar").val('${ptdto.product_new}').prop("selected",true)
+      	</script>
         
         <!-- web_edotor -->
         <div class="web_editor">
             <div class="product_detail_info">
                 <p>제품 상세 정보</p>
-                
             </div>
             <!--업로드 api-->
             <input type="hidden" role="uploadcare-uploader" name="my_file" id="uploadedImage" />
-            
-            <textarea id="ckeditor" class="ckeditor" name="content" ></textarea>
+            <textarea id="ckeditor" class="ckeditor" name="content" >${ptdto.product_content }</textarea>
             <script type="text/javascript">
                 
                 CKEDITOR.replace( 'ckeditor' ,
                                 {height: 700});
                 
+               	
+            </script>
+        </div>
+			<script type="text/javascript">
+			
+			
+				var content = $("#ckeditor").val()
+	            CKEDITOR.instances.ckeditor.setData(content);
             </script>
             
-        </div>
 
         <!-- naver_blog -->
         <div class="naver_blog" name="naver_blog">
@@ -201,7 +216,7 @@
             </div>
 
             <div class="blog_img" name="blog_img">
-                <img src="/img/littledeep_puppy_style1.png" onerror="">
+                <img src="#" onerror="">
             </div>
 
             <div class="blog_info" name="blog_info">

@@ -7,205 +7,155 @@
 <!-- 인코딩 처리 -->    
 <% request.setCharacterEncoding("UTF-8"); %>    
 <% response.setContentType("text/html; charset=UTF-8"); %>       
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>오늘도 평화로운</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="./css/product.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-               
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/product.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>상품</title>
+</head>
+<body>
+	<!-- header 추가 -->
+	<%@ include file="header/header.jsp" %> 
+	
+	<!-- 정보 -->
+    <div class="container">
+        <!-- header 영역 -->
+
+            <!-- title 영역 -->
+
+            <!-- form tag 시작 -->
+
+
+            <!-- image 영역 -->
+            <div class="image">
+                <div class="img-div">
+                    <img src="upload/${ptdto.ptimg_name }${ptdto.ptimg_type}" alt="" id="imgPreview">
+                </div>
+            </div>
+            
+            <!-- content 영역 -->
+            <div class="content">
+                <div class="row">
+                    <div class="col">
+                        <h3>제품명</h3>
+                        <hr>
+                        <div class="userinfo">
+                            <p><b>${ptdto.product_id }</b></p>
+                            <p><b>등급</b></p>
+                        </div>
+                        <hr>
+                        <p> <b>제조사</b> : ${ptdto.product_brand } </p>
+                        <p> <b>품목</b> : ${ptdto.product_category } </p>
+                        <p><b>제품 상태</b> : 
+                        	<c:if test="${ptdto.product_new eq 'Y'}">미개봉</c:if>
+                        	<c:if test="${ptdto.product_new eq 'N'}">개봉</c:if>
+                        </p>
+                        <hr>
+                        <p> <b>거래지역</b> : ${ptdto.product_addr } </p>
+                        <hr>
+                        <h4>${ptdto.product_price }원</h4>
+                    </div>
+                </div>
+            
+            
+                <div class="state">
+                    <div class="btns">
+                        <button class="btn btn-info btn-lg text-white">관심상품</button>
+                        <input type="submit" class="btn btn-primary btn-lg" value="구매신청">                        
+                    </div>
+                    <div class="btns">
+                    	<button type="button" class="btn btn-secondary btn-lg " onclick="location.href='product.do?command=delete&ptno=${ptdto.product_no}'">삭제</button>
+                    	<button type="button" class="btn btn-primary btn-lg" onclick="location.href='product.do?command=updateform&ptno=${ptdto.product_no}'">수정</button>
+                    </div>
+                </div>
+        </div>
+
+        
+        <!-- web_edotor -->
+        <div class="web_editor">
+            <p>제품 상세 정보</p>
+            <div class="product_detail_info" style="text-align:center">
+                ${ptdto.product_content }
                 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link " href="#!">고객센터</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">관심상품</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">마이페이지</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">로그인</a></li>
-                    </ul>
-                    
-                </div> 
             </div>
-        </nav>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href=""><img src="./img/product/img/로고11.png" class="logo" style="width: 3cm; height: 1cm;"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">고객센터</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">관심상품</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
+            <div class="check_img">
+                <img src="img/product/check.png" alt="">
+            </div>
+            
+        </div>
+
+        <!-- naver_blog -->
+        <div class="naver_blog" name="naver_blog">
+        
+            <div class="naver_blog_title">
+                <p>블로그 리뷰</p>
+            </div>
+
+            <div class="naver_blog_info">
+            <!-- 블로그 첫번째  -->
+            <hr>
+            <div class="bloggername" name="bloggername">
+                <p>파란멜의 꿈꾸는 블로그</p>
                 </div>
+
+            <div class="postdate" name="postdate">
+                22년전
             </div>
-        </nav>
-        <!-- Product section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
-                    <div class="col-md-6">
-                        <div class="small mb-1">SKU: 제품번호입력</div>
-                        <h1 class="display-5 fw-bolder">title</h1>
-                        <div class="fs-5 mb-5">
-                            
-                            <span>$가격</span>
-                        </div>
-                        <p class="lead">제품설명. 제품설명제품설명제품설명제품설명제품설명제품설명. 제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명, 제품설명제품설명제품설명제품설명제품설명제품설명?</p>
-                        <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                제품 결정
-                            </button>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="bloggerlink" name="bloggerlink">
+                <a href="">블루투스 키보드 심플하게 사용하는 로지텍 K580 K380</a>
             </div>
-        </section>
-        <!-- Related items section-->
-        <section class="py-5 bg-light">
-            <div class="container px-4 px-lg-5 mt-5">
-                <h2 class="fw-bolder mb-4">Related products</h2>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <!-- Product price-->
-                                    $40.00 - $80.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Special Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Popular Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    $40.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="blog_img" name="blog_img">
+                <img src="/img/littledeep_puppy_style1.png" onerror="">
             </div>
-        </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+
+            <div class="blog_info" name="blog_info">
+                <p>게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!!</p>
+            </div>
+            <hr>
+
+            <!-- 블로그 두번째  -->
+            <div class="bloggername" name="bloggername">
+            <p>파란멜의 꿈꾸는 블로그</p>
+            </div>
+
+            <div class="postdate" name="postdate">
+                22년전
+            </div>
+
+            <div class="bloggerlink" name="bloggerlink">
+                <a href="">블루투스 키보드 심플하게 사용하는 로지텍 K580 K380</a>
+            </div>
+
+            <div class="blog_img" name="blog_img">
+                <img src="/img/littledeep_puppy_style1.png" onerror="">
+            </div>
+
+            <div class="blog_info" name="blog_info">
+                <p>게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!!</p>
+            </div>
+            <hr>
+
+        </div>
+    </div>
+</div>
+
+
+        <div class="footer">footer</div>
+
+</body>
 </html>
     
