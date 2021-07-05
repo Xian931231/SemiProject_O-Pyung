@@ -22,6 +22,28 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="./css/deal_status.css">
     <script src="./js/deal_status.js" defer></script>
+    
+    <!-- 캘린더 -->
+ 	<link href='fullcalendar/main.css' rel='stylesheet' />
+    <script src='fullcalendar/main.js'></script>
+    
+    <!-- 스크립트 -->
+    <script type="text/javascript" scr="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+
+    document.addEventListener('DOMContentLoaded', function() {
+        
+    	var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+          
+        });
+        calendar.render();
+      });
+
+    
+    </script>
+    
     <title>Document</title>
 </head>
 <body>
@@ -52,8 +74,8 @@
                 <img src="#" alt="">
             </div>
             <h3>거래 일정</h3>
-            <div class="calendar">
-
+            <div id="calendar">
+            
             </div>
             <h3>검수 내역</h3>
             <div class="checker">
