@@ -10,7 +10,8 @@ import com.opyung.dto.MemberDto;
 import common.JDBCTemplate;
 
 public class LoginDao extends JDBCTemplate{
-    public MemberDto login(Connection con, String id, String pw) {
+	//로그인
+	public MemberDto login(Connection con, String id, String pw) {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         MemberDto res = new MemberDto();
@@ -47,5 +48,35 @@ public class LoginDao extends JDBCTemplate{
         
         return res;
     }
+
+    //회원가입
+	public int signup(Connection con, MemberDto memdto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "INSERT INTO MEMBERBOARD VALUES(MEMBERSQ.NEXTVAL,?,?,?,?,?,?,'Y','USER')";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, memdto.getMb_id());
+			pstm.setString(2, memdto.getMb_pw());
+			pstm.setString(3, memdto.getMb_name());
+			pstm.setString(4, memdto.getMb_email());
+			pstm.setString(5, memdto.getMb_phone());
+			pstm.setString(6, memdto.getMb_addr());
+			System.out.println("03" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		
+		
+		return res;
+	}
 }
 

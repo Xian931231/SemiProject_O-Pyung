@@ -30,12 +30,12 @@ public class LoginController extends HttpServlet {
 		System.out.println("[command:"+command+"]");
 
 		
+		LoginBiz biz = new LoginBiz();
 		//로그인 기능
 		if(command.equals("login")) {
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
 			
-			LoginBiz biz = new LoginBiz();
 			MemberDto memdto = biz.login(id,pw);
 			
 			if(memdto.getMb_id() != null) {
@@ -54,6 +54,42 @@ public class LoginController extends HttpServlet {
 			//세션 정보 삭제
 			session.invalidate();
 			response.sendRedirect("main.do?command=main");
+		
+		//회원가입 페이지로 이동
+		}else if(command.equals("signupform")) {
+			response.sendRedirect("signup.jsp");
+		
+		//회원가입
+		}else if(command.equals("signup")){
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pwd");
+			String email = request.getParameter("email");
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			String postcode = request.getParameter("postcode");
+			String address = request.getParameter("address");
+			String extraAddress = request.getParameter("extraAddress");
+			String detailAddress = request.getParameter("detailAddress");
+			String addr = postcode+ " " + address + extraAddress + " " +detailAddress;
+			System.out.println(addr);
+			
+			MemberDto memdto = new MemberDto();
+			memdto.setMb_id(id);
+			memdto.setMb_pw(pw);
+			memdto.setMb_name(name);
+			memdto.setMb_email(email);
+			memdto.setMb_phone(phone);
+			memdto.setMb_addr(addr);
+			
+			int res = biz.signup(memdto);
+			
+			if(res>0) {
+				System.out.println("성공");
+				response.sendRedirect("login.do?command=login");
+			}else {
+				System.out.println("실패");
+				response.sendRedirect("signup.jsp");
+			}
 		}
 	}
 

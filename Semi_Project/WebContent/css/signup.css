@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');    
-
+*{
+	margin : 0;
+	padding : 0;
+}
 body{
     font-family: 'Noto Sans KR', sans-serif;
 }
@@ -39,6 +42,7 @@ addr{
 }
 
 .signup_box{
+	margin-top : 100px;
     width: 400px;
     position: absolute;
     top: 50%;

@@ -264,7 +264,7 @@ public class CommunityController extends HttpServlet {
 			
 			if(res) {
 				System.out.println("성공");
-				response.sendRedirect("community.do?command=commulist");
+				response.sendRedirect("community.do?command=commu");
 			}else {
 				System.out.println("실패");
 				response.sendRedirect("community.do?command=detail&cmb_no="+cmb_no);

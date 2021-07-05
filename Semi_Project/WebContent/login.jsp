@@ -86,7 +86,7 @@
 							Don’t have an account?
 						</span>
 
-						<a class="txt2" href="#">
+						<a class="txt2" href="login.do?command=signupform">
 							Sign Up
 						</a>
 					</div>
