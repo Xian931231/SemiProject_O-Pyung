@@ -111,20 +111,6 @@
                     
                  	<!-- 지도 타입 컨트롤을 지도에 표시합니다 -->
                     map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-					
-					//주소 - 좌표 변환
-					var geocoder = new kakao.maps.services.Geocoder();
-					
-					var geocoder = new kakao.maps.services.Geocoder();
-
-					var callback = function(result, status) {
-					    if (status === kakao.maps.services.Status.OK) {
-					    	//document.getElementById('user1_longitude').value = result[0].x;
-					        
-					    }
-					};
-
-					geocoder.addressSearch('서울 강남구 테헤란로14길 6 남도빌딩', callback);
                     
                     
                     //유저1 좌표
@@ -138,8 +124,6 @@
                 	//중간좌표
                     var middle_latitude = (parseFloat(user1_latitude) + parseFloat(user2_latitude)) / 2; 
                     var middle_longitude = (parseFloat(user1_longitude) + parseFloat(user2_longitude)) / 2;
-                    
-                    
                     
                     <!-- 유저1과 유저2의 위치를 기준으로 전체 맵 보여주기 -->
                     var points = [
@@ -210,10 +194,6 @@
 
 					});
 					
-					
-					
-
-					
                     
                 </script>
             </div>
@@ -222,9 +202,6 @@
             <div id="button_area">
                 <input type="button" value="거래취소">
                 <input type="button" value="거래하기">
-				<input type="text" id="user1_latitude">
-				<input type="text" id="user1_longitude">
-				
             </div>
 
         </div>
