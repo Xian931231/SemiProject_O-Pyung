@@ -32,15 +32,26 @@
     <script type="text/javascript">
 
     document.addEventListener('DOMContentLoaded', function() {
-        
-    	var calendarEl = document.getElementById('calendar');
+        var calendarEl = document.getElementById('calendar');
+
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
-          
+          headerToolbar: {
+            left: 'prev,next',
+            center: 'title',
+            right: 'dayGridMonth'
+          },
+          initialDate: '2021-07-01',
+          selectable: true,
+          events: [
+            {
+              title: '거래 일정',
+              start: '2021-07-07',
+              end: '2021-07-10'
+            },
+          ]
         });
         calendar.render();
       });
-
     
     </script>
     
