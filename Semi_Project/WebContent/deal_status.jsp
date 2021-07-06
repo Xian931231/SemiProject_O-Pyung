@@ -24,8 +24,8 @@
     <script src="./js/deal_status.js" defer></script>
     
     <!-- 캘린더 -->
- 	<link href='fullcalendar/main.css' rel='stylesheet' />
-    <script src='fullcalendar/main.js'></script>
+ 	<link href='./css/fullcalender.css' rel='stylesheet' />
+    <script src='./js/fullcalender.js'></script>
     
     <!-- 스크립트 -->
     <script type="text/javascript" scr="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -44,6 +44,7 @@
           selectable: true,
           events: [
             {
+            /* 거래 시작, 종료 값을 넣어야함..*/
               title: '거래 일정',
               start: '2021-07-07',
               end: '2021-07-10'

@@ -41,8 +41,17 @@ public class MainController extends HttpServlet {
 				}else if(command.equals("shop")) {
 					response.sendRedirect("shop.jsp");
 				}else if(command.equals("mypage")) {
-					response.sendRedirect("mypage.jsp");
+					
+					String role = (String) session.getAttribute("role");
+					System.out.println("나의 ROLE은: "+ role);
+					
+					if(role.equals("ADMIN")) {
+						response.sendRedirect("adminpage.jsp");
+					}else {
+						response.sendRedirect("mypage.jsp");
+					}
 				}
+				
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

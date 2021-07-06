@@ -73,6 +73,7 @@ public class NoticeController extends HttpServlet {
 			List<NoticeBoardDto> list = biz.selectAll();
 			
 			request.setAttribute("list", list);
+			
 			dispatch("notice.jsp",request,response);
 			
 		}else if(command.equals("noticedelete")) {
