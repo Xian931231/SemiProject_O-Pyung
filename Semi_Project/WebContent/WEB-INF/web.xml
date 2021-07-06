@@ -98,15 +98,4 @@
   </servlet-mapping>  
   
   
-    <servlet>
-  	<servlet-name>NoticeController</servlet-name>
-  	<servlet-class>com.opyung.controller.NoticeController</servlet-class>
-  </servlet>
-  
-    <servlet-mapping>
-  	<servlet-name>NoticeController</servlet-name>
-    <url-pattern>/notice.do</url-pattern>
-  </servlet-mapping>  
-  
-  
 </web-app>
