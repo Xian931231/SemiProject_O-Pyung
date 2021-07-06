@@ -124,7 +124,7 @@
 			//System.out.println(item.get("bloggername"));
 %>
 			<div class="bloggername" name="bloggername">
-				<p>블로거: <%=item.get("bloggername")%></p>
+				<p>blogger: <%=item.get("bloggername")%></p>
 				</div>
 			
 			<div class="postdate" name="postdate">
