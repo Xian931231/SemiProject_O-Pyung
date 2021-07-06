@@ -132,6 +132,52 @@ public class ProductDao extends JDBCTemplate{
 		return res;
 	}
 	
+	//특정 상품 목록 조회
+	public List<ProductBoardDto> selectAll(Connection con, String category) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
+		
+		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, category);
+			System.out.println("03" + sql);
+			
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				ProductBoardDto dto = new ProductBoardDto();
+				dto.setProduct_no(rs.getInt(1));
+				dto.setProduct_title(rs.getString(2));
+				dto.setProduct_category(rs.getString(3));
+				dto.setProduct_price(rs.getInt(4));
+				dto.setProduct_brand(rs.getString(5));
+				dto.setProduct_addr(rs.getString(6));
+				dto.setProduct_new(rs.getString(7));
+				dto.setProduct_content(rs.getString(8));
+				dto.setProduct_id(rs.getString(9));
+				dto.setProduct_date(rs.getDate(10));
+				dto.setProduct_status(rs.getString(11));
+				dto.setPtimg_src(rs.getString(14));
+				dto.setPtimg_name(rs.getString(15));
+				dto.setPtimg_type(rs.getString(16));
+				dto.setPtimg_size(rs.getInt(17));
+				
+				res.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		
+		return res;
+	}
+	
 	
 	//상품추가
 	public int insert(Connection con, ProductBoardDto dto) {
@@ -276,6 +322,9 @@ public class ProductDao extends JDBCTemplate{
 		
 		return res;
 	}
+
+
+	
 
 	
 

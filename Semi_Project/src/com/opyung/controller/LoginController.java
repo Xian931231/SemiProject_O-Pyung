@@ -31,6 +31,7 @@ public class LoginController extends HttpServlet {
 
 		
 		LoginBiz biz = new LoginBiz();
+		
 		//로그인 기능
 		if(command.equals("login")) {
 			String id = request.getParameter("id");
@@ -71,6 +72,8 @@ public class LoginController extends HttpServlet {
 			String extraAddress = request.getParameter("extraAddress");
 			String detailAddress = request.getParameter("detailAddress");
 			String addr = postcode+ " " + address + extraAddress + " " +detailAddress;
+			String latitude = request.getParameter("latitude");
+			String longitude = request.getParameter("longitude");
 			System.out.println(addr);
 			
 			MemberDto memdto = new MemberDto();
@@ -80,6 +83,8 @@ public class LoginController extends HttpServlet {
 			memdto.setMb_email(email);
 			memdto.setMb_phone(phone);
 			memdto.setMb_addr(addr);
+			memdto.setMb_addr_latitude(latitude);
+			memdto.setMb_addr_longitude(longitude);
 			
 			int res = biz.signup(memdto);
 			

@@ -8,7 +8,9 @@ import com.opyung.dto.MemberDto;
 import common.JDBCTemplate;
 
 public class LoginBiz extends JDBCTemplate{
+	
 	LoginDao dao = new LoginDao();
+	
 	//로그인
     public MemberDto login(String id, String pw) {
         Connection con = getConnection();

@@ -18,20 +18,23 @@
 <link rel="stylesheet" href="./css/signup.css" type="text/css">
 <link rel="icon" type="image/png" href="img/topLogo.ico"/>
 <title>오늘도 평화로운</title>
+	
+	<!-- 카카오맵 api 추가 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8582c94d0c3acdae42928406badb7847&libraries=services"></script> 
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
     
-    $(function(){
+$(function(){
 
     // 체크박스 전체 선택
     $(".checkbox_group").on("click", "#check_all", function () {
-    $(this).parents(".checkbox_group").find('input').prop("checked", $(this).is(":checked"));
-});
+    	$(this).parents(".checkbox_group").find('input').prop("checked", $(this).is(":checked"));
+	});
 
-// 체크박스 개별 선택
-$(".checkbox_group").on("click", ".normal", function() {
-    var is_checked = true;
+	// 체크박스 개별 선택
+	$(".checkbox_group").on("click", ".normal", function() {
+    	var is_checked = true;
 
     $(".checkbox_group .normal").each(function(){
         is_checked = is_checked && $(this).is(":checked");
@@ -39,7 +42,30 @@ $(".checkbox_group").on("click", ".normal", function() {
 
     $("#check_all").prop("checked", is_checked);
     });
+	
+	
+	//주소 -> 좌표 변환, input태그에 담아서 db에 저장
+	$("#sample6_detailAddress").on("propertychange change keyup paste input", function(){
+		
+		var addr = $("#sample6_address").val();
+		
+		var geocoder = new kakao.maps.services.Geocoder();
+		
+		var callback = function(result, status) {
+	    	if (status === kakao.maps.services.Status.OK) {
+				document.getElementById("user_latitude").value = result[0].y;
+				document.getElementById("user_longitude").value = result[0].x;
+	    	}
+		};
+		
+		geocoder.addressSearch(addr, callback);
+		
+	});
+	
+	
 });
+    
+    
     </script>
 </head>
 <body>
@@ -83,8 +109,12 @@ $(".checkbox_group").on("click", ".normal", function() {
 				<input type="button" class="btn" onclick="sample6_execDaumPostcode()" value="주소 찾기"><br>
                 <input type="text" id="sample6_postcode" placeholder="우편번호" name="postcode">
 				<input type="text" id="sample6_address" placeholder="주소" name="address"><br>
-				<input type="text" id="sample6_extraAddress" placeholder="참고항목" name="extraAddress">
+				<input type="text" id="sample6_extraAddress" placeholder="참고항목" name="extraAddress" >
 				<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="detailAddress">
+				<input type="hidden" id="user_latitude" name="latitude">
+				<input type="hidden" id="user_longitude" name="longitude">
+				
+
 				
 				<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 				<script>
@@ -136,7 +166,7 @@ $(".checkbox_group").on("click", ".normal", function() {
 				        }).open();
 				    }
 				</script>
-                
+				
             </div>
             
             <div class="checkbox_group">

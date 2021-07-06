@@ -42,6 +42,17 @@ public class ProductBiz extends JDBCTemplate{
 		return ptdto;
 	}
 	
+	//특정 상품목록 조회
+	public List<ProductBoardDto> selectAll(String category) {
+		Connection con = getConnection();
+		
+		List<ProductBoardDto> list = dao.selectAll(con,category);
+		
+		close(con);
+		
+		return list;
+	}
+	
 	//상품 추가
 	public int insert(ProductBoardDto dto) {
 		Connection con = getConnection();
@@ -122,6 +133,7 @@ Connection con = getConnection();
 		
 		return res;
 	}
+
 
 
 

@@ -74,6 +74,11 @@
                 <input class="btn btn-outline-dark" type="submit" value="전송" >
             </form>
             
+            <div style="height: 100px">
+            	<div style="background-color: white">
+            	</div>
+            </div>
+            
             
         </section>
         

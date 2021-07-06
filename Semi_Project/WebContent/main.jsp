@@ -5,7 +5,7 @@
 <!-- 인코딩 처리 -->    
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,38 +78,24 @@
                         </div>
                     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <!--프로그래밍 제품-->
+				<c:forEach items="${list }" var="list">
+					<!-- 첫 제품-->
                     <div class="product_list list_frist">
                         <div class="product_item">
-                            <a href="#" class="item_inner">
+                            <a href="product.do?command=detail&ptno=${list.product_no }" class="item_inner">
                                 <div class="product">
-                                    <img src="" alt="" class="product_img">
+                                    <img src="upload/${list.ptimg_name }${list.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
-                                        <p>브랜드</p>
+                                        <p>${list.product_brand }</p>
                                     </div>
-                                    <p class="name">TEST</p>
+                                    <pre class="name">${list.product_title }</pre>
                                 </div>
                                 <div class="price">
                                     <div class="amount">
                                         <em class="num">
-                                            200,000
+                                            ${list.product_price }
                                         </em>
                                         <span class="won">원</span>
                                     </div>
@@ -121,88 +107,12 @@
                             </a>
                         </div>
                     </div>
-
-                    <!--프로그래밍 제품-->
-                    <div class="product_list list_frist">
-                        <div class="product_item">
-                            <a href="#" class="item_inner">
-                                <div class="product">
-                                    <img src="" alt="" class="product_img">
-                                </div>
-                                <div class="info_box">
-                                    <div class="brand">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <p class="name">TEST</p>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <em class="num">
-                                            200,000
-                                        </em>
-                                        <span class="won">원</span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--프로그래밍 제품-->
-                    <div class="product_list list_frist">
-                        <div class="product_item">
-                            <a href="#" class="item_inner">
-                                <div class="product">
-                                    <img src="" alt="" class="product_img">
-                                </div>
-                                <div class="info_box">
-                                    <div class="brand">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <p class="name">TEST</p>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <em class="num">
-                                            200,000
-                                        </em>
-                                        <span class="won">원</span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        </div>
-                    </div>
+				</c:forEach>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    
 
                 </div>
 
@@ -239,22 +149,24 @@
 
                 <!-- 제품박스 -->
                 <div class="product_list_wrap">
+                    <c:forEach items="${list2 }" var="list2">
+					<!-- 첫 제품-->
                     <div class="product_list list_frist">
                         <div class="product_item">
-                            <a href="#" class="item_inner">
+                            <a href="product.do?command=detail&ptno=${list2.product_no }" class="item_inner">
                                 <div class="product">
-                                    <img src="" alt="" class="product_img">
+                                    <img src="upload/${list2.ptimg_name }${list2.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
-                                        <p>브랜드</p>
+                                        <p>${list2.product_brand }</p>
                                     </div>
-                                    <p class="name">TEST</p>
+                                    <pre class="name">${list2.product_title }</pre>
                                 </div>
                                 <div class="price">
                                     <div class="amount">
                                         <em class="num">
-                                            100,000
+                                            ${list2.product_price }
                                         </em>
                                         <span class="won">원</span>
                                     </div>
@@ -266,110 +178,7 @@
                             </a>
                         </div>
                     </div>
-
-                    <!-- 첫 제품-->
-                    <div class="product_list list_frist">
-                        <div class="product_item">
-                            <a href="#" class="item_inner">
-                                <div class="product">
-                                    <img src="./img/main/1.jpg" alt="" class="product_img">
-                                </div>
-                                <div class="info_box">
-                                    <div class="brand">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <p class="name">TEST</p>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <em class="num">
-                                            100,000
-                                        </em>
-                                        <span class="won">원</span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- 첫 제품-->
-                    <div class="product_list list_frist">
-                        <div class="product_item">
-                            <a href="#" class="item_inner">
-                                <div class="product">
-                                    <img src="./img/main/1.jpg" alt="" class="product_img">
-                                </div>
-                                <div class="info_box">
-                                    <div class="brand">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <p class="name">TEST</p>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <em class="num">
-                                            100,000
-                                        </em>
-                                        <span class="won">원</span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-
-                    <!--프로그래밍 제품-->
-                    <div class="product_list list_frist">
-                        <div class="product_item">
-                            <a href="#" class="item_inner">
-                                <div class="product">
-                                    <img src="" alt="" class="product_img">
-                                </div>
-                                <div class="info_box">
-                                    <div class="brand">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <p class="name">TEST</p>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <em class="num">
-                                            200,000
-                                        </em>
-                                        <span class="won">원</span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+				</c:forEach>
 
 
 
@@ -416,22 +225,24 @@
 
                 <!-- 제품박스 -->
                 <div class="product_list_wrap">
+                    <c:forEach items="${list3 }" var="list3">
+					<!-- 첫 제품-->
                     <div class="product_list list_frist">
                         <div class="product_item">
-                            <a href="#" class="item_inner">
+                            <a href="product.do?command=detail&ptno=${list3.product_no }" class="item_inner">
                                 <div class="product">
-                                    <img src="" alt="" class="product_img">
+                                    <img src="upload/${list3.ptimg_name }${list3.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
-                                        <p>브랜드</p>
+                                        <p>${list3.product_brand }</p>
                                     </div>
-                                    <p class="name">TEST</p>
+                                    <pre class="name">${list3.product_title }</pre>
                                 </div>
                                 <div class="price">
                                     <div class="amount">
                                         <em class="num">
-                                            100,000
+                                            ${list3.product_price }
                                         </em>
                                         <span class="won">원</span>
                                     </div>
@@ -443,6 +254,7 @@
                             </a>
                         </div>
                     </div>
+					</c:forEach>
                 </div>
 
                 <!-- 더보기 -->
@@ -479,22 +291,24 @@
 
                 <!-- 제품박스 -->
                 <div class="product_list_wrap">
+                    <c:forEach items="${list4 }" var="list4">
+					<!-- 첫 제품-->
                     <div class="product_list list_frist">
                         <div class="product_item">
-                            <a href="#" class="item_inner">
+                            <a href="product.do?command=detail&ptno=${list4.product_no }" class="item_inner">
                                 <div class="product">
-                                    <img src="" alt="" class="product_img">
+                                    <img src="upload/${list4.ptimg_name }${list4.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
-                                        <p>브랜드</p>
+                                        <p>${list4.product_brand }</p>
                                     </div>
-                                    <p class="name">TEST</p>
+                                    <pre class="name">${list4.product_title }</pre>
                                 </div>
                                 <div class="price">
                                     <div class="amount">
                                         <em class="num">
-                                            100,000
+                                            ${list4.product_price }
                                         </em>
                                         <span class="won">원</span>
                                     </div>
@@ -506,6 +320,7 @@
                             </a>
                         </div>
                     </div>
+					</c:forEach>
                 </div>
 
                 <!-- 더보기 -->
@@ -543,22 +358,24 @@
 
                 <!-- 제품박스 -->
                 <div class="product_list_wrap">
+                    <c:forEach items="${list5 }" var="list5">
+					<!-- 첫 제품-->
                     <div class="product_list list_frist">
                         <div class="product_item">
-                            <a href="#" class="item_inner">
+                            <a href="product.do?command=detail&ptno=${list5.product_no }" class="item_inner">
                                 <div class="product">
-                                    <img src="" alt="" class="product_img">
+                                    <img src="upload/${list5.ptimg_name }${list5.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
-                                        <p>브랜드</p>
+                                        <p>${list5.product_brand }</p>
                                     </div>
-                                    <p class="name">TEST</p>
+                                    <pre class="name">${list5.product_title }</pre>
                                 </div>
                                 <div class="price">
                                     <div class="amount">
                                         <em class="num">
-                                            100,000
+                                            ${list5.product_price }
                                         </em>
                                         <span class="won">원</span>
                                     </div>
@@ -570,6 +387,7 @@
                             </a>
                         </div>
                     </div>
+					</c:forEach>
                 </div>
 
                 <!-- 더보기 -->

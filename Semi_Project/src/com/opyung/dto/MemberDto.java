@@ -12,6 +12,8 @@ public class MemberDto {
 	private String mb_email;
 	private String mb_phone;
 	private String mb_addr;
+	private String mb_addr_latitude;
+	private String mb_addr_longitude;
 	private String mb_able;
 	private String mb_role;
 	
@@ -31,8 +33,8 @@ public class MemberDto {
 
 	//매개변수 생성자
 	public MemberDto(int mb_no, String mb_id, String mb_pw, String mb_name, String mb_email, String mb_phone,
-			String mb_addr, String mb_able, String mb_role, int bank_no, int bank_id, String bank_account,
-			int likept_memberNo, int likept_productNo) {
+			String mb_addr, String mb_addr_latitude, String mb_addr_longitude, String mb_able, String mb_role,
+			int bank_no, int bank_id, String bank_account, int likept_memberNo, int likept_productNo) {
 		super();
 		this.mb_no = mb_no;
 		this.mb_id = mb_id;
@@ -41,6 +43,8 @@ public class MemberDto {
 		this.mb_email = mb_email;
 		this.mb_phone = mb_phone;
 		this.mb_addr = mb_addr;
+		this.mb_addr_latitude = mb_addr_latitude;
+		this.mb_addr_longitude = mb_addr_longitude;
 		this.mb_able = mb_able;
 		this.mb_role = mb_role;
 		this.bank_no = bank_no;
@@ -108,6 +112,22 @@ public class MemberDto {
 		this.mb_addr = mb_addr;
 	}
 
+	public String getMb_addr_latitude() {
+		return mb_addr_latitude;
+	}
+
+	public void setMb_addr_latitude(String mb_addr_latitude) {
+		this.mb_addr_latitude = mb_addr_latitude;
+	}
+
+	public String getMb_addr_longitude() {
+		return mb_addr_longitude;
+	}
+
+	public void setMb_addr_longitude(String mb_addr_longitude) {
+		this.mb_addr_longitude = mb_addr_longitude;
+	}
+
 	public String getMb_able() {
 		return mb_able;
 	}
@@ -163,6 +183,7 @@ public class MemberDto {
 	public void setLikept_productNo(int likept_productNo) {
 		this.likept_productNo = likept_productNo;
 	}
+
 	
 	
 }

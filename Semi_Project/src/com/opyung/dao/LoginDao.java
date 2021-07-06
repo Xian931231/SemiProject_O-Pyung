@@ -54,7 +54,7 @@ public class LoginDao extends JDBCTemplate{
 		PreparedStatement pstm = null;
 		int res = 0;
 		
-		String sql = "INSERT INTO MEMBERBOARD VALUES(MEMBERSQ.NEXTVAL,?,?,?,?,?,?,'Y','USER')";
+		String sql = " INSERT INTO MEMBERBOARD VALUES(MEMBERSQ.NEXTVAL,?,?,?,?,?,?,?,?,'Y','USER') ";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -64,17 +64,18 @@ public class LoginDao extends JDBCTemplate{
 			pstm.setString(4, memdto.getMb_email());
 			pstm.setString(5, memdto.getMb_phone());
 			pstm.setString(6, memdto.getMb_addr());
+			pstm.setString(7, memdto.getMb_addr_latitude());
+			pstm.setString(8, memdto.getMb_addr_longitude());
 			System.out.println("03" + sql);
 			
 			res = pstm.executeUpdate();
 			System.out.println("04");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("3/4 error");
 			e.printStackTrace();
 		}finally {
 			close(pstm);
 		}
-		
 		
 		return res;
 	}
