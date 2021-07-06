@@ -27,33 +27,41 @@
     	$(".content_01").css("display","none");
         $(".content_02").css("display","none");
         $(".content_03").css("display","none");
+        $(".content_04").css("display","none");
+        
         $(".side_maintitle").click(function(){
         	$(".content_main").show();
             $(".content_01").hide();
             $(".content_02").hide();
             $(".content_03").hide();
+            $(".content_04").hide();
         });
+        
         $("#report").click(function() {
            $(".content_main").hide();
            $(".content_01").hide();
            $(".content_02").show();
            $(".content_03").hide();
-           
+           $(".content_04").hide();
 
         });
+        
         $("#transactionStatus").click(function() {
         	$(".content_main").hide();
             $(".content_01").hide();
             $(".content_02").hide();
             $(".content_03").show();
+            $(".content_04").hide();
           
 
         });
+        
         $("#userinfo").click(function(){
         	$(".content_main").hide();
             $(".content_01").show();
             $(".content_02").hide();
             $(".content_03").hide();
+            $(".content_04").hide();
         });
         
        $("#addbnt1").click(function(){
@@ -61,6 +69,7 @@
            $(".content_01").hide();
            $(".content_02").show();
            $(".content_03").hide();
+           $(".content_04").hide();
        });
        
        $("#addbnt2").click(function(){
@@ -68,7 +77,17 @@
            $(".content_01").hide();
            $(".content_02").hide();
            $(".content_03").show();
+           $(".content_04").hide();
        });
+       
+       $("#noticeWrite").click(function() {
+           $(".content_main").hide();
+           $(".content_01").hide();
+           $(".content_02").hide();
+           $(".content_03").hide();
+           $(".content_04").show();
+
+        });
         
         $("#bl_btn").click(function(){
            var con = confirm("정말 블랙처리 하시겠습니까?");
@@ -99,6 +118,7 @@
                 <li class="side_li" id="userinfo"><a href="#">유저정보</a></li>
                 <li class="side_li" id="report"><a href="#">신고</a></li>
                 <li class="side_li" id="transactionStatus"><a href="#">거래상태</a></li>
+                <li class="side_li" id="noticeWrite"><a href="#">공지사항</a></li>
             </ul>
         </div>
         	<div class="content_main">
@@ -392,6 +412,41 @@
             </div>
             </div>
             
+            <!-- 공지사항 글쓰기 -->
+       <form action="notice.do" method="post">
+       <input type="hidden" name="command" value="noticewrite">
+       <div class="content_04">
+            	
+       <h2>공지사항 글쓰기</h2>
+       
+       <hr>
+       <br>
+            	
+        <div class="noticeBoard">
+		<table>
+			<tr>
+				<th>작성자</th>
+				<td><input type="text" name="id" style="width: 435px;"></td>
+			</tr>
+			<tr>
+				<th>게시글 제목</th>
+				<td><input type="text" name="title" style="width: 435px;"></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td><textarea rows="10" cols="60" name="content"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="작성">
+			</tr>
+		</table>
+
+    </div>
+	  
+     </div>  
+      </form> 
+     
         </div>
         
     
