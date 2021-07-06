@@ -38,7 +38,7 @@
 		<%
 			}
 		%>
-		<a href="main.do?command=notice">고객센터</a>
+		<a href="notice.do?command=noticelist">고객센터</a>
 		<a href="main.do?command=mypage">마이페이지</a>
 		<%
 			if(id == null){

@@ -118,3 +118,21 @@ hr{
     }
 
 }
+
+/* notice detail */
+.content_date{
+    font-size: 12px;
+}
+
+.content_title{
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.content_content{
+    font-size: 14px;
+    background-color: whitesmoke;
+    padding: 20px;
+    margin-top: 20px;
+}
+
