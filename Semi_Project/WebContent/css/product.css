@@ -143,8 +143,14 @@
 
   .product_detail_info{
       min-height: 300px;
+      padding-bottom : 5rem;
       border: 1px solid rgba(0, 0, 0, 0.1);
       
+  }
+  
+  .product_detail_info img{
+  	object-fit: cover;
+    max-width: 100%;
   }
 
   .check_img img{
