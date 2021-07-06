@@ -49,7 +49,7 @@
             <div class="content">
                 <div class="row">
                     <div class="col">
-                        <h3>제품명</h3>
+                        <h3>${ptdto.product_title }</h3>
                         <hr>
                         <div class="userinfo">
                             <p><b>${ptdto.product_id }</b></p>
@@ -68,17 +68,21 @@
                         <h4>${ptdto.product_price }원</h4>
                     </div>
                 </div>
-            
-            
-                <div class="state">
-                    <div class="btns">
-                        <button class="btn btn-info btn-lg text-white">관심상품</button>
-                        <input type="submit" class="btn btn-primary btn-lg" value="구매신청">                        
-                    </div>
-                    <div class="btns">
+            	<div class="state">
+            	<c:choose>
+            		<c:when test="${ptdto.product_id eq id }">
+            			<div class="btns">
                     	<button type="button" class="btn btn-secondary btn-lg " onclick="location.href='product.do?command=delete&ptno=${ptdto.product_no}'">삭제</button>
                     	<button type="button" class="btn btn-primary btn-lg" onclick="location.href='product.do?command=updateform&ptno=${ptdto.product_no}'">수정</button>
-                    </div>
+                    	</div>
+            		</c:when>
+            		<c:otherwise>
+            			<div class="btns">
+                        <button class="btn btn-info btn-lg text-white">관심상품</button>
+                        <input type="submit" class="btn btn-primary btn-lg" value="구매신청">                        
+                    	</div>
+            		</c:otherwise>
+            	</c:choose>
                 </div>
         </div>
 

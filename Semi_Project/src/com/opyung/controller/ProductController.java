@@ -158,38 +158,36 @@ public class ProductController extends HttpServlet {
 		                    
 		                }
 		            }//반복끝
+		            ProductBoardDto dto = new ProductBoardDto();
+	                dto.setProduct_no(product_no);
+	                dto.setProduct_title(title);
+	                dto.setProduct_category(category);
+	                dto.setProduct_price(price);
+	                dto.setProduct_brand(brand);
+	                dto.setProduct_addr(location);
+	                dto.setProduct_new(newvar);
+	                dto.setProduct_content(content);
+	                dto.setProduct_id(id);
+	                dto.setPtimg_productNo(product_no);
+	                dto.setPtimg_size(size);
+	                dto.setPtimg_name(imgname);
+	                dto.setPtimg_type(type);
+	                dto.setPtimg_src(saveDir);
+	                
+	                int res = biz.insert(dto);
+	                
+	                if(res>0) {
+	                	int res2 = biz.insertImg(dto);
+	                	if(res2>0) {
+	                		System.out.println("이미지성공");
+	                		response.sendRedirect("product.do?command=detail&ptno="+product_no);
+	                	}else {
+	                		System.out.println("이미지 실패");
+	                	}
+	                }else {
+	                	System.out.println("실패");
+	                }
 		        }
-                
-                ProductBoardDto dto = new ProductBoardDto();
-                dto.setProduct_no(product_no);
-                dto.setProduct_title(title);
-                dto.setProduct_category(category);
-                dto.setProduct_price(price);
-                dto.setProduct_brand(brand);
-                dto.setProduct_addr(location);
-                dto.setProduct_new(newvar);
-                dto.setProduct_content(content);
-                dto.setProduct_id(id);
-                dto.setPtimg_productNo(product_no);
-                dto.setPtimg_size(size);
-                dto.setPtimg_name(imgname);
-                dto.setPtimg_type(type);
-                dto.setPtimg_src(saveDir);
-                
-                int res = biz.insert(dto);
-                
-                if(res>0) {
-                	int res2 = biz.insertImg(dto);
-                	if(res2>0) {
-                		System.out.println("이미지성공");
-                		response.sendRedirect("product.do?command=detail&ptno="+product_no);
-                	}else {
-                		System.out.println("이미지 실패");
-                	}
-                }else {
-                	System.out.println("실패");
-                }
-                
                
 		    } catch ( Exception e ) { System.out.println(e); }
 		
@@ -313,28 +311,26 @@ public class ProductController extends HttpServlet {
 		                    
 		                }
 		            }//반복끝
+		            dto.setProduct_title(title);
+	                dto.setProduct_category(category);
+	                dto.setProduct_price(price);
+	                dto.setProduct_brand(brand);
+	                dto.setProduct_addr(location);
+	                dto.setProduct_new(newvar);
+	                dto.setProduct_content(content);
+	                dto.setProduct_id(id);
+	                
+	                int res = biz.update(dto);
+	                
+	                if(res>0) {
+	                	System.out.println("수정성공");
+	                	response.sendRedirect("product.do?command=detail&ptno="+ptno);
+	                }else {
+	                	System.out.println("수정 실패");
+	                	response.sendRedirect("product.do?command=detail&ptno="+ptno);
+	                }
 		        }
                 
-                
-                dto.setProduct_title(title);
-                dto.setProduct_category(category);
-                dto.setProduct_price(price);
-                dto.setProduct_brand(brand);
-                dto.setProduct_addr(location);
-                dto.setProduct_new(newvar);
-                dto.setProduct_content(content);
-                dto.setProduct_id(id);
-                
-                int res = biz.update(dto);
-                
-                if(res>0) {
-                	System.out.println("수정성공");
-                	response.sendRedirect("product.do?command=detail&ptno="+ptno);
-                }else {
-                	System.out.println("수정 실패");
-                	response.sendRedirect("product.do?command=detail&ptno="+ptno);
-                }
-               
 		    } catch ( Exception e ) { System.out.println(e); }
 		
         //상품 삭제	
