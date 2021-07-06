@@ -2,7 +2,9 @@ package com.opyung.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,6 +33,8 @@ public class NoticeController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("[command:"+command+"]");
 		
+		NoticeBiz biz = new NoticeBiz();
+		
 		
 		//입력한 값 가져오기
 		if(command.equals("noticewrite")) {
@@ -46,20 +50,69 @@ public class NoticeController extends HttpServlet {
 			dto.setNotice_content(content);
 			dto.setNotice_id(id);
 			
-			
-			
-			NoticeBiz biz = new NoticeBiz();
-			
 			boolean res =  biz.insert(dto);
 			
 			if(res) {
-				jsResponse("글 작성 성공","notice.do?command=noticeBoard",response);
+				jsResponse("글 작성 성공","notice.do?command=noticelist",response);
 			}else {
 				jsResponse("글 작성 실패","notice.do?command=noticewrite",response);
 			}
 			
 		}else if(command.equals("noticedetail")) {
 			
+			int notice_no = Integer.parseInt(request.getParameter("notice_no"));
+			
+			NoticeBoardDto dto = biz.selectOne(notice_no);
+			
+			request.setAttribute("dto", dto);
+
+			dispatch("notice_detail.jsp",request,response);
+			
+		}else if(command.equals("noticelist")) {
+			
+			List<NoticeBoardDto> list = biz.selectAll();
+			
+			request.setAttribute("list", list);
+			dispatch("notice.jsp",request,response);
+			
+		}else if(command.equals("noticedelete")) {
+			
+			int notice_no = Integer.parseInt(request.getParameter("notice_no"));
+			
+			boolean res = biz.delete(notice_no);
+			
+			if(res) {
+				jsResponse("글 삭제 성공", "notice.do?command=noticelist", response);
+			}else {
+				jsResponse("글 삭제 실패", "notice.do?command=noticedetail", response);
+			}
+			
+		}else if(command.equals("updateform")) {
+			
+			int notice_no = Integer.parseInt(request.getParameter("notice_no"));
+			
+			NoticeBoardDto dto = biz.selectOne(notice_no);
+			
+			request.setAttribute("dto", dto);
+			
+			dispatch("notice_update.jsp", request, response);
+			
+		}else if(command.equals("noticeupdate")) {
+			
+			int notice_no = Integer.parseInt(request.getParameter("notice_no"));
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			NoticeBoardDto dto = new NoticeBoardDto(notice_no,title,content);
+			
+			boolean res = biz.update(dto);
+			
+			if(res) {
+				jsResponse("수정 완료", "notice.do?command=noticelist&notice_no="+notice_no, response);
+			}else {
+				jsResponse("수정 실패", "notice.do?command=noticelist&notice_no="+notice_no, response);
+			}
+		
 		}
 	
 	}
@@ -74,6 +127,11 @@ public class NoticeController extends HttpServlet {
 		out.print(s);
 	}
 	
+	private void dispatch(String url, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		RequestDispatcher dispatch = request.getRequestDispatcher(url);
+		dispatch.forward(request,response);
+	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

@@ -12,6 +12,8 @@
     	response.setContentType("text/html; charset=UTF-8");
     %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +46,7 @@
 	<%@ include file="header/header.jsp" %> 
 
    	<!-- header 공간 확보 -->
-   	<form action="notice.do?command=noticeBoard" method="post">
+   	<form action="notice.do?command=noticelist" method="post">
 	<div id="header_space" style="background-color: black; width: 100%; height: 100px"></div>
     
     <div id="main">
@@ -63,9 +65,16 @@
             </h2>
             <hr>
             <ul class="content_ul">
-                <li class="content_li"><a href="#">[공지사항]공지사항공지사항</a></li>
-                <li class="content_li"><a href="#">[공지사항]공지사항공지사항공지사항공지사항공지사항</a></li>
-                
+            	<c:choose>
+            		<c:when test="${empty list }">
+            			<p class="content_li"><strong>작성된 글이 없어요... 곧 올리실거에요</strong></p>
+            		</c:when>
+            		<c:otherwise>
+            			<c:forEach var="dto" items="${list }">
+                	<li class="content_li"><a href="notice.do?command=noticedetail&notice_no=${dto.notice_no }">${dto.notice_title }</a></li>
+                		</c:forEach>
+                	</c:otherwise>
+            	</c:choose>
             </ul>
             </div>
             <div class="content_02">
