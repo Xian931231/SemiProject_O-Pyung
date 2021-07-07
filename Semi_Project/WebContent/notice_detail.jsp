@@ -85,15 +85,11 @@
                 %>
                 	 <input type="button" value="수정" onclick="location.href='notice.do?command=updateform&notice_no=${dto.notice_no}'">
                 	 <input type="button" value="삭제" onclick="location.href='notice.do?command=noticedelete&notice_no=${dto.notice_no}'">
-                	 <input type="button" value="목록으로" onclick="location.href='notice.do?command=noticelist'">
+                	 
                 <%  		
-                	}else{
-                %>
-                	 <input type="button" value="목록으로" onclick="location.href='notice.do?command=noticelist'">
-                <% 		
                 	}
                 %>
-				
+					<input type="button" value="목록으로" onclick="location.href='notice.do?command=noticelist'">
             </div>
             <div class="content_02">
                 <h2>검수 기준</h2>
