@@ -37,6 +37,7 @@ public class DealController extends HttpServlet {
 		DealBiz biz = new DealBiz();
 		ProductBiz ptBiz = new ProductBiz();
 		MemberinfoBiz memBiz = new MemberinfoBiz();
+		
 		//구매요청왔을시 테이블 추가
 		if(command.equals("insert")) {
 			System.out.println("insert 접속");

@@ -6,7 +6,9 @@
 <!-- 인코딩 처리 -->    
 <% request.setCharacterEncoding("UTF-8"); %>    
 <% response.setContentType("text/html; charset=UTF-8"); %>    
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,13 +119,13 @@
 	                    
 	                 	<!-- 지도 타입 컨트롤을 지도에 표시합니다 -->
 	                    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-	                    
-	                    
-	                    //유저1 좌표
+						
+
+	                    //유저1 좌표(구매자)
 	                	var user1_latitude = "37.49909512221489";
 	                	var user1_longitude = "127.03286608288428";
 	
-	                	//유저2 좌표
+	                	//유저2 좌표(판매자)
 	                	var user2_latitude = "37.500606922890086";
 	                	var user2_longitude = "127.03676965260385";
 	                	
