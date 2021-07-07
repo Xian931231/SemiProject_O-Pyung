@@ -120,20 +120,19 @@
 	                 	//지도 타입 컨트롤을 지도에 표시합니다 
 	                    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 						
-
 	                    //유저1 좌표(구매자)
-	                	var user1_latitude = "37.49909512221489";
-	                	var user1_longitude = "127.03286608288428";
-	
+	                	var user1_latitude = ${biddto.mb_addr_latitude };
+	                	var user1_longitude = ${biddto.mb_addr_longitude };
+	                	
 	                	//유저2 좌표(판매자)
-	                	var user2_latitude = "37.500606922890086";
-	                	var user2_longitude = "127.03676965260385";
+	                	var user2_latitude = ${ptdto.product_addr_latitude };
+	                	var user2_longitude = ${ptdto.product_addr_longitude };
 	                	
 	                	//중간좌표
 	                    var middle_latitude = (parseFloat(user1_latitude) + parseFloat(user2_latitude)) / 2; 
 	                    var middle_longitude = (parseFloat(user1_longitude) + parseFloat(user2_longitude)) / 2;
 	                    
-	                    <!-- 유저1과 유저2의 위치를 기준으로 전체 맵 보여주기 -->
+	                    //유저1과 유저2의 위치를 기준으로 전체 맵 보여주기 
 	                    var points = [
 	                        new kakao.maps.LatLng(user1_latitude, user1_longitude),
 	                        new kakao.maps.LatLng(user2_latitude, user2_longitude)
@@ -157,9 +156,9 @@
 					 	}
 	                    
 	                    //마커 위에 유저 1,2 표시하기
-	                    var iwContent0 = '<div style="font-size:13px; margin-top:27px; background-color: white;">USER1</div>', 
+	                    var iwContent0 = '<div style="font-size:13px; margin-top:27px; background-color: white;">'+'${biddto.mb_id }'+'</div>', 
 	                    	iwPosition0 = new kakao.maps.LatLng(user1_latitude, user1_longitude);
-	                    var iwContent1 = '<div style="font-size:13px; margin-top:27px; background-color: white;">USER2</div>', 
+	                    var iwContent1 = '<div style="font-size:13px; margin-top:27px; background-color: white;">'+'${siddto.mb_id }'+'</div>', 
 	                    	iwPosition1 = new kakao.maps.LatLng(user2_latitude, user2_longitude);
 	                    
 	                    var customOverlay0 = new kakao.maps.CustomOverlay({

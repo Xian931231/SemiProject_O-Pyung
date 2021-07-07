@@ -118,9 +118,10 @@
 <%
 		List<Map<String, Object>> items = (List<Map<String, Object>>)request.getAttribute("items");
 		
-		for(Map<String, Object> item : items) {
+		for(int i=0; i<4; i++) {
 			
-			//System.out.println(item.get("bloggername"));
+			Map<String, Object> item = items.get(i);
+			
 %>
 			<div class="bloggername" name="bloggername">
 				<p>blogger: <%=item.get("bloggername")%></p>
