@@ -115,6 +115,8 @@
                 희망 거래지역:
                 <br>
                 <input type="text" class="deal_location form-control" name="location" value="${ptdto.product_addr }" placeholder="시,구 등의 간략한 위치 기재">
+           		<input type="hidden"  name="latitude" value="${ptdto.product_addr_latitude }">
+				<input type="hidden"  name="longitude" value="${ptdto.product_addr_longitude }">
             </div>
             <hr>
 
