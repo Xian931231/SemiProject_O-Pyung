@@ -40,7 +40,6 @@
 
             <!-- title 영역 -->
 
-            <!-- form tag 시작 -->
 
 
             <!-- image 영역 -->
@@ -84,7 +83,7 @@
             		<c:otherwise>
             			<div class="btns">
                         <button class="btn btn-info btn-lg text-white">관심상품</button>
-                        <input type="submit" class="btn btn-primary btn-lg" value="구매신청">                        
+                        <button class="btn btn-primary btn-lg" onclick="location.href='deal.do?command=insert&ptno=${ptdto.product_no}&id=${id }'">구매신청</button>                        
                     	</div>
             		</c:otherwise>
             	</c:choose>

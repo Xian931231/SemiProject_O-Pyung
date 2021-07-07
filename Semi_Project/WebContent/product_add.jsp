@@ -30,6 +30,38 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/product_add.js" defer></script>
     <title>제품등록</title>
+
+	<!-- 카카오맵 api 추가 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8582c94d0c3acdae42928406badb7847&libraries=services"></script> 
+	
+	<script type="text/javascript">
+		
+		$(function(){
+			
+			$("#address").change(function(){
+				
+				var addr = $(this).val();
+				
+				var geocoder = new kakao.maps.services.Geocoder();
+				
+				var callback = function(result, status) {
+			    	if (status === kakao.maps.services.Status.OK) {
+						document.getElementById("latitude").value = result[0].y;
+						document.getElementById("longitude").value = result[0].x;
+			    	}
+				};
+				
+				geocoder.addressSearch(addr, callback);
+				
+			});
+			
+		});
+		
+	
+	</script>
+	
+
+
 </head>
 <body>
 	<!-- header 추가 -->
@@ -110,7 +142,10 @@
             <div class="content_location">
                 희망 거래지역:
                 <br>
-                <input type="text" class="deal_location form-control" name="location" placeholder="시,구 등의 간략한 위치 기재">
+                <input type="text" class="deal_location form-control" id="address" name="location" placeholder="거래를 희망하는 위치를 적어주세요">
+				<input type="text" class="deal_location form-control" id="latitude" name="latitude">
+				<input type="text" class="deal_location form-control" id="longitude" name="longitude">
+
             </div>
             <hr>
 
@@ -156,61 +191,6 @@
             
         </div>
 
-        <!-- naver_blog -->
-        <div class="naver_blog" name="naver_blog">
-        
-            <div class="naver_blog_title">
-                <p>블로그 리뷰</p>
-            </div>
-
-            <div class="naver_blog_info">
-            <!-- 블로그 첫번째  -->
-            <hr>
-            <div class="bloggername" name="bloggername">
-                <p>파란멜의 꿈꾸는 블로그</p>
-                </div>
-
-            <div class="postdate" name="postdate">
-                22년전
-            </div>
-
-            <div class="bloggerlink" name="bloggerlink">
-                <a href="">블루투스 키보드 심플하게 사용하는 로지텍 K580 K380</a>
-            </div>
-
-            <div class="blog_img" name="blog_img">
-                <img src="/img/littledeep_puppy_style1.png" onerror="">
-            </div>
-
-            <div class="blog_info" name="blog_info">
-                <p>게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!!</p>
-            </div>
-            <hr>
-
-            <!-- 블로그 두번째  -->
-            <div class="bloggername" name="bloggername">
-            <p>파란멜의 꿈꾸는 블로그</p>
-            </div>
-
-            <div class="postdate" name="postdate">
-                22년전
-            </div>
-
-            <div class="bloggerlink" name="bloggerlink">
-                <a href="">블루투스 키보드 심플하게 사용하는 로지텍 K580 K380</a>
-            </div>
-
-            <div class="blog_img" name="blog_img">
-                <img src="/img/littledeep_puppy_style1.png" onerror="">
-            </div>
-
-            <div class="blog_info" name="blog_info">
-                <p>게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!!</p>
-            </div>
-            <hr>
-
-        </div>
-    </div>
 </div>
 
 

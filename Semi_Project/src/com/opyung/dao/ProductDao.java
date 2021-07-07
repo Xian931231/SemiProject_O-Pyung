@@ -65,15 +65,17 @@ public class ProductDao extends JDBCTemplate{
 				dto.setProduct_price(rs.getInt(4));
 				dto.setProduct_brand(rs.getString(5));
 				dto.setProduct_addr(rs.getString(6));
-				dto.setProduct_new(rs.getString(7));
-				dto.setProduct_content(rs.getString(8));
-				dto.setProduct_id(rs.getString(9));
-				dto.setProduct_date(rs.getDate(10));
-				dto.setProduct_status(rs.getString(11));
-				dto.setPtimg_src(rs.getString(14));
-				dto.setPtimg_name(rs.getString(15));
-				dto.setPtimg_type(rs.getString(16));
-				dto.setPtimg_size(rs.getInt(17));
+				dto.setProduct_addr_latitude(rs.getString(7));
+				dto.setProduct_addr_longitude(rs.getString(8));
+				dto.setProduct_new(rs.getString(9));
+				dto.setProduct_content(rs.getString(10));
+				dto.setProduct_id(rs.getString(11));
+				dto.setProduct_date(rs.getDate(12));
+				dto.setProduct_status(rs.getString(13));
+				dto.setPtimg_src(rs.getString(16));
+				dto.setPtimg_name(rs.getString(17));
+				dto.setPtimg_type(rs.getString(18));
+				dto.setPtimg_size(rs.getInt(19));
 				
 				res.add(dto);
 			}
@@ -111,15 +113,65 @@ public class ProductDao extends JDBCTemplate{
 				res.setProduct_price(rs.getInt(4));
 				res.setProduct_brand(rs.getString(5));
 				res.setProduct_addr(rs.getString(6));
-				res.setProduct_new(rs.getString(7));
-				res.setProduct_content(rs.getString(8));
-				res.setProduct_id(rs.getString(9));
-				res.setProduct_date(rs.getDate(10));
-				res.setProduct_status(rs.getString(11));
-				res.setPtimg_src(rs.getString(14));
-				res.setPtimg_name(rs.getString(15));
-				res.setPtimg_type(rs.getString(16));
-				res.setPtimg_size(rs.getInt(17));
+				res.setProduct_addr_latitude(rs.getString(7));
+				res.setProduct_addr_longitude(rs.getString(8));
+				res.setProduct_new(rs.getString(9));
+				res.setProduct_content(rs.getString(10));
+				res.setProduct_id(rs.getString(11));
+				res.setProduct_date(rs.getDate(12));
+				res.setProduct_status(rs.getString(13));
+				res.setPtimg_src(rs.getString(16));
+				res.setPtimg_name(rs.getString(17));
+				res.setPtimg_type(rs.getString(18));
+				res.setPtimg_size(rs.getInt(19));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		
+		return res;
+	}
+	
+	//특정 상품 목록 조회
+	public List<ProductBoardDto> selectAll(Connection con, String category) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
+		
+		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, category);
+			System.out.println("03" + sql);
+			
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				ProductBoardDto dto = new ProductBoardDto();
+				dto.setProduct_no(rs.getInt(1));
+				dto.setProduct_title(rs.getString(2));
+				dto.setProduct_category(rs.getString(3));
+				dto.setProduct_price(rs.getInt(4));
+				dto.setProduct_brand(rs.getString(5));
+				dto.setProduct_addr(rs.getString(6));
+				dto.setProduct_addr_latitude(rs.getString(7));
+				dto.setProduct_addr_longitude(rs.getString(8));
+				dto.setProduct_new(rs.getString(9));
+				dto.setProduct_content(rs.getString(10));
+				dto.setProduct_id(rs.getString(11));
+				dto.setProduct_date(rs.getDate(12));
+				dto.setProduct_status(rs.getString(13));
+				dto.setPtimg_src(rs.getString(16));
+				dto.setPtimg_name(rs.getString(17));
+				dto.setPtimg_type(rs.getString(18));
+				dto.setPtimg_size(rs.getInt(19));
+				
+				res.add(dto);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -137,7 +189,7 @@ public class ProductDao extends JDBCTemplate{
 	public int insert(Connection con, ProductBoardDto dto) {
 		PreparedStatement pstm = null;
 		int res=0;
-		String sql = "INSERT INTO PRODUCTBOARD VALUES(?,?,?,?,?,?,?,?,?,SYSDATE,'판매등록')";
+		String sql = "INSERT INTO PRODUCTBOARD VALUES(?,?,?,?,?,?,?,?,?,?,?,SYSDATE,'판매등록')";
 		
 	
 		try {
@@ -148,9 +200,11 @@ public class ProductDao extends JDBCTemplate{
 			pstm.setInt(4, dto.getProduct_price());
 			pstm.setString(5, dto.getProduct_brand());
 			pstm.setString(6, dto.getProduct_addr());
-			pstm.setString(7, dto.getProduct_new());
-			pstm.setString(8, dto.getProduct_content());
-			pstm.setString(9, dto.getProduct_id());
+			pstm.setString(7, dto.getProduct_addr_latitude());
+			pstm.setString(8, dto.getProduct_addr_longitude());
+			pstm.setString(9, dto.getProduct_new());
+			pstm.setString(10, dto.getProduct_content());
+			pstm.setString(11, dto.getProduct_id());
 			System.out.println("03" + sql);
 			
 			res = pstm.executeUpdate();
@@ -168,7 +222,7 @@ public class ProductDao extends JDBCTemplate{
 		PreparedStatement pstm = null;
 		int res = 0;
 		
-		String sql = "UPDATE PRODUCTBOARD SET PRODUCT_TITLE=?,PRODUCT_CATEGORY=?,PRODUCT_PRICE=?,PRODUCT_BRAND=?,PRODUCT_ADDR=?,PRODUCT_NEW=?,PRODUCT_CONTENT=? WHERE PRODUCT_NO=?";
+		String sql = "UPDATE PRODUCTBOARD SET PRODUCT_TITLE=?,PRODUCT_CATEGORY=?,PRODUCT_PRICE=?,PRODUCT_BRAND=?,PRODUCT_ADDR=?,PRODUCT_ADDR_LATITUDE=?,PRODUCT_ADDR_LONGITUDE=?,PRODUCT_NEW=?,PRODUCT_CONTENT=? WHERE PRODUCT_NO=?";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -177,9 +231,11 @@ public class ProductDao extends JDBCTemplate{
 			pstm.setInt(3, dto.getProduct_price());
 			pstm.setString(4, dto.getProduct_brand());
 			pstm.setString(5, dto.getProduct_addr());
-			pstm.setString(6, dto.getProduct_new());
-			pstm.setString(7, dto.getProduct_content());
-			pstm.setInt(8, dto.getProduct_no());
+			pstm.setString(6, dto.getProduct_addr_latitude());
+			pstm.setString(7, dto.getProduct_addr_longitude());
+			pstm.setString(8, dto.getProduct_new());
+			pstm.setString(9, dto.getProduct_content());
+			pstm.setInt(10, dto.getProduct_no());
 			System.out.println("03" + sql);
 			
 			res = pstm.executeUpdate();
@@ -276,6 +332,9 @@ public class ProductDao extends JDBCTemplate{
 		
 		return res;
 	}
+
+
+	
 
 	
 

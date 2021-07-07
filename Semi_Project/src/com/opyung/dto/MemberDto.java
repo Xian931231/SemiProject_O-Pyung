@@ -16,7 +16,9 @@ public class MemberDto {
 	private String mb_addr_longitude;
 	private String mb_able;
 	private String mb_role;
-	
+	private int mb_score;
+	private String mb_grade;
+
 	//BankBoard(계좌 테이블)
 	private int bank_no;
 	private int bank_id;
@@ -53,6 +55,8 @@ public class MemberDto {
 		this.likept_memberNo = likept_memberNo;
 		this.likept_productNo = likept_productNo;
 	}
+	
+	
 
 	
 	//getter & setter
@@ -183,7 +187,22 @@ public class MemberDto {
 	public void setLikept_productNo(int likept_productNo) {
 		this.likept_productNo = likept_productNo;
 	}
+	
+	public int getMb_score() {
+		return mb_score;
+	}
 
+	public void setMb_score(int mb_score) {
+		this.mb_score = mb_score;
+	}
+
+	public String getMb_grade() {
+		return mb_grade;
+	}
+
+	public void setMb_grade(String mb_grade) {
+		this.mb_grade = mb_grade;
+	}
 	
 	
 }
