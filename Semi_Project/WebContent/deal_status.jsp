@@ -32,7 +32,7 @@
     <script type="text/javascript">
 
     document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
+        var calendarEl = document.getElementById('calender');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
           headerToolbar: {
@@ -90,10 +90,12 @@
             <div class="status-img">
                 <img src="#" alt="">
             </div>
+            
             <h3>거래 일정</h3>
-            <div id="calendar">
+            <div id="calender">
             
             </div>
+            
             <h3>검수 내역</h3>
             <div class="checker">
                 <span>검수자 :</span>

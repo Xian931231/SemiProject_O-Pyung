@@ -75,10 +75,21 @@
                    
                 </div>
                 
-                <input type="button" value="수정" onclick="location.href='notice.do?command=updateform&notice_no=${dto.notice_no}'">
-               	<input type="button" value="삭제" onclick="location.href='notice.do?command=noticedelete&notice_no=${dto.notice_no}'">
-				<input type="button" value="목록으로" onclick="location.href='notice.do?command=noticelist'">
-				
+                
+                <%
+                
+                	//admin일 떄만 버튼 활성화
+                	String admin = (String)session.getAttribute("role");
+                
+                	if(admin.equals("ADMIN")){
+                %>
+                	 <input type="button" value="수정" onclick="location.href='notice.do?command=updateform&notice_no=${dto.notice_no}'">
+                	 <input type="button" value="삭제" onclick="location.href='notice.do?command=noticedelete&notice_no=${dto.notice_no}'">
+                	 
+                <%  		
+                	}
+                %>
+					<input type="button" value="목록으로" onclick="location.href='notice.do?command=noticelist'">
             </div>
             <div class="content_02">
                 <h2>검수 기준</h2>

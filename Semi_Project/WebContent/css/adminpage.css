@@ -22,8 +22,12 @@ a{
     text-decoration:none; color:black;
     text-decoration: none;
 }
+
+
+
 table, th, td{
     border: 1px solid #bcbcbc;
+    background-color: whitesmoke;
 }
 
 td{
@@ -43,8 +47,6 @@ td{
 .content_01,.content_02,.content_03{
 	margin-top: 50px;
 }
-
-
 
 .content_ul{
     padding: 0;
@@ -257,7 +259,24 @@ div {
 }
 
 .noticeBorad{
-	margin-top: 2px;
+	margin-top: 50px;
+	display: inline-block;
+}
+
+.boardsubmit{
+	margin-top: 20px;
+	text-align: center;
+	
+}
+
+.submit_btn{
+	
+	width: 100px;
+	height: 30px;
+	display: inline-block;
+	border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.3);
+	cursor: pointer;
 }
 
 @media (max-width:600px){ /*가로 너비가 600px 이하일 때 아래 스타일 적용*/

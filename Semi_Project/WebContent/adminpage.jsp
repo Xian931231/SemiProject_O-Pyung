@@ -418,9 +418,10 @@
             </div>
             
             <!-- 공지사항 글쓰기 -->
+       <div class="content_04" style="margin-top: 50px">
        <form action="notice.do" method="post">
        <input type="hidden" name="command" value="noticewrite">
-       <div class="content_04">
+      
             	
        <h2>공지사항 글쓰기</h2>
        
@@ -428,36 +429,29 @@
        <br>
             	
         <div class="noticeBoard">
-		<table>
+		<table style="border: 0">
 			<tr>
-				<th>작성자</th>
-				<td><input type="text" name="id" style="width: 435px;"></td>
+				<th style="height: 50px;border: 0; font-weight: 150px">게시글 제목</th>
+				<td style="border: 0"><input type="text" name="title" style="width: 990px; height: 40px; font-size: 16px" placeholder="제목을 입력해주세요" ></td>
 			</tr>
 			<tr>
-				<th>게시글 제목</th>
-				<td><input type="text" name="title" style="width: 435px;"></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td><textarea name="content" id="ckeditor4"></textarea>
+				<th style="border: 0">내용</th>
+				<td style="border: 0"><textarea name="content" id="ckeditor4"></textarea>
 				<script type="text/javascript">
  					CKEDITOR.replace('ckeditor4'
                 					, {height: 500});
 				</script>
 				</td>
-				
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="submit" value="작성">
 			</tr>
 		</table>
-
+			
+			<div class="boardsubmit">
+			<input class="submit_btn" type="submit" value="작성">
+    		</div>
     </div>
-	  
+	  </form>
      </div>  
-      </form> 
-     
+       
         </div>
         
     
