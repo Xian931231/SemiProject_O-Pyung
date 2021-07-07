@@ -119,10 +119,10 @@
 	                    
 	                 	<!-- 지도 타입 컨트롤을 지도에 표시합니다 -->
 	                    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-						
+					
 
 	                    //유저1 좌표(구매자)
-	                	var user1_latitude = "37.49909512221489";
+	                	var user1_latitude = '${biddto.mb_}';
 	                	var user1_longitude = "127.03286608288428";
 	
 	                	//유저2 좌표(판매자)
