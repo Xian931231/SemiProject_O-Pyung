@@ -20,11 +20,11 @@ CREATE TABLE GRADE(
 	GRADE_NAME VARCHAR2(100) NOT NULL,
 	GRADE_MIN NUMBER NOT NULL,
 	GRADE_MAX NUMBER NOT NULL
-<<<<<<< HEAD:Semi_Project/build/classes/db/semiproject.sql
+
 
 );
 
-=======
+
 );
 
 /*등급 테이블 값 추가*/
@@ -211,7 +211,7 @@ DROP SEQUENCE PTIMGSQ;
 DROP SEQUENCE REPORTSQ;
 DROP SEQUENCE MEMBERSQ;
 
-<<<<<<< HEAD:Semi_Project/build/classes/db/semiproject.sql
+
 
 
 INSERT INTO MEMBERBOARD(MB_NO,MB_ID,MB_PW,MB_NAME,MB_ROLE)
@@ -219,8 +219,7 @@ VALUES(0,'ADMIN','ADMIN','관리자','ADMIN');
 
 UPDATE MEMBERBOARD SET MB_ROLE='ADMIN' WHERE MB_ID = 'admin';
 
-=======
->>>>>>> 56f6757c957a5530b5282c673f698d4fd0da4b48:Semi_Project/src/db/semiProject.sql
+
 INSERT INTO noticeboard
 VALUES(1,'TEST','TEST중입니다','ADMIN1',SYSDATE,0);
 
