@@ -16,7 +16,7 @@ public class MemberinfoDao extends JDBCTemplate{
 		ResultSet rs = null;
 		MemberDto res = new MemberDto();
 		
-		String sql = "SELECT * FROM MEMBERBOARD WHERE MB_ID=? ";
+		String sql = "SELECT MEMBERBOARD.*,GRADE.GRADE_NAME FROM MEMBERBOARD,GRADE WHERE MB_SCORE BETWEEN GRADE_MIN AND GRADE_MAX AND MB_ID=? ";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -36,6 +36,10 @@ public class MemberinfoDao extends JDBCTemplate{
 				res.setMb_addr(rs.getString(7));
 				res.setMb_addr_latitude(rs.getString(8));
 				res.setMb_addr_longitude(rs.getString(9));
+				res.setMb_able(rs.getString(10));
+				res.setMb_role(rs.getString(11));
+				res.setMb_score(rs.getInt(12));
+				res.setMb_grade(rs.getString(13));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
