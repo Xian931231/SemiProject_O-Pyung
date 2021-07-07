@@ -54,7 +54,7 @@ public class LoginDao extends JDBCTemplate{
 		PreparedStatement pstm = null;
 		int res = 0;
 		
-		String sql = " INSERT INTO MEMBERBOARD VALUES(MEMBERSQ.NEXTVAL,?,?,?,?,?,?,?,?,'Y','USER') ";
+		String sql = " INSERT INTO MEMBERBOARD VALUES(MEMBERSQ.NEXTVAL,?,?,?,?,?,?,?,?,'Y','USER','0') ";
 		
 		try {
 			pstm = con.prepareStatement(sql);
