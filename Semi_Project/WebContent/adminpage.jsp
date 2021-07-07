@@ -429,7 +429,7 @@
 		<table>
 			<tr>
 				<th style="height: 50px">게시글 제목</th>
-				<td><input type="text" name="title" style="width: 600px; height: 30px; font-size: 15px" ></td>
+				<td><input type="text" name="title" style="width: 990px; height: 40px; font-size: 16px" placeholder="제목을 입력해주세요" ></td>
 			</tr>
 			<tr>
 				<th>내용</th>
