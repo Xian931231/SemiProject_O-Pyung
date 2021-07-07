@@ -80,9 +80,9 @@ ul {
 
 
 #content_area {
-    left: 700px;
-    top: 300px;
-    position: absolute;
+    left: 300px;
+    top: 200px;
+    position: relative;
 }
 
 #profile {

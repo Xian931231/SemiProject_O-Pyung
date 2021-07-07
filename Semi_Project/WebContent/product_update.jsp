@@ -33,6 +33,37 @@
     <script src="./jQuery/jquery-3.6.0.min.js"></script>
     
     <title>제품등록</title>
+    <!-- 카카오맵 api 추가 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8582c94d0c3acdae42928406badb7847&libraries=services"></script> 
+	
+	<script type="text/javascript">
+		
+		$(function(){
+			
+			$("#address").change(function(){
+				
+				var addr = $(this).val();
+				
+				var geocoder = new kakao.maps.services.Geocoder();
+				
+				var callback = function(result, status) {
+			    	if (status === kakao.maps.services.Status.OK) {
+						document.getElementById("latitude").value = result[0].y;
+						document.getElementById("longitude").value = result[0].x;
+			    	}else{
+			    		document.getElementById("latitude").value = "";
+						document.getElementById("longitude").value = " ";
+			    	}
+				};
+				
+				geocoder.addressSearch(addr, callback);
+				
+			});
+			
+		});
+		
+	
+	</script>
 </head>
 <body>
 	<!-- header 추가 -->
@@ -114,9 +145,9 @@
             <div class="content_location">
                 희망 거래지역:
                 <br>
-                <input type="text" class="deal_location form-control" name="location" value="${ptdto.product_addr }" placeholder="시,구 등의 간략한 위치 기재">
-           		<input type="hidden"  name="latitude" value="${ptdto.product_addr_latitude }">
-				<input type="hidden"  name="longitude" value="${ptdto.product_addr_longitude }">
+                <input type="text" class="deal_location form-control" id="address" name="location" value="${ptdto.product_addr }" placeholder="시,구 등의 간략한 위치 기재"><br>
+           		<input type="text" class="deal_location form-control" id="latitude" name="latitude" value="${ptdto.product_addr_latitude }">
+				<input type="text" class="deal_location form-control" id="longitude" name="longitude" value="${ptdto.product_addr_longitude }">
             </div>
             <hr>
 

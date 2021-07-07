@@ -10,7 +10,7 @@
 <%
     	response.setContentType("text/html; charset=UTF-8");
     %>    
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,21 +33,21 @@
 <body>
     <div id="mypage">
         <nav id="list">
-            <a href="" id="list_title"><h2>MY PAGE</h2></a>
+            <a href="memberinfo.do?command=mypage&id=ADMIN" id="list_title"><h2>MY PAGE</h2></a>
             <div id="shop_list">
                 <strong class="info">쇼핑 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="" class="menu_link">구매 내역</a>
+                        <a href="mypage_purchaseHistory.jsp" class="menu_link">구매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">판매 내역</a>
+                        <a href="mypage_sellHistory.jsp" class="menu_link">판매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">관심 상품</a>
+                        <a href="mypage_likeProduct.jsp" class="menu_link">관심 상품</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">거래 진행</a>
+                        <a href="mypage_dealProgress.jsp" class="menu_link">거래 진행</a>
                     </li>
                 </ul>
             </div>
@@ -56,10 +56,10 @@
                 <strong class="info">내 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="" class="menu_link">프로필 정보</a>
+                        <a href="memberinfo.do?command=memupdate&id=ADMIN" class="menu_link">프로필 정보</a>
                     </li>
                     <li class="menu_item">
-                        <a href="" class="menu_link">판매 정산 계좌</a>
+                        <a href="mypage_bank.jsp" class="menu_link">판매 정산 계좌</a>
                     </li>
                 </ul>
             </div>
@@ -72,8 +72,8 @@
                 <div id="profile">
                     <div id="my_profile">
                         <div id="profile_name">
-                            <h2 id="id">example</h2>
-                            <p id="email">example@google.com</p>
+                            <h2 id="id">${memdto.mb_id }</h2>
+                            <p id="email">${memdto.mb_email }</p>
                             <button>프로필 수정</button>
                         </div>
                     </div>
@@ -83,13 +83,13 @@
                             <p>회원등급</p>
                         </div>
                         <div id="grade_img">
-                            <img id="img" src="./img/mypage/등급 없음.png" alt="등급">
+                            <img id="img" src="./img/mypage/${memdto.mb_grade }.png" alt="등급">
                         </div>
                         <div id="grade_score">
                             <p>회원점수</p>
                         </div>
                         <div id="grade_num">
-                            <strong id="num">0</strong>
+                            <strong id="num">${memdto.mb_score }</strong>
                         </div>
                     </div>
                 </div>

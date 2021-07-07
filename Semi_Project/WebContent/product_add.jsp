@@ -48,6 +48,9 @@
 			    	if (status === kakao.maps.services.Status.OK) {
 						document.getElementById("latitude").value = result[0].y;
 						document.getElementById("longitude").value = result[0].x;
+			    	}else{
+			    		document.getElementById("latitude").value = "";
+						document.getElementById("longitude").value = "";
 			    	}
 				};
 				

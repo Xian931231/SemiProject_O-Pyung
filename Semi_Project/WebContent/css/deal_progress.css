@@ -1,0 +1,95 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+
+#deal_progress {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.5fr 3.5fr;
+}
+
+#list {
+    top: 200px;
+    width: 300px;
+    font-size: 20px;
+    position: absolute;
+}
+
+#list_title {
+    font-size: 25px;
+    text-decoration-line: none;
+    color: black;
+}
+
+#shop_list {
+    margin: 0;
+    padding: 0;
+}
+
+.info {
+    margin-bottom: 0px;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: -.16px;
+}
+
+ul,li, ol {
+    list-style: none;
+}
+
+ul {
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.menu_item{
+    margin-top: 8px;
+}
+
+.menu_link {
+    text-decoration-line: none;
+    font-size: 18px;
+    letter-spacing: -.15px;
+    color: gray;
+}
+
+#my_list {
+    margin-top: 40px;
+}
+
+#my_info{
+    margin-bottom: 0px;
+    display: inline-block;
+    font-size: 18px;
+    letter-spacing: -.16px;
+}
+
+#list_title:hover {
+    text-decoration-line: underline;
+}
+
+.menu_link:hover {
+    text-decoration-line: underline;
+}
+
+#TS_area{
+    left: 300px;
+    top: 200px;
+    width : 750px;
+    position: relative;
+}
+
+#TS_title{
+    text-align: left;
+    margin-bottom: 30px;
+    border-bottom: 3px solid black;
+}
+
+#product_click:hover {
+    text-decoration-line: underline;
+    color: gray;
+}

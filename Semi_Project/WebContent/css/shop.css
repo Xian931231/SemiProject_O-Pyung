@@ -136,6 +136,9 @@ ul{
 }
 /* main(content) ---------------------------------------*/
 
+.content-product{
+	padding : 3rem;
+}
 .product_img{
     width: 200px;
     height: 200px;
