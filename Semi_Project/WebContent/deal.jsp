@@ -103,37 +103,36 @@
 	                <script type="text/javascript">
 	                
 	                
-	                    var mapContainer = document.getElementById('map_area');		<!-- 지도를 담을 영역의 DOM 레퍼런스 -->
+	                    var mapContainer = document.getElementById('map_area');		//지도를 담을 영역의 DOM 레퍼런스
 	                    
-	                    <!-- 지도를 생성할 때 필요한 기본 옵션 -->
+	                    //지도를 생성할 때 필요한 기본 옵션
 	                    var mapOptions = {
-	                        center: new kakao.maps.LatLng(33.450701, 126.570667),			<!-- 지도의 중심좌표, 지도를 생성하는데 반드시 필요, 위도(latitude) , 경도(longitude) -->
-	                        level: 3														<!-- 지도의 레벨 (확대, 축소 정도)-->
+	                        center: new kakao.maps.LatLng(33.450701, 126.570667),			//지도의 중심좌표, 지도를 생성하는데 반드시 필요, 위도(latitude) , 경도(longitude)
+	                        level: 3														//지도의 레벨 (확대, 축소 정도)
 	                    };
 	                    
-	                    <!-- 지도 생성 및 객체 리턴 -->
+	                    //지도 생성 및 객체 리턴 
 	                    var map = new kakao.maps.Map(mapContainer, mapOptions);
 	                
-	                 	<!-- 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다 -->
+	                 	//일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다 
 	                    var mapTypeControl = new kakao.maps.MapTypeControl();
 	                    
-	                 	<!-- 지도 타입 컨트롤을 지도에 표시합니다 -->
+	                 	//지도 타입 컨트롤을 지도에 표시합니다 
 	                    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 						
-
 	                    //유저1 좌표(구매자)
-	                	var user1_latitude = "37.49909512221489";
-	                	var user1_longitude = "127.03286608288428";
-	
+	                	var user1_latitude = ${biddto.mb_addr_latitude };
+	                	var user1_longitude = ${biddto.mb_addr_longitude };
+	                	
 	                	//유저2 좌표(판매자)
-	                	var user2_latitude = "37.500606922890086";
-	                	var user2_longitude = "127.03676965260385";
+	                	var user2_latitude = ${ptdto.product_addr_latitude };
+	                	var user2_longitude = ${ptdto.product_addr_longitude };
 	                	
 	                	//중간좌표
 	                    var middle_latitude = (parseFloat(user1_latitude) + parseFloat(user2_latitude)) / 2; 
 	                    var middle_longitude = (parseFloat(user1_longitude) + parseFloat(user2_longitude)) / 2;
 	                    
-	                    <!-- 유저1과 유저2의 위치를 기준으로 전체 맵 보여주기 -->
+	                    //유저1과 유저2의 위치를 기준으로 전체 맵 보여주기 
 	                    var points = [
 	                        new kakao.maps.LatLng(user1_latitude, user1_longitude),
 	                        new kakao.maps.LatLng(user2_latitude, user2_longitude)
@@ -157,9 +156,9 @@
 					 	}
 	                    
 	                    //마커 위에 유저 1,2 표시하기
-	                    var iwContent0 = '<div style="font-size:13px; margin-top:27px; background-color: white;">USER1</div>', 
+	                    var iwContent0 = '<div style="font-size:13px; margin-top:27px; background-color: white;">'+'${biddto.mb_id }'+'</div>', 
 	                    	iwPosition0 = new kakao.maps.LatLng(user1_latitude, user1_longitude);
-	                    var iwContent1 = '<div style="font-size:13px; margin-top:27px; background-color: white;">USER2</div>', 
+	                    var iwContent1 = '<div style="font-size:13px; margin-top:27px; background-color: white;">'+'${siddto.mb_id }'+'</div>', 
 	                    	iwPosition1 = new kakao.maps.LatLng(user2_latitude, user2_longitude);
 	                    
 	                    var customOverlay0 = new kakao.maps.CustomOverlay({

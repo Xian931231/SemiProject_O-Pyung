@@ -17,9 +17,8 @@ public class MemberDto {
 	private String mb_able;
 	private String mb_role;
 	private int mb_score;
-
-
 	private String mb_grade;
+
 	//BankBoard(계좌 테이블)
 	private int bank_no;
 	private int bank_id;
@@ -56,6 +55,8 @@ public class MemberDto {
 		this.likept_memberNo = likept_memberNo;
 		this.likept_productNo = likept_productNo;
 	}
+	
+	
 
 	
 	//getter & setter

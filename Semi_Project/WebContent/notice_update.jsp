@@ -20,6 +20,7 @@
     <title>오늘도 평화로운</title>
     <link rel="icon" type="image/png" href="./img/notice/111.ico"/>
     <link rel="stylesheet" type="text/css" href="./css/notice.css">
+    <script src = "./ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
     $(function() {
@@ -71,13 +72,18 @@
                     </tr>
                     <tr>
                         <th>내용</th>
-                        <td><textarea rows="10" cols="60" name="content">${dto.notice_content }</textarea></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <input type="submit" value="수정">
+                        <td><textarea rows="10" cols="60" name="content" id="ckeditor4">${dto.notice_content }</textarea>
+                        	<script type="text/javascript">
+ 							CKEDITOR.replace('ckeditor4'
+                							, {height: 500});
+							</script>
+                        </td>
                     </tr>
                 </table>
+                
+                	<div class="boardsubmit">
+ 					<input type="submit" value="수정" class="submit_btn">
+            		</div>
             </div>
                 
       </form>
@@ -91,8 +97,6 @@
             </div>
         </div>
     </div>
-
-	</form>
 
     <div id="footer">푸터 영역입니다.</div>
 </body>
