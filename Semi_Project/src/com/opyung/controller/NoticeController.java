@@ -40,15 +40,13 @@ public class NoticeController extends HttpServlet {
 		if(command.equals("noticewrite")) {
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
-			String id = request.getParameter("id");
 			
 			//값 확인
-			System.out.println(id+","+title+","+content);
+			System.out.println(title+","+content);
 			
 			NoticeBoardDto dto = new NoticeBoardDto();
 			dto.setNotice_title(title);
 			dto.setNotice_content(content);
-			dto.setNotice_id(id);
 			
 			boolean res =  biz.insert(dto);
 			
@@ -65,6 +63,8 @@ public class NoticeController extends HttpServlet {
 			NoticeBoardDto dto = biz.selectOne(notice_no);
 			
 			request.setAttribute("dto", dto);
+			
+			session.setAttribute("role", session.getAttribute("role"));
 
 			dispatch("notice_detail.jsp",request,response);
 			
