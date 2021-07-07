@@ -6,7 +6,12 @@
    
 <!-- 인코딩 처리 -->    
 <% request.setCharacterEncoding("UTF-8"); %>    
-<% response.setContentType("text/html; charset=UTF-8"); %>       
+<% response.setContentType("text/html; charset=UTF-8"); %>   
+
+<!-- import -->
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -109,49 +114,34 @@
             <div class="naver_blog_info">
             <!-- 블로그 첫번째  -->
             <hr>
-            <div class="bloggername" name="bloggername">
-                <p>파란멜의 꿈꾸는 블로그</p>
-                </div>
-
-            <div class="postdate" name="postdate">
-                22년전
-            </div>
-
-            <div class="bloggerlink" name="bloggerlink">
-                <a href="">블루투스 키보드 심플하게 사용하는 로지텍 K580 K380</a>
-            </div>
-
-            <div class="blog_img" name="blog_img">
-                <img src="/img/littledeep_puppy_style1.png" onerror="">
-            </div>
-
-            <div class="blog_info" name="blog_info">
-                <p>게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!!</p>
-            </div>
-            <hr>
-
-            <!-- 블로그 두번째  -->
-            <div class="bloggername" name="bloggername">
-            <p>파란멜의 꿈꾸는 블로그</p>
-            </div>
-
-            <div class="postdate" name="postdate">
-                22년전
-            </div>
-
-            <div class="bloggerlink" name="bloggerlink">
-                <a href="">블루투스 키보드 심플하게 사용하는 로지텍 K580 K380</a>
-            </div>
-
-            <div class="blog_img" name="blog_img">
-                <img src="/img/littledeep_puppy_style1.png" onerror="">
-            </div>
-
-            <div class="blog_info" name="blog_info">
-                <p>게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!!</p>
-            </div>
-            <hr>
-
+            
+<%
+		List<Map<String, Object>> items = (List<Map<String, Object>>)request.getAttribute("items");
+		
+		for(Map<String, Object> item : items) {
+			
+			//System.out.println(item.get("bloggername"));
+%>
+			<div class="bloggername" name="bloggername">
+				<p>blogger: <%=item.get("bloggername")%></p>
+				</div>
+			
+			<div class="postdate" name="postdate">
+				<%=item.get("postdate")%>
+			</div>
+			
+			<div class="bloggerlink" name="bloggerlink">
+				<a href="<%=item.get("link")%>"><%=item.get("title") %></a>
+			</div>
+			
+			<div class="blog_info" name="blog_info">
+				<p><%=item.get("description") %></p>
+			</div>
+			<hr>
+<%
+		}
+%>     
+            
         </div>
     </div>
 </div>
