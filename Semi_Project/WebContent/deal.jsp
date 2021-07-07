@@ -103,21 +103,21 @@
 	                <script type="text/javascript">
 	                
 	                
-	                    var mapContainer = document.getElementById('map_area');		<!-- 지도를 담을 영역의 DOM 레퍼런스 -->
+	                    var mapContainer = document.getElementById('map_area');		//지도를 담을 영역의 DOM 레퍼런스
 	                    
-	                    <!-- 지도를 생성할 때 필요한 기본 옵션 -->
+	                    //지도를 생성할 때 필요한 기본 옵션
 	                    var mapOptions = {
-	                        center: new kakao.maps.LatLng(33.450701, 126.570667),			<!-- 지도의 중심좌표, 지도를 생성하는데 반드시 필요, 위도(latitude) , 경도(longitude) -->
-	                        level: 3														<!-- 지도의 레벨 (확대, 축소 정도)-->
+	                        center: new kakao.maps.LatLng(33.450701, 126.570667),			//지도의 중심좌표, 지도를 생성하는데 반드시 필요, 위도(latitude) , 경도(longitude)
+	                        level: 3														//지도의 레벨 (확대, 축소 정도)
 	                    };
 	                    
-	                    <!-- 지도 생성 및 객체 리턴 -->
+	                    //지도 생성 및 객체 리턴 
 	                    var map = new kakao.maps.Map(mapContainer, mapOptions);
 	                
-	                 	<!-- 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다 -->
+	                 	//일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다 
 	                    var mapTypeControl = new kakao.maps.MapTypeControl();
 	                    
-	                 	<!-- 지도 타입 컨트롤을 지도에 표시합니다 -->
+	                 	//지도 타입 컨트롤을 지도에 표시합니다 
 	                    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 						
 
