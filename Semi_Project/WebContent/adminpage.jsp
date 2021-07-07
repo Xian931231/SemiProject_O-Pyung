@@ -426,14 +426,14 @@
        <br>
             	
         <div class="noticeBoard">
-		<table>
+		<table style="border: 0">
 			<tr>
-				<th style="height: 50px">게시글 제목</th>
-				<td><input type="text" name="title" style="width: 990px; height: 40px; font-size: 16px" placeholder="제목을 입력해주세요" ></td>
+				<th style="height: 50px;border: 0; font-weight: 150px">게시글 제목</th>
+				<td style="border: 0"><input type="text" name="title" style="width: 990px; height: 40px; font-size: 16px" placeholder="제목을 입력해주세요" ></td>
 			</tr>
 			<tr>
-				<th>내용</th>
-				<td><textarea name="content" id="ckeditor4"></textarea>
+				<th style="border: 0">내용</th>
+				<td style="border: 0"><textarea name="content" id="ckeditor4"></textarea>
 				<script type="text/javascript">
  					CKEDITOR.replace('ckeditor4'
                 					, {height: 500});
