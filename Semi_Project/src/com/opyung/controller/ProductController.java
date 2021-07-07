@@ -2,9 +2,11 @@ package com.opyung.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
@@ -23,6 +25,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.opyung.biz.ProductBiz;
 import com.opyung.dto.CommuBoardDto;
 import com.opyung.dto.ProductBoardDto;
+import com.opyung.naversearch.NaverCrawler;
 
 @WebServlet("/ProjectController")
 public class ProductController extends HttpServlet {
@@ -53,18 +56,37 @@ public class ProductController extends HttpServlet {
 			
 			request.setAttribute("list", list);
 			dispatch("shop.jsp", request, response);
-			
-			
-		//상품 상세정보 조회
+
 		}else if(command.equals("detail")) {
 			int ptno = Integer.parseInt(request.getParameter("ptno"));
 			System.out.println(ptno);
+			
 			ProductBoardDto ptdto = new ProductBoardDto();
 			ptdto = biz.selectOne(ptno);
+
+			System.out.println(ptdto.getProduct_content());
+
+			//네이버 블로그 api
+			
+			String id = "XFrG4kMu2svegbTGZgMF";
+			String secret = "2ehftuXKB8";
+			
+				NaverCrawler crawler = new NaverCrawler();
+				String url = URLEncoder.encode(ptdto.getProduct_title(), "UTF-8");
+				
+				String responseSearch = crawler.search(id, secret, url);
+				
+				String[] fields = {"title", "link", "description", "bloggername", "postdate"};
+				
+				Map<String, Object> result = crawler.getResult(responseSearch, fields);
+				
+				List<Map<String, Object>> items = (List<Map<String, Object>>) result.get("result");
+				
+				
 			request.setAttribute("ptdto", ptdto);
+			request.setAttribute("items", items);
 			dispatch("product.jsp", request, response);
-			
-			
+
 		//상품 등록
 		}else if(command.equals("writeform")) {
 			response.sendRedirect("product_add.jsp");
