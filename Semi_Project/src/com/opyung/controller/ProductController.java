@@ -66,6 +66,10 @@ public class ProductController extends HttpServlet {
 		}else if(command.equals("writeform")) {
 			response.sendRedirect("product_add.jsp");
 		}else if(command.equals("insert")) {
+			
+			String latitude = "";
+			String longitude = "";
+			
 			System.out.println("insert접속");
 			int product_no = (biz.lastno())+1;
 			String id = "";
@@ -137,6 +141,10 @@ public class ProductController extends HttpServlet {
 		                	}else if(item.getFieldName().equals("location")){
 		                		location = item.getString();
 		                		location = new String(location.getBytes("8859_1"),"UTF-8");
+		                	}else if(item.getFieldName().equals("latitude")) {
+		                		latitude = item.getString();
+		                	}else if(item.getFieldName().equals("longitude")) {
+		                		longitude = item.getString();
 		                	}
 		                	
 		                } else {
@@ -165,6 +173,8 @@ public class ProductController extends HttpServlet {
 	                dto.setProduct_price(price);
 	                dto.setProduct_brand(brand);
 	                dto.setProduct_addr(location);
+	                dto.setProduct_addr_latitude(latitude);
+	                dto.setProduct_addr_longitude(longitude);
 	                dto.setProduct_new(newvar);
 	                dto.setProduct_content(content);
 	                dto.setProduct_id(id);

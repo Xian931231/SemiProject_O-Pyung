@@ -183,7 +183,7 @@ public class ProductDao extends JDBCTemplate{
 	public int insert(Connection con, ProductBoardDto dto) {
 		PreparedStatement pstm = null;
 		int res=0;
-		String sql = "INSERT INTO PRODUCTBOARD VALUES(?,?,?,?,?,?,?,?,?,SYSDATE,'판매등록')";
+		String sql = "INSERT INTO PRODUCTBOARD VALUES(?,?,?,?,?,?,?,?,?,?,?,SYSDATE,'판매등록')";
 		
 	
 		try {
@@ -194,9 +194,11 @@ public class ProductDao extends JDBCTemplate{
 			pstm.setInt(4, dto.getProduct_price());
 			pstm.setString(5, dto.getProduct_brand());
 			pstm.setString(6, dto.getProduct_addr());
-			pstm.setString(7, dto.getProduct_new());
-			pstm.setString(8, dto.getProduct_content());
-			pstm.setString(9, dto.getProduct_id());
+			pstm.setString(7, dto.getProduct_addr_latitude());
+			pstm.setString(8, dto.getProduct_addr_longitude());
+			pstm.setString(9, dto.getProduct_new());
+			pstm.setString(10, dto.getProduct_content());
+			pstm.setString(11, dto.getProduct_id());
 			System.out.println("03" + sql);
 			
 			res = pstm.executeUpdate();
