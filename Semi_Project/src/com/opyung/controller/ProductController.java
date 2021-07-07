@@ -53,15 +53,18 @@ public class ProductController extends HttpServlet {
 			
 			request.setAttribute("list", list);
 			dispatch("shop.jsp", request, response);
+			
+			
 		//상품 상세정보 조회
 		}else if(command.equals("detail")) {
 			int ptno = Integer.parseInt(request.getParameter("ptno"));
 			System.out.println(ptno);
 			ProductBoardDto ptdto = new ProductBoardDto();
 			ptdto = biz.selectOne(ptno);
-			System.out.println(ptdto.getProduct_content());
 			request.setAttribute("ptdto", ptdto);
 			dispatch("product.jsp", request, response);
+			
+			
 		//상품 등록
 		}else if(command.equals("writeform")) {
 			response.sendRedirect("product_add.jsp");
@@ -70,7 +73,6 @@ public class ProductController extends HttpServlet {
 			String latitude = "";
 			String longitude = "";
 			
-			System.out.println("insert접속");
 			int product_no = (biz.lastno())+1;
 			String id = "";
 			String title = "";
@@ -102,7 +104,6 @@ public class ProductController extends HttpServlet {
 		            // request parsing
 		            List<FileItem> items = upload.parseRequest(request);
 		            Iterator<FileItem> iter = items.iterator();
-		            System.out.println(items.size());
 		            while (iter.hasNext()) {
 		                FileItem item = iter.next();
 		 
@@ -183,9 +184,7 @@ public class ProductController extends HttpServlet {
 	                dto.setPtimg_name(imgname);
 	                dto.setPtimg_type(type);
 	                dto.setPtimg_src(saveDir);
-	                
-	                int res = biz.insert(dto);
-	                
+	                int res = biz.insert(dto);;
 	                if(res>0) {
 	                	int res2 = biz.insertImg(dto);
 	                	if(res2>0) {
@@ -209,7 +208,6 @@ public class ProductController extends HttpServlet {
 			request.setAttribute("ptdto", ptdto);
 			request.setAttribute("content", ptdto.getProduct_content());
 			dispatch("product_update.jsp", request, response);
-			//System.out.println(request.getAttribute("content"));
 		
 			
 		//업데이트
@@ -228,6 +226,8 @@ public class ProductController extends HttpServlet {
 			int price = 0;
 			String location = "";
 			String newvar = "";
+			String latitude = "";
+			String longitude = "";
 			// 이미지는 서버에 저장
 		    String saveDir = request.getServletContext().getRealPath("upload"); // 저장할 경로 지정
 		 
@@ -247,7 +247,6 @@ public class ProductController extends HttpServlet {
 		            // request parsing
 		            List<FileItem> items = upload.parseRequest(request);
 		            Iterator<FileItem> iter = items.iterator();
-		            System.out.println(items.size());
 		            while (iter.hasNext()) {
 		                FileItem item = iter.next();
 		 
@@ -286,6 +285,10 @@ public class ProductController extends HttpServlet {
 		                	}else if(item.getFieldName().equals("location")){
 		                		location = item.getString();
 		                		location = new String(location.getBytes("8859_1"),"UTF-8");
+		                	}else if(item.getFieldName().equals("latitude")) {
+		                		latitude = item.getString();
+		                	}else if(item.getFieldName().equals("longitude")) {
+		                		longitude = item.getString();
 		                	}
 		                } else {
 		                	if(item.getSize()>0) {
@@ -310,7 +313,6 @@ public class ProductController extends HttpServlet {
 			                    dto.setPtimg_type(type);
 			                    dto.setPtimg_src(saveDir);
 			                    int res = biz.updateImg(dto);
-			                    System.out.println("오냐?");
 			                    
 			                    if(res>0) {
 			                    	System.out.println("이미지 수정 성공");
@@ -329,6 +331,8 @@ public class ProductController extends HttpServlet {
 	                dto.setProduct_new(newvar);
 	                dto.setProduct_content(content);
 	                dto.setProduct_id(id);
+	                dto.setProduct_addr_latitude(latitude);
+	                dto.setProduct_addr_longitude(longitude);
 	                
 	                int res = biz.update(dto);
 	                

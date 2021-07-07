@@ -143,8 +143,8 @@
                 희망 거래지역:
                 <br>
                 <input type="text" class="deal_location form-control" id="address" name="location" placeholder="거래를 희망하는 위치를 적어주세요">
-				<input type="text" class="deal_location form-control" id="latitude" name="latitude">
-				<input type="text" class="deal_location form-control" id="longitude" name="longitude">
+				<input type="hidden" class="deal_location form-control" id="latitude" name="latitude">
+				<input type="hidden" class="deal_location form-control" id="longitude" name="longitude">
 
             </div>
             <hr>
