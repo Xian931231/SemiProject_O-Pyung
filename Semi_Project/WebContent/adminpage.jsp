@@ -415,9 +415,10 @@
             </div>
             
             <!-- 공지사항 글쓰기 -->
+       <div class="content_04" style="margin-top: 50px">
        <form action="notice.do" method="post">
        <input type="hidden" name="command" value="noticewrite">
-       <div class="content_04">
+      
             	
        <h2>공지사항 글쓰기</h2>
        
@@ -451,10 +452,9 @@
 		</table>
 
     </div>
-	  
+	  </form>
      </div>  
-      </form> 
-     
+       
         </div>
         
     
