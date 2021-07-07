@@ -1,6 +1,7 @@
 package com.opyung.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -39,20 +40,80 @@ public class AdminConrtoller extends HttpServlet {
 				
 				AdminBiz biz = new AdminBiz();
 				
-				if(command.equals("list")) {
+				//유저 정보 전체 출력
+				if(command.equals("UserInfo")) {
 					List<MemberDto> list = biz.selectAll();
 					
 					request.setAttribute("list", list);
-					dispatch("boardlist.jsp", request, response);
+					dispatch("adminpage.jsp", request, response);
+				
+				//검색창 통한 정렬 및 검색
+					
+				}else if(command.equals("serchId")){
+					String mb_id = request.getParameter("mb_id");
+					
+					MemberDto dto = biz.serchId(mb_id);
+					
+					request.setAttribute("dto", dto);
+					dispatch("Adminpage.jsp", request, response);
+					
+					
+				}else if(command.equals("serchName")){
+					String mb_name = request.getParameter("mb_name");
+					
+					MemberDto dto = biz.serchId(mb_name);
+					
+					request.setAttribute("dto", dto);
+					dispatch("Adminpage.jsp", request, response);
+					
+					
+				}else if(command.equals("serchEmail")){
+					String mb_email = request.getParameter("mb_email");
+					
+					MemberDto dto = biz.serchId(mb_email);
+					
+					request.setAttribute("dto", dto);
+					dispatch("Adminpage.jsp", request, response);
+					
+					
+				}else if(command.equals("serchPhone")){
+					String mb_phone = request.getParameter("mb_phone");
+					
+					MemberDto dto = biz.serchId(mb_phone);
+					
+					request.setAttribute("dto", dto);
+					dispatch("Adminpage.jsp", request, response);
+					
+					
+				}else if(command.equals("serchable")){
+					String mb_able = request.getParameter("mb_able");
+					
+					MemberDto dto = biz.serchId(mb_able);
+					
+					request.setAttribute("dto", dto);
+					dispatch("Adminpage.jsp", request, response);
+					
+					
 				}
 				
-				
+				//블랙 버튼 클릭시 로그인 불가
 				
 				
 				
 				
 				
 	}
+	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {
+		String s = "<script type='text/javascript'>"
+				+"alert('"+msg+"');"
+				+"location.href='"+url+"';"
+				+"</script>";
+		
+		PrintWriter out = response.getWriter();
+		out.print(s);
+	}
+	
+	
 	
 	
 	//dispatch

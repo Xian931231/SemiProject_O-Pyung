@@ -11,7 +11,10 @@
     	response.setContentType("text/html; charset=UTF-8");
     %>    
     
-    
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+ <%@ page import="com.opyung.dto.MemberDto" %>
+ 
+ <%@ page import = "java.util.List" %>
     
     
 <!DOCTYPE html>
@@ -214,8 +217,9 @@
                 <h2>유저정보</h2>
                 <hr>
                 <div id="divsearch">
-                    
-                    <input type="button" value="검색" class="search" id="searchbnt" >
+                    <form action="AdminConrtoller.do" method="post">
+                    <input type="hidden" name="command" value="">
+                    <input type="submit" value="검색" class="search" id="searchbnt" >
                     <select id="searchSelect">
                         <option value="ScAll">All</option>
                         <option value="ScId">ID</option>
@@ -225,7 +229,7 @@
                         <option value="SCblack">BLACK</option>
                       </select>
                     <input type="search"  class="search" id="searchbox" >
-
+					</form>
     
                     
                     </div>
@@ -253,18 +257,33 @@
                             <th>블랙</th>
                         </tr>
                         </thead>
+                        
+                        
                         <tbody>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td>USER_ID</td>
-                            <td>USER_PW</td>
-                            <td>NAME</td>
-                            <td>USER_Email</td>
-                            <td>USER_PONE</td>
-                            <td>00</td>
-                            <td><a>접속가능/불가능</a></td>
-                            <td><input type="button" value="블랙처리" id="bl_btn"></td>
-                        </tr>
+                        
+                        
+                        <c:choose>
+                        	<c:when test="${empty list }">
+                 	       		<tr>
+                        			<td colspan="9">-------------등록된 유저가 없습니다.-------------</td>
+                        		</tr>
+                       		</c:when>
+                        <c:otherwise>
+                        	<c:forEach var="dto" items="${list }">
+                        		<tr>
+		                            <td><input type="checkbox"></td>
+		                            <td>${dto.mb_id }</td>
+		                            <td>${dto.mb_pw }</td>
+		                            <td>${dto.mb_name }</td>
+		                            <td>${dto.mb_email }</td>
+		                            <td>${dto.mb_phone }</td>
+		                            <td>${dto.mb_score }</td>
+		                            <td><a>${dto.mb_able }</a></td>
+		                            <td><input type="button" value="블랙처리" id="bl_btn"></td>
+	                        	</tr>
+                        	</c:forEach>
+                        </c:otherwise>
+                        </c:choose>
                         </tbody>
                     </table>
                 </div>

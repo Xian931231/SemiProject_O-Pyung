@@ -20,13 +20,23 @@ CREATE TABLE GRADE(
 	GRADE_NAME VARCHAR2(100) NOT NULL,
 	GRADE_MIN NUMBER NOT NULL,
 	GRADE_MAX NUMBER NOT NULL
+<<<<<<< HEAD:Semi_Project/build/classes/db/semiproject.sql
+
+);
+
+=======
 );
 
 /*등급 테이블 값 추가*/
+>>>>>>> 56f6757c957a5530b5282c673f698d4fd0da4b48:Semi_Project/src/db/semiProject.sql
 INSERT INTO GRADE VALUES(0, '등급 없음', 0, 1);
 INSERT INTO GRADE VALUES(1, '브론즈', 2, 4);
 INSERT INTO GRADE VALUES(2, '실버', 5, 8);
 INSERT INTO GRADE VALUES(3, '골드', 9, 100);
+<<<<<<< HEAD:Semi_Project/build/classes/db/semiproject.sql
+SELECT * FROM GRADE;
+=======
+>>>>>>> 56f6757c957a5530b5282c673f698d4fd0da4b48:Semi_Project/src/db/semiProject.sql
 
 /* 계좌번호 테이블 */
 CREATE TABLE BANKBOARD(
@@ -201,6 +211,16 @@ DROP SEQUENCE PTIMGSQ;
 DROP SEQUENCE REPORTSQ;
 DROP SEQUENCE MEMBERSQ;
 
+<<<<<<< HEAD:Semi_Project/build/classes/db/semiproject.sql
+
+
+INSERT INTO MEMBERBOARD(MB_NO,MB_ID,MB_PW,MB_NAME,MB_ROLE)
+VALUES(0,'ADMIN','ADMIN','관리자','ADMIN');
+
+UPDATE MEMBERBOARD SET MB_ROLE='ADMIN' WHERE MB_ID = 'admin';
+
+=======
+>>>>>>> 56f6757c957a5530b5282c673f698d4fd0da4b48:Semi_Project/src/db/semiProject.sql
 INSERT INTO noticeboard
 VALUES(1,'TEST','TEST중입니다','ADMIN1',SYSDATE,0);
 
@@ -269,6 +289,5 @@ DROP TABLE DEALSCHEDULEBOARD;
 DROP TABLE CHECKBOARD;
 DROP TABLE CHKIMGBOARD;
 DROP TABLE LIKEPRODUCTBOARD;
-DROP TABLE GRADE;
 
 COMMIT;

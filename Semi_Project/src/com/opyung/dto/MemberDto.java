@@ -32,6 +32,22 @@ public class MemberDto {
 	public MemberDto() {
 		super();
 	}
+	//admin 유저 정보
+	
+	public MemberDto(String mb_id, String mb_pw, String mb_name, String mb_email, String mb_phone, String mb_able,
+			int mb_score) {
+		super();
+		this.mb_id = mb_id;
+		this.mb_pw = mb_pw;
+		this.mb_name = mb_name;
+		this.mb_email = mb_email;
+		this.mb_phone = mb_phone;
+		this.mb_able = mb_able;
+		this.mb_score = mb_score;
+	}
+	
+	
+	
 
 	//매개변수 생성자
 	public MemberDto(int mb_no, String mb_id, String mb_pw, String mb_name, String mb_email, String mb_phone,
@@ -59,6 +75,13 @@ public class MemberDto {
 	
 
 	
+	
+
+
+
+
+
+
 	//getter & setter
 	public int getMb_no() {
 		return mb_no;
