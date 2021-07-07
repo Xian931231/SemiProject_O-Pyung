@@ -37,7 +37,9 @@ public class MainController extends HttpServlet {
 		//메인페이지
 		if(command.equals("main")) {
 			List<ProductBoardDto> list = new ArrayList<ProductBoardDto>();
+			
 			ProductBiz biz = new ProductBiz();
+			
 			list = biz.selectAll();
 			request.setAttribute("list", list);
 
@@ -58,16 +60,21 @@ public class MainController extends HttpServlet {
 			request.setAttribute("list5", list5);
 			
 			dispatch("main.jsp", request, response);
+		
 		}else if(command.equals("notice")) {
 			response.sendRedirect("notice.jsp");
+		
 		}else if(command.equals("login")) {
 			String referer = request.getHeader("Referer");
 			request.getSession().setAttribute("redirectURI", referer);
 			response.sendRedirect("login.jsp");
+		
 		}else if(command.equals("community")) {
 			response.sendRedirect("community.jsp");
+		
 		}else if(command.equals("shop")) {
 			response.sendRedirect("shop.jsp");
+		
 		}else if(command.equals("mypage")) {
       
       		String role = (String) session.getAttribute("role");
