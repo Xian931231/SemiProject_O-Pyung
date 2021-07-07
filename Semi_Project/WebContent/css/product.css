@@ -170,7 +170,10 @@
   }
 
   .naver_blog_info{
-    margin: 100px;
+    margin-top: 100px;
+    width : 100%;
+    max-height: 500px;
+    overflow: auto;
   }
 
   .bloggername{
