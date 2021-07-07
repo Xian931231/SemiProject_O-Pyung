@@ -428,12 +428,8 @@
         <div class="noticeBoard">
 		<table>
 			<tr>
-				<th>작성자</th>
-				<td><input type="text" name="id" style="width: 435px;"></td>
-			</tr>
-			<tr>
-				<th>게시글 제목</th>
-				<td><input type="text" name="title" style="width: 435px;"></td>
+				<th style="height: 50px">게시글 제목</th>
+				<td><input type="text" name="title" style="width: 600px; height: 30px; font-size: 15px" ></td>
 			</tr>
 			<tr>
 				<th>내용</th>
@@ -443,14 +439,12 @@
                 					, {height: 500});
 				</script>
 				</td>
-				
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="submit" value="작성">
 			</tr>
 		</table>
-
+			
+			<div class="boardsubmit">
+			<input class="submit_btn" type="submit" value="작성">
+    		</div>
     </div>
 	  </form>
      </div>  
