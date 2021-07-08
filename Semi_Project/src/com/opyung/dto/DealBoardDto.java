@@ -20,6 +20,12 @@ public class DealBoardDto {
 	private Date sdate;					//상태시작
 	private Date edate;					//상태종료
 	
+	//조인용 변수
+	private String product_title;
+	private int rownum;
+	private String ptimg_name;
+	private String ptimg_type;
+	private String check_id;
 	
 	//생성자
 	public DealBoardDto() {
@@ -106,5 +112,43 @@ public class DealBoardDto {
 	}
 	
 	
-	
+	public String getProduct_title() {
+		return product_title;
+	}
+
+	public void setProduct_title(String product_title) {
+		this.product_title = product_title;
+	}
+
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
+	public String getPtimg_name() {
+		return ptimg_name;
+	}
+
+	public void setPtimg_name(String ptimg_name) {
+		this.ptimg_name = ptimg_name;
+	}
+
+	public String getPtimg_type() {
+		return ptimg_type;
+	}
+
+	public void setPtimg_type(String ptimg_type) {
+		this.ptimg_type = ptimg_type;
+	}
+
+	public String getCheck_id() {
+		return check_id;
+	}
+
+	public void setCheck_id(String check_id) {
+		this.check_id = check_id;
+	}
+
 }
