@@ -19,7 +19,7 @@ import com.opyung.dto.MemberDto;
 
 
 
-@WebServlet("/AdminConrtoller")
+@WebServlet("/AdminController")
 public class AdminConrtoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,11 +41,11 @@ public class AdminConrtoller extends HttpServlet {
 				AdminBiz biz = new AdminBiz();
 				
 				//유저 정보 전체 출력
-				if(command.equals("UserInfo")) {
+				if(command.equals("userInfo")) {
 					List<MemberDto> list = biz.selectAll();
 					
 					request.setAttribute("list", list);
-					dispatch("adminpage.jsp", request, response);
+					dispatch("admin_user.jsp", request, response);
 				
 				//검색창 통한 정렬 및 검색
 					
@@ -55,7 +55,7 @@ public class AdminConrtoller extends HttpServlet {
 					MemberDto dto = biz.serchId(mb_id);
 					
 					request.setAttribute("dto", dto);
-					dispatch("Adminpage.jsp", request, response);
+					dispatch("admin.jsp", request, response);
 					
 					
 				}else if(command.equals("serchName")){
@@ -64,7 +64,7 @@ public class AdminConrtoller extends HttpServlet {
 					MemberDto dto = biz.serchId(mb_name);
 					
 					request.setAttribute("dto", dto);
-					dispatch("Adminpage.jsp", request, response);
+					dispatch("admin.jsp", request, response);
 					
 					
 				}else if(command.equals("serchEmail")){
@@ -73,7 +73,7 @@ public class AdminConrtoller extends HttpServlet {
 					MemberDto dto = biz.serchId(mb_email);
 					
 					request.setAttribute("dto", dto);
-					dispatch("Adminpage.jsp", request, response);
+					dispatch("admin.jsp", request, response);
 					
 					
 				}else if(command.equals("serchPhone")){
@@ -82,7 +82,7 @@ public class AdminConrtoller extends HttpServlet {
 					MemberDto dto = biz.serchId(mb_phone);
 					
 					request.setAttribute("dto", dto);
-					dispatch("Adminpage.jsp", request, response);
+					dispatch("admin.jsp", request, response);
 					
 					
 				}else if(command.equals("serchable")){
@@ -91,8 +91,10 @@ public class AdminConrtoller extends HttpServlet {
 					MemberDto dto = biz.serchId(mb_able);
 					
 					request.setAttribute("dto", dto);
-					dispatch("Adminpage.jsp", request, response);
+					dispatch("admin.jsp", request, response);
 					
+					
+				}else if(command.equals("admin")){
 					
 				}
 				
@@ -103,16 +105,6 @@ public class AdminConrtoller extends HttpServlet {
 				
 				
 	}
-	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {
-		String s = "<script type='text/javascript'>"
-				+"alert('"+msg+"');"
-				+"location.href='"+url+"';"
-				+"</script>";
-		
-		PrintWriter out = response.getWriter();
-		out.print(s);
-	}
-	
 	
 	
 	

@@ -81,7 +81,7 @@ public class MainController extends HttpServlet {
 					System.out.println("나의 ROLE은: "+ role);
 					
 					if(role.equals("ADMIN")) {
-						response.sendRedirect("adminpage.jsp");
+						response.sendRedirect("admin.do?command=admin");
 					}else {
 						response.sendRedirect("mypage.jsp");
 					}
