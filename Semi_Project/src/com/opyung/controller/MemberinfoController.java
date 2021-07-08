@@ -1,6 +1,7 @@
 package com.opyung.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.opyung.biz.DealBiz;
 import com.opyung.biz.MemberinfoBiz;
 import com.opyung.biz.ProductBiz;
@@ -166,6 +169,71 @@ public class MemberinfoController extends HttpServlet {
 			
 			request.setAttribute("likeList", likeList);
 			dispatch("mypage_likeProduct.jsp", request, response);
+		
+		
+		//계좌번호 페이지
+		}else if(command.equals("bank")) {
+			List<MemberDto> list = new ArrayList<MemberDto>();
+			list = biz.bankList(id);
+			System.out.println(list.size());
+			request.setAttribute("list", list);
+			dispatch("mypage_bank.jsp", request, response);
+		//계좌번호 등록
+		}else if(command.equals("bankInsert")) {
+			String used_bankname = request.getParameter("used_bankname");
+			String account_num = request.getParameter("account_num");
+			String account_owner = request.getParameter("account_owner");
+			
+			memdto.setBank_name(used_bankname);
+			memdto.setBank_account(account_num);
+			memdto.setBank_memname(account_owner);
+			
+			int res = biz.bankInsert(memdto);
+			
+			if(res>0) {
+				System.out.println("계좌등록 성공");
+				response.sendRedirect("memberinfo.do?command=bank&id=ADMIN");
+			}else {
+				System.out.println("실패");
+				response.sendRedirect("memberinfo.do?command=bank&id=ADMIN");
+			}
+		
+
+		//계좌번호 선택
+		}else if(command.equals("bankSelect")) {
+			int bankno = Integer.parseInt(request.getParameter("bankno"));
+			
+			MemberDto dto = new MemberDto();
+			dto = biz.bankSelect(bankno,id);
+			
+			//타입을 json으로 변경
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+
+            //DTO 타입의 어레이리스트를 json 형태로 바꿔주는 구문
+            String gson = new Gson().toJson(dto);
+           
+            try {
+                //ajax로 리턴해주는 부분
+                response.getWriter().write(gson);
+            } catch (JsonIOException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+        //계좌 삭제
+		}else if(command.equals("bankDelete")) {
+			int bankno = Integer.parseInt(request.getParameter("bankno"));
+			System.out.println(bankno);
+			
+			int res = biz.bankDelete(bankno);
+			
+			if(res>0) {
+				System.out.println("삭제 성공");
+			}else {
+				System.out.println("삭제실패");
+			}
 		}
 	}
 

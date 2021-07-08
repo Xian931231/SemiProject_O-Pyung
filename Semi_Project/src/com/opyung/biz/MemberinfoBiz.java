@@ -60,5 +60,57 @@ public class MemberinfoBiz extends JDBCTemplate{
 		return res;
 	}
 
+	//계좌번호 추가
+	public int bankInsert(MemberDto memdto) {
+		Connection con = getConnection();
+		
+		int res = dao.bankInsert(con,memdto);
+		
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		return res;
+	}
+
+	//계좌번호 리스트
+	public List<MemberDto> bankList(String id) {
+		Connection con = getConnection();
+		
+		List<MemberDto> list = dao.bankList(con,id);
+		close(con);
+		return list;
+	
+	}
+
+	//계좌번호 선택
+	public MemberDto bankSelect(int bankno,String id) {
+		Connection con = getConnection();
+		
+		MemberDto res = dao.bankSelect(con,bankno,id);
+		
+		close(con);
+		return res;
+	}
+
+	//계좌삭제
+	public int bankDelete(int bankno) {
+		Connection con = getConnection();
+		
+		int res = dao.bankDelete(con,bankno);
+		
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		return res;
+	}
+
 
 }
