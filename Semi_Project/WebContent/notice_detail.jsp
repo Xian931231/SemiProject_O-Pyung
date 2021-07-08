@@ -83,13 +83,30 @@
                 
                 	if(admin.equals("ADMIN")){
                 %>
-                	 <input type="button" value="수정" onclick="location.href='notice.do?command=updateform&notice_no=${dto.notice_no}'">
-                	 <input type="button" value="삭제" onclick="location.href='notice.do?command=noticedelete&notice_no=${dto.notice_no}'">
+                	 <input type="button" value="수정" onclick="location.href='notice.do?command=updateform&notice_no=${dto.notice_no}'"
+                	 	style="	width: 80px;
+								height: 30px;
+								border-radius: 5px;
+								border: 1px solid rgba(0,0,0,0.3);
+								cursor: pointer;
+								margin-top: 20px">
+                	 
+                	 <input type="button" value="삭제" onclick="location.href='notice.do?command=noticedelete&notice_no=${dto.notice_no}'"
+                	 	style="	width: 80px;
+								height: 30px;
+								border-radius: 5px;
+								border: 1px solid rgba(0,0,0,0.3);
+								cursor: pointer;">
                 	 
                 <%  		
                 	}
                 %>
-					<input type="button" value="목록으로" onclick="location.href='notice.do?command=noticelist'">
+					<input type="button" value="목록으로" onclick="location.href='notice.do?command=noticelist'"
+						style="	width: 80px;
+								height: 30px;
+								border-radius: 5px;
+								border: 1px solid rgba(0,0,0,0.3);
+								cursor: pointer;">
             </div>
             <div class="content_02">
                 <h2>검수 기준</h2>
