@@ -1,6 +1,7 @@
 package com.opyung.biz;
 
 import java.sql.Connection;
+import java.util.List;
 
 import com.opyung.dao.DealDao;
 import com.opyung.dto.DealBoardDto;
@@ -47,6 +48,78 @@ public class DealBiz extends JDBCTemplate{
 		close(con);
 		return dto;
 	}
+
+
+
+
+
+	//거래 스케쥴러에 있는지 확인
+	public int selectDealSchduleCnt(int deal_no) {
+		Connection con =getConnection();
+		int res = dao.selectDealSchduleCnt(con,deal_no);
+		close(con);
+		return res;
+	}
+
+	//거래 스케쥴러 조회 
+	public List<DealBoardDto> selectStatusAll(String id) {
+		Connection con = getConnection();
+		
+		List<DealBoardDto> dealList = dao.selectStatusAll(con,id);
+		close(con);
+		return dealList;
+	}
+
+	//진행중인 구매내역 조회
+	public List<DealBoardDto> selectBidAll(String id) {
+		Connection con = getConnection();
+		
+		List<DealBoardDto> list = dao.selectBidAll(con,id);
+		return list;
+	}
+
+	//종료된 구매 내역 조회
+	public List<DealBoardDto> selectBidEnd(String id) {
+		Connection con = getConnection();
+		
+		List<DealBoardDto> list = dao.selectBidEnd(con,id);
+		return list;
+	}
+
+	//진행중인 판매내역 조회
+	public List<DealBoardDto> selectSidAll(String id) {
+		Connection con = getConnection();
+		
+		List<DealBoardDto> list = dao.selectSidAll(con,id);
+		return list;
+	}
+
+	//종료된 판매내역 조회
+	public List<DealBoardDto> selectSidEnd(String id) {
+		Connection con = getConnection();
+		
+		List<DealBoardDto> list = dao.selectSidEnd(con,id);
+		return list;
+	}
+
+
+	//전체 판매 내역 조회
+	public List<DealBoardDto> sidListAll(String id) {
+		Connection con = getConnection();
+		
+		List<DealBoardDto> list = dao.sidListAll(con,id);
+		return list;
+	}
+
+	//전체 구매 내역 조회
+	public List<DealBoardDto> bidListAll(String id) {
+Connection con = getConnection();
+		
+		List<DealBoardDto> list = dao.bidListAll(con,id);
+		return list;
+	}
+
+	
 	
 
 }

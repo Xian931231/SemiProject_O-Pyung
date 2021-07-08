@@ -85,6 +85,7 @@ public class MainController extends HttpServlet {
 					}else {
 						response.sendRedirect("mypage.jsp");
 					}
+
 		}
 
 	}

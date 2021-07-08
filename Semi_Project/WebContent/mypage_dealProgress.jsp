@@ -10,7 +10,7 @@
 <%
     	response.setContentType("text/html; charset=UTF-8");
     %>    
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,17 +94,33 @@
                         
                     </tr>
                     </thead>
-                    <tr>
-                        <th>1</th>
-                        <th><a href="" id="product_click">상품명</a></th>
-                        <th>seller5678</th>
-                        <th>buyer1234</th>
-                        <th></th>
-                        <th>YY/MM/DD</th>
-                        <th>YY/MM/DD</th>
-                        <th>관리자</th>
-                        
-                    </tr>
+                    
+                    <c:choose>
+                    	<c:when test="${ empty dealList}">
+                    		<tr>
+                    			<td colspan="6">거래 중인 상품이 없습니다</td>
+                    		</tr>
+                    		
+                    	</c:when>
+                    	<c:otherwise>
+                    		<c:forEach items="${dealList }" var="dealList">
+                    			
+                    			<tr>
+			                        <th>${dealList.rownum }</th>
+			                        <th><a href="" id="product_click">${dealList.product_title }</a></th>
+			                        <th>${dealList.deal_sid }</th>
+			                        <th>${dealList.deal_bid }</th>
+			                        <th>${dealList.schedule_status }</th>
+			                        <th>${dealList.sdate }</th>
+			                        <th>YY/MM/DD</th>
+			                        <th>관리자</th>
+		                    	</tr>
+                    		
+                    		</c:forEach>
+                    		
+                    	</c:otherwise>
+                    </c:choose>
+                    
                 </table>
             </div>
         </div>

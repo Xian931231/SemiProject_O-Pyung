@@ -81,7 +81,7 @@ ul {
     left: 300px;
     top: 200px;
     position: relative;
-    width: 750px;
+    width: 1000px;
 }
 
 #ph_title{
@@ -155,4 +155,12 @@ a{
 #ph_end_table{
     margin-top: 50px;
     color: black;
+}
+
+#ph_area{
+	text-align: center;
+}
+
+table img{
+	height: 50px;
 }

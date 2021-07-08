@@ -38,16 +38,16 @@
                 <strong class="info">쇼핑 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="mypage_purchaseHistory.jsp" class="menu_link">구매 내역</a>
+                        <a href="memberinfo.do?command=purchase&id=USER" class="menu_link">구매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="mypage_sellHistory.jsp" class="menu_link">판매 내역</a>
+                        <a href="memberinfo.do?command=sell&id=ADMIN" class="menu_link">판매 내역</a>
                     </li>
                     <li class="menu_item">
                         <a href="mypage_likeProduct.jsp" class="menu_link">관심 상품</a>
                     </li>
                     <li class="menu_item">
-                        <a href="mypage_dealProgress.jsp" class="menu_link">거래 진행</a>
+                        <a href="memberinfo.do?command=deal&id=USER" class="menu_link">거래 진행</a>
                     </li>
                 </ul>
             </div>
@@ -110,27 +110,59 @@
                         <div class="item">
                             <dl>
                                 <dt class="title">전체</dt>
-                                <dd class="count" id="count_buy_all">0</dd>
+                                <dd class="count" id="count_buy_all">${bidlistNum }</dd>
                             </dl>
                         </div>
                         <div class="item">
                             <dl>
                                 <dt class="title">진행 중</dt>
-                                <dd class="count">0</dd>
+                                <dd class="count">${biddealListNum }</dd>
                             </dl>
                         </div>
                         <div class="item">
                             <dl>
                                 <dt class="title">종료</dt>
-                                <dd class="count">0</dd>
+                                <dd class="count">${bidendListNum }</dd>
                             </dl>
                         </div>
                     </div>
                     <!--거래 내역-->
                     <div>
-                        <div class="empty_area">
-                            <p class="empty">거래 내역이 없습니다.</p>
-                        </div>
+                        
+                        <c:choose>
+	                    	<c:when test="${ empty bidlist}">
+	                    		<div class="empty_area">
+                            		<p class="empty">거래 내역이 없습니다.</p>
+                        		</div>
+	                    		
+	                    	</c:when>
+	                    	<c:otherwise>
+	                    	<div>
+	                    		<table class="listTable">
+	                    			<tr>
+	                    				<th>번호</th>
+	                    				<th>이미지</th>
+	                    				<th>상품명</th>
+	                    				<th>가격</th>
+	                    				<th>거래상태</th>
+	                    				<th>구매자</th>
+	                    			</tr>
+	                    		<c:forEach items="${bidlist }" var="bidlist">
+	                    			
+	                    			<tr>
+				                       	<td>${bidlist.rownum }</td>
+				                        <td><div class="img-div"><img src="upload/${bidlist.ptimg_name }${bidlist.ptimg_type } "></div></td>
+				                        <td><a href="" id="product_click">${bidlist.product_title }</a></td>
+				                        <td>${bidlist.product_price }</td>
+				                        <td>${bidlist.product_status }</td>
+				                        <td>${bidlist.deal_bid }</td>
+			                    	</tr>
+	                    		
+	                    		</c:forEach>
+	                    		</table>
+	                    	</div>	
+	                    	</c:otherwise>
+                    	</c:choose>
                     </div>
                 </div>
 
@@ -150,27 +182,60 @@
                         <div class="item">
                             <dl>
                                 <dt class="title">전체</dt>
-                                <dd class="count" id="count_sell_all">0</dd>
+                                <dd class="count" id="count_sell_all">${sidlistNum }</dd>
                             </dl>
                         </div>
                         <div class="item">
                             <dl>
                                 <dt class="title">진행 중</dt>
-                                <dd class="count">0</dd>
+                                <dd class="count">${siddealListNum }</dd>
                             </dl>
                         </div>
                         <div class="item">
                             <dl>
                                 <dt class="title">종료</dt>
-                                <dd class="count">0</dd>
+                                <dd class="count">${sidendListNum }</dd>
                             </dl>
                         </div>
                     </div>
                     <!--거래 내역-->
                     <div>
-                        <div class="empty_area" id="empty_area_selling">
-                            <p class="empty">거래 내역이 없습니다.</p>
-                        </div>
+                        
+                        
+                        <c:choose>
+	                    	<c:when test="${ empty sidlist}">
+	                    		<div class="empty_area" id="empty_area_selling">
+	                            	<p class="empty">거래 내역이 없습니다.</p>
+	                       		</div>
+	                    		
+	                    	</c:when>
+	                    	<c:otherwise>
+	                    	<div>
+	                    		<table class="listTable">
+	                    			<tr>
+	                    				<th>번호</th>
+	                    				<th>이미지</th>
+	                    				<th>상품명</th>
+	                    				<th>가격</th>
+	                    				<th>거래상태</th>
+	                    				<th>구매자</th>
+	                    			</tr>
+	                    		<c:forEach items="${sidlist }" var="sidlist">
+	                    			
+	                    			<tr>
+				                       	<td>${sidlist.rownum }</td>
+				                        <td><div class="img-div"><img src="upload/${sidlist.ptimg_name }${sidlist.ptimg_type } "></div></td>
+				                        <td><a href="" id="product_click">${sidlist.product_title }</a></td>
+				                        <td>${sidlist.product_price }</td>
+				                        <td>${sidlist.product_status }</td>
+				                        <td>${sidlist.deal_bid }</td>
+			                    	</tr>
+	                    		
+	                    		</c:forEach>
+	                    		</table>
+	                    	</div>	
+	                    	</c:otherwise>
+                    	</c:choose>
                     </div>
                 </div>
 
