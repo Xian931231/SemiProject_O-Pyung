@@ -68,7 +68,8 @@
                 <table>
                     <tr>
                         <th>게시글 제목</th>
-                        <td><input type="text" name="title" value="${dto.notice_title } " style="width: 435px;"></td>
+                        <td><input type="text" name="title" value="${dto.notice_title } " 
+                        		style="width: 990px; height: 40px; font-size: 16px;"></td>
                     </tr>
                     <tr>
                         <th>내용</th>
