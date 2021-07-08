@@ -34,7 +34,8 @@ public class DealController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("[command:"+command+"]");
 	
-		DealBiz biz = new DealBiz();
+		//biz: DealBiz 
+		DealBiz biz = new DealBiz();				
 		ProductBiz ptBiz = new ProductBiz();
 		MemberinfoBiz memBiz = new MemberinfoBiz();
 		
@@ -66,12 +67,18 @@ public class DealController extends HttpServlet {
 			int dealno = Integer.parseInt(request.getParameter("dealno"));
 			
 			DealBoardDto dealdto = new DealBoardDto();
+			
+			//거래정보
 			dealdto = biz.selectOne(dealno);
 			String bid = dealdto.getDeal_bid();
 			String sid = dealdto.getDeal_sid();
 			int productno = dealdto.getDeal_productNo();
+			
+			//상품 정보
 			ProductBoardDto ptdto = new ProductBoardDto();
 			ptdto = ptBiz.selectOne(productno);
+			
+			//유저정보
 			MemberDto siddto = new MemberDto();
 			siddto = memBiz.selectOne(sid);
 			MemberDto biddto = new MemberDto();
@@ -83,8 +90,47 @@ public class DealController extends HttpServlet {
 			request.setAttribute("biddto", biddto);
 			
 			dispatch("deal.jsp?", request, response);
+		
+			
+		//구매자가 눌렀을때 예약금창으로 연결
+		}else if(command.equals("deal_buyer")) {
+			
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			
+			DealBoardDto dealdto = new DealBoardDto();
+			
+			//거래정보(구매자정보)
+			dealdto = biz.selectOne(dealno);
+			String bid = dealdto.getDeal_bid();
+			
+			//결제금액
+			int dealprice = Integer.parseInt(dealdto.getDeal_price());
+			System.out.println("결제금액: "+ dealprice);
+			
+			//예약금
+			int prePrice = (int)(dealprice*0.1);
+			System.out.println("예약금: " + prePrice);
+			
+			//구매자 정보
+			MemberDto biddto = new MemberDto();
+			biddto = memBiz.selectOne(bid);
+			
+			request.setAttribute("prePrice", prePrice);
+			request.setAttribute("biddto", biddto);
+			request.setAttribute("dealdto", dealdto);
+			dispatch("deal_buyer.jsp", request, response);
+			
+		//구매자가 예약금 결제한 후 거래상태 페이지로 이동
+		}else if(command.equals("deal_status")) {
+			
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			
 			
 		}
+		
+		
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

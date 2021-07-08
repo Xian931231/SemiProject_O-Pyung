@@ -207,8 +207,9 @@
 	
 	            <!-- 검수버튼 & 거래하기 버튼 영역 -->
 	            <div id="button_area">
-	                <input type="button" value="거래취소">
-	                <input type="button" value="거래하기">
+	                <input type="button" value="거래취소" onclick="location.href='product.do?command=detail&ptno=${ptdto.product_no }'">
+	                <input type="button" value="검수신청" onclick="" >
+	                <input type="button" value="거래신청" onclick="location.href='deal.do?command=deal_buyer&dealno=${dealdto.deal_no}'" >
 	            </div>
 	
 	        </div>
