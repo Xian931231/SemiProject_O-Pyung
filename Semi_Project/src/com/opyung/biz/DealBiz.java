@@ -48,5 +48,38 @@ public class DealBiz extends JDBCTemplate{
 		return dto;
 	}
 	
+	
+	//거래일정 생성
+	public int insertStatus(int dealno) {
+		
+		Connection con = getConnection();
+		
+		int res = dao.insertStatus(con,dealno);
+		
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+
+		return res;
+	}
+	
+	//거래일정 조회
+	public DealBoardDto selectStatus(int dealno) {
+		
+		Connection con = getConnection();
+		
+		DealBoardDto dto = dao.selectStatus(con, dealno);
+		
+		
+		
+		
+		return null;
+	}
+	
+	
 
 }

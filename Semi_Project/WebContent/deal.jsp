@@ -26,6 +26,24 @@
 
 <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
 
+<script type="text/javascript">
+ 
+ 	function confirmProduct(){
+ 		
+ 		if(confirm("검수 공지사항 및 주의사항을 확인하셨나요?")){
+			
+ 			location.href="deal.do?command=deal_status&dealno=${dealdto.deal_no}";
+ 			
+ 		}else{
+ 			alert("확인 후 다시 검수신청해주세요");
+ 		}
+ 		
+ 	}
+
+</script>
+
+
+
 </head>
 <body>
 	<!-- header 추가 -->
@@ -266,7 +284,7 @@
 	            <!-- 검수버튼 & 거래하기 버튼 영역 -->
 	            <div id="button_area">
 	                <input type="button" value="거래취소" onclick="location.href='product.do?command=detail&ptno=${ptdto.product_no }'">
-	                <input type="button" value="검수신청" onclick="" >
+	                <input type="button" value="검수신청" onclick="confirmProduct();" >
 	                <input type="button" value="거래신청" onclick="location.href='deal.do?command=deal_buyer&dealno=${dealdto.deal_no}'" >
 	            </div>
 	

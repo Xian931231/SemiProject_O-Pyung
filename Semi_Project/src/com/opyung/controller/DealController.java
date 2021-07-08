@@ -120,12 +120,63 @@ public class DealController extends HttpServlet {
 			request.setAttribute("dealdto", dealdto);
 			dispatch("deal_buyer.jsp", request, response);
 			
-		//구매자가 예약금 결제한 후 거래상태 페이지로 이동
+		//구매자가 예약금 결제한 후 거래상태 페이지로 이동(미완성)
 		}else if(command.equals("deal_status")) {
 			
 			int dealno = Integer.parseInt(request.getParameter("dealno"));
 			
+			DealBoardDto dealdto = new DealBoardDto();
 			
+			//거래정보
+			dealdto = biz.selectStatus(dealno);
+			String bid = dealdto.getDeal_bid();
+			String sid = dealdto.getDeal_sid();
+			int productno = dealdto.getDeal_productNo();
+			
+			
+			
+			//상품정보
+			ProductBoardDto ptdto = new ProductBoardDto();
+			ptdto = ptBiz.selectOne(productno);
+			
+			//유저정보
+			MemberDto siddto = new MemberDto();
+			siddto = memBiz.selectOne(sid);
+			MemberDto biddto = new MemberDto();
+			biddto = memBiz.selectOne(bid);
+			
+			//결제금액
+			int dealPrice = Integer.parseInt(dealdto.getDeal_price());
+			System.out.println("결제금액: "+ dealPrice);
+			
+			//예약금
+			int prePrice = (int)(dealPrice*0.1);
+			System.out.println("예약금: " + prePrice);
+			
+			//남은 결제금액
+			int restPrice = (dealPrice - prePrice);
+			
+			request.setAttribute("dealdto", dealdto);
+			request.setAttribute("ptdto", ptdto);
+			request.setAttribute("siddto", siddto);
+			request.setAttribute("biddto", biddto);
+			request.setAttribute("prePrice", prePrice);
+			request.setAttribute("restPrice", restPrice);
+		
+			
+		//판매자가 검수신청을 누를때(거래일정 테이블 생성)
+		}else if(command.equals("deal_status")) {
+			
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			
+			int res = biz.insertStatus(dealno);
+			
+			if(res>0) {
+				System.out.println("거래일정 생성 성공");
+				response.sendRedirect("deal.do?command=deal_status&dealno="+dealno);
+			}else {
+				System.out.println("db생성 추가 실패 확인바람");
+			}
 		}
 		
 		

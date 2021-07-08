@@ -105,5 +105,49 @@ public class DealDao extends JDBCTemplate{
 		return res;
 	}
 	
+	
+	//거래일정 추가
+	public int insertStatus(Connection con, int dealno) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " INSERT INTO DEALSCHEDULEBOARD VALUES(DEALSCHEDULESQ.NEXTVAL, ?, '검수접수', SYSDATE, SYSDATE) ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dealno);
+			System.out.println("03." + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04.실행");
+			
+			
+		} catch (SQLException e) {
+			System.out.println("3/4단계 에러");
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			System.out.println("05. db종료\n");
+		}
+		
+		return res;
+	}
+	
+	//거래일정 조회
+	public DealBoardDto selectStatus(Connection con, int dealno) {
+		
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		DealBoardDto res = new DealBoardDto();
+		
+		String sql = "  ";
+		
+		
+		
+		
+		return null;
+	}
+	
+	
 
 }
