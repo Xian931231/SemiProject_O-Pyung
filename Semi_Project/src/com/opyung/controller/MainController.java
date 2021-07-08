@@ -80,19 +80,12 @@ public class MainController extends HttpServlet {
       		String role = (String) session.getAttribute("role");
 					System.out.println("나의 ROLE은: "+ role);
 					
-<<<<<<< .merge_file_a08152
-					//if(role.equals("ADMIN")) {
-						//response.sendRedirect("adminpage.jsp");
-					//}else {
-						response.sendRedirect("memberinfo.do?command=mypage&id=ADMIN");
-					//}
-=======
 					if(role.equals("ADMIN")) {
 						response.sendRedirect("admin.do?command=admin");
 					}else {
 						response.sendRedirect("mypage.jsp");
 					}
->>>>>>> .merge_file_a07692
+
 		}
 
 	}
