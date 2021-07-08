@@ -62,16 +62,13 @@
                 <strong class="info">쇼핑 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="mypage_purchaseHistory.jsp" class="menu_link">구매 내역</a>
+                        <a href="memberinfo.do?command=purchase&id=USER" class="menu_link">구매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="mypage_sellHistory.jsp" class="menu_link">판매 내역</a>
+                        <a href="memberinfo.do?command=sell&id=ADMIN" class="menu_link">판매 내역</a>
                     </li>
                     <li class="menu_item">
                         <a href="mypage_likeProduct.jsp" class="menu_link">관심 상품</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="mypage_dealProgress.jsp" class="menu_link">거래 진행</a>
                     </li>
                 </ul>
             </div>

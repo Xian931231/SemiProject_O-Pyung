@@ -334,6 +334,54 @@ public class ProductDao extends JDBCTemplate{
 	}
 
 
+	//관심상품 목록 조회
+	public List<ProductBoardDto> likeList(Connection con, String id) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
+		
+		String sql = "SELECT PRODUCTBOARD.*,PTIMGBOARD.* FROM LIKEPRODUCTBOARD,MEMBERBOARD,PRODUCTBOARD,PTIMGBOARD WHERE MB_NO=LIKEPT_MEMBERNO AND LIKEPT_PRODUCTNO = PRODUCT_NO AND PRODUCT_NO = PTIMG_PRODUCTNO AND MB_ID=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, id);
+			System.out.println("03" + sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04");
+			
+			while(rs.next()) {
+				ProductBoardDto dto = new ProductBoardDto();
+				dto.setProduct_no(rs.getInt(1));
+				dto.setProduct_title(rs.getString(2));
+				dto.setProduct_category(rs.getString(3));
+				dto.setProduct_price(rs.getInt(4));
+				dto.setProduct_brand(rs.getString(5));
+				dto.setProduct_addr(rs.getString(6));
+				dto.setProduct_addr_latitude(rs.getString(7));
+				dto.setProduct_addr_longitude(rs.getString(8));
+				dto.setProduct_new(rs.getString(9));
+				dto.setProduct_content(rs.getString(10));
+				dto.setProduct_id(rs.getString(11));
+				dto.setProduct_date(rs.getDate(12));
+				dto.setProduct_status(rs.getString(13));
+				dto.setPtimg_name(rs.getString(17));
+				dto.setPtimg_type(rs.getString(18));
+				
+				res.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		return res;
+	}
+
+
 	
 
 	

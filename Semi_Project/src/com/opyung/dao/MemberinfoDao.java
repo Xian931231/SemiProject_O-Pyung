@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.opyung.dto.MemberDto;
 
@@ -51,5 +52,85 @@ public class MemberinfoDao extends JDBCTemplate{
 		
 		return res;
 	}
+
+	
+	//해당 상품이 관심상품 등록했는지 확인
+	public boolean isLikePt(Connection con, MemberDto dto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "SELECT * FROM LIKEPRODUCTBOARD WHERE LIKEPT_MEMBERNO=? AND LIKEPT_PRODUCTNO=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dto.getLikept_memberNo());
+			pstm.setInt(2, dto.getLikept_productNo());
+			System.out.println("03" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		return (res>0)?true:false;
+	}
+
+	//관심상품 등록
+	public int likeInsert(Connection con, MemberDto dto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "INSERT INTO LIKEPRODUCTBOARD VALUES(?,?)";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dto.getLikept_memberNo());
+			pstm.setInt(2, dto.getLikept_productNo());
+			System.out.println("03" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04");
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		
+		return res;
+	}
+
+	//관심상품 삭제
+	public int likeDelete(Connection con, MemberDto dto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "DELETE FROM LIKEPRODUCTBOARD WHERE LIKEPT_MEMBERNO=? AND LIKEPT_PRODUCTNO=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dto.getLikept_memberNo());
+			pstm.setInt(2, dto.getLikept_productNo());
+			System.out.println("03" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04");
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		
+		return res;
+	}
+
 
 }

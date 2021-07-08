@@ -60,16 +60,13 @@
                 <strong class="info">쇼핑 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="mypage_purchaseHistory.jsp" class="menu_link">구매 내역</a>
+                        <a href="memberinfo.do?command=purchase&id=USER" class="menu_link">구매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="mypage_sellHistory.jsp" class="menu_link">판매 내역</a>
+                        <a href="memberinfo.do?command=sell&id=ADMIN" class="menu_link">판매 내역</a>
                     </li>
                     <li class="menu_item">
                         <a href="mypage_likeProduct.jsp" class="menu_link">관심 상품</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="mypage_dealProgress.jsp" class="menu_link">거래 진행</a>
                     </li>
                 </ul>
             </div>
@@ -157,7 +154,7 @@
                     			<tr class="sh_content">
 			                       	<td>${dealList.rownum }</td>
 			                        <td><img src="upload/${dealList.ptimg_name }${dealList.ptimg_type } "></td>
-			                        <td><a href="" id="product_click">${dealList.product_title }</a></td>
+			                        <td><a href="product.do?command=detail&ptno=${dealList.deal_productNo }" id="product_click">${dealList.product_title }</a></td>
 			                        <td>${dealList.product_price }</td>
 			                        <td>${dealList.deal_bid }</td>
 			                        <td>${dealList.deal_price }원</td>
@@ -210,7 +207,7 @@
                     			<tr class="sh_content">
 			                       	<td>${endList.rownum }</td>
 			                        <td><img src="upload/${endList.ptimg_name }${endList.ptimg_type } "></td>
-			                        <td><a href="" id="product_click">${endList.product_title }</a></td>
+			                        <td><a href="product.do?command=detail&ptno=${endList.deal_productNo }" id="product_click">${endList.product_title }</a></td>
 			                        <td>${endList.deal_bid }</td>
 			                        <td>${endList.product_price }원</td>
 			                        <td>${endList.edate }</td>

@@ -45,8 +45,6 @@ public class MemberinfoController extends HttpServlet {
 		memdto = biz.selectOne(id);
 		DealBoardDto dealdto = new DealBoardDto();
 		DealBiz dealbiz = new DealBiz();
-		ProductBoardDto ptdto = new ProductBoardDto();
-		ProductBiz ptbiz = new ProductBiz();
 		
 		//회원 정보 dto 객체
 		request.setAttribute("memdto", memdto);
@@ -131,6 +129,43 @@ public class MemberinfoController extends HttpServlet {
 			System.out.println(dealList.size());
 			request.setAttribute("dealList", dealList);
 			dispatch("mypage_dealProgress.jsp", request, response);
+		
+		
+		//관심상품
+		}else if(command.equals("like")) {
+			int ptno = Integer.parseInt(request.getParameter("ptno"));
+			
+			MemberDto dto = new MemberDto();
+			dto.setLikept_memberNo(memdto.getMb_no());
+			dto.setLikept_productNo(ptno);
+			
+			boolean res = biz.isLikePt(dto);
+			System.out.println(res);
+			if(!res) {
+				int res1 = biz.likeInsert(dto);
+				if(res1>0) {
+					System.out.println("관심상품 등록성공");
+				}else {
+					System.out.println("실패");
+				}
+			}else {
+				int res1 = biz.likeDelete(dto);
+				if(res1>0) {
+					System.out.println("관심상품 삭제성공");
+				}else {
+					System.out.println("실패");
+				}
+			}
+			
+		//관심상품 목록 조회
+		}else if(command.equals("likeList")) {
+
+			ProductBoardDto ptdto = new ProductBoardDto();
+			ProductBiz ptbiz = new ProductBiz();
+			List<ProductBoardDto> likeList = ptbiz.likeList(id);
+			
+			request.setAttribute("likeList", likeList);
+			dispatch("mypage_likeProduct.jsp", request, response);
 		}
 	}
 

@@ -44,10 +44,7 @@
                         <a href="memberinfo.do?command=sell&id=ADMIN" class="menu_link">판매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="mypage_likeProduct.jsp" class="menu_link">관심 상품</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="memberinfo.do?command=deal&id=USER" class="menu_link">거래 진행</a>
+                        <a href="memberinfo.do?command=likeList&id=ADMIN" class="menu_link">관심 상품</a>
                     </li>
                 </ul>
             </div>
@@ -152,7 +149,7 @@
 	                    			<tr>
 				                       	<td>${bidlist.rownum }</td>
 				                        <td><div class="img-div"><img src="upload/${bidlist.ptimg_name }${bidlist.ptimg_type } "></div></td>
-				                        <td><a href="" id="product_click">${bidlist.product_title }</a></td>
+				                        <td><a href="product.do?command=detail&ptno=${bidlist.deal_productNo }" id="product_click">${bidlist.product_title }</a></td>
 				                        <td>${bidlist.product_price }</td>
 				                        <td>${bidlist.product_status }</td>
 				                        <td>${bidlist.deal_bid }</td>
@@ -225,7 +222,7 @@
 	                    			<tr>
 				                       	<td>${sidlist.rownum }</td>
 				                        <td><div class="img-div"><img src="upload/${sidlist.ptimg_name }${sidlist.ptimg_type } "></div></td>
-				                        <td><a href="" id="product_click">${sidlist.product_title }</a></td>
+				                        <td><a href="product.do?command=detail&ptno=${sidlist.deal_productNo }" id="product_click">${sidlist.product_title }</a></td>
 				                        <td>${sidlist.product_price }</td>
 				                        <td>${sidlist.product_status }</td>
 				                        <td>${sidlist.deal_bid }</td>
