@@ -22,7 +22,7 @@ public class AdminDao {
 		ResultSet rs = null;
 		List<MemberDto> res = new ArrayList<MemberDto>();
 		
-		String sql = " SELECT * FROM MEMBERBOARD ORDER BY MB_NO ";
+		String sql = " SELECT MB_ID, MB_PW, MB_NAME, MB_EMAIL, MB_PHONE, MB_ABLE, MB_SCORE FROM MEMBERBOARD ORDER BY MB_NO ";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -32,15 +32,16 @@ public class AdminDao {
 			System.out.println("04. query 실행 및 리턴");
 			
 			while(rs.next()) {
-				MemberDto dto = new MemberDto();
-				dto.setMb_id(rs.getString(1));
-				dto.setMb_pw(rs.getString(2));
-				dto.setMb_name(rs.getString(3));
-				dto.setMb_email(rs.getString(4));
-				dto.setMb_phone(rs.getString(5));
-				dto.setMb_able(rs.getString(6));
-				dto.setMb_score(rs.getInt(7));
+				MemberDto dto = new MemberDto(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7));
 				
+//				dto.setMb_id(rs.getString(1));
+//				dto.setMb_pw(rs.getString(2));
+//				dto.setMb_name(rs.getString(3));
+//				dto.setMb_email(rs.getString(4));
+//				dto.setMb_phone(rs.getString(5));
+//				dto.setMb_able(rs.getString(6));
+//				dto.setMb_score(rs.getInt(7));
+//				
 				
 				res.add(dto);
 			}
@@ -63,7 +64,10 @@ public class AdminDao {
 		ResultSet rs = null;
 		MemberDto res = null;
 		
-		String sql = " SELECT * FROM ";
+		String sql = " SELECT * FROM MEMBERBOARD ORDER BY MB_ID  ";
+		
+	
+
 		
 		
 		
