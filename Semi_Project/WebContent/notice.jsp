@@ -81,8 +81,7 @@
                 <h2>검수 기준</h2>
                 <hr>
                 <ul class="content_ul">
-                    <li class="content_li"><a href="#">[검수기준]검수기준</a></li>
-                    <li class="content_li"><a href="#">[검수기준]검수기준검수기준검수기준검수기준검수기준</a></li>
+                    <li class="content_li"><a href="notice.do?command=noticecheck">[검수기준] 거래 하기 전, 꼭 봐주세요!</a></li>
                 </ul>
             </div>
         </div>
