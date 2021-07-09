@@ -46,7 +46,7 @@ public class DealController extends HttpServlet {
 			int dealno = (biz.lastno())+1;
 			String bid = request.getParameter("id");
 			System.out.println(bid+ptno);
-			
+
 			
 			ProductBoardDto ptdto = ptBiz.selectOne(ptno);
 			String sid = ptdto.getProduct_id();
