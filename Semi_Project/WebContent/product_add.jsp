@@ -60,6 +60,71 @@
 			
 		});
 		
+	/* 가테고리 유효성 검사 */
+	
+	function check(){
+		
+		if($("#pdt_name").val() == ''){
+			alert("제품 이름을 기재해주세요.");
+			$("#pdt_name").focus();
+			return false;
+		 
+		}else if($("#desktop").val() == '' && $("#sub_pdt").val() == ''){
+			alert("데스크탑, 주변기기 중 하나 이상 선택해주세요.");
+			$("#desktop").focus();
+			return false;
+		
+		}else if($("#brand").val() == ''){
+			
+			alert("브랜드를 선택해주세요");
+			$("#brand").focus();
+			return false;
+			
+		}else if($("#address").val() == ''){
+			alert("희망 거래지역을 적어주세요.");
+			$("#address").focus();
+
+			return false;
+			
+		}else if($("#price").val() == ""){
+			alert("예상 가격을 적어주세요");
+			$("#price").focus();
+			return false;
+			
+		}else if($("#newvar").val() == "분류"){
+			alert("분류를 선택해주세요.");
+			$("#newvar").focus();
+			return false;
+		
+		/* textarea 부분==========================
+			값을 넣어도 계속 null로 뜹니다.*/
+		}else if($(".ckeditor").val() == ""){
+			alert("제품 정보를 입력해주세요.");
+			$(".ckeditor").focus();
+			return false;
+		}
+		
+		
+		return true;
+	}
+	
+
+	
+	$(function(){
+		alert($("#ckeditor").val());
+		console.log("값은"+$("#ckeditor").val());
+		
+		$('p').click(function(){
+			alert($("#ckeditor").val());
+		});
+		
+		$(".used_bankname, #account_num_input, #account_owner_input").change(function(){
+            if($("#ckeditor").val() = 0){
+                $("#ckeditor").focus;
+            }
+        });
+
+	});
 	
 	</script>
 	
@@ -71,7 +136,7 @@
 	<%@ include file="header/header.jsp" %> 
 	
 	<!-- 정보 -->
-    <form action="product.do?command=insert" method="post" enctype="multipart/form-data">
+    <form action="product.do?command=insert" method="post" enctype="multipart/form-data" id="check">
     <input type="hidden" name="id" value="${id }">
     <div class="container">
 
@@ -99,7 +164,7 @@
             <div class="content_title">
                 제품 이름:
                 <br>
-                <input type="text" class="form-control" name="title" placeholder="모델명 기재">
+                <input type="text" class="form-control" name="title" placeholder="모델명 기재" id="pdt_name">
             </div>
 
             <hr>
@@ -109,23 +174,25 @@
                 <br>
                 <div>
                     <label for="" class="form-label">데스크탑</label>
-                    <select name="catogory-desk" id="" class="form-select">
+                    <select name="catogory-desk" id="desktop" class="form-select">
                         <option value=""  selected>품목선택</option>
                         <option value="CPU">CPU</option>
                         <option value="RAM">RAM</option>
                         <option value="그래픽카드">그래픽카드</option>
                         <option value="메인보드">메인보드</option>
                         <option value="케이스">케이스</option>
+                        <option value="기타">기타</option>
                     </select>
                     <label for="" class="form-label">주변기기</label>
-                    <select name="catogory-out" id="" class="form-select">
+                    <select name="catogory-out" id="sub_pdt" class="form-select">
                         <option value="" selected>품목선택</option>
                         <option value="모니터">모니터</option>
                         <option value="키보드">키보드</option>
                         <option value="마우스">마우스</option>
+                        <option value="기타">기타</option>
                     </select>
                     <label for="" class="form-label">브랜드</label>
-                    <select class="form-select" name="brand">
+                    <select class="form-select" name="brand" id="brand">
                         <option value="" selected>브랜드선택</option>
                         <option value="INTEL">INTEL</option>
                         <option value="AMD">AMD</option>
@@ -135,6 +202,7 @@
                         <option value="SAMSUNG">SAMSUNG</option>
                         <option value="BENQ">BENQ</option>
                         <option value="LG">LG</option>
+                        <option value="기타">기타</option>
                     </select>
                 </div>
                 
@@ -154,14 +222,14 @@
 
             <div class="price">
                 <label for="">예상가격 :</label><br>
-                <input type="text" class="form-control" placeholder="숫자만 입력" name="price" numberOnly>
+                <input type="text" class="form-control" placeholder="숫자만 입력" name="price" numberOnly id="price">
             </div>
 
             <hr>
             <div class="state">
                 <div>
                     분류:
-                    <select class="product_select form-select" name="newvar">
+                    <select class="product_select form-select" name="newvar" id="newvar">
                         <option selected>분류</option>
                         <option value="Y">새 제품</option>
                         <option value="N">중고 제품</option>
@@ -169,7 +237,7 @@
                 </div>  
                 <div class="btns">
                     <button class="btn btn-secondary btn-lg">취소</button>
-                    <input type="submit" class="btn btn-primary btn-lg" value="등록">
+                    <input type="submit" class="btn btn-primary btn-lg" value="등록" onclick="return check();">
                 </div>
             </div>
         </div>
