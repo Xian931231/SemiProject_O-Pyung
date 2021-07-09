@@ -122,6 +122,7 @@
                     <colgroup>
                         <col width="100px">
                         <col width="150px">
+                        <col width="150px">
                         <col width="200px">
                         <col width="200px">
                         <col width="100px">
@@ -135,6 +136,7 @@
                         <tr class="ph_head">
                         	<th>번호</th>
                             <th>이미지</th>
+                            <th>거래번호</th>
                             <th>제목</th>
                             <th>가격</th>
                             <th>판매자</th>
@@ -157,7 +159,8 @@
                     			<tr class="ph_content">
 			                       	<td>${dealList.rownum }</td>
 			                        <td><img src="upload/${dealList.ptimg_name }${dealList.ptimg_type } "></td>
-			                        <td><a href="deal.do?command=deal&dealno=${dealList.deal_no }" id="product_click">${dealList.product_title }</a></td>
+			                        <td><a href="deal.do?command=deal&dealno=${dealList.deal_no }">${dealList.deal_no}</a></td>
+			                        <td><a href="product.do?command=detail&ptno=${dealList.deal_productNo }" id="product_click">${dealList.product_title }</a></td>
 			                        <td>${dealList.product_price }원</td>
 			                        <td>${dealList.deal_sid }</td>
 			                        <td>${dealList.deal_price }원</td>
@@ -178,6 +181,7 @@
                     <colgroup>
                         <col width="50px">
                         <col width="150px">
+                        <col width="150px">
                         <col width="300px">
                         <col width="150px">
                         <col width="150px">
@@ -189,6 +193,7 @@
                         <tr class="ph_head">
                             <th>번호</th>
                             <th>이미지</th>
+                            <th>거래번호</th>
                             <th>제목</th>
                             <th>판매자</th>
                             <th>가격</th>
@@ -210,6 +215,7 @@
                     			<tr class="ph_content">
 			                       	<td>${endList.rownum }</td>
 			                        <td><img src="upload/${endList.ptimg_name }${endList.ptimg_type } "></td>
+			                        <td><a href="deal.do?command=deal&dealno=${endList.deal_no }">${endList.deal_no}</a></td>
 			                        <td><a href="product.do?command=detail&ptno=${endList.deal_productNo }" id="product_click">${endList.product_title }</a></td>
 			                        <td>${endList.deal_sid }</td>
 			                        <td>${endList.product_price }원</td>
