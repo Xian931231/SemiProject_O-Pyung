@@ -31,19 +31,7 @@
     
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-    	
-        
-        $("#bl_btn").click(function(){
-           var con = confirm("정말 블랙처리 하시겠습니까?");
-           if(con = true){
-               alert("블랙처리되었습니다.");
-           }else {
-               alert("취소되었습니다.");
-           }
-        });
-      
-    });
+    
     </script>
 </head>
 <body>

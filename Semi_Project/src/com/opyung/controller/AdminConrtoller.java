@@ -14,8 +14,10 @@ import javax.servlet.http.HttpSession;
 
 
 import com.opyung.biz.AdminBiz;
+import com.opyung.dao.ReportDao;
 import com.opyung.dto.MemberDto;
-import com.sun.java.util.jar.pack.Package.Class.Member;
+import com.opyung.dto.ReportBoardDto;
+
 
 
 
@@ -41,6 +43,7 @@ public class AdminConrtoller extends HttpServlet {
 				
 				AdminBiz biz = new AdminBiz();
 				
+				///////////////////admin_user/////////////////////
 				//유저 정보 전체 출력
 				if(command.equals("userInfo")) {
 					List<MemberDto> list = biz.selectAll();
@@ -70,62 +73,66 @@ public class AdminConrtoller extends HttpServlet {
 					String keyword = request.getParameter("keyword");
 					String keyField = request.getParameter("keyField");
 					
-					MemberDto dto = biz.selectsearch();
+					List<MemberDto> list = biz.search(keyword,keyField);
 					
+					request.setAttribute("list", list);
 					
-					
-					
-				}else if(command.equals("serchName")){
-					String mb_name = request.getParameter("mb_name");
-					
-					MemberDto dto = biz.serchId(mb_name);
-					
-					request.setAttribute("dto", dto);
 					dispatch("admin_user.jsp", request, response);
 					
 					
-				}else if(command.equals("serchName")){
-					String mb_name = request.getParameter("mb_name");
-					
-					MemberDto dto = biz.serchId(mb_name);
-					
-					request.setAttribute("dto", dto);
-					dispatch("admin_user.jsp", request, response);
-					
-					
-				}else if(command.equals("serchEmail")){
-					String mb_email = request.getParameter("mb_email");
-					
-					MemberDto dto = biz.serchId(mb_email);
-					
-					request.setAttribute("dto", dto);
-					dispatch("admin_user.jsp", request, response);
-					
-					
-				}else if(command.equals("serchPhone")){
-					String mb_phone = request.getParameter("mb_phone");
-					
-					MemberDto dto = biz.serchId(mb_phone);
-					
-					request.setAttribute("dto", dto);
-					dispatch("admin_user.jsp", request, response);
-					
-					
-				}else if(command.equals("serchable")){
-					String mb_able = request.getParameter("mb_able");
-					
-					MemberDto dto = biz.serchId(mb_able);
-					
-					request.setAttribute("dto", dto);
-					dispatch("admin_user.jsp", request, response);
-					
-					
-				}else if(command.equals("admin")){
+				
 					
 				}
+				///////////////////admin_main/////////////////////
 				
+				else if(command.equals("admin")){
+					
 				
+				}
 				
+				///////////////////admin_report/////////////////////
+				
+				/*전체를 보내지말고 완료 날짜에 null값인 데이터들만 불러온다.(처리완료)*/
+				else if(command.equals("report")) {
+					List<ReportBoardDto> list = biz.reportAll();
+					
+					request.setAttribute("list", list);
+					dispatch("admin_report.jsp", request, response);
+					/*처리버튼를 하면 완료날짜업데이트하고 score에 점수를 -1 한다.*/
+				}else if(command.equals("treat")) {
+					int report_no =  Integer.parseInt(request.getParameter("report_no"));
+					String report_tid = request.getParameter("report_tid");
+					String report_treat = request.getParameter("report_treat");
+					
+					ReportBoardDto dto = biz.reselect(report_no);
+					
+					boolean res = biz.edate(report_no);
+					
+					if(report_treat.equals("yes"))
+						if(res) {
+							jsResponse("날짜처리완료", "admin.do?command=minus&report_tid="+report_tid, response);
+						}else {
+							dispatch("admin.do?command=report", request, response);
+					}else {
+					dispatch("admin.do?command=report", request, response);
+					}
+
+				}else if(command.equals("minus")) {
+					String mb_id = request.getParameter("report_tid");
+					
+					MemberDto dto = biz.selectOne(mb_id);
+					
+					boolean res = biz.minus(mb_id);
+					
+					
+					
+					if(res) {
+						jsResponse("블랙처리되었습니다.", "admin.do?command=report", response);
+					}else {
+						dispatch("admin.do?command=report", request, response);
+					}
+					
+				}
 				
 				
 				

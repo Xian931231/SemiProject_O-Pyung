@@ -31,19 +31,7 @@
     
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-    	
-        
-        $("#bl_btn").click(function(){
-           var con = confirm("정말 블랙처리 하시겠습니까?");
-           if(con = true){
-               alert("블랙처리되었습니다.");
-           }else {
-               alert("취소되었습니다.");
-           }
-        });
-      
-    });
+    
     </script>
 </head>
 <body>
@@ -114,18 +102,35 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>이 새끼 사기꾼입니다!!!!</td>
-                                <td>착한사람</td>
-                                <td>개새끼</td>
-                                <td>2021.06.28</td>
-                                <td><select class="dd">
-                                    <option value="">정상</option>
-                                    <option value="">블랙</option>
-                                    
-                                </select><input type="submit" value="처리" id="aa"></td>
-                            </tr>
+                            <c:choose>
+                            	<c:when test="${empty list }">
+									<tr>
+										<td colspan="6">-------------등록된 신고글이 없습니다.-------------</td>
+									</tr>                            	
+                            	</c:when>
+                            	<c:otherwise>
+                            		<c:forEach var="dto" items="${list }">
+                            			<tr>
+			                                <td>${dto.report_no }</td>
+			                                <td>${dto.report_content }</td>
+			                                <td>${dto.report_id }</td>
+			                                <td>${dto.report_tid }</td>
+			                                <td>${dto.report_sdate }</td>
+			                                <form action="admin.do" method="get" name="treat">
+			                                <input type="hidden" name="command" value="treat">
+			                                <input type="hidden" name="report_no" value="${dto.report_no }">
+			                                <input type="hidden" name="report_tid" value="${dto.report_tid }">
+			                                <td><select class="dd" name="report_treat">
+			                                    <option value="no">정상</option>
+			                                    <option value="yes">블랙</option>
+			                                    
+			                                </select><input type="submit" value="처리" id="aa"></td>
+			                                </form>
+                            			</tr>
+                            		</c:forEach>
+                            	</c:otherwise>
+                            </c:choose>
+                            
                             </tbody>
                         </table>
                     </div>

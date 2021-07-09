@@ -31,19 +31,7 @@
     
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-    	
-        
-        $("#bl_btn").click(function(){
-           var con = confirm("정말 블랙처리 하시겠습니까?");
-           if(con = true){
-               alert("블랙처리되었습니다.");
-           }else {
-               alert("취소되었습니다.");
-           }
-        });
-      
-    });
+   
     </script>
 </head>
 <body>
@@ -73,17 +61,16 @@
                 <h2>유저정보</h2>
                 <hr>
                 <div id="divsearch">
-                    <form action="admin.do" method="get" name='search'>
+                    <form action="admin.do" method="post" name='search'>
      				<input type="hidden" name="command" value="search">
                     <input type="submit" value="검색" class="search" id="searchbnt" >
                     <!-- 검색컬럼 -->
                     <select id="searchSelect" name="keyField">
-                        <option value="ScAll">All</option>
-                        <option value="ScId">ID</option>
-                        <option value="ScName">NAME</option>
-                        <option value="ScEmail">EMAIL</option>
-                        <option value="ScPone">PONE</option>
-                        <option value="SCblack">BLACK</option>
+                        <option value="MB_ID">ID</option>
+                        <option value="MB_PW">NAME</option>
+                        <option value="MB_EMAIL">EMAIL</option>
+                        <option value="MB_PHONE">PHONE</option>
+                        <option value="MB_ABLE">BLACK</option>
                       </select>
                     <input type="text" name="keyword"  class="search" id="searchbox" >
 					</form>
