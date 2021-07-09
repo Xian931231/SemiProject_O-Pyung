@@ -39,7 +39,7 @@ public class DealController extends HttpServlet {
 		ProductBiz ptBiz = new ProductBiz();
 		MemberinfoBiz memBiz = new MemberinfoBiz();
 		
-		//구매요청왔을시 테이블 추가
+		//구매요청왔을시 테이블 추가 (DEALBOARD + DEAL_SCHEDULEBOARD)
 		if(command.equals("insert")) {
 			System.out.println("insert 접속");
 			int ptno = Integer.parseInt(request.getParameter("ptno"));
@@ -54,13 +54,17 @@ public class DealController extends HttpServlet {
 			MemberDto biddto = memBiz.selectOne(bid);
 			MemberDto siddto = memBiz.selectOne(sid);
 			
-			int res = biz.insert(dealno,ptdto,bid);
-			if(res>0) {
-				System.out.println("성공");
-				response.sendRedirect("deal.do?command=deal&dealno="+dealno);
+			//거래 테이블 생성
+			int resDeal = biz.insert(dealno,ptdto,bid);
+			if(resDeal > 0) {
+				System.out.println("거래 테이블 성공");
+				//response.sendRedirect("deal.do?command=deal&dealno="+dealno);
 			}else {
-				System.out.println("실패");
+				System.out.println("거래 테이블 실패");
 			}
+			
+			//거래 일정 테이블 생성
+			int resStatus = biz.insertStatus(dealno);
 			
 		//거래페이지 조회
 		}else if(command.equals("deal")){
