@@ -21,6 +21,37 @@ public class MemberinfoBiz extends JDBCTemplate{
 		
 	}
 	
+	//회원 정보 수정
+	public int meminfoUpdate(MemberDto memdto) {
+		Connection con = getConnection();
+		
+		int res = dao.meminfoUpdate(con,memdto);
+
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		return res;
+	}
+	
+	//회원탈퇴
+	public int memberDelete(MemberDto memdto) {
+		Connection con = getConnection();
+		
+		int res = dao.memberDelete(con,memdto);
+				
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		return res;
+	}
+
+	
 	//해당 상품이 관심상품 등록했는지 확인
 	public boolean isLikePt(MemberDto dto) {
 		Connection con = getConnection();
@@ -111,6 +142,7 @@ public class MemberinfoBiz extends JDBCTemplate{
 		close(con);
 		return res;
 	}
+
 
 
 }

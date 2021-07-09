@@ -154,7 +154,7 @@
                     			<tr class="sh_content">
 			                       	<td>${dealList.rownum }</td>
 			                        <td><img src="upload/${dealList.ptimg_name }${dealList.ptimg_type } "></td>
-			                        <td><a href="product.do?command=detail&ptno=${dealList.deal_productNo }" id="product_click">${dealList.product_title }</a></td>
+			                        <td><a href="deal.do?command=deal&dealno=${dealList.deal_no }" id="product_click">${dealList.product_title }</a></td>
 			                        <td>${dealList.product_price }</td>
 			                        <td>${dealList.deal_bid }</td>
 			                        <td>${dealList.deal_price }원</td>

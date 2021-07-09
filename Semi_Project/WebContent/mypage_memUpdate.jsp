@@ -17,37 +17,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title><!-- 카카오맵 api 추가 -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8582c94d0c3acdae42928406badb7847&libraries=services"></script> 
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script type="text/javascript">
-    
-		$(function(){
-		
-			
-			//주소 -> 좌표 변환, input태그에 담아서 db에 저장
-			$("#sample6_detailAddress").on("propertychange change keyup paste input", function(){
-				
-				var addr = $("#sample6_address").val();
-				
-				var geocoder = new kakao.maps.services.Geocoder();
-				
-				var callback = function(result, status) {
-			    	if (status === kakao.maps.services.Status.OK) {
-						document.getElementById("user_latitude").value = result[0].y;
-						document.getElementById("user_longitude").value = result[0].x;
-			    	}
-				};
-				
-				geocoder.addressSearch(addr, callback);
-				
-			});
-			
-			
-		});
-		    
-		    
-	</script>
+    <title>Document</title>
     <!--css-->
     <link rel="stylesheet" href="./css/MYPAGEcss.css" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,6 +48,10 @@
 	
 	
 	</script>
+	
+	<!-- 카카오맵 api 추가 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8582c94d0c3acdae42928406badb7847&libraries=services"></script> 
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 </head>
 
@@ -121,7 +95,7 @@
  
 
       	<!-- 내 프로필 정보@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-        <form action="" method="post">
+        <form action="memberinfo.do?command=meminfoUpdate&id=${memdto.mb_id }" method="post">
             
         	<div id="mypage_profile_info">
 
@@ -171,12 +145,12 @@
 	                <div id="mypage_add">
 	                    <p>주소*</p>
 	                    <input type="button" class="btn" onclick="sample6_execDaumPostcode()" value="주소 찾기"><br>
-		                <input type="text" class="my_add" id="sample6_postcode" placeholder="우편번호" name="postcode">
-						<input type="text" class="my_add" id="sample6_address" placeholder="주소" name="address"><br>
-						<input type="text"  class="my_add" id="sample6_extraAddress" placeholder="참고항목" name="extraAddress" >
-						<input type="text"  class="my_add" id="sample6_detailAddress" placeholder="상세주소" name="detailAddress">
-						<input type="text" class="my_add" id="user_latitude" name="latitude" value="${memdto.mb_addr_latitude }">
-						<input type="text" class="my_add" id="user_longitude" name="longitude" value="${memdto.mb_addr_longitude }">
+		                <input type="hidden" class="my_add" id="sample6_postcode" placeholder="우편번호" name="postcode">
+						<input type="hidden" class="my_add" id="sample6_address" placeholder="주소" name="address"><br>
+						<input type="hidden"  class="my_add" id="sample6_extraAddress" placeholder="참고항목" name="extraAddress" >
+						<input type="text"  class="my_add" id="user_addr"  name="addr" value="${memdto.mb_addr }">
+						<input type="hidden" class="my_add" id="user_latitude" name="latitude" value="${memdto.mb_addr_latitude }">
+						<input type="hidden" class="my_add" id="user_longitude" name="longitude" value="${memdto.mb_addr_longitude }">
 		
 						
 						<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -223,8 +197,24 @@
 						                // 우편번호와 주소 정보를 해당 필드에 넣는다.
 						                document.getElementById('sample6_postcode').value = data.zonecode;
 						                document.getElementById("sample6_address").value = addr;
+						                document.getElementById("user_addr").value = data.zonecode + " " + addr + " "+ extraAddr + " " ;
+						                
+						                
+						                var geocoder = new kakao.maps.services.Geocoder();
+										
+										var callback = function(result, status) {
+									    	if (status === kakao.maps.services.Status.OK) {
+												document.getElementById("user_latitude").value = result[0].y;
+												document.getElementById("user_longitude").value = result[0].x;
+									    	}else{
+									    		document.getElementById("user_latitude").value = "";
+												document.getElementById("user_longitude").value = " ";
+									    	}
+										};
+										
+										geocoder.addressSearch(addr+extraAddr, callback);
 						                // 커서를 상세주소 필드로 이동한다.
-						                document.getElementById("sample6_detailAddress").focus();
+						                document.getElementById("user_addr").focus();
 						            }
 						        }).open();
 						    }
@@ -242,7 +232,7 @@
 
                 <br><br>
 
-                <a href="" class="user_out">회원탈퇴</a>
+                <a href="memberinfo.do?command=memberDelete&id=${memdto.mb_id }" class="user_out">회원탈퇴</a>
 
                 <br><br><br><br>
 

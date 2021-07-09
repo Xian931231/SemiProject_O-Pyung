@@ -83,9 +83,51 @@ public class MemberinfoController extends HttpServlet {
 			
 			
 			dispatch("mypage.jsp", request, response);
+		
+		//회원정보 수정 폼으로
 		}else if(command.equals("memupdate")) {
 			dispatch("mypage_memUpdate.jsp", request, response);
 		
+		//회원정보 수정
+		}else if(command.equals("meminfoUpdate")) {
+			String email = request.getParameter("my_email");
+			String pwd = request.getParameter("my_pw");
+			String name = request.getParameter("my_name");
+			String phone = request.getParameter("my_phone");
+			String addr =request.getParameter("addr");
+			String latitude = request.getParameter("latitude");
+			String longitude = request.getParameter("longitude");
+			
+			
+			memdto.setMb_email(email);
+			memdto.setMb_pw(pwd);
+			memdto.setMb_name(name);
+			memdto.setMb_phone(phone);
+			memdto.setMb_phone(phone);
+			memdto.setMb_addr(addr);
+			memdto.setMb_addr_latitude(latitude);
+			memdto.setMb_addr_longitude(longitude);
+			
+			int res = biz.meminfoUpdate(memdto);
+			
+			if(res>0) {
+				System.out.println("수정 성공");
+				response.sendRedirect("memberinfo.do?command=memupdate&id="+id);
+			}else {
+				System.out.println("수정 실패");
+				response.sendRedirect("memberinfo.do?command=memupdate&id="+id);
+			}
+		
+		}else if(command.equals("memberDelete")) {
+			int res = biz.memberDelete(memdto);
+			
+			if(res>0) {
+				System.out.println("삭제 성공");
+				response.sendRedirect("main.do?command=login");
+			}else {
+				System.out.println("삭제 실패");
+				response.sendRedirect("memberinfo.do?command=memupdate&id="+id);
+			}
 		//판매내역
 		}else if(command.equals("sell")) {
 			

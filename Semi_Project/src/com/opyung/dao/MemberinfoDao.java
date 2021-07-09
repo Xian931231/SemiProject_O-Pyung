@@ -54,6 +54,61 @@ public class MemberinfoDao extends JDBCTemplate{
 		return res;
 	}
 
+	//회원정보 수정
+	public int meminfoUpdate(Connection con, MemberDto memdto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "UPDATE MEMBERBOARD SET MB_PW=?, MB_NAME=?, MB_EMAIL=?, MB_PHONE=?, MB_ADDR=?, MB_ADDR_LATITUDE=?, MB_ADDR_LONGITUDE=? WHERE MB_NO=?";
+		
+				
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, memdto.getMb_pw());
+			pstm.setString(2, memdto.getMb_name());
+			pstm.setString(3, memdto.getMb_email());
+			pstm.setString(4, memdto.getMb_phone());
+			pstm.setString(5, memdto.getMb_addr());
+			pstm.setString(6, memdto.getMb_addr_latitude());
+			pstm.setString(7, memdto.getMb_addr_longitude());
+			pstm.setInt(8, memdto.getMb_no());
+			System.out.println("03"+ sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		
+		return res;
+	}
+	
+	//회원탈퇴
+	public int memberDelete(Connection con, MemberDto memdto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "DELETE FROM MEMBERBOARD WHERE MB_NO=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, memdto.getMb_no());
+			System.out.println("03" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		
+		return res;
+	}
 	
 	//해당 상품이 관심상품 등록했는지 확인
 	public boolean isLikePt(Connection con, MemberDto dto) {
@@ -259,6 +314,10 @@ public class MemberinfoDao extends JDBCTemplate{
 		
 		return res;
 	}
+
+
+
+	
 
 
 }

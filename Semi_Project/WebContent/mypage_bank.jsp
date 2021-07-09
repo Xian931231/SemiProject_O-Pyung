@@ -115,26 +115,34 @@
 			</div>
 			<script type="text/javascript">
 				$("select[name=account]").change(function(){
-					$.ajax({
-						url:"memberinfo.do?command=bankSelect&id=ADMIN",
-						type:"post",
-						data:{
-							bankno : $("select[name=account]").val()
-						},
-						dataType:"json",
-						success:function(data){
-							console.log(data);
-							$(".used_bankname").val(data.bank_name).prop("selected",true)
-							$("#account_num_input").val(data.bank_account);
-							$("#account_owner_input").val(data.bank_memname);
-							$("#bankno").val(data.bank_no);
-							$("#save_btn").hide();
-							$("#delete_btn").show();
-						},
-						error:function(){
-							alert("실패");
-						}
-					});
+					if($("select[name=account]").val() == ''){
+						$(".used_bankname").val('').prop("selected",true)
+						$("#account_num_input").val("");
+						$("#account_owner_input").val("");
+						$("#save_btn").show();
+						$("#delete_btn").hide();
+					}else{
+						$.ajax({
+							url:"memberinfo.do?command=bankSelect&id=ADMIN",
+							type:"post",
+							data:{
+								bankno : $("select[name=account]").val()
+							},
+							dataType:"json",
+							success:function(data){
+								console.log(data);
+								$(".used_bankname").val(data.bank_name).prop("selected",true)
+								$("#account_num_input").val(data.bank_account);
+								$("#account_owner_input").val(data.bank_memname);
+								$("#bankno").val(data.bank_no);
+								$("#save_btn").hide();
+								$("#delete_btn").show();
+							},
+							error:function(){
+								alert("실패");
+							}
+						});
+					}
 				});
 			</script>
 				
