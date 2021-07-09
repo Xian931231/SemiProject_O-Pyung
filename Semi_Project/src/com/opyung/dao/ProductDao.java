@@ -381,6 +381,190 @@ public class ProductDao extends JDBCTemplate{
 		return res;
 	}
 
+	//헤더 검색기능
+	public List<ProductBoardDto> selectSearchVal(Connection con, String searchVal) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
+		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_TITLE LIKE ? OR PRODUCT_CATEGORY LIKE ? OR PRODUCT_BRAND LIKE ? OR PRODUCT_ADDR LIKE ? OR PRODUCT_CONTENT LIKE ?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, "%"+searchVal+"%");
+			pstm.setString(2, "%"+searchVal+"%");
+			pstm.setString(3, "%"+searchVal+"%");
+			pstm.setString(4, "%"+searchVal+"%");
+			pstm.setString(5, "%"+searchVal+"%");
+			System.out.println("03" + sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04");
+			while(rs.next()) {
+				ProductBoardDto dto = new ProductBoardDto();
+				dto.setProduct_no(rs.getInt(1));
+				dto.setProduct_title(rs.getString(2));
+				dto.setProduct_category(rs.getString(3));
+				dto.setProduct_price(rs.getInt(4));
+				dto.setProduct_brand(rs.getString(5));
+				dto.setProduct_addr(rs.getString(6));
+				dto.setProduct_addr_latitude(rs.getString(7));
+				dto.setProduct_addr_longitude(rs.getString(8));
+				dto.setProduct_new(rs.getString(9));
+				dto.setProduct_content(rs.getString(10));
+				dto.setProduct_id(rs.getString(11));
+				dto.setProduct_date(rs.getDate(12));
+				dto.setProduct_status(rs.getString(13));
+				dto.setPtimg_src(rs.getString(16));
+				dto.setPtimg_name(rs.getString(17));
+				dto.setPtimg_type(rs.getString(18));
+				dto.setPtimg_size(rs.getInt(19));
+				res.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		return res;
+	}
+
+	//최대가격
+	public int maxPrice(Connection con) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		int res = 0;
+		
+		String sql = "SELECT MAX(PRODUCT_PRICE) FROM PRODUCTBOARD";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			System.out.println("03"+ sql);
+			rs = pstm.executeQuery();
+			System.out.println("04");
+			while(rs.next()) {
+				res = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		return res;
+	}
+
+	//체크박스 검색
+	public List<ProductBoardDto> searchChk(Connection con, String[] category, String[] brand, String[] addr,
+			String[] newvar, int min, int max) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
+		
+		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY IN (?,?,?,?,?,?,?,?,?) AND PRODUCT_BRAND IN (?,?,?,?,?,?,?,?,?) AND PRODUCT_ADDR IN (?,?,?,?,?,?) AND PRODUCT_NEW IN (?,?) AND (PRODUCT_PRICE BETWEEN ? AND ?)";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			for(int i=0;i<category.length;i++) {
+				pstm.setString(i+1, category[i]);
+				System.out.println(category[i]);
+			}
+			for(int i=0;i<brand.length;i++) {
+				pstm.setString(i+10, brand[i]);
+				System.out.println(brand[i]);
+			}
+			for(int i=0;i<addr.length;i++) {
+				pstm.setString(i+19, addr[i]);
+				System.out.println(addr[i]);
+			}
+			pstm.setString(25, newvar[0]);
+			pstm.setString(26, newvar[1]);
+			pstm.setInt(27, min);
+			pstm.setInt(28, max);
+			System.out.println("03"+sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04");
+			while(rs.next()) {
+				ProductBoardDto dto = new ProductBoardDto();
+				dto.setProduct_no(rs.getInt(1));
+				dto.setProduct_title(rs.getString(2));
+				dto.setProduct_category(rs.getString(3));
+				dto.setProduct_price(rs.getInt(4));
+				dto.setProduct_brand(rs.getString(5));
+				dto.setProduct_addr(rs.getString(6));
+				dto.setProduct_addr_latitude(rs.getString(7));
+				dto.setProduct_addr_longitude(rs.getString(8));
+				dto.setProduct_new(rs.getString(9));
+				dto.setProduct_content(rs.getString(10));
+				dto.setProduct_id(rs.getString(11));
+				dto.setProduct_date(rs.getDate(12));
+				dto.setProduct_status(rs.getString(13));
+				dto.setPtimg_src(rs.getString(16));
+				dto.setPtimg_name(rs.getString(17));
+				dto.setPtimg_type(rs.getString(18));
+				dto.setPtimg_size(rs.getInt(19));
+				res.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		return res;
+	}
+
+
+	//버튼클릭 검색
+	public List<ProductBoardDto> searchBtn(Connection con, String category) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
+		
+		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY = ?";
+		
+		try {
+			pstm =con.prepareStatement(sql);
+			pstm.setString(1, category);
+			System.out.println("03" +sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04");
+			while(rs.next()) {
+				ProductBoardDto dto = new ProductBoardDto();
+				dto.setProduct_no(rs.getInt(1));
+				dto.setProduct_title(rs.getString(2));
+				dto.setProduct_category(rs.getString(3));
+				dto.setProduct_price(rs.getInt(4));
+				dto.setProduct_brand(rs.getString(5));
+				dto.setProduct_addr(rs.getString(6));
+				dto.setProduct_addr_latitude(rs.getString(7));
+				dto.setProduct_addr_longitude(rs.getString(8));
+				dto.setProduct_new(rs.getString(9));
+				dto.setProduct_content(rs.getString(10));
+				dto.setProduct_id(rs.getString(11));
+				dto.setProduct_date(rs.getDate(12));
+				dto.setProduct_status(rs.getString(13));
+				dto.setPtimg_src(rs.getString(16));
+				dto.setPtimg_name(rs.getString(17));
+				dto.setPtimg_type(rs.getString(18));
+				dto.setPtimg_size(rs.getInt(19));
+				res.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		return res;
+	}
+
 
 	
 

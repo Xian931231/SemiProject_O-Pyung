@@ -70,7 +70,7 @@
         <form action="product.do?command=search" method="post">
         	<ul class="navbar_search_bar">
 	        	<li ><i class="fas fa-search"></i></li>
-	        	<li class="navbar_search_li"><input type="text"></li>  
+	        	<li class="navbar_search_li"><input type="text" name="searchVal"></li>  
         	</ul>      	
         </form>
         </div>

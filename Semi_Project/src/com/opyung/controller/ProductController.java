@@ -382,6 +382,130 @@ public class ProductController extends HttpServlet {
 				System.out.println("삭제 실패");
 				response.sendRedirect("product.do?command=detail&ptno="+ptno);
 			}
+		
+		
+		//헤더 검색기능
+		}else if(command.equals("search")) {
+			String searchVal = request.getParameter("searchVal");
+
+			List<ProductBoardDto> list = new ArrayList<ProductBoardDto>();
+			list = biz.selectSearchVal(searchVal);
+			
+			request.setAttribute("list", list);
+			dispatch("shop.jsp", request, response);
+		
+		//체크박스 검색기능
+		}else if(command.equals("searchChk")) {
+			//카테고리 대입
+			String[] category = new String[9];
+			for (int i = 0; i < category.length; i++) {
+				category[i] = "";
+			}
+			
+			if(request.getParameterValues("category") == null) {
+				category[0] = "모니터";
+				category[1] = "키보드";
+				category[2] = "마우스";
+				category[3] = "CPU";
+				category[4] = "RAM";
+				category[5] = "그래픽카드";
+				category[6] = "메인보드";
+				category[7] = "케이스";
+				category[8] = "기타";
+			}else {
+				String[] cate = request.getParameterValues("category");
+				for(int i=0;i<cate.length;i++) {
+					category[i] = cate[i];
+				}
+			}
+			//브랜드 대입
+			String[] brand = new String[9];
+			for (int i = 0; i < brand.length; i++) {
+				brand[i] = "";
+			}
+			if(request.getParameterValues("brand") == null) {
+				brand[0] = "INTEL";
+				brand[1] = "AMD";
+				brand[2] = "ASUS";
+				brand[3] = "LEVONO";
+				brand[4] = "HP";
+				brand[5] = "SAMSUNG";
+				brand[6] = "BENQ";
+				brand[7] = "LG";
+				brand[8] = "기타";
+			}else {
+				String[] reqbrand = request.getParameterValues("brand");
+				for(int i=0;i<reqbrand.length;i++) {
+					brand[i] = reqbrand[i];
+				}
+			}
+			//주소대입
+			String[] addr = new String[6];
+			for (int i = 0; i < addr.length; i++) {
+				addr[i] = "";
+			}
+			if(request.getParameterValues("addr") == null) {
+				addr[0] = "서울";
+				addr[1] = "경기";
+				addr[2] = "인천";
+				addr[3] = "부산";
+				addr[4] = "대구";
+				addr[5] = "광주";
+			}else {
+				String[] reqaddr = request.getParameterValues("addr");
+				for(int i=0;i<reqaddr.length;i++) {
+					addr[i] = reqaddr[i];
+				}
+			}
+			
+			
+			
+			//개봉여부
+			String[] newvar = new String[2];
+			for (int i = 0; i < newvar.length; i++) {
+				newvar[i] = "";
+			}
+			if(request.getParameterValues("newvar") == null) {
+				newvar[0] = "Y";
+				newvar[1] = "N";
+			}else {
+				String[] reqnewvar = request.getParameterValues("newvar");
+				for(int i=0;i<reqnewvar.length;i++) {
+					newvar[i] = reqnewvar[i];
+				}
+			}
+			
+			
+			
+			int min = 0,max = 0;
+			
+			//가격을 입력했을시
+			if(!request.getParameter("min-price").isEmpty() && !request.getParameter("max-price").isEmpty()){
+				min = Integer.parseInt(request.getParameter("min-price"));
+				max = Integer.parseInt(request.getParameter("max-price"));
+			}else if(!request.getParameter("min-price").isEmpty()) {
+				min = Integer.parseInt(request.getParameter("min-price"));
+				max = biz.maxPrice();
+			}else if(!request.getParameter("max-price").isEmpty()) {
+				max = Integer.parseInt(request.getParameter("max-price"));
+			}else {
+				max = biz.maxPrice();
+			}
+			System.out.println(min+ ", "+ max);
+			//리스트 객체
+			List<ProductBoardDto> list = new ArrayList<ProductBoardDto>();
+			list = biz.searchChk(category,brand,addr,newvar,min,max);
+			request.setAttribute("list", list);
+			dispatch("shop.jsp", request, response);
+		
+		//버튼클릭 검색
+		}else if(command.equals("searchBtn")) {
+			String category = request.getParameter("category");
+			System.out.println(category);
+			
+			List<ProductBoardDto> list = biz.searchBtn(category);
+			request.setAttribute("list", list);
+			dispatch("shop.jsp", request, response);
 		}
 	}
 

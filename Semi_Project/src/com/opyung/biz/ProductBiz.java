@@ -143,6 +143,44 @@ Connection con = getConnection();
 		return list;
 	}
 
+	//헤더 검색기능
+	public List<ProductBoardDto> selectSearchVal(String searchVal) {
+		Connection con = getConnection();
+		
+		List<ProductBoardDto> list = dao.selectSearchVal(con,searchVal);
+		
+		close(con);
+		
+		return list;
+	}
+
+	//최대가격
+	public int maxPrice() {
+		Connection con =getConnection();
+		int res = dao.maxPrice(con);
+		close(con);
+		return res;
+	}
+
+	//체크박스 검색
+	public List<ProductBoardDto> searchChk(String[] category, String[] brand, String[] addr, String[] newvar, int min,
+			int max) {
+		Connection con = getConnection();
+		
+		List<ProductBoardDto> list = dao.searchChk(con,category,brand,addr,newvar,min,max);
+		close(con);
+		return list;
+	}
+
+	//버튼 클릭 검색
+	public List<ProductBoardDto> searchBtn(String category) {
+Connection con = getConnection();
+		
+		List<ProductBoardDto> list = dao.searchBtn(con,category);
+		close(con);
+		return list;
+	}
+
 
 
 
