@@ -52,7 +52,7 @@
                 <li class="side_li" id="userinfo"><a href="admin.do?command=userInfo">유저정보</a></li>
                 <li class="side_li" id="report"><a href="#">신고</a></li>
                 <li class="side_li" id="transactionStatus"><a href="#">거래상태</a></li>
-                <li class="side_li" id="noticeWrite"><a href="#">공지사항</a></li>
+                <li class="side_li" id="noticeWrite"><a href="admin_notice.jsp">공지사항</a></li>
             </ul>
         </div>
         	<div class="content_main">

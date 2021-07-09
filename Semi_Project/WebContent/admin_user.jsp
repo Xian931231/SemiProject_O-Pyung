@@ -73,11 +73,11 @@
                 <h2>유저정보</h2>
                 <hr>
                 <div id="divsearch">
-                    <form action="adminpage.jsp" method="post" name='frm'>
-                    <input type="hidden" name="command" value="UserInfo">
+                    <form action="admin.do" method="get" name='search'>
+     				<input type="hidden" name="command" value="search">
                     <input type="submit" value="검색" class="search" id="searchbnt" >
                     <!-- 검색컬럼 -->
-                    <select id="searchSelect" name="col">
+                    <select id="searchSelect" name="keyField">
                         <option value="ScAll">All</option>
                         <option value="ScId">ID</option>
                         <option value="ScName">NAME</option>
@@ -85,7 +85,7 @@
                         <option value="ScPone">PONE</option>
                         <option value="SCblack">BLACK</option>
                       </select>
-                    <input type="text" name="word"  class="search" id="searchbox" >
+                    <input type="text" name="keyword"  class="search" id="searchbox" >
 					</form>
     
                     
@@ -127,6 +127,8 @@
                        		</c:when>
                         <c:otherwise>
                         	<c:forEach var="dto" items="${list }">
+                        		
+                        		
                         		<tr>
 		                            <td><input type="checkbox"></td>
 		                            <td>${dto.mb_id }</td>
@@ -136,8 +138,11 @@
 		                            <td>${dto.mb_phone }</td>
 		                            <td>${dto.mb_score }</td>
 		                            <td><a>${dto.mb_able }</a></td>
-		                            <td><input type="button" value="블랙처리" id="bl_btn"></td>
+		                           
+		                            <td><input type="button" value="블랙처리" id="bl_btn" 
+		                            onclick="location.href='admin.do?command=black&mb_id=${dto.mb_id}'" ></td>
 	                        	</tr>
+	                        	
                         	</c:forEach>
                         </c:otherwise>
                         </c:choose>

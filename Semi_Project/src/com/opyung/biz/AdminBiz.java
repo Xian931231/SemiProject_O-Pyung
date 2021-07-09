@@ -23,6 +23,33 @@ public class AdminBiz {
 		return list;
 	}
 	
+	public MemberDto selectOne(String mb_id) {
+		Connection con = getConnection();
+		
+		MemberDto dto = dao.selectOne(con,mb_id);
+		
+		close(con);
+		
+		return dto;
+	}
+	
+	public boolean black(MemberDto dto) {
+		Connection con = getConnection();
+		
+		boolean res = dao.black(con, dto);
+		
+		if(res) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return res;
+		
+	}
+	
 	//검색창 통한 정렬 및 검색
 	
 	public MemberDto serchId(String mb_id) {

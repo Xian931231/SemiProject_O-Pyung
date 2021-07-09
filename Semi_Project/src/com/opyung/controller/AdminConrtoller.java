@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.opyung.biz.AdminBiz;
 import com.opyung.dto.MemberDto;
+import com.sun.java.util.jar.pack.Package.Class.Member;
 
 
 
@@ -47,15 +48,31 @@ public class AdminConrtoller extends HttpServlet {
 					request.setAttribute("list", list);
 					dispatch("admin_user.jsp", request, response);
 				
-				//검색창 통한 정렬 및 검색
-					
-				}else if(command.equals("serchId")){
+				
+				//블랙 처리	
+				}else if(command.equals("black")) {
 					String mb_id = request.getParameter("mb_id");
 					
-					MemberDto dto = biz.serchId(mb_id);
+					MemberDto dto = biz.selectOne(mb_id);
 					
-					request.setAttribute("dto", dto);
-					dispatch("admin.jsp", request, response);
+					boolean res = biz.black(dto);
+					
+					if(res) {
+						jsResponse("블랙처리되었습니다.", "admin.do?command=userInfo", response);
+					}else {
+						dispatch("admin.do?command=userInfo", request, response);
+					}
+				
+				
+				//검색창 통한 정렬 및 검색
+					
+				}else if(command.equals("search")){
+					String keyword = request.getParameter("keyword");
+					String keyField = request.getParameter("keyField");
+					
+					MemberDto dto = biz.selectsearch();
+					
+					
 					
 					
 				}else if(command.equals("serchName")){
@@ -64,7 +81,16 @@ public class AdminConrtoller extends HttpServlet {
 					MemberDto dto = biz.serchId(mb_name);
 					
 					request.setAttribute("dto", dto);
-					dispatch("admin.jsp", request, response);
+					dispatch("admin_user.jsp", request, response);
+					
+					
+				}else if(command.equals("serchName")){
+					String mb_name = request.getParameter("mb_name");
+					
+					MemberDto dto = biz.serchId(mb_name);
+					
+					request.setAttribute("dto", dto);
+					dispatch("admin_user.jsp", request, response);
 					
 					
 				}else if(command.equals("serchEmail")){
@@ -73,7 +99,7 @@ public class AdminConrtoller extends HttpServlet {
 					MemberDto dto = biz.serchId(mb_email);
 					
 					request.setAttribute("dto", dto);
-					dispatch("admin.jsp", request, response);
+					dispatch("admin_user.jsp", request, response);
 					
 					
 				}else if(command.equals("serchPhone")){
@@ -82,7 +108,7 @@ public class AdminConrtoller extends HttpServlet {
 					MemberDto dto = biz.serchId(mb_phone);
 					
 					request.setAttribute("dto", dto);
-					dispatch("admin.jsp", request, response);
+					dispatch("admin_user.jsp", request, response);
 					
 					
 				}else if(command.equals("serchable")){
@@ -91,20 +117,30 @@ public class AdminConrtoller extends HttpServlet {
 					MemberDto dto = biz.serchId(mb_able);
 					
 					request.setAttribute("dto", dto);
-					dispatch("admin.jsp", request, response);
+					dispatch("admin_user.jsp", request, response);
 					
 					
 				}else if(command.equals("admin")){
 					
 				}
 				
-				//블랙 버튼 클릭시 로그인 불가
+				
 				
 				
 				
 				
 				
 	}
+	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {
+		String s = "<script type='text/javascript'>"
+				+"alert('"+msg+"');"
+				+"location.href='"+url+"';"
+				+"</script>";
+		
+		PrintWriter out = response.getWriter();
+		out.print(s);
+	}
+	
 	
 	
 	

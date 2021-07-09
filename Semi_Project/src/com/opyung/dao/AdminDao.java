@@ -58,6 +58,70 @@ public class AdminDao {
 		
 		return res;
 	}
+	
+	//selectOne
+	public MemberDto selectOne(Connection con, String mb_id) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		MemberDto res = null;
+		String sql = "SELECT MB_ID, MB_PW, MB_NAME, MB_EMAIL, MB_PHONE, MB_ABLE, MB_SCORE FROM MEMBERBOARD WHERE MB_ID=?  ";
+	
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, mb_id);
+			System.out.println("03. query 준비 : " + sql);
+			
+			rs= pstm.executeQuery();
+			System.out.println("04. query 실행 및 리턴");
+			
+			if(rs.next()) {
+				res = new MemberDto(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7));
+				
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("3/4단계");
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+			System.out.println("05. db 종료\n");
+		}
+		
+		return res;
+	}
+	
+	//black 처리
+	public boolean black(Connection con, MemberDto dto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE MEMBERBOARD SET MB_ABLE='N' WHERE MB_ID=?";
+		
+		try {
+			pstm= con.prepareStatement(sql);
+			pstm.setString(1, dto.getMb_id());
+			System.out.println("03. query준비 : " + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04.query 실행 및 리턴");
+			
+			} catch (SQLException e) {
+				System.out.println("3/4단계에러");
+				e.printStackTrace();
+			}finally {
+				close(pstm);
+				System.out.println("05. db종료\n");
+			}
+		
+		return (res>0)?true:false;
+	}
+	
+	
+	
+	
+	
+
 	//검색을 통한 출력
 	public MemberDto serchId(Connection con,String mb_id) {
 		PreparedStatement pstm = null;
