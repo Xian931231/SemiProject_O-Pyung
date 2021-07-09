@@ -32,7 +32,7 @@
  		
  		if(confirm("검수 공지사항 및 주의사항을 확인하셨나요?")){
 			
- 			location.href="deal.do?command=deal_status&dealno=${dealdto.deal_no}";
+ 			location.href="deal.do?command=deal_status_update&dealno=${dealdto.deal_no}";
  			
  		}else{
  			alert("확인 후 다시 검수신청해주세요");
@@ -86,7 +86,7 @@
 	                </tr>
 	                <tr >
 	                    <th>상품: &nbsp&nbsp</th>
-	                    <td id="product_name"><a>${ptdto.product_no } </a></td>
+	                    <td id="product_name"><a>${ptdto.product_title } </a></td>
 	                </tr>
 	                <tr>
 	                    <th>가격: &nbsp&nbsp</th>

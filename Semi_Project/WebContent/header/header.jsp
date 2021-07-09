@@ -39,7 +39,7 @@
 			}
 		%>
 		<a href="notice.do?command=noticelist">고객센터</a>
-		<a href="main.do?command=mypage">마이페이지</a>
+		<a href="memberinfo.do?command=mypage&id=${id }">마이페이지</a>
 		<%
 			if(id == null){
 		%>

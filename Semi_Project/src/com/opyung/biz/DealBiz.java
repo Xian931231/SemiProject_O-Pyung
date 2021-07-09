@@ -122,7 +122,7 @@ Connection con = getConnection();
 	
 	
 	
-	//거래일정 생성
+	//거래일정 생성(거래상태:예약금결제)
 	public int insertStatus(int dealno) {
 		
 		Connection con = getConnection();
@@ -152,6 +152,24 @@ Connection con = getConnection();
 		return res;
 	}
 	
+	
+	//거래일정 수정(거래상태 변경) / 재사용가능
+	public int updateStatus(int dealno, String status, String eDate) {
+		
+		Connection con = getConnection();
+		
+		int res = dao.updateStatus(con ,dealno, status, eDate);
+		
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return res;
+	}
 	
 
 }

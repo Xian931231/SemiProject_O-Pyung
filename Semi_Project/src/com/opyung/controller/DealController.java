@@ -1,6 +1,7 @@
 package com.opyung.controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.opyung.biz.DealBiz;
 import com.opyung.biz.MemberinfoBiz;
@@ -120,7 +120,7 @@ public class DealController extends HttpServlet {
 			request.setAttribute("dealdto", dealdto);
 			dispatch("deal_buyer.jsp", request, response);
 			
-		//구매자가 예약금 결제한 후 거래상태 페이지로 이동(미완성)
+		//거래상태 페이지로
 		}else if(command.equals("deal_status")) {
 			
 			int dealno = Integer.parseInt(request.getParameter("dealno"));
@@ -163,7 +163,7 @@ public class DealController extends HttpServlet {
 			dispatch("deal_status.jsp", request, response);
 		
 			
-		//판매자가 검수신청을 누를때(거래일정 테이블 생성)
+		//거래일정 테이블 생성(구매자가 예약금 결제를 했을경우)
 		}else if(command.equals("deal_status_make")) {
 			
 			int dealno = Integer.parseInt(request.getParameter("dealno"));
@@ -176,6 +176,25 @@ public class DealController extends HttpServlet {
 			}else {
 				System.out.println("db생성 추가 실패 확인바람");
 			}
+			
+			
+		//판매자가 검수신청 눌렀을경우 -> 거래상태변경 -> deal_status 페이지로 이동	
+		}else if(command.equals("deal_status_update")) {
+			
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			String status = "검수신청";
+			String eDate = "SYSDATE";
+			
+			
+			int res = biz.updateStatus(dealno, status, eDate);
+			
+			if(res>0) {
+				System.out.println("거래상태 수정(검수신청)");
+				response.sendRedirect("deal.do?command=deal_status&dealno="+dealno);
+			}else {
+				System.out.println("거래상태 수정실패(검수신청)");
+			}
+			
 		}
 		
 		

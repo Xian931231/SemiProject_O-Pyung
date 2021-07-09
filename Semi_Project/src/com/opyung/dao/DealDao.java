@@ -439,7 +439,7 @@ public class DealDao extends JDBCTemplate{
 		PreparedStatement pstm = null;
 		int res = 0;
 		
-		String sql = " INSERT INTO DEALSCHEDULEBOARD VALUES(DEALSCHEDULESQ.NEXTVAL, ?, '검수접수', SYSDATE, SYSDATE) ";
+		String sql = " INSERT INTO DEALSCHEDULEBOARD VALUES(DEALSCHEDULESQ.NEXTVAL, ?, '예약금결제', SYSDATE, SYSDATE) ";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -498,6 +498,37 @@ public class DealDao extends JDBCTemplate{
 		} finally {
 			close(rs);
 			close(pstm);
+			System.out.println("05. db종료\n");
+		}
+		
+		return res;
+	}
+	
+	
+	//거래상태 수정
+	public int updateStatus(Connection con, int dealno, String status, String eDate) {
+		
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE DEALSCHEDULEBOARD SET SCHEDULE_STATUS=?, SCHEDULE_SDATE=SYSDATE, SCHEDULE_EDATE=? WHERE SCHEDULE_DEALNO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, status);
+			pstm.setString(2, eDate);
+			pstm.setInt(3, dealno);
+			System.out.println("03. query 준비:" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. query 준비 및 실행");
+			
+		} catch (SQLException e) {
+			System.out.println("3/4단계 에러");
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			System.out.println("05. db 종료 \n");
 		}
 		
 		return res;
