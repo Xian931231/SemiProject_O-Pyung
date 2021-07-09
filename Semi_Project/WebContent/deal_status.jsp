@@ -6,10 +6,8 @@
 <!-- 인코딩 처리 -->    
 <%
     	request.setCharacterEncoding("UTF-8");
-    %>    
-<%
     	response.setContentType("text/html; charset=UTF-8");
-    %>    
+%>    
     
 <!DOCTYPE html>
 <html lang="en">
@@ -119,27 +117,27 @@
 
                         <tr>
                             <td >상품</td>
-                            <td class="td2"><a href="#" style="color: white;">123</a></td>
+                            <td class="td2"><a href="#" style="color: white;">${ptdto.product_title }</a></td>
                         </tr>
                         <tr>
                             <td >판매자</td>
-                            <td class="td2">누구누구</td>
+                            <td class="td2">${siddto.mb_id }</td>
                         </tr>
                         <tr>
                             <td >구매자</td>
-                            <td class="td2">누구누구</td>
+                            <td class="td2">${biddto.mb_id }</td>
                         </tr>
                         <tr>
                             <td>배송상태</td>
-                            <td class="td2">결제완료</td>
+                            <td class="td2">${dealdto.schedule_status }</td>
                         </tr>
                         <tr>
                             <td >예약금</td>
-                            <td class="td2">얼마</td>
+                            <td class="td2">${prePrice }</td>
                         </tr>                        
                         <tr class="tr-price">
                             <td>결제 금액</td>
-                            <td class="td2">얼마</td>
+                            <td class="td2">${restPrice }</td>
                         </tr>
                         
                     </table>      

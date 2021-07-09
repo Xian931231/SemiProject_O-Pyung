@@ -11,7 +11,7 @@ public class DealBoardDto {
 	private int deal_productNo;
 	private String deal_sid;		//판매자 (seller)
 	private String deal_bid;		//구매자 (buyer)
-	private String deal_price; 		//결제한 금액
+	private int deal_price; 		//결제한 금액
 
 	//DealScheduleBoard(거래 일정 테이블)
 	private int schedule_no;
@@ -36,7 +36,7 @@ public class DealBoardDto {
 	}
 	
 	//매개변수 생성자
-	public DealBoardDto(int deal_no, int deal_productNo, String deal_sid, String deal_bid, String deal_price,
+	public DealBoardDto(int deal_no, int deal_productNo, String deal_sid, String deal_bid, int deal_price,
 			int schedule_no, int schedule_dealNo, String schedule_status, Date sdate, Date edate) {
 		super();
 		this.deal_no = deal_no;
@@ -77,10 +77,10 @@ public class DealBoardDto {
 	public void setDeal_bid(String deal_bid) {
 		this.deal_bid = deal_bid;
 	}
-	public String getDeal_price() {
+	public int getDeal_price() {
 		return deal_price;
 	}
-	public void setDeal_price(String deal_price) {
+	public void setDeal_price(int deal_price) {
 		this.deal_price = deal_price;
 	}
 	public int getSchedule_no() {

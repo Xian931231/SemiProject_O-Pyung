@@ -104,7 +104,7 @@ public class DealController extends HttpServlet {
 			String bid = dealdto.getDeal_bid();
 			
 			//결제금액
-			int dealprice = Integer.parseInt(dealdto.getDeal_price());
+			int dealprice = dealdto.getDeal_price();
 			System.out.println("결제금액: "+ dealprice);
 			
 			//예약금
@@ -133,8 +133,6 @@ public class DealController extends HttpServlet {
 			String sid = dealdto.getDeal_sid();
 			int productno = dealdto.getDeal_productNo();
 			
-			
-			
 			//상품정보
 			ProductBoardDto ptdto = new ProductBoardDto();
 			ptdto = ptBiz.selectOne(productno);
@@ -146,7 +144,7 @@ public class DealController extends HttpServlet {
 			biddto = memBiz.selectOne(bid);
 			
 			//결제금액
-			int dealPrice = Integer.parseInt(dealdto.getDeal_price());
+			int dealPrice = dealdto.getDeal_price();
 			System.out.println("결제금액: "+ dealPrice);
 			
 			//예약금
@@ -162,10 +160,11 @@ public class DealController extends HttpServlet {
 			request.setAttribute("biddto", biddto);
 			request.setAttribute("prePrice", prePrice);
 			request.setAttribute("restPrice", restPrice);
+			dispatch("deal_status.jsp", request, response);
 		
 			
 		//판매자가 검수신청을 누를때(거래일정 테이블 생성)
-		}else if(command.equals("deal_status")) {
+		}else if(command.equals("deal_status_make")) {
 			
 			int dealno = Integer.parseInt(request.getParameter("dealno"));
 			

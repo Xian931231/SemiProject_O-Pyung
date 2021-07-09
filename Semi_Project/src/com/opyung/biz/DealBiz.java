@@ -145,12 +145,11 @@ Connection con = getConnection();
 		
 		Connection con = getConnection();
 		
-		DealBoardDto dto = dao.selectStatus(con, dealno);
+		DealBoardDto res = dao.selectStatus(con, dealno);
 		
+		close(con);
 		
-		
-		
-		return null;
+		return res;
 	}
 	
 	

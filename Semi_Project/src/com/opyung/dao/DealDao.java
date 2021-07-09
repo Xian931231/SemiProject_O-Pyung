@@ -95,7 +95,7 @@ public class DealDao extends JDBCTemplate{
 				res.setDeal_productNo(rs.getInt(2));
 				res.setDeal_sid(rs.getString(3));
 				res.setDeal_bid(rs.getString(4));
-				res.setDeal_price(rs.getString(5));
+				res.setDeal_price(rs.getInt(5));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -164,7 +164,7 @@ public class DealDao extends JDBCTemplate{
 				dto.setDeal_productNo(rs.getInt(4));
 				dto.setDeal_sid(rs.getString(5));
 				dto.setDeal_bid(rs.getString(6));
-				dto.setDeal_price(rs.getString(7));
+				dto.setDeal_price(rs.getInt(7));
 				dto.setSchedule_status(rs.getString(10));
 				dto.setSdate(rs.getDate(11));
 				
@@ -204,7 +204,7 @@ public class DealDao extends JDBCTemplate{
 				dto.setPtimg_type(rs.getString(6));
 				dto.setDeal_bid(rs.getString(7));
 				dto.setDeal_sid(rs.getString(8));
-				dto.setDeal_price(rs.getString(9));
+				dto.setDeal_price(rs.getInt(9));
 				dto.setProduct_price(rs.getInt(10));
 				dto.setSchedule_status(rs.getString(11));
 				dto.setSdate(rs.getDate(12));
@@ -246,7 +246,7 @@ public class DealDao extends JDBCTemplate{
 				dto.setPtimg_type(rs.getString(6));
 				dto.setDeal_bid(rs.getString(7));
 				dto.setDeal_sid(rs.getString(8));
-				dto.setDeal_price(rs.getString(9));
+				dto.setDeal_price(rs.getInt(9));
 				dto.setProduct_price(rs.getInt(10));
 				dto.setSchedule_status(rs.getString(11));
 				dto.setSdate(rs.getDate(12));
@@ -289,7 +289,7 @@ public class DealDao extends JDBCTemplate{
 				dto.setPtimg_type(rs.getString(6));
 				dto.setDeal_bid(rs.getString(7));
 				dto.setDeal_sid(rs.getString(8));
-				dto.setDeal_price(rs.getString(9));
+				dto.setDeal_price(rs.getInt(9));
 				dto.setProduct_price(rs.getInt(10));
 				dto.setSchedule_status(rs.getString(11));
 				dto.setSdate(rs.getDate(12));
@@ -331,7 +331,7 @@ public class DealDao extends JDBCTemplate{
 				dto.setPtimg_type(rs.getString(6));
 				dto.setDeal_bid(rs.getString(7));
 				dto.setDeal_sid(rs.getString(8));
-				dto.setDeal_price(rs.getString(9));
+				dto.setDeal_price(rs.getInt(9));
 				dto.setProduct_price(rs.getInt(10));
 				dto.setSchedule_status(rs.getString(11));
 				dto.setSdate(rs.getDate(12));
@@ -376,7 +376,7 @@ public class DealDao extends JDBCTemplate{
 				dto.setDeal_productNo(rs.getInt(8));
 				dto.setDeal_sid(rs.getString(9));
 				dto.setDeal_bid(rs.getString(10));
-				dto.setDeal_price(rs.getString(11));
+				dto.setDeal_price(rs.getInt(11));
 				dto.setCheck_id(rs.getString(12));
 				res.add(dto);
 			}
@@ -417,7 +417,7 @@ public class DealDao extends JDBCTemplate{
 				dto.setDeal_productNo(rs.getInt(8));
 				dto.setDeal_sid(rs.getString(9));
 				dto.setDeal_bid(rs.getString(10));
-				dto.setDeal_price(rs.getString(11));
+				dto.setDeal_price(rs.getInt(11));
 				dto.setCheck_id(rs.getString(12));
 				res.add(dto);
 			}
@@ -468,12 +468,39 @@ public class DealDao extends JDBCTemplate{
 		ResultSet rs = null;
 		DealBoardDto res = new DealBoardDto();
 		
-		String sql = "  ";
+		String sql = " SELECT * FROM DEALSCHEDULEBOARD LEFT JOIN DEALBOARD ON(SCHEDULE_DEALNO = DEAL_NO) WHERE SCHEDULE_DEALNO = ? ";
 		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dealno);
+			System.out.println("03. query 준비: " + sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04. query 실행 및 리턴");
+			
+			while(rs.next()) {
+				
+				res.setSchedule_no(rs.getInt(1));
+				res.setSchedule_dealNo(rs.getInt(2));
+				res.setSchedule_status(rs.getString(3));
+				res.setSdate(rs.getDate(4));
+				res.setEdate(rs.getDate(5));
+				res.setDeal_no(rs.getInt(6));
+				res.setDeal_productNo(rs.getInt(7));
+				res.setDeal_sid(rs.getString(8));
+				res.setDeal_bid(rs.getString(9));
+				res.setDeal_price(rs.getInt(10));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("3/4단계 에러");
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstm);
+		}
 		
-		
-		
-		return null;
+		return res;
 	}
 	
 	
