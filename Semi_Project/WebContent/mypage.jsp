@@ -53,10 +53,10 @@
                 <strong class="info">내 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="memberinfo.do?command=memupdate&id=ADMIN" class="menu_link">프로필 정보</a>
+                        <a href="memberinfo.do?command=memupdate&id=${id }" class="menu_link">프로필 정보</a>
                     </li>
                     <li class="menu_item">
-                        <a href="memberinfo.do?command=bank&id=ADMIN" class="menu_link">판매 정산 계좌</a>
+                        <a href="memberinfo.do?command=bank&id=${id }" class="menu_link">판매 정산 계좌</a>
                     </li>
                 </ul>
             </div>

@@ -61,13 +61,13 @@
                 <strong class="info">쇼핑 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="memberinfo.do?command=purchase&id=USER" class="menu_link">구매 내역</a>
+                        <a href="memberinfo.do?command=purchase&id=${id }" class="menu_link">구매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="memberinfo.do?command=sell&id=ADMIN" class="menu_link">판매 내역</a>
+                        <a href="memberinfo.do?command=sell&id=${id }" class="menu_link">판매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="mypage_likeProduct.jsp" class="menu_link">관심 상품</a>
+                        <a href="memberinfo.do?command=likeList&id=${id }" class="menu_link">관심 상품</a>
                     </li>
                 </ul>
             </div>
@@ -76,10 +76,10 @@
                 <strong class="info">내 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="memberinfo.do?command=memupdate&id=ADMIN" class="menu_link">프로필 정보</a>
+                        <a href="memberinfo.do?command=memupdate&id=${id }" class="menu_link">프로필 정보</a>
                     </li>
                     <li class="menu_item">
-                        <a href="mypage_bank.jsp" class="menu_link">판매 정산 계좌</a>
+                        <a href="memberinfo.do?command=bank&id=${id }" class="menu_link">판매 정산 계좌</a>
                     </li>
                 </ul>
             </div>
