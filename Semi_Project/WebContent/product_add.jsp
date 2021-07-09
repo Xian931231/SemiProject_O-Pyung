@@ -95,8 +95,15 @@
 			alert("분류를 선택해주세요.");
 			$("#newvar").focus();
 			return false;
-			
+		
+		/* textarea 부분==========================
+			값을 넣어도 계속 null로 뜹니다.*/
+		}else if($(".ckeditor").val() == ""){
+			alert("제품 정보를 입력해주세요.");
+			$(".ckeditor").focus();
+			return false;
 		}
+		
 		
 		return true;
 	}
