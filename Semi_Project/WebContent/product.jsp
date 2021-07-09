@@ -28,6 +28,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/product.js" defer></script>
     <title>상품</title>
 </head>
 <body>
@@ -82,7 +83,7 @@
             		</c:when>
             		<c:otherwise>
             			<div class="btns">
-                        <button class="btn btn-info btn-lg text-white">관심상품</button>
+                        <button class="btn btn-info btn-lg text-white" onclick="likeProduct('${id}','${ptdto.product_no }');">관심상품</button>
                         <button class="btn btn-primary btn-lg" onclick="location.href='deal.do?command=insert&ptno=${ptdto.product_no}&id=${id }'">구매신청</button>                        
                     	</div>
             		</c:otherwise>

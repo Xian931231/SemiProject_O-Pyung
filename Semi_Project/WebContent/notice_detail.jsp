@@ -97,9 +97,15 @@
 								border-radius: 5px;
 								border: 1px solid rgba(0,0,0,0.3);
 								cursor: pointer;">
-                	 
+								
+					 <input type="button" value="목록으로" onclick="location.href='notice.do?command=noticelist'"
+						style="	width: 80px;
+								height: 30px;
+								border-radius: 5px;
+								border: 1px solid rgba(0,0,0,0.3);
+								cursor: pointer;">
                 <%  		
-                	}
+                	}else{
                 %>
 					<input type="button" value="목록으로" onclick="location.href='notice.do?command=noticelist'"
 						style="	width: 80px;
@@ -107,13 +113,16 @@
 								border-radius: 5px;
 								border: 1px solid rgba(0,0,0,0.3);
 								cursor: pointer;">
+                <%		
+                	}
+                %>
+					
             </div>
             <div class="content_02">
                 <h2>검수 기준</h2>
                 <hr>
                 <ul class="content_ul">
-                    <li class="content_li"><a href="#">[검수기준]검수기준</a></li>
-                    <li class="content_li"><a href="#">[검수기준]검수기준검수기준검수기준검수기준검수기준</a></li>
+                    <li class="content_li"><a href="notice.do?command=noticecheck">[검수기준] 거래 하기 전, 꼭 봐주세요!</a></li>
                 </ul>
             </div>
         </div>

@@ -160,7 +160,7 @@
 			<p style="font-size: 13px"><strong>[선불]</strong></p>
 			<p>착불 반송에 해당하는 기준을 제외한 모든 검수 불합격</p>
 			
-			
+			<img src="./img/deal/검수과정.png" style="width: 730px">
 			
 			</div>
 			 

@@ -83,8 +83,9 @@ public class MainController extends HttpServlet {
 					if(role.equals("ADMIN")) {
 						response.sendRedirect("admin.do?command=admin");
 					}else {
-						response.sendRedirect("mypage.jsp");
+						response.sendRedirect("memberinfo.do?command=mypage&id=ADMIN");
 					}
+
 		}
 
 	}

@@ -134,6 +134,15 @@ Connection con = getConnection();
 		return res;
 	}
 
+	//관심상품 목록 조회
+	public List<ProductBoardDto> likeList(String id) {
+		Connection con = getConnection();
+		
+		List<ProductBoardDto> list = dao.likeList(con,id);
+		close(con);
+		return list;
+	}
+
 
 
 

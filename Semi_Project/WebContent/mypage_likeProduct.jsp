@@ -10,7 +10,7 @@
 <%
     	response.setContentType("text/html; charset=UTF-8");
     %>    
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,16 +62,13 @@
                 <strong class="info">쇼핑 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="mypage_purchaseHistory.jsp" class="menu_link">구매 내역</a>
+                        <a href="memberinfo.do?command=purchase&id=USER" class="menu_link">구매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="mypage_sellHistory.jsp" class="menu_link">판매 내역</a>
+                        <a href="memberinfo.do?command=sell&id=ADMIN" class="menu_link">판매 내역</a>
                     </li>
                     <li class="menu_item">
                         <a href="mypage_likeProduct.jsp" class="menu_link">관심 상품</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="mypage_dealProgress.jsp" class="menu_link">거래 진행</a>
                     </li>
                 </ul>
             </div>
@@ -126,6 +123,53 @@
                    </div>
                 </div>
           	</div>
+          	
+          	
+          	
+          	<c:choose>
+          		<c:when test="${ empty likeList }">
+          			<p>관심상품이 없습니다</p>
+          		</c:when>
+          		<c:otherwise>
+          			<c:forEach items="${likeList }" var="likeList">
+          				
+			                <div class="product_info">
+			                    <div class="product_list">
+			                        <div class="product_item">
+			                            <a href="product.do?command=detail&ptno=${likeList.product_no }" class="item_inner" style="text-decoration:none">
+			                                <div class="product">
+			                                    <img class="product_img" src="upload/${likeList.ptimg_name }${likeList.ptimg_type}">
+			                                </div>
+			                                <div class="infobox">
+			                                    <div class="브랜드">
+			                                        <p>${likeList.product_brand }</p>
+			                                    </div>
+			                                    <div class="name">${likeList.product_title }</div>
+			                                </div>
+			                                <div class="price">
+			                                    <div class="amount">
+			                                        <b class="num">${likeList.product_price }</b>
+			                                    <span class="won"><b>원</b></span>
+			                                    </div>
+			                                    <div class="desc">즉시 구매가</div>
+			                                </div>
+			                            </a>
+			                        </div>
+			                 	</div>
+			              	</div>
+          			</c:forEach>
+          		</c:otherwise>
+          	</c:choose>
+          	
+          	
+          	
+          	
+          	
+          	
+          	
+          	
+          	
+          	
     	</div>
     </div>
 

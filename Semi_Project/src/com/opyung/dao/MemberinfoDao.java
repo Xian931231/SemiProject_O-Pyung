@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.opyung.dto.MemberDto;
 
@@ -51,5 +53,212 @@ public class MemberinfoDao extends JDBCTemplate{
 		
 		return res;
 	}
+
+	
+	//해당 상품이 관심상품 등록했는지 확인
+	public boolean isLikePt(Connection con, MemberDto dto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "SELECT * FROM LIKEPRODUCTBOARD WHERE LIKEPT_MEMBERNO=? AND LIKEPT_PRODUCTNO=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dto.getLikept_memberNo());
+			pstm.setInt(2, dto.getLikept_productNo());
+			System.out.println("03" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		return (res>0)?true:false;
+	}
+
+	//관심상품 등록
+	public int likeInsert(Connection con, MemberDto dto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "INSERT INTO LIKEPRODUCTBOARD VALUES(?,?)";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dto.getLikept_memberNo());
+			pstm.setInt(2, dto.getLikept_productNo());
+			System.out.println("03" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04");
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		
+		return res;
+	}
+
+	//관심상품 삭제
+	public int likeDelete(Connection con, MemberDto dto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "DELETE FROM LIKEPRODUCTBOARD WHERE LIKEPT_MEMBERNO=? AND LIKEPT_PRODUCTNO=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dto.getLikept_memberNo());
+			pstm.setInt(2, dto.getLikept_productNo());
+			System.out.println("03" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04");
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		
+		return res;
+	}
+
+
+	//계좌번호 추가
+	public int bankInsert(Connection con, MemberDto memdto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "INSERT INTO BANKBOARD VALUES(BANKSQ.NEXTVAL,?,?,?,?)";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, memdto.getMb_no());
+			pstm.setString(2, memdto.getBank_name());
+			pstm.setString(3, memdto.getBank_account());
+			pstm.setString(4, memdto.getBank_memname());
+			System.out.println("03" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		
+		return res;
+	}
+
+
+	//계좌번호 리스트
+	public List<MemberDto> bankList(Connection con, String id) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<MemberDto> res = new ArrayList<MemberDto>();
+		
+		String sql = "SELECT BANKBOARD.* FROM BANKBOARD,MEMBERBOARD WHERE BANK_ID = MB_NO AND MB_ID=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, id);
+			System.out.println("03" + sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04");
+			
+			while(rs.next()) {
+				MemberDto dto = new MemberDto();
+				dto.setBank_no(rs.getInt(1));
+				dto.setBank_id(rs.getInt(2));
+				dto.setBank_name(rs.getString(3));
+				dto.setBank_account(rs.getString(4));
+				dto.setBank_memname(rs.getString(5));
+				
+				res.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		
+		return res;
+	}
+
+	//계좌번호선택
+	public MemberDto bankSelect(Connection con,int bankno, String id) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		MemberDto res = new MemberDto();
+		
+		String sql = "SELECT BANKBOARD.* FROM BANKBOARD,MEMBERBOARD WHERE BANK_ID = MB_NO AND MB_ID=? AND BANK_NO=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, id);
+			pstm.setInt(2, bankno);
+			System.out.println("03" + sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04");
+			
+			while(rs.next()) {
+				res.setBank_no(rs.getInt(1));
+				res.setBank_id(rs.getInt(2));
+				res.setBank_name(rs.getString(3));
+				res.setBank_account(rs.getString(4));
+				res.setBank_memname(rs.getString(5));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		
+		return res;
+	}
+
+
+	//계좌 삭제
+	public int bankDelete(Connection con, int bankno) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "DELETE FROM BANKBOARD WHERE BANK_NO=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, bankno);
+			System.out.println("03" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		
+		
+		return res;
+	}
+
 
 }

@@ -10,7 +10,7 @@
 <%
     	response.setContentType("text/html; charset=UTF-8");
     %>    
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,16 +60,13 @@
                 <strong class="info">쇼핑 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="mypage_purchaseHistory.jsp" class="menu_link">구매 내역</a>
+                        <a href="memberinfo.do?command=purchase&id=USER" class="menu_link">구매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="mypage_sellHistory.jsp" class="menu_link">판매 내역</a>
+                        <a href="memberinfo.do?command=sell&id=ADMIN" class="menu_link">판매 내역</a>
                     </li>
                     <li class="menu_item">
                         <a href="mypage_likeProduct.jsp" class="menu_link">관심 상품</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="mypage_dealProgress.jsp" class="menu_link">거래 진행</a>
                     </li>
                 </ul>
             </div>
@@ -99,7 +96,7 @@
                         <a id="sh_con_link">
                             <dl>
                                 <dt class="sh_title">진행 중</dt>
-                                <dt class="sh_count">0</dt>
+                                <dt class="sh_count">${dealListNum }</dt>
                             </dl> 
                         </a>
                     </div>
@@ -108,7 +105,7 @@
                         <a id="sh_end_link">
                             <dl>
                                 <dt class="sh_title">종료</dt>
-                                <dt class="sh_count">0</dt>
+                                <dt class="sh_count">${endListNum }</dt>
                             </dl>
                         </a>
                     </div>
@@ -119,60 +116,108 @@
             <div id="sh_continue_table">
                 <table border="1">
                     <colgroup>
-                        <col width="190px">
-                        <col width="200px">
                         <col width="100px">
                         <col width="150px">
+                        <col width="200px">
+                        <col width="200px">
+                        <col width="100px">
+                        <col width="200px">
+                        <col width="200px">
+                        <col width="250px">
                         <col width="100px">
                     </colgroup>
 
                     <thead>
                         <tr class="sh_head">
+                            <th>번호</th>
                             <th>이미지</th>
                             <th>제목</th>
                             <th>가격</th>
                             <th>구매자</th>
-                            <th>거래일정</th>
+                            <th>결제남은금액</th>
+                            <th>거래상태</th>
+                            <th>상태시작날짜</th>
+                            <th>검수자</th>
                         </tr>
                     </thead>
                     
-                    <tr class="sh_content">
-                        <th><img src="../mapage_purchaseHistory.html/image/k150551p1n8-s.jpg" alt="컴퓨터 부품" width="150px" height="150px"></th>
-                        <th>조립 컴퓨터 부품</th>
-                        <th>100,000</th>
-                        <th>buyermen</th>
-                        <th>???</th>
-                    </tr>
+                    <c:choose>
+                    	<c:when test="${ empty dealList}">
+                    		<tr>
+                    			<td colspan="6">거래 중인 상품이 없습니다</td>
+                    		</tr>
+                    		
+                    	</c:when>
+                    	<c:otherwise>
+                    		<c:forEach items="${dealList }" var="dealList">
+                    			
+                    			<tr class="sh_content">
+			                       	<td>${dealList.rownum }</td>
+			                        <td><img src="upload/${dealList.ptimg_name }${dealList.ptimg_type } "></td>
+			                        <td><a href="product.do?command=detail&ptno=${dealList.deal_productNo }" id="product_click">${dealList.product_title }</a></td>
+			                        <td>${dealList.product_price }</td>
+			                        <td>${dealList.deal_bid }</td>
+			                        <td>${dealList.deal_price }원</td>
+			                        <td>${dealList.schedule_status }</td>
+			                        <td>${dealList.sdate }</td>
+			                        <td>${dealList.check_id }</td>
+		                    	</tr>
+                    		
+                    		</c:forEach>
+                    		
+                    	</c:otherwise>
+                    </c:choose>
                 </table>
             </div>
             
             <div id="sh_end_table">
                 <table border="1">
                     <colgroup>
-                        <col width="190px">
-                        <col width="200px">
-                        <col width="100px">
+                        <col width="50px">
                         <col width="150px">
-                        <col width="100px">
+                        <col width="300px">
+                        <col width="150px">
+                        <col width="150px">
+                        <col width="200px">
+                        <col width="150px">
                     </colgroup>
 
                     <thead>
-                        <tr class="sh_head">
+                        <tr class="ph_head">
+                            <th>번호</th>
                             <th>이미지</th>
                             <th>제목</th>
-                            <th>가격</th>
                             <th>구매자</th>
-                            <th>거래 종료일</th>
+                            <th>가격</th>
+                            <th>구매일자</th>
+                            <th>검수자</th>
                         </tr>
                     </thead>
                     
-                    <tr class="sh_content">
-                        <th><img src="../mapage_purchaseHistory.html/image/k150551p1n8-s.jpg" alt="컴퓨터 부품" width="150px" height="150px"></th>
-                        <th>컴퓨터</th>
-                        <th>300,000</th>
-                        <th>buy1234</th>
-                        <th>21/07/17</th>
-                    </tr>
+                    <c:choose>
+                    	<c:when test="${ empty endList}">
+                    		<tr>
+                    			<td colspan="6">거래 중인 상품이 없습니다</td>
+                    		</tr>
+                    		
+                    	</c:when>
+                    	<c:otherwise>
+                    		<c:forEach items="${endList }" var="endList">
+                    			
+                    			<tr class="sh_content">
+			                       	<td>${endList.rownum }</td>
+			                        <td><img src="upload/${endList.ptimg_name }${endList.ptimg_type } "></td>
+			                        <td><a href="product.do?command=detail&ptno=${endList.deal_productNo }" id="product_click">${endList.product_title }</a></td>
+			                        <td>${endList.deal_bid }</td>
+			                        <td>${endList.product_price }원</td>
+			                        <td>${endList.edate }</td>
+			                        <td>${endList.check_id }</td>
+		                    	</tr>
+                    		
+                    		</c:forEach>
+                    		
+                    	</c:otherwise>
+                    </c:choose>
                 </table>
             </div>
         </div>

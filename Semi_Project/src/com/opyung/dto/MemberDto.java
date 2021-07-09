@@ -22,7 +22,9 @@ public class MemberDto {
 	//BankBoard(계좌 테이블)
 	private int bank_no;
 	private int bank_id;
+	private String bank_name;
 	private String bank_account;
+	private String bank_memname;
 	
 	//LikeProductBoard(관심상품)
 	private int likept_memberNo;		//좋아요 누른 사용자
@@ -225,6 +227,22 @@ public class MemberDto {
 
 	public void setMb_grade(String mb_grade) {
 		this.mb_grade = mb_grade;
+	}
+
+	public String getBank_name() {
+		return bank_name;
+	}
+
+	public void setBank_name(String bank_name) {
+		this.bank_name = bank_name;
+	}
+
+	public String getBank_memname() {
+		return bank_memname;
+	}
+
+	public void setBank_memname(String bank_memname) {
+		this.bank_memname = bank_memname;
 	}
 	
 	

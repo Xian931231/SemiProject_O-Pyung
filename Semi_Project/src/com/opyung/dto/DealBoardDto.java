@@ -26,6 +26,9 @@ public class DealBoardDto {
 	private String ptimg_name;
 	private String ptimg_type;
 	private String check_id;
+	private int product_price;
+	private String product_status;
+
 	
 	//생성자
 	public DealBoardDto() {
@@ -150,5 +153,24 @@ public class DealBoardDto {
 	public void setCheck_id(String check_id) {
 		this.check_id = check_id;
 	}
+
+
+	public int getProduct_price() {
+		return product_price;
+	}
+
+	public void setProduct_price(int product_price) {
+		this.product_price = product_price;
+	}
+	
+
+	public String getProduct_status() {
+		return product_status;
+	}
+
+	public void setProduct_status(String product_status) {
+		this.product_status = product_status;
+	}
+
 
 }

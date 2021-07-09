@@ -114,6 +114,9 @@ public class NoticeController extends HttpServlet {
 				jsResponse("수정 실패", "notice.do?command=noticelist&notice_no="+notice_no, response);
 			}
 		
+		}else if(command.equals("noticecheck")) {
+			
+			dispatch("check.jsp", request, response);
 		}
 	
 	}

@@ -222,3 +222,24 @@ div {
 #empty_area_selling {
     margin-bottom: 100px;
 }
+
+.listTable img{
+	height: 80px;
+}
+
+.listTable {
+	padding-top : 2rem;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.listTable td{
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.listTable th{
+	margin-bottom: 1rem;
+}
+.listTable .img-div{
+	text-align: center;
+}

@@ -10,7 +10,7 @@
 <%
     	response.setContentType("text/html; charset=UTF-8");
     %>    
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,16 +62,13 @@
                 <strong class="info">쇼핑 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="mypage_purchaseHistory.jsp" class="menu_link">구매 내역</a>
+                        <a href="memberinfo.do?command=purchase&id=USER" class="menu_link">구매 내역</a>
                     </li>
                     <li class="menu_item">
-                        <a href="mypage_sellHistory.jsp" class="menu_link">판매 내역</a>
+                        <a href="memberinfo.do?command=sell&id=ADMIN" class="menu_link">판매 내역</a>
                     </li>
                     <li class="menu_item">
                         <a href="mypage_likeProduct.jsp" class="menu_link">관심 상품</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="mypage_dealProgress.jsp" class="menu_link">거래 진행</a>
                     </li>
                 </ul>
             </div>
@@ -80,7 +77,7 @@
                 <strong class="info">내 정보</strong>
                 <ul>
                     <li class="menu_item">
-                        <a href="mypage_memUpdate.jsp" class="menu_link">프로필 정보</a>
+                        <a href="memberinfo.do?command=memupdate&id=ADMIN" class="menu_link">프로필 정보</a>
                     </li>
                     <li class="menu_item">
                         <a href="mypage_bank.jsp" class="menu_link">판매 정산 계좌</a>
@@ -89,20 +86,64 @@
             </div>
         </nav>
 
-
-
         
         <!-- 판매 정산 계좌 등록 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
 
         <div id="mypage_account">
-
+		
+		
+		
             <div class="title">
-                <p>정산 계좌 등록</p>
+                <p>정산 계좌</p>
             </div>
 
+			<div>
+				<p>계좌리스트</p>
+				<c:choose>
+					<c:when test="${empty list }">
+						<p>등록된 계좌가 없습니다.</p>
+					</c:when>
+					<c:otherwise>
+						<select class='used_bankname' name="account">
+								<option value="">계좌선택</option>
+							<c:forEach items="${list }" var="list">
+								<option value="${list.bank_no }">${list.bank_name } ${list.bank_account } ${list.bank_memname }</option>
+							</c:forEach>
+						</select>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			<script type="text/javascript">
+				$("select[name=account]").change(function(){
+					$.ajax({
+						url:"memberinfo.do?command=bankSelect&id=ADMIN",
+						type:"post",
+						data:{
+							bankno : $("select[name=account]").val()
+						},
+						dataType:"json",
+						success:function(data){
+							console.log(data);
+							$(".used_bankname").val(data.bank_name).prop("selected",true)
+							$("#account_num_input").val(data.bank_account);
+							$("#account_owner_input").val(data.bank_memname);
+							$("#bankno").val(data.bank_no);
+							$("#save_btn").hide();
+							$("#delete_btn").show();
+						},
+						error:function(){
+							alert("실패");
+						}
+					});
+				});
+			</script>
+				
+			<hr>
+			
             <br>
-
+			<form action="memberinfo.do?command=bankInsert&id=ADMIN" method="post">
             <div id="mypage_account_bank">
+            <input type="hidden" name="bankno" id="bankno"value="">
                 <p>은행명</p>
                 <div class="bank_select">
                     <select name='used_bankname' class='used_bankname'>
@@ -176,8 +217,28 @@
             </div>
 
             <div id="mypage_account_btn">
-                <input type="submit" value="저장하기" id="save_btn" disabled>
+                <input type="submit" value="저장하기" id="save_btn" class="save_btn" disabled>
             </div>
+            </form>
+               	<button id="delete_btn" class="save_btn" style="display: none">삭제하기</button>
+            <script type="text/javascript">
+				$("#delete_btn").click(function(){
+					$.ajax({
+						url:"memberinfo.do?command=bankDelete&id=ADMIN",
+						type:"post",
+						data:{
+							bankno : $("#bankno").val()
+						},
+						success:function(data){
+							alert("삭제 성공");
+							location.reload();
+						},
+						error:function(){
+							alert("삭제 실패");
+						}
+					});
+				});
+			</script>
 		</div>
 	</div>
 
