@@ -63,20 +63,24 @@
                     <div class="tap_item">
                         <dl>
                             <dt class="tap_title">
-                              	  신고처리
+                              	  신고처리 요청
                             </dt>
                             <dd class="tap_count">
-                                0
+							
+								${countnull }
+							                              
+
                             </dd>
                         </dl>
                     </div>
                     <div class="tap_item">
                         <dl>
                             <dt class="tap_title">
-                                	처리완료
+                                	신고처리 완료
                             </dt>
                             <dd class="tap_count">
-                                0
+                                ${count }
+                                
                             </dd>
                         </dl>
                     </div>

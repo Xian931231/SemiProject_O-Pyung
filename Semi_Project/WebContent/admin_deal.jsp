@@ -1,5 +1,7 @@
 <!-- 관리자 페이지 -->
 
+<%@page import="com.opyung.dto.DealBoardDto"%>
+<%@page import="sun.security.util.Length"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    
@@ -12,7 +14,7 @@
     %>    
     
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
- <%@ page import="com.opyung.dto.MemberDto" %>
+ <%@ page import="com.opyung.dto.DealBoardDto" %>
  
  <%@ page import = "java.util.List" %>
     
@@ -35,6 +37,9 @@
     </script>
 </head>
 <body>
+
+
+
 
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
@@ -109,31 +114,48 @@
                         <th>구매자</th>
                         <th>거래상태</th>
                         <th>검수시작</th>
-                        <th>완료</th>
+                        <th>검수완료</th>
                         <th>검수자</th>
                         <th>수정</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <form action="">
+                    <form action="admin.do" method="get" name="deal">
+                    <input type="hidden" name="command" value="deal">
+                    <c:choose>
+                        <c:when test="${empty list }">
+							<tr>
+								<td colspan="9">-------------진행 중인 거래가 없습니다.-------------</td>
+							</tr>                            	
+                         </c:when>
+                         <c:otherwise>
+                     <c:forEach var="dto" items="${deal }">
+                    
+                    
+                    
                     <tr class="Ts_tr">
-                        <td>1</td>
-                        <td>상품title입니다.</td>
-                        <td>판매자명</td>
-                        <td>구매자명</td>
-                        
+                    	
+                        <td>${dto.deal_no }</td>
+                        <td>${dto.product_title }</td>
+                        <td>${dto.deal_sid }</td>
+                        <td>${dto.deal_bid }</td>
+            
+                       
                         <td><select>
-                            <option value="">판매자 발송준비</option>
-                            <option value="">검수중</option>
-                            <option value="">구매자 발송준비</option>
+                            <option value="ready">판매자 발송준비</option>
+                            <option value="ing">검수중</option>
+                            <option value="go">구매자 발송준비</option>
                         </select></td>
-                            
-                        <td><input type="date"></td>
-                        <td><input type="date"></td>
+                          
+                        <td><input type="date" name="start"></td>
+                        <td><input type="date" name="end"></td>
                         <td>adminID</td>
                         <td><input type="submit" value="수정"></td>
                     </tr>
                 </form>
+                </c:forEach>
+                  </c:otherwise>
+                  </c:choose>
                     </tbody>
                 </table>
             </div>

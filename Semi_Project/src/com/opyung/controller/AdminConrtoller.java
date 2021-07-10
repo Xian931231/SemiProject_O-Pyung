@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.opyung.biz.AdminBiz;
 import com.opyung.dao.ReportDao;
+import com.opyung.dto.DealBoardDto;
 import com.opyung.dto.MemberDto;
 import com.opyung.dto.ReportBoardDto;
 
@@ -46,8 +47,12 @@ public class AdminConrtoller extends HttpServlet {
 				///////////////////admin_user/////////////////////
 				//유저 정보 전체 출력
 				if(command.equals("userInfo")) {
+					
 					List<MemberDto> list = biz.selectAll();
 					
+					
+					
+				
 					request.setAttribute("list", list);
 					dispatch("admin_user.jsp", request, response);
 				
@@ -90,12 +95,37 @@ public class AdminConrtoller extends HttpServlet {
 				
 				}
 				
+				////////////////////admin_deal/////////////////////////////
+				else if(command.equals("deal")) {
+					List<DealBoardDto> list = biz.dealAll();
+					
+					
+				
+					request.setAttribute("deal", list);
+					dispatch("admin_deal.jsp", request, response);
+					/*처리버튼를 하면 완료날짜업데이트하고 score에 점수를 -1 한다.*/
+					
+					
+				}
+				
+				
+				
+				
+				
+				
+				
+				
 				///////////////////admin_report/////////////////////
 				
 				/*전체를 보내지말고 완료 날짜에 null값인 데이터들만 불러온다.(처리완료)*/
 				else if(command.equals("report")) {
 					List<ReportBoardDto> list = biz.reportAll();
 					
+					int count = biz.count();
+					int countnull = biz.countnull();
+					
+					request.setAttribute("countnull", countnull);
+					request.setAttribute("count", count);
 					request.setAttribute("list", list);
 					dispatch("admin_report.jsp", request, response);
 					/*처리버튼를 하면 완료날짜업데이트하고 score에 점수를 -1 한다.*/

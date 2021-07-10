@@ -2,6 +2,7 @@ package com.opyung.dao;
 
 
 
+import com.opyung.dto.DealBoardDto;
 import com.opyung.dto.MemberDto;
 import com.opyung.dto.ReportBoardDto;
 
@@ -161,6 +162,42 @@ public class AdminDao {
 		
 		return res;
 	}
+	
+	/////////////////////user_report///////////////////////////////////
+		public List<DealBoardDto> dealAll(Connection con){
+			PreparedStatement pstm = null;
+			ResultSet rs = null;
+			List<DealBoardDto> res = new ArrayList<DealBoardDto>();
+			
+			String sql = " SELECT DEAL_NO,PRODUCT_TITLE,DEAL_SID,DEAL_BID,SCHEDULE_STATUS,SCHEDULE_SDATE,SCHEDULE_EDATE FROM DEALBOARD INNER JOIN dealscheduleboard  ON(DEAL_NO=schedule_dealno) INNER JOIN productboard ON(DEAL_NO=PRODUCT_NO) ";
+			
+			try {
+				pstm = con.prepareStatement(sql);
+				System.out.println("03.query 준비 "+sql);
+				
+				rs=pstm.executeQuery();
+				System.out.println("04. query 실행 및 리턴");
+				
+				while(rs.next()) {
+					DealBoardDto dto = new DealBoardDto(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6),rs.getDate(7));
+				
+					res.add(dto);
+					
+				}
+				
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
+			
+			
+			return res;
+		}
+	
+	
 	/////////////////////user_report///////////////////////////////////
 	//신고 전체 출력
 		public List<ReportBoardDto> reportAll(Connection con){
@@ -194,7 +231,67 @@ public class AdminDao {
 			}
 			
 			return res;
-		}public ReportBoardDto reselect(Connection con, int report_no) {
+			
+			
+		}
+		public int count(Connection con) {
+			PreparedStatement pstm = null;
+			ResultSet rs = null;
+			int res = 0;
+			
+			String sql =" SELECT COUNT(*) FROM REPORTBOARD WHERE REPORT_EDATE IS NOT NULL ";
+			
+			try {
+				pstm = con.prepareStatement(sql);
+				System.out.println("03.query 준비 : " +sql);
+				
+				rs=pstm.executeQuery();
+				System.out.println("04.query 실행 및 리턴");
+				
+				if(rs.next()) {
+					res = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstm);
+			}
+			
+			
+			return res;
+		}
+		public int countnull(Connection con) {
+			PreparedStatement pstm = null;
+			ResultSet rs = null;
+			int res = 0;
+			
+			String sql =" SELECT COUNT(*) FROM REPORTBOARD WHERE REPORT_EDATE IS NULL ";
+			
+			try {
+				pstm = con.prepareStatement(sql);
+				System.out.println("03.query 준비 : " +sql);
+				
+				rs=pstm.executeQuery();
+				System.out.println("04.query 실행 및 리턴");
+				
+				if(rs.next()) {
+					res = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstm);
+			}
+			
+			
+			return res;
+		}
+		
+		public ReportBoardDto reselect(Connection con, int report_no) {
 			PreparedStatement pstm = null;
 			ResultSet rs = null;
 			ReportBoardDto res = null;

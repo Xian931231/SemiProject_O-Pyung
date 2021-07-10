@@ -3,6 +3,7 @@ package com.opyung.biz;
 import java.sql.Connection;
 import java.util.List;
 
+import com.opyung.dto.DealBoardDto;
 import com.opyung.dto.MemberDto;
 import com.opyung.dto.ReportBoardDto;
 import com.opyung.dao.AdminDao;
@@ -23,6 +24,25 @@ public class AdminBiz {
 		
 		return list;
 	}
+	public int count() {
+		Connection con = getConnection();
+		
+		int count = dao.count(con);
+		
+		close(con);
+		
+		return count;
+	}
+	public int countnull() {
+		Connection con = getConnection();
+		
+		int countnull = dao.countnull(con);
+		
+		close(con);
+		
+		return countnull;
+	}
+	
 	
 	public MemberDto selectOne(String mb_id) {
 		Connection con = getConnection();
@@ -63,6 +83,23 @@ public class AdminBiz {
 		return list;
 		
 	}
+	////////////////////////user_deal///////////////////////////////////
+	
+	public List<DealBoardDto> dealAll(){
+		Connection con = getConnection();
+		
+		List<DealBoardDto> list = dao.dealAll(con);
+		
+		close(con);
+		
+		
+		
+		
+		return list;
+	}
+	
+	
+	
 	////////////////////////user_report///////////////////////////////////
 	
 	public List<ReportBoardDto> reportAll(){
