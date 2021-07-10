@@ -26,7 +26,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/bffb243368.js" crossorigin="anonymous"></script>
-
+	<script type="text/javascript" src="./js/product.js"></script>
     <title>Shop</title>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -201,10 +201,21 @@
 				                        <div class="desc">즉시 구매가</div>
 				                    </div>
 				                </a>
-				                <a href="" class="btn_heart">
-				                    <i class="fas fa-heart heart"></i>
+				                <a href="#" class="btn_heart" id="ptno${ptdto.product_no }" onclick="likeProduct('${id}','${ptdto.product_no }');">
 				                </a>
 				            </div>
+				            <script type="text/javascript">
+					        	var id = '${id}';
+					        	var ptno = '${ptdto.product_no}'
+					        	var ptid = '${ptdto.product_id}'
+					        	console.log(id,ptno);
+					        	
+					        	if(id == null || id == "" || ptid==id){
+					        	}else{
+					        		isLike(id,ptno);
+					        	}
+					        		
+					        </script>
 				 	</c:forEach>
 				 </c:otherwise>
 		</c:choose>        

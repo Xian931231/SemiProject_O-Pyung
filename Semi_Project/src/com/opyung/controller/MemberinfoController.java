@@ -183,7 +183,8 @@ public class MemberinfoController extends HttpServlet {
 			MemberDto dto = new MemberDto();
 			dto.setLikept_memberNo(memdto.getMb_no());
 			dto.setLikept_productNo(ptno);
-			
+			System.out.println(id);
+			System.out.println(dto.getMb_no());
 			boolean res = biz.isLikePt(dto);
 			System.out.println(res);
 			if(!res) {
@@ -201,7 +202,14 @@ public class MemberinfoController extends HttpServlet {
 					System.out.println("실패");
 				}
 			}
+		}else if(command.equals("isLike")) {
+			int ptno = Integer.parseInt(request.getParameter("ptno"));
 			
+			MemberDto dto = new MemberDto();
+			dto.setLikept_memberNo(memdto.getMb_no());
+			dto.setLikept_productNo(ptno);
+			boolean res = biz.isLikePt(dto);
+			 response.getWriter().write(""+res+"");
 		//관심상품 목록 조회
 		}else if(command.equals("likeList")) {
 
@@ -212,7 +220,7 @@ public class MemberinfoController extends HttpServlet {
 			request.setAttribute("likeList", likeList);
 			dispatch("mypage_likeProduct.jsp", request, response);
 		
-		
+			
 		//계좌번호 페이지
 		}else if(command.equals("bank")) {
 			List<MemberDto> list = new ArrayList<MemberDto>();

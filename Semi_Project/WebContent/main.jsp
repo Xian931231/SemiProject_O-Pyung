@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <title>main페이지</title>
     <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="./js/product.js"></script>
 </head>
 <body>
 	<!-- header 추가 -->
@@ -102,11 +103,21 @@
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
+                            <a href="#" class="btn_wish" id="ptno${list.product_no }" onclick="likeProduct('${id}','${list.product_no }');">
+                               
                             </a>
                         </div>
                     </div>
+                    <script type="text/javascript">
+					       	var id = '${id}';
+					       	var ptno = '${list.product_no}'
+					       	var ptid = '${list.product_id}'
+					       	if(id == null || id == "" || ptid == id){
+					       	}else{
+					       		isLike(id,ptno);
+					       	}
+					       		
+					</script>
 				</c:forEach>
 
 
@@ -173,11 +184,20 @@
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
+                            <a href="#" class="btn_wish" id="ptno${list2.product_no }" onclick="likeProduct('${id}','${list2.product_no }');">
                             </a>
                         </div>
                     </div>
+                    <script type="text/javascript">
+					       	var id = '${id}';
+					       	var ptno = '${list2.product_no}'
+					       	var ptid = '${list2.product_id}'
+					       	if(id == null || id == "" || ptid == id){
+					       	}else{
+					       		isLike(id,ptno);
+					       	}
+					       		
+					</script>
 				</c:forEach>
 
 
@@ -249,11 +269,20 @@
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
+                            <a href="#" class="btn_wish" id="ptno${list3.product_no }" onclick="likeProduct('${id}','${list3.product_no }');">
                             </a>
                         </div>
                     </div>
+                    <script type="text/javascript">
+					       	var id = '${id}';
+					       	var ptno = '${list3.product_no}'
+					       	var ptid = '${list3.product_id}'
+					       	if(id == null || id == "" || ptid == id){
+					       	}else{
+					       		isLike(id,ptno);
+					       	}
+					       		
+					</script>
 					</c:forEach>
                 </div>
 
@@ -315,11 +344,20 @@
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
+                            <a href="#" class="btn_wish" id="ptno${list4.product_no }" onclick="likeProduct('${id}','${list4.product_no }');">
                             </a>
                         </div>
                     </div>
+                    <script type="text/javascript">
+					       	var id = '${id}';
+					       	var ptno = '${list4.product_no}'
+					       	var ptid = '${list4.product_id}'
+					       	if(id == null || id == "" || ptid == id){
+					       	}else{
+					       		isLike(id,ptno);
+					       	}
+					       		
+					</script>
 					</c:forEach>
                 </div>
 
@@ -382,11 +420,20 @@
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
+                            <a href="#" class="btn_wish" id="ptno${list5.product_no }" onclick="likeProduct('${id}','${list5.product_no }');">
                             </a>
                         </div>
                     </div>
+                    <script type="text/javascript">
+					       	var id = '${id}';
+					       	var ptno = '${list5.product_no}'
+					       	var ptid = '${list5.product_id}'
+					       	if(id == null || id == "" || ptid == id){
+					       	}else{
+					       		isLike(id,ptno);
+					       	}
+					       		
+					</script>
 					</c:forEach>
                 </div>
 

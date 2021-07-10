@@ -83,13 +83,43 @@
             		</c:when>
             		<c:otherwise>
             			<div class="btns">
-                        <button class="btn btn-info btn-lg text-white" onclick="likeProduct('${id}','${ptdto.product_no }');">관심상품</button>
+                        <button class="btn btn-info btn-lg text-white" id="likeBtn" onclick="likeProduct('${id}','${ptdto.product_no }');">관심상품</button>
                         <button class="btn btn-primary btn-lg" onclick="location.href='deal.do?command=insert&ptno=${ptdto.product_no}&id=${id }'">구매신청</button>                        
                     	</div>
             		</c:otherwise>
             	</c:choose>
                 </div>
         </div>
+        
+        <script type="text/javascript">
+        	var id = '${id}';
+        	var ptno = '${ptdto.product_no}'
+        	console.log(id,ptno);
+        	
+        	if(id != null || id != ""){
+        		window.onload = function(){
+        			$.ajax({
+        				url:"memberinfo.do?command=isLike",
+        				type:"post",
+        				data:{
+        					id : id,
+        					ptno : ptno
+        				},
+        				success : function(data){
+        					console.log(data);
+        					if(data == 'true'){
+        						$('#likeBtn').html("관심상품 삭제");
+        					}else{
+        						$('#likeBtn').html("관심상품");
+        					}
+        				},
+        				error:function(){
+        					alert("실패");
+        				}
+        			})
+				}
+        	}
+        </script>
 
         
         <!-- web_edotor -->
