@@ -34,7 +34,9 @@ public class MemberDto {
 	public MemberDto() {
 		super();
 	}
-	//admin 유저 정보
+	
+	
+	//admin 유저 정보 매개변수 생성자
 	
 	public MemberDto(String mb_id, String mb_pw, String mb_name, String mb_email, String mb_phone, String mb_able,
 			int mb_score) {
@@ -48,8 +50,7 @@ public class MemberDto {
 		this.mb_score = mb_score;
 	}
 	
-	
-	
+
 
 	//매개변수 생성자
 	public MemberDto(int mb_no, String mb_id, String mb_pw, String mb_name, String mb_email, String mb_phone,

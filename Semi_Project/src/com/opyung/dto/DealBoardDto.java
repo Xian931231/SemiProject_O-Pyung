@@ -35,6 +35,24 @@ public class DealBoardDto {
 		super();
 	}
 	
+	//admin_deal용 매개변수 생성자
+	public DealBoardDto(int deal_no,String product_title, String deal_sid, String deal_bid, String schedule_status, Date sdate, Date edate
+			) {
+		super();
+		this.deal_no = deal_no;
+		this.product_title = product_title;
+		this.deal_sid = deal_sid;
+		this.deal_bid = deal_bid;
+		this.schedule_status = schedule_status;
+		this.sdate = sdate;
+		this.edate = edate;
+		
+	}
+	
+	
+	
+	
+	
 	//매개변수 생성자
 	public DealBoardDto(int deal_no, int deal_productNo, String deal_sid, String deal_bid, int deal_price,
 			int schedule_no, int schedule_dealNo, String schedule_status, Date sdate, Date edate) {
@@ -52,6 +70,8 @@ public class DealBoardDto {
 	}
 	
 	
+	
+
 	//getter & setter
 	public int getDeal_no() {
 		return deal_no;

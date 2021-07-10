@@ -31,19 +31,7 @@
     
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-    	
-        
-        $("#bl_btn").click(function(){
-           var con = confirm("정말 블랙처리 하시겠습니까?");
-           if(con = true){
-               alert("블랙처리되었습니다.");
-           }else {
-               alert("취소되었습니다.");
-           }
-        });
-      
-    });
+    
     </script>
 </head>
 <body>
@@ -60,10 +48,10 @@
            <h2 class="side_maintitle">ADMIN</h2>
             
             <ul class="side_ul">
-                <li class="side_li" id="userinfo"><a href="#">유저정보</a></li>
-                <li class="side_li" id="report"><a href="#">신고</a></li>
-                <li class="side_li" id="transactionStatus"><a href="#">거래상태</a></li>
-                <li class="side_li" id="noticeWrite"><a href="#">공지사항</a></li>
+                <li class="side_li" id="userinfo"><a href="admin.do?command=userInfo">유저정보</a></li>
+                <li class="side_li" id="report"><a href="admin.do?command=report">신고</a></li>
+                <li class="side_li" id="transactionStatus"><a href="admin.do?command=deal">거래상태</a></li>
+                <li class="side_li" id="noticeWrite"><a href="admin_notice.jsp">공지사항</a></li>
             </ul>
         </div>
         	
@@ -75,20 +63,24 @@
                     <div class="tap_item">
                         <dl>
                             <dt class="tap_title">
-                              	  신고처리
+                              	  신고처리 요청
                             </dt>
                             <dd class="tap_count">
-                                0
+							
+								${countnull }
+							                              
+
                             </dd>
                         </dl>
                     </div>
                     <div class="tap_item">
                         <dl>
                             <dt class="tap_title">
-                                	처리완료
+                                	신고처리 완료
                             </dt>
                             <dd class="tap_count">
-                                0
+                                ${count }
+                                
                             </dd>
                         </dl>
                     </div>
@@ -114,18 +106,35 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>이 새끼 사기꾼입니다!!!!</td>
-                                <td>착한사람</td>
-                                <td>개새끼</td>
-                                <td>2021.06.28</td>
-                                <td><select class="dd">
-                                    <option value="">정상</option>
-                                    <option value="">블랙</option>
-                                    
-                                </select><input type="submit" value="처리" id="aa"></td>
-                            </tr>
+                            <c:choose>
+                            	<c:when test="${empty list }">
+									<tr>
+										<td colspan="6">-------------등록된 신고글이 없습니다.-------------</td>
+									</tr>                            	
+                            	</c:when>
+                            	<c:otherwise>
+                            		<c:forEach var="dto" items="${list }">
+                            			<tr>
+			                                <td>${dto.report_no }</td>
+			                                <td>${dto.report_content }</td>
+			                                <td>${dto.report_id }</td>
+			                                <td>${dto.report_tid }</td>
+			                                <td>${dto.report_sdate }</td>
+			                                <form action="admin.do" method="get" name="treat">
+			                                <input type="hidden" name="command" value="treat">
+			                                <input type="hidden" name="report_no" value="${dto.report_no }">
+			                                <input type="hidden" name="report_tid" value="${dto.report_tid }">
+			                                <td><select class="dd" name="report_treat">
+			                                    <option value="no">정상</option>
+			                                    <option value="yes">블랙</option>
+			                                    
+			                                </select><input type="submit" value="처리" id="aa"></td>
+			                                </form>
+                            			</tr>
+                            		</c:forEach>
+                            	</c:otherwise>
+                            </c:choose>
+                            
                             </tbody>
                         </table>
                     </div>

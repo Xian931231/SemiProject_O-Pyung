@@ -1,5 +1,7 @@
 <!-- 관리자 페이지 -->
 
+<%@page import="com.opyung.dto.DealBoardDto"%>
+<%@page import="sun.security.util.Length"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    
@@ -12,7 +14,7 @@
     %>    
     
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
- <%@ page import="com.opyung.dto.MemberDto" %>
+ <%@ page import="com.opyung.dto.DealBoardDto" %>
  
  <%@ page import = "java.util.List" %>
     
@@ -31,22 +33,13 @@
     
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-    	
-        
-        $("#bl_btn").click(function(){
-           var con = confirm("정말 블랙처리 하시겠습니까?");
-           if(con = true){
-               alert("블랙처리되었습니다.");
-           }else {
-               alert("취소되었습니다.");
-           }
-        });
-      
-    });
+    
     </script>
 </head>
 <body>
+	<% DealBoardDto dto = new DealBoardDto(); %>
+
+
 
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
@@ -60,9 +53,9 @@
            <h2 class="side_maintitle">ADMIN</h2>
             
             <ul class="side_ul">
-                <li class="side_li" id="userinfo"><a href="#">유저정보</a></li>
-                <li class="side_li" id="report"><a href="admin_report.jsp">신고</a></li>
-                <li class="side_li" id="transactionStatus"><a href="admin_deal.jsp">거래상태</a></li>
+                <li class="side_li" id="userinfo"><a href="admin.do?command=userInfo">유저정보</a></li>
+                <li class="side_li" id="report"><a href="admin.do?command=report">신고</a></li>
+                <li class="side_li" id="transactionStatus"><a href="admin.do?command=deal">거래상태</a></li>
                 <li class="side_li" id="noticeWrite"><a href="admin_notice.jsp">공지사항</a></li>
             </ul>
         </div>
@@ -77,7 +70,7 @@
                             검수대기
                         </dt>
                         <dd class="tap_count">
-                            0
+                            ${deal_countready }
                         </dd>
                     </dl>
                 </div>
@@ -87,7 +80,7 @@
                             검수중
                         </dt>
                         <dd class="tap_count">
-                            0
+                            ${deal_counting }
                         </dd>
                     </dl>
                 </div>
@@ -97,7 +90,7 @@
                             검수완료
                         </dt>
                         <dd class="tap_count">
-                            0
+                            ${deal_countgo }
                         </dd>
                     </dl>
                 </div>
@@ -121,31 +114,48 @@
                         <th>구매자</th>
                         <th>거래상태</th>
                         <th>검수시작</th>
-                        <th>완료</th>
+                        <th>검수완료</th>
                         <th>검수자</th>
                         <th>수정</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <form action="">
+                    <form action="admin.do" method="get" name="deal">
+                    <input type="hidden" name="command" value="deal">
+                    <c:choose>
+                        <c:when test="${empty list }">
+							<tr>
+								<td colspan="9">-------------진행 중인 거래가 없습니다.-------------</td>
+							</tr>                            	
+                         </c:when>
+                         <c:otherwise>
+                     <c:forEach var="dto" items="${deal }">
+                    
+                    
+                    
                     <tr class="Ts_tr">
-                        <td>1</td>
-                        <td>상품title입니다.</td>
-                        <td>판매자명</td>
-                        <td>구매자명</td>
-                        
-                        <td><select>
-                            <option value="">판매자 발송준비</option>
-                            <option value="">검수중</option>
-                            <option value="">구매자 발송준비</option>
+                    	
+                        <td>${dto.deal_no }</td>
+                        <td>${dto.product_title }</td>
+                        <td>${dto.deal_sid }</td>
+                        <td>${dto.deal_bid }</td>
+           
+                       
+                        <td><select name="dealselect">
+                            <option value="ready">판매자 발송준비</option>
+                            <option value="ing">검수중</option>
+                            <option value="go">구매자 발송준비</option>
                         </select></td>
-                            
-                        <td><input type="date"></td>
-                        <td><input type="date"></td>
-                        <td>adminID</td>
+                          
+                        <td><input type="date" name="start" value="${dto.sdate }"></td>
+                        <td><input type="date" name="end" value="${dto.edate }"></td>
+                        <td>admin</td>
                         <td><input type="submit" value="수정"></td>
                     </tr>
                 </form>
+                </c:forEach>
+                  </c:otherwise>
+                  </c:choose>
                     </tbody>
                 </table>
             </div>

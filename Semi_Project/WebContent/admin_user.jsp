@@ -31,19 +31,7 @@
     
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-    $(function() {
-    	
-        
-        $("#bl_btn").click(function(){
-           var con = confirm("정말 블랙처리 하시겠습니까?");
-           if(con = true){
-               alert("블랙처리되었습니다.");
-           }else {
-               alert("취소되었습니다.");
-           }
-        });
-      
-    });
+   
     </script>
 </head>
 <body>
@@ -60,10 +48,10 @@
            <h2 class="side_maintitle">ADMIN</h2>
             
             <ul class="side_ul">
-                <li class="side_li" id="userinfo"><a href="">유저정보</a></li>
-                <li class="side_li" id="report"><a href="#">신고</a></li>
-                <li class="side_li" id="transactionStatus"><a href="#">거래상태</a></li>
-                <li class="side_li" id="noticeWrite"><a href="#">공지사항</a></li>
+                <li class="side_li" id="userinfo"><a href="admin.do?command=userInfo">유저정보</a></li>
+                <li class="side_li" id="report"><a href="admin.do?command=report">신고</a></li>
+                <li class="side_li" id="transactionStatus"><a href="admin.do?command=deal">거래상태</a></li>
+                <li class="side_li" id="noticeWrite"><a href="admin_notice.jsp">공지사항</a></li>
             </ul>
         </div>
         	
@@ -73,19 +61,18 @@
                 <h2>유저정보</h2>
                 <hr>
                 <div id="divsearch">
-                    <form action="adminpage.jsp" method="post" name='frm'>
-                    <input type="hidden" name="command" value="UserInfo">
+                    <form action="admin.do" method="post" name='search'>
+     				<input type="hidden" name="command" value="search">
                     <input type="submit" value="검색" class="search" id="searchbnt" >
                     <!-- 검색컬럼 -->
-                    <select id="searchSelect" name="col">
-                        <option value="ScAll">All</option>
-                        <option value="ScId">ID</option>
-                        <option value="ScName">NAME</option>
-                        <option value="ScEmail">EMAIL</option>
-                        <option value="ScPone">PONE</option>
-                        <option value="SCblack">BLACK</option>
+                    <select id="searchSelect" name="keyField">
+                        <option value="MB_ID">ID</option>
+                        <option value="MB_PW">NAME</option>
+                        <option value="MB_EMAIL">EMAIL</option>
+                        <option value="MB_PHONE">PHONE</option>
+                        <option value="MB_ABLE">BLACK</option>
                       </select>
-                    <input type="text" name="word"  class="search" id="searchbox" >
+                    <input type="text" name="keyword"  class="search" id="searchbox" >
 					</form>
     
                     
@@ -127,6 +114,8 @@
                        		</c:when>
                         <c:otherwise>
                         	<c:forEach var="dto" items="${list }">
+                        		
+                        		
                         		<tr>
 		                            <td><input type="checkbox"></td>
 		                            <td>${dto.mb_id }</td>
@@ -136,8 +125,11 @@
 		                            <td>${dto.mb_phone }</td>
 		                            <td>${dto.mb_score }</td>
 		                            <td><a>${dto.mb_able }</a></td>
-		                            <td><input type="button" value="블랙처리" id="bl_btn"></td>
+		                           
+		                            <td><input type="button" value="블랙처리" id="bl_btn" 
+		                            onclick="location.href='admin.do?command=black&mb_id=${dto.mb_id}'" ></td>
 	                        	</tr>
+	                        	
                         	</c:forEach>
                         </c:otherwise>
                         </c:choose>
