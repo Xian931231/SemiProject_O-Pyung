@@ -28,6 +28,7 @@ public class DealBoardDto {
 	private String check_id;
 	private int product_price;
 	private String product_status;
+	private int product_no;
 
 	
 	//생성자
@@ -171,6 +172,16 @@ public class DealBoardDto {
 	public void setProduct_status(String product_status) {
 		this.product_status = product_status;
 	}
+
+	public int getProduct_no() {
+		return product_no;
+	}
+
+	public void setProduct_no(int product_no) {
+		this.product_no = product_no;
+	}
+	
+	
 
 
 }

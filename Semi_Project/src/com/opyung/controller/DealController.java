@@ -1,7 +1,9 @@
 package com.opyung.controller;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,7 +41,7 @@ public class DealController extends HttpServlet {
 		ProductBiz ptBiz = new ProductBiz();
 		MemberinfoBiz memBiz = new MemberinfoBiz();
 		
-		//구매요청왔을시 테이블 추가 (DEALBOARD + DEAL_SCHEDULEBOARD)
+		//구매요청왔을시 테이블 추가 (DEALBOARD + DEAL_SCHEDULEBOARD + CHECKBOARD)
 		if(command.equals("insert")) {
 			System.out.println("insert 접속");
 			int ptno = Integer.parseInt(request.getParameter("ptno"));
@@ -65,6 +67,23 @@ public class DealController extends HttpServlet {
 			
 			//거래 일정 테이블 생성
 			int resStatus = biz.insertStatus(dealno);
+			
+			if(resStatus > 0) {
+				System.out.println("거래 일정 테이블 성공");
+			}else {
+				System.out.println("거래 일정 테이블 실패");
+			}
+			
+			
+			//검수 내역 테이블 생성
+			int resCheck = biz.insertCheck(dealno);
+			
+			if(resCheck>0) {
+				System.out.println("거래 내역 테이블 생성");
+				response.sendRedirect("deal.do?command=deal&dealno="+dealno);
+			}else {
+				System.out.println("거래 내역 테이블 실패");
+			}
 			
 		//거래페이지 조회
 		}else if(command.equals("deal")){
@@ -107,12 +126,17 @@ public class DealController extends HttpServlet {
 			dealdto = biz.selectOne(dealno);
 			String bid = dealdto.getDeal_bid();
 			
+			
+			
 			//결제금액
-			int dealprice = dealdto.getDeal_price();
-			System.out.println("결제금액: "+ dealprice);
+			int productno = dealdto.getDeal_productNo();
+			ProductBoardDto ptdto = new ProductBoardDto();
+			ptdto = ptBiz.selectOne(productno);
+			int productPrice = ptdto.getProduct_price();
+			System.out.println("결제금액: "+ productPrice);
 			
 			//예약금
-			int prePrice = (int)(dealprice*0.1);
+			int prePrice = (int)(productPrice*0.1);
 			System.out.println("예약금: " + prePrice);
 			
 			//구매자 정보
@@ -147,38 +171,58 @@ public class DealController extends HttpServlet {
 			MemberDto biddto = new MemberDto();
 			biddto = memBiz.selectOne(bid);
 			
+			//판매금액
+			int ptPrice = ptdto.getProduct_price();
+			System.out.println("상품금액: " + ptPrice);
+			
+			
 			//결제금액
 			int dealPrice = dealdto.getDeal_price();
 			System.out.println("결제금액: "+ dealPrice);
 			
-			//예약금
-			int prePrice = (int)(dealPrice*0.1);
-			System.out.println("예약금: " + prePrice);
-			
 			//남은 결제금액
-			int restPrice = (dealPrice - prePrice);
+			int restPrice = (ptPrice - dealPrice);
 			
 			request.setAttribute("dealdto", dealdto);
 			request.setAttribute("ptdto", ptdto);
 			request.setAttribute("siddto", siddto);
 			request.setAttribute("biddto", biddto);
-			request.setAttribute("prePrice", prePrice);
+			request.setAttribute("dealPrice", dealPrice);
 			request.setAttribute("restPrice", restPrice);
 			dispatch("deal_status.jsp", request, response);
 		
 			
-		//거래일정 테이블 생성(구매자가 예약금 결제를 했을경우)
+		//거래일정 거래상태 수정(구매자가 예약금 결제를 했을경우)
 		}else if(command.equals("deal_status_make")) {
 			
+			//결제금액 받아오기
 			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			String status = "예약금결제";
 			
-			int res = biz.insertStatus(dealno);
+			//거래날짜(SYSDATE)
+			Date date = new Date();
+			long timeInMilliSeconds = date.getTime();
+			java.sql.Date eDate = new java.sql.Date(timeInMilliSeconds);
 			
-			if(res>0) {
-				System.out.println("거래일정 생성 성공");
+			//예약금 받아오기
+			int prePrice = Integer.parseInt(request.getParameter("prePrice"));
+			
+			int resStatus = biz.updateStatus(dealno, status, eDate);
+			
+			if(resStatus > 0) {
+				System.out.println("거래상태 수정(예약금결제)");
+			}else {
+				System.out.println("거래상태 수정실패(예약금결제)");
+			}
+			
+			//결제금액 수정
+			int resPrice = biz.updatePrice(dealno, prePrice);
+			
+			if(resPrice>0) {
+				System.out.println("결제금액 수정(예약금)");
 				response.sendRedirect("deal.do?command=deal_status&dealno="+dealno);
 			}else {
-				System.out.println("db생성 추가 실패 확인바람");
+				System.out.println("결제금액 수정 실패(예약금)");
 			}
 			
 			
@@ -187,8 +231,12 @@ public class DealController extends HttpServlet {
 			
 			int dealno = Integer.parseInt(request.getParameter("dealno"));
 			String status = "검수신청";
-			String eDate = "SYSDATE";
 			
+			//날짜 변환(SYSDATE)
+			Date date = new Date();
+			long timeInMilliSeconds = date.getTime();
+			java.sql.Date eDate = new java.sql.Date(timeInMilliSeconds);
+
 			
 			int res = biz.updateStatus(dealno, status, eDate);
 			
@@ -199,7 +247,25 @@ public class DealController extends HttpServlet {
 				System.out.println("거래상태 수정실패(검수신청)");
 			}
 			
+		
+		//deal.jsp에서 거래취소 눌렀을시 거래테이블 삭제
+		}else if(command.equals("dealTableDelete")) {
+			
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			
+			int res = biz.deleteDealBoard(dealno);
+			
+			if(res>0) {
+				System.out.println("거래번호"+dealno+"테이블이 삭제되었습니다.");
+				response.sendRedirect("main.do?command=main");
+			}else {
+				System.out.println("거래 테이블 삭제 실패");
+			}
+			
+			
 		}
+		
+		
 		
 		
 		

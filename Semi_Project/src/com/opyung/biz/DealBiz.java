@@ -1,6 +1,7 @@
 package com.opyung.biz;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.List;
 
 import com.opyung.dao.DealDao;
@@ -91,6 +92,7 @@ public class DealBiz extends JDBCTemplate{
 		Connection con = getConnection();
 		
 		List<DealBoardDto> list = dao.selectSidAll(con,id);
+		
 		return list;
 	}
 
@@ -122,7 +124,7 @@ Connection con = getConnection();
 	
 	
 	
-	//거래일정 생성(거래상태:예약금결제)
+	//거래일정 생성
 	public int insertStatus(int dealno) {
 		
 		Connection con = getConnection();
@@ -140,6 +142,24 @@ Connection con = getConnection();
 		return res;
 	}
 	
+	//검수 내역 테이블 생성
+	public int insertCheck(int dealno) {
+		
+		Connection con = getConnection();
+		
+		int res = dao.insertCheck(con,dealno);
+		
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return res;
+	}
+	
 	//거래일정 조회
 	public DealBoardDto selectStatus(int dealno) {
 		
@@ -154,7 +174,7 @@ Connection con = getConnection();
 	
 	
 	//거래일정 수정(거래상태 변경) / 재사용가능
-	public int updateStatus(int dealno, String status, String eDate) {
+	public int updateStatus(int dealno, String status, Date eDate) {
 		
 		Connection con = getConnection();
 		
@@ -171,5 +191,48 @@ Connection con = getConnection();
 		return res;
 	}
 	
+	
+	//결제금액 변경
+	public int updatePrice(int dealno,int price) {
+		
+		Connection con = getConnection();
+		
+		int res = dao.updatePrice(con,dealno,price);
+		
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return res;
+	}
+	
+	
+	//거래페이지에서(deal.jsp)에서 거래 취소시 생성된 DEALBOARD 테이블 삭제
+	public int deleteDealBoard(int dealno) {
+		
+		Connection con = getConnection();
+		
+		int res = dao.deleteDealBoard(con,dealno);
+		
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return res;
+	}
+	
 
+
+	
+	
+	
+	
 }

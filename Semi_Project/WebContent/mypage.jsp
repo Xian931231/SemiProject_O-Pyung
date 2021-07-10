@@ -123,7 +123,7 @@
                             </dl>
                         </div>
                     </div>
-                    <!--거래 내역-->
+                    <!--구매 내역-->
                     <div>
                         
                         <c:choose>
@@ -151,7 +151,7 @@
 				                        <td><div class="img-div"><img src="upload/${bidlist.ptimg_name }${bidlist.ptimg_type } "></div></td>
 				                        <td><a href="product.do?command=detail&ptno=${bidlist.deal_productNo }" id="product_click">${bidlist.product_title }</a></td>
 				                        <td>${bidlist.product_price }</td>
-				                        <td>${bidlist.product_status }</td>
+				                        <td>${bidlist.schedule_status }</td>
 				                        <td>${bidlist.deal_bid }</td>
 			                    	</tr>
 	                    		
@@ -195,7 +195,7 @@
                             </dl>
                         </div>
                     </div>
-                    <!--거래 내역-->
+                    <!--판매내역 -->
                     <div>
                         
                         
@@ -222,7 +222,7 @@
 	                    			<tr>
 				                       	<td>${sidlist.rownum }</td>
 				                        <td><div class="img-div"><img src="upload/${sidlist.ptimg_name }${sidlist.ptimg_type } "></div></td>
-				                        <td><a href="product.do?command=detail&ptno=${sidlist.deal_productNo }" id="product_click">${sidlist.product_title }</a></td>
+				                        <td><a href="product.do?command=detail&ptno=${sidlist.product_no }" id="product_click">${sidlist.product_title }</a></td>
 				                        <td>${sidlist.product_price }</td>
 				                        <td>${sidlist.product_status }</td>
 				                        <td>${sidlist.deal_bid }</td>

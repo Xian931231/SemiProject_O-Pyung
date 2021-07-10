@@ -133,7 +133,7 @@
                         </tr>
                         <tr>
                             <td >예약금</td>
-                            <td class="td2">${prePrice }</td>
+                            <td class="td2">${dealPrice }</td>
                         </tr>                        
                         <tr class="tr-price">
                             <td>결제 금액</td>

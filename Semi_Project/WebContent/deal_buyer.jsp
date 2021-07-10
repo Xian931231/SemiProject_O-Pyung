@@ -50,7 +50,7 @@
                         
                 alert(msg);
                   
-                location.href="deal.do?command=deal_status_make&dealno=${dealdto.deal_no}";
+                location.href="deal.do?command=deal_status_make&dealno=${dealdto.deal_no}&prePrice=${prePrice}";
                     
 			} else {
 				var msg = '결제에 실패하였습니다.\n';

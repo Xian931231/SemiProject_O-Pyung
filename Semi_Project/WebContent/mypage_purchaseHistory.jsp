@@ -140,7 +140,7 @@
                             <th>제목</th>
                             <th>가격</th>
                             <th>판매자</th>
-                            <th>결제할금액</th>
+                            <th>결제된금액</th>
                             <th>거래상태</th>
                             <th>상태시작날짜</th>
                             <th>검수자</th>
@@ -164,7 +164,7 @@
 			                        <td>${dealList.product_price }원</td>
 			                        <td>${dealList.deal_sid }</td>
 			                        <td>${dealList.deal_price }원</td>
-			                        <td>${dealList.schedule_status }</td>
+			                        <td><a href="deal.do?command=deal_status&dealno=${dealList.deal_no }">${dealList.schedule_status }</a></a></td>
 			                        <td>${dealList.sdate }</td>
 			                        <td>${dealList.check_id }</td>
 		                    	</tr>
