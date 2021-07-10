@@ -60,7 +60,7 @@
 			
 		});
 		
-	/* 가테고리 유효성 검사 */
+	/* 카테고리 유효성 검사 */
 	
 	function check(){
 		
@@ -96,35 +96,14 @@
 			$("#newvar").focus();
 			return false;
 		
-		/* textarea 부분==========================
-			값을 넣어도 계속 null로 뜹니다.*/
-		}else if($(".ckeditor").val() == ""){
+		}else if(CKEDITOR.instances.ckeditor.getData().length < 1 ){
 			alert("제품 정보를 입력해주세요.");
 			$(".ckeditor").focus();
 			return false;
 		}
 		
-		
 		return true;
 	}
-	
-
-	
-	$(function(){
-		alert($("#ckeditor").val());
-		console.log("값은"+$("#ckeditor").val());
-		
-		$('p').click(function(){
-			alert($("#ckeditor").val());
-		});
-		
-		$(".used_bankname, #account_num_input, #account_owner_input").change(function(){
-            if($("#ckeditor").val() = 0){
-                $("#ckeditor").focus;
-            }
-        });
-
-	});
 	
 	</script>
 	
