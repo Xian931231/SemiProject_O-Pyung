@@ -163,7 +163,7 @@ public class AdminDao {
 		return res;
 	}
 	
-	/////////////////////user_report///////////////////////////////////
+	/////////////////////user_deal///////////////////////////////////
 		public List<DealBoardDto> dealAll(Connection con){
 			PreparedStatement pstm = null;
 			ResultSet rs = null;
@@ -196,7 +196,98 @@ public class AdminDao {
 			
 			return res;
 		}
-	
+		
+		public int deal_countready(Connection con) {
+			PreparedStatement pstm = null;
+			ResultSet rs = null;
+			int res = 0;
+			
+			String sql = "SELECT COUNT(*) FROM DEALBOARD WHERE SCHEDULE_STATUS IS NULL ";
+			
+			try {
+				pstm = con.prepareStatement(sql);
+				System.out.println("03. query 준비 : " +sql);
+			
+				rs = pstm.executeQuery();
+				System.out.println("04. query 실행 및 리턴");
+				
+				res = rs.getInt(1);
+				
+				
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstm);
+			}
+			
+			
+			return res;
+		}
+		
+		public int deal_counting(Connection con) {
+			PreparedStatement pstm = null;
+			ResultSet rs = null;
+			int res = 0;
+			
+			String sql = "SELECT COUNT(*) FROM DEALBOARD WHERE SCHEDULE_STATUS = 'ing' ";
+			
+			try {
+				pstm = con.prepareStatement(sql);
+				System.out.println("03. query 준비 : " +sql);
+			
+				rs = pstm.executeQuery();
+				System.out.println("04. query 실행 및 리턴");
+				
+				res = rs.getInt(1);
+				
+				
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstm);
+			}
+			
+			
+			return res;
+		}
+		
+		
+		
+		public int deal_countgo(Connection con) {
+			PreparedStatement pstm = null;
+			ResultSet rs = null;
+			int res = 0;
+			
+			String sql = "SELECT COUNT(*) FROM DEALBOARD WHERE SCHEDULE_STATUS IS 'go' ";
+			
+			try {
+				pstm = con.prepareStatement(sql);
+				System.out.println("03. query 준비 : " +sql);
+			
+				rs = pstm.executeQuery();
+				System.out.println("04. query 실행 및 리턴");
+				
+				res = rs.getInt(1);
+				
+				
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstm);
+			}
+			
+			
+			return res;
+		}
 	
 	/////////////////////user_report///////////////////////////////////
 	//신고 전체 출력
@@ -290,6 +381,11 @@ public class AdminDao {
 			
 			return res;
 		}
+		
+		
+		
+		
+		
 		
 		public ReportBoardDto reselect(Connection con, int report_no) {
 			PreparedStatement pstm = null;

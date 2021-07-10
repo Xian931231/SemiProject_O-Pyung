@@ -2,6 +2,7 @@ package com.opyung.biz;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 import com.opyung.dto.DealBoardDto;
 import com.opyung.dto.MemberDto;
@@ -24,24 +25,7 @@ public class AdminBiz {
 		
 		return list;
 	}
-	public int count() {
-		Connection con = getConnection();
-		
-		int count = dao.count(con);
-		
-		close(con);
-		
-		return count;
-	}
-	public int countnull() {
-		Connection con = getConnection();
-		
-		int countnull = dao.countnull(con);
-		
-		close(con);
-		
-		return countnull;
-	}
+	
 	
 	
 	public MemberDto selectOne(String mb_id) {
@@ -98,7 +82,33 @@ public class AdminBiz {
 		return list;
 	}
 	
-	
+	public int deal_countready() {
+		Connection con = getConnection();
+		
+		int deal_countready = dao.count(con);
+		
+		close(con);
+		
+		return deal_countready;
+	}
+	public int deal_counting() {
+		Connection con = getConnection();
+		
+		int deal_counting = dao.count(con);
+		
+		close(con);
+		
+		return deal_counting;
+	}
+	public int deal_countgo() {
+		Connection con = getConnection();
+		
+		int deal_countgo = dao.count(con);
+		
+		close(con);
+		
+		return deal_countgo;
+	}
 	
 	////////////////////////user_report///////////////////////////////////
 	
@@ -111,6 +121,26 @@ public class AdminBiz {
 		
 		
 		return list;
+	}
+	
+	public int count() {
+		Connection con = getConnection();
+		
+		int count = dao.count(con);
+		
+		close(con);
+		
+		return count;
+	}
+	
+	public int countnull() {
+		Connection con = getConnection();
+		
+		int countnull = dao.countnull(con);
+		
+		close(con);
+		
+		return countnull;
 	}
 	
 	public ReportBoardDto reselect(int report_no) {

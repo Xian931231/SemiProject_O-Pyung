@@ -37,7 +37,7 @@
     </script>
 </head>
 <body>
-
+	<% DealBoardDto dto = new DealBoardDto(); %>
 
 
 
@@ -53,9 +53,9 @@
            <h2 class="side_maintitle">ADMIN</h2>
             
             <ul class="side_ul">
-                <li class="side_li" id="userinfo"><a href="#">유저정보</a></li>
-                <li class="side_li" id="report"><a href="admin_report.jsp">신고</a></li>
-                <li class="side_li" id="transactionStatus"><a href="admin_deal.jsp">거래상태</a></li>
+                <li class="side_li" id="userinfo"><a href="admin.do?command=userInfo">유저정보</a></li>
+                <li class="side_li" id="report"><a href="admin.do?command=report">신고</a></li>
+                <li class="side_li" id="transactionStatus"><a href="admin.do?command=deal">거래상태</a></li>
                 <li class="side_li" id="noticeWrite"><a href="admin_notice.jsp">공지사항</a></li>
             </ul>
         </div>
@@ -70,7 +70,7 @@
                             검수대기
                         </dt>
                         <dd class="tap_count">
-                            0
+                            ${deal_countready }
                         </dd>
                     </dl>
                 </div>
@@ -80,7 +80,7 @@
                             검수중
                         </dt>
                         <dd class="tap_count">
-                            0
+                            ${deal_counting }
                         </dd>
                     </dl>
                 </div>
@@ -90,7 +90,7 @@
                             검수완료
                         </dt>
                         <dd class="tap_count">
-                            0
+                            ${deal_countgo }
                         </dd>
                     </dl>
                 </div>
@@ -139,17 +139,17 @@
                         <td>${dto.product_title }</td>
                         <td>${dto.deal_sid }</td>
                         <td>${dto.deal_bid }</td>
-            
+           
                        
-                        <td><select>
+                        <td><select name="dealselect">
                             <option value="ready">판매자 발송준비</option>
                             <option value="ing">검수중</option>
                             <option value="go">구매자 발송준비</option>
                         </select></td>
                           
-                        <td><input type="date" name="start"></td>
-                        <td><input type="date" name="end"></td>
-                        <td>adminID</td>
+                        <td><input type="date" name="start" value="${dto.sdate }"></td>
+                        <td><input type="date" name="end" value="${dto.edate }"></td>
+                        <td>admin</td>
                         <td><input type="submit" value="수정"></td>
                     </tr>
                 </form>

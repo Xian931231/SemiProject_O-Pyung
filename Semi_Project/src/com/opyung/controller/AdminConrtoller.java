@@ -44,12 +44,38 @@ public class AdminConrtoller extends HttpServlet {
 				
 				AdminBiz biz = new AdminBiz();
 				
+				
+				///////////////////admin_main/////////////////////
+				
+				if(command.equals("admin")){
+					List<DealBoardDto> list = biz.dealAll();
+					List<ReportBoardDto> relist = biz.reportAll();
+					
+					
+					int count = biz.count();
+					int countnull = biz.countnull();
+					int deal_countready = biz.deal_countready();
+					int deal_counting = biz.deal_counting();
+					int deal_countgo = biz.deal_countgo();
+					
+					request.setAttribute("countnull", countnull);
+					request.setAttribute("count", count);
+					request.setAttribute("list", relist);
+					request.setAttribute("deal_countready", deal_countready);
+					request.setAttribute("deal_counting", deal_counting);
+					request.setAttribute("deal_countgo", deal_countgo);
+					request.setAttribute("deal", list);
+					dispatch("admin.jsp", request, response);
+				
+				}
+				
+				
 				///////////////////admin_user/////////////////////
 				//유저 정보 전체 출력
-				if(command.equals("userInfo")) {
+				else if(command.equals("userInfo")) {
 					
 					List<MemberDto> list = biz.selectAll();
-					
+				
 					
 					
 				
@@ -88,31 +114,26 @@ public class AdminConrtoller extends HttpServlet {
 				
 					
 				}
-				///////////////////admin_main/////////////////////
 				
-				else if(command.equals("admin")){
-					
-				
-				}
 				
 				////////////////////admin_deal/////////////////////////////
 				else if(command.equals("deal")) {
 					List<DealBoardDto> list = biz.dealAll();
 					
 					
-				
+					int deal_countready = biz.deal_countready();
+					int deal_counting = biz.deal_counting();
+					int deal_countgo = biz.deal_countgo();
+					
+					
+					request.setAttribute("deal_countready", deal_countready);
+					request.setAttribute("deal_counting", deal_counting);
+					request.setAttribute("deal_countgo", deal_countgo);
 					request.setAttribute("deal", list);
 					dispatch("admin_deal.jsp", request, response);
-					/*처리버튼를 하면 완료날짜업데이트하고 score에 점수를 -1 한다.*/
 					
 					
 				}
-				
-				
-				
-				
-				
-				
 				
 				
 				///////////////////admin_report/////////////////////

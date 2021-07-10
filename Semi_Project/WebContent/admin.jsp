@@ -46,7 +46,7 @@
     
     <div id="main">
         <div id="sidebar">
-           <h2 class="side_maintitle">ADMIN</h2>
+           <h2 class="side_maintitle"><a href="admin.do?command=admin">ADMIN</a></h2>
             
             <ul class="side_ul">
                 <li class="side_li" id="userinfo"><a href="admin.do?command=userInfo">유저정보</a></li>
@@ -62,36 +62,81 @@
                         <h3>신고 내역</h3>
                     </div>
                     <div class="add">
-                        <a class="add_text" id="addbnt1">더보기 ></a>
+                        <a class="add_text" id="addbnt1" href="admin.do?command=report">더보기 ></a>
                     </div>
                 </div>
 
                 <!-- 신고 표-->
                 <div id="buy">
                     <div class="table">
+                        
                         <div class="item">
                             <dl>
-                                <dt class="title">전체</dt>
-                                <dd class="count" id="count_buy_all">0</dd>
+                                <dt class="title">신고처리 요청</dt>
+                                <dd class="count">${countnull }</dd>
                             </dl>
                         </div>
                         <div class="item">
                             <dl>
-                                <dt class="title">진행 중</dt>
-                                <dd class="count">0</dd>
-                            </dl>
-                        </div>
-                        <div class="item">
-                            <dl>
-                                <dt class="title">종료</dt>
-                                <dd class="count">0</dd>
+                                <dt class="title">신고처리 완료</dt>
+                                <dd class="count">${count }</dd>
                             </dl>
                         </div>
                     </div>
                     <!--거래 내역-->
                     <div>
                         <div class="empty_area">
-                            <p class="empty">신고 내역이 없습니다.</p>
+                        	<div class="user_table" >
+                        <table border="1">
+                            <col width="50px">
+                            <col width="450px">
+                            <col width="150px">
+                            <col width="150px">
+                            <col width="150px">
+                            <col width="150px">
+                            
+                            <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>신고사유</th>
+                                <th>신고자</th>
+                                <th>신고대상자</th>
+                                <th>신고날짜</th>
+                                <th>처리상태</th>
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:choose>
+                            	<c:when test="${empty list }">
+									<tr>
+										<td colspan="6">-------------등록된 신고글이 없습니다.-------------</td>
+									</tr>                            	
+                            	</c:when>
+                            	<c:otherwise>
+                            		<c:forEach var="dto" items="${list }">
+                            			<tr>
+			                                <td>${dto.report_no }</td>
+			                                <td>${dto.report_content }</td>
+			                                <td>${dto.report_id }</td>
+			                                <td>${dto.report_tid }</td>
+			                                <td>${dto.report_sdate }</td>
+			                                <form action="admin.do" method="get" name="treat">
+			                                <input type="hidden" name="command" value="treat">
+			                                <input type="hidden" name="report_no" value="${dto.report_no }">
+			                                <input type="hidden" name="report_tid" value="${dto.report_tid }">
+			                                <td><select class="dd" name="report_treat">
+			                                    <option value="no">정상</option>
+			                                    <option value="yes">블랙</option>
+			                                    
+			                                </select><input type="submit" value="처리" id="aa"></td>
+			                                </form>
+                            			</tr>
+                            		</c:forEach>
+                            	</c:otherwise>
+                            </c:choose>
+                             </tbody>
+                        </table>
                         </div>
                     </div>
                 </div>
@@ -102,7 +147,7 @@
                         <h3>거래 상태</h3>
                     </div>
                     <div class="add">
-                        <a class="add_text" id="addbnt2" >더보기 ></a>
+                        <a class="add_text" id="addbnt2" href="admin.do?command=deal" >더보기 ></a>
                     </div>
                 </div>
 
@@ -111,27 +156,86 @@
                     <div class="table">
                         <div class="item">
                             <dl>
-                                <dt class="title">전체</dt>
-                                <dd class="count" id="count_sell_all">0</dd>
+                                <dt class="title">검수 대기</dt>
+                                <dd class="count" id="count_sell_all">${deal_countready }</dd>
                             </dl>
                         </div>
                         <div class="item">
                             <dl>
-                                <dt class="title">진행 중</dt>
-                                <dd class="count">0</dd>
+                                <dt class="title">검수 중</dt>
+                                <dd class="count">${deal_counting }</dd>
                             </dl>
                         </div>
                         <div class="item">
                             <dl>
-                                <dt class="title">종료</dt>
-                                <dd class="count">0</dd>
+                                <dt class="title">검수 완료</dt>
+                                <dd class="count">${deal_countgo }</dd>
                             </dl>
                         </div>
                     </div>
                     <!--거래 내역-->
                     <div>
                         <div class="empty_area" id="empty_area_selling">
-                            <p class="empty">거래 내역이 없습니다.</p>
+                         <table >
+                    <col width="50px">
+                    <col width="300px">
+                    <col width="100px">
+                    <col width="100px">
+                    <col width="200px">
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="100px">
+                    <col width="50px">
+                    <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>상품</th>
+                        <th>판매자</th>
+                        <th>구매자</th>
+                        <th>거래상태</th>
+                        <th>검수시작</th>
+                        <th>검수완료</th>
+                        <th>검수자</th>
+                        <th>수정</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                            <c:choose>
+                        <c:when test="${empty list }">
+							<tr>
+								<td colspan="9">-------------진행 중인 거래가 없습니다.-------------</td>
+							</tr>                            	
+                         </c:when>
+                         <c:otherwise>
+                     <c:forEach var="dto" items="${deal }">
+                    
+                    
+                    
+                    <tr class="Ts_tr">
+                    	
+                        <td>${dto.deal_no }</td>
+                        <td>${dto.product_title }</td>
+                        <td>${dto.deal_sid }</td>
+                        <td>${dto.deal_bid }</td>
+           
+                       
+                        <td><select name="dealselect">
+                            <option value="ready">판매자 발송준비</option>
+                            <option value="ing">검수중</option>
+                            <option value="go">구매자 발송준비</option>
+                        </select></td>
+                          
+                        <td><input type="date" name="start" value="${dto.sdate }"></td>
+                        <td><input type="date" name="end" value="${dto.edate }"></td>
+                        <td>admin</td>
+                        <td><input type="submit" value="수정"></td>
+                    </tr>
+                </form>
+                </c:forEach>
+                  </c:otherwise>
+                  </c:choose>
+                     </tbody>
+                </table>
                         </div>
                     </div>
                 </div>
