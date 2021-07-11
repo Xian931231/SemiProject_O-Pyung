@@ -103,18 +103,19 @@
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="#" class="btn_wish" id="ptno${list.product_no }" onclick="likeProduct('${id}','${list.product_no }');">
+                            <a href="#" class="btn_wish" id="1ptno${list.product_no }" onclick="likeProduct('${id}','${list.product_no }');">
                                
                             </a>
                         </div>
                     </div>
                     <script type="text/javascript">
 					       	var id = '${id}';
+					       	var listNo = 1;
 					       	var ptno = '${list.product_no}'
 					       	var ptid = '${list.product_id}'
 					       	if(id == null || id == "" || ptid == id){
 					       	}else{
-					       		isLike(id,ptno);
+					       		isLike(id,listNo,ptno);
 					       	}
 					       		
 					</script>
@@ -184,17 +185,18 @@
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="#" class="btn_wish" id="ptno${list2.product_no }" onclick="likeProduct('${id}','${list2.product_no }');">
+                            <a href="#" class="btn_wish" id="2ptno${list2.product_no }" onclick="likeProduct('${id}','${list2.product_no }');">
                             </a>
                         </div>
                     </div>
                     <script type="text/javascript">
 					       	var id = '${id}';
+					       	var listNo = 2;
 					       	var ptno = '${list2.product_no}'
 					       	var ptid = '${list2.product_id}'
 					       	if(id == null || id == "" || ptid == id){
 					       	}else{
-					       		isLike(id,ptno);
+					       		isLike(id,listNo,ptno);
 					       	}
 					       		
 					</script>
@@ -269,17 +271,18 @@
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="#" class="btn_wish" id="ptno${list3.product_no }" onclick="likeProduct('${id}','${list3.product_no }');">
+                            <a href="#" class="btn_wish" id="3ptno${list3.product_no }" onclick="likeProduct('${id}','${list3.product_no }');">
                             </a>
                         </div>
                     </div>
                     <script type="text/javascript">
 					       	var id = '${id}';
+					       	var listNo = 3;
 					       	var ptno = '${list3.product_no}'
 					       	var ptid = '${list3.product_id}'
 					       	if(id == null || id == "" || ptid == id){
 					       	}else{
-					       		isLike(id,ptno);
+					       		isLike(id,listNo,ptno);
 					       	}
 					       		
 					</script>
@@ -344,17 +347,18 @@
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="#" class="btn_wish" id="ptno${list4.product_no }" onclick="likeProduct('${id}','${list4.product_no }');">
+                            <a href="#" class="btn_wish" id="4ptno${list4.product_no }" onclick="likeProduct('${id}','${list4.product_no }');">
                             </a>
                         </div>
                     </div>
                     <script type="text/javascript">
 					       	var id = '${id}';
+					       	var listNo = 4;
 					       	var ptno = '${list4.product_no}'
 					       	var ptid = '${list4.product_id}'
 					       	if(id == null || id == "" || ptid == id){
 					       	}else{
-					       		isLike(id,ptno);
+					       		isLike(id,listNo,ptno);
 					       	}
 					       		
 					</script>
@@ -420,17 +424,18 @@
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="#" class="btn_wish" id="ptno${list5.product_no }" onclick="likeProduct('${id}','${list5.product_no }');">
+                            <a href="#" class="btn_wish" id="5ptno${list5.product_no }" onclick="likeProduct('${id}','${list5.product_no }');">
                             </a>
                         </div>
                     </div>
                     <script type="text/javascript">
 					       	var id = '${id}';
+					       	var listNo = 5;
 					       	var ptno = '${list5.product_no}'
 					       	var ptid = '${list5.product_id}'
 					       	if(id == null || id == "" || ptid == id){
 					       	}else{
-					       		isLike(id,ptno);
+					       		isLike(id,listNo,ptno);
 					       	}
 					       		
 					</script>
