@@ -1,6 +1,7 @@
 package com.opyung.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,7 +50,7 @@ public class DealDao extends JDBCTemplate{
 		PreparedStatement pstm = null;
 		int res = 0;
 		
-		String sql = "INSERT INTO DEALBOARD VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO DEALBOARD VALUES(?,?,?,?,0)";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -57,7 +58,6 @@ public class DealDao extends JDBCTemplate{
 			pstm.setInt(2, ptdto.getProduct_no());
 			pstm.setString(3, ptdto.getProduct_id());
 			pstm.setString(4, bid);
-			pstm.setInt(5, ptdto.getProduct_price());
 			System.out.println("03"+sql);
 			
 			res = pstm.executeUpdate();
@@ -186,7 +186,16 @@ public class DealDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<DealBoardDto> res = new ArrayList<DealBoardDto>();		
 		
-		String sql = "SELECT ROWNUM,DEAL_NO,PRODUCT_NO,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,DEAL_BID,DEAL_SID,DEAL_PRICE,PRODUCT_PRICE,SCHEDULE_STATUS,SCHEDULE_SDATE,CHECK_ID,PRODUCT_STATUS FROM DEALBOARD LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO JOIN PRODUCTBOARD ON PRODUCT_NO = DEAL_PRODUCTNO JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO WHERE DEAL_BID=? AND SCHEDULE_EDATE IS NULL AND PRODUCT_STATUS !='판매완료'";
+		//String sql = "SELECT ROWNUM,DEAL_NO,PRODUCT_NO,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,DEAL_BID,DEAL_SID,DEAL_PRICE,PRODUCT_PRICE,SCHEDULE_STATUS,SCHEDULE_SDATE,CHECK_ID,PRODUCT_STATUS FROM DEALBOARD LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO JOIN PRODUCTBOARD ON PRODUCT_NO = DEAL_PRODUCTNO JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO WHERE DEAL_BID=? AND SCHEDULE_EDATE IS NULL AND PRODUCT_STATUS !='판매완료'";
+		
+		String sql = " SELECT ROWNUM,DEAL_NO,PRODUCT_NO,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,DEAL_BID,DEAL_SID,DEAL_PRICE,PRODUCT_PRICE,SCHEDULE_STATUS,SCHEDULE_SDATE,CHECK_ID,PRODUCT_STATUS " + 
+					 " FROM DEALBOARD " + 
+					 " LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO " + 
+					 " JOIN PRODUCTBOARD ON PRODUCT_NO = DEAL_PRODUCTNO " + 
+					 " JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO " + 
+					 " LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO " + 
+					 " WHERE DEAL_BID=? " + 
+					 " AND PRODUCT_STATUS !='판매완료' ";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -271,7 +280,14 @@ public class DealDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<DealBoardDto> res = new ArrayList<DealBoardDto>();		
 		
-		String sql = "SELECT ROWNUM,DEAL_NO,PRODUCT_NO,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,DEAL_BID,DEAL_SID,DEAL_PRICE,PRODUCT_PRICE,SCHEDULE_STATUS,SCHEDULE_SDATE,CHECK_ID,PRODUCT_STATUS FROM DEALBOARD LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO JOIN PRODUCTBOARD ON PRODUCT_NO = DEAL_PRODUCTNO JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO WHERE DEAL_SID=? AND SCHEDULE_EDATE IS NULL AND PRODUCT_STATUS !='판매완료'";
+		//String sql = "SELECT ROWNUM,DEAL_NO,PRODUCT_NO,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,DEAL_BID,DEAL_SID,DEAL_PRICE,PRODUCT_PRICE,SCHEDULE_STATUS,SCHEDULE_SDATE,CHECK_ID,PRODUCT_STATUS FROM DEALBOARD LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO JOIN PRODUCTBOARD ON PRODUCT_NO = DEAL_PRODUCTNO JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO WHERE DEAL_SID=? AND SCHEDULE_EDATE IS NULL AND PRODUCT_STATUS !='판매완료'";
+		String sql = " SELECT ROWNUM,DEAL_NO,PRODUCT_NO,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,DEAL_BID,DEAL_SID,DEAL_PRICE,PRODUCT_PRICE,SCHEDULE_STATUS,SCHEDULE_SDATE,CHECK_ID,PRODUCT_STATUS FROM DEALBOARD " + 
+				     " LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO " + 
+				     " JOIN PRODUCTBOARD ON PRODUCT_NO = DEAL_PRODUCTNO " + 
+				     " JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO " + 
+				     " LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO " + 
+			 	     " WHERE DEAL_SID=? " + 
+				     " AND PRODUCT_STATUS !='판매완료' ";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -356,7 +372,15 @@ public class DealDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<DealBoardDto> res = new ArrayList<DealBoardDto>();		
 		
-		String sql = "SELECT ROWNUM,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,PRODUCT_PRICE,PRODUCT_STATUS,DEALBOARD.*,CHECK_ID FROM DEALBOARD LEFT JOIN PRODUCTBOARD ON DEAL_PRODUCTNO = PRODUCT_NO JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO WHERE DEAL_SID=?";
+		//String sql = "SELECT ROWNUM,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,PRODUCT_PRICE,PRODUCT_STATUS,DEALBOARD.*,CHECK_ID FROM DEALBOARD LEFT JOIN PRODUCTBOARD ON DEAL_PRODUCTNO = PRODUCT_NO JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO WHERE DEAL_SID=?";
+		
+		String sql = " SELECT ROWNUM,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,PRODUCT_PRICE,PRODUCT_STATUS,DEALBOARD.*,CHECK_ID,DEALSCHEDULEBOARD.*,PRODUCT_NO " +
+				     " FROM PRODUCTBOARD " +
+				     " LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO " +
+				     " LEFT JOIN DEALBOARD ON PRODUCT_NO = DEAL_PRODUCTNO " +
+				     " LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO " +
+				     " LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO " +
+				     " WHERE PRODUCT_ID=? ";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -378,6 +402,8 @@ public class DealDao extends JDBCTemplate{
 				dto.setDeal_bid(rs.getString(10));
 				dto.setDeal_price(rs.getInt(11));
 				dto.setCheck_id(rs.getString(12));
+				dto.setSchedule_status(rs.getString(15));
+				dto.setProduct_no(rs.getInt(18));
 				res.add(dto);
 			}
 		} catch (SQLException e) {
@@ -397,7 +423,14 @@ public class DealDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<DealBoardDto> res = new ArrayList<DealBoardDto>();		
 		
-		String sql = "SELECT ROWNUM,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,PRODUCT_PRICE,PRODUCT_STATUS,DEALBOARD.*,CHECK_ID FROM DEALBOARD LEFT JOIN PRODUCTBOARD ON DEAL_PRODUCTNO = PRODUCT_NO JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO WHERE DEAL_BID=?";
+		//String sql = "SELECT ROWNUM,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,PRODUCT_PRICE,PRODUCT_STATUS,DEALBOARD.*,CHECK_ID FROM DEALBOARD LEFT JOIN PRODUCTBOARD ON DEAL_PRODUCTNO = PRODUCT_NO JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO WHERE DEAL_BID=?";
+		
+		String sql = " SELECT ROWNUM,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,PRODUCT_PRICE,PRODUCT_STATUS,DEALBOARD.*,CHECK_ID,DEALSCHEDULEBOARD.* " + 
+					 " FROM DEALBOARD LEFT JOIN PRODUCTBOARD ON DEAL_PRODUCTNO = PRODUCT_NO " + 
+					 " JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO " + 
+					 " LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO " + 
+					 " LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO " + 
+					 " WHERE DEAL_BID=? ";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -419,6 +452,7 @@ public class DealDao extends JDBCTemplate{
 				dto.setDeal_bid(rs.getString(10));
 				dto.setDeal_price(rs.getInt(11));
 				dto.setCheck_id(rs.getString(12));
+				dto.setSchedule_status(rs.getString(15));
 				res.add(dto);
 			}
 		} catch (SQLException e) {
@@ -439,7 +473,7 @@ public class DealDao extends JDBCTemplate{
 		PreparedStatement pstm = null;
 		int res = 0;
 		
-		String sql = " INSERT INTO DEALSCHEDULEBOARD VALUES(DEALSCHEDULESQ.NEXTVAL, ?, '예약금결제', SYSDATE, SYSDATE) ";
+		String sql = " INSERT INTO DEALSCHEDULEBOARD VALUES(DEALSCHEDULESQ.NEXTVAL, ?, '거래신청', SYSDATE, SYSDATE) ";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -460,6 +494,33 @@ public class DealDao extends JDBCTemplate{
 		
 		return res;
 	}
+	
+	//검수 내역 테이블 생성
+	public int insertCheck(Connection con, int dealno) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " INSERT INTO CHECKBOARD VALUES(CHECKBOARDSQ.NEXTVAL, ?, '미배정', '검수대기중입니다.') "; 
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dealno);
+			System.out.println("03.query준비:" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. 실행");
+			
+		} catch (SQLException e) {
+			System.out.println("3/4단계 에러");
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			System.out.println("05. db종료\n");
+		}
+		
+		return res;
+	}
+	
 	
 	//거래일정 조회
 	public DealBoardDto selectStatus(Connection con, int dealno) {
@@ -506,7 +567,7 @@ public class DealDao extends JDBCTemplate{
 	
 	
 	//거래상태 수정
-	public int updateStatus(Connection con, int dealno, String status, String eDate) {
+	public int updateStatus(Connection con, int dealno, String status, Date eDate) {
 		
 		PreparedStatement pstm = null;
 		int res = 0;
@@ -516,7 +577,7 @@ public class DealDao extends JDBCTemplate{
 		try {
 			pstm = con.prepareStatement(sql);
 			pstm.setString(1, status);
-			pstm.setString(2, eDate);
+			pstm.setDate(2, eDate);
 			pstm.setInt(3, dealno);
 			System.out.println("03. query 준비:" + sql);
 			
@@ -533,6 +594,63 @@ public class DealDao extends JDBCTemplate{
 		
 		return res;
 	}
+	
+	//결제금액 수정
+	public int updatePrice(Connection con, int dealno, int price) {
+		
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE DEALBOARD SET DEAL_PRICE=? WHERE DEAL_NO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, price);
+			pstm.setInt(2, dealno);
+			System.out.println("03. query준비: " + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. 실행");
+			
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			System.out.println("05.db종료\n");
+		}
+		
+		return res;
+	}
+	
+	
+	//DEALBOARD테이블 삭제
+	public int deleteDealBoard(Connection con,int dealno) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " DELETE FROM DEALBOARD WHERE DEAL_NO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dealno);
+			System.out.println("03.query 준비: " + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. 실행");
+			
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			System.out.println("05.db종료\n");
+		}
+		
+		return res;
+	}
+	
+	
 	
 	
 

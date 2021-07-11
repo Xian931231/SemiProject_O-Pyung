@@ -52,6 +52,22 @@
         calendar.render();
       });
     
+    
+ 	function confirmCancel(){
+ 		
+ 		if(confirm("거래 취소시 예약금을 돌려받으실 수 없습니다.취소하시겠습니까?")){
+			
+ 			location.href="deal.do?command=dealTableDelete&dealno=${dealdto.deal_no}";
+ 			
+ 		}else{
+
+ 		}
+ 		
+ 	}
+    
+    
+    
+    
     </script>
     
     <title>Document</title>
@@ -133,7 +149,7 @@
                         </tr>
                         <tr>
                             <td >예약금</td>
-                            <td class="td2">${prePrice }</td>
+                            <td class="td2">${dealPrice }</td>
                         </tr>                        
                         <tr class="tr-price">
                             <td>결제 금액</td>
@@ -145,10 +161,10 @@
                 </div>
         
                 <div class="btns gap-2">
-                    <button class="btn btn-danger">구매확정</button>
+                    <button class="btn btn-danger" onclick="location.href='deal.do?command=deal_status_buyer&dealno=${dealdto.deal_no}&restPrice=${restPrice }'">구매확정</button>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=".modal" >거래확정</button>
 
-                    <button class="btn btn-primary">구매취소</button>
+                    <button  class="btn btn-primary" onclick="confirmCancel();">구매취소</button>
                     
                 </div>
             </div>
