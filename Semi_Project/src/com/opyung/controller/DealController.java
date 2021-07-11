@@ -248,7 +248,7 @@ public class DealController extends HttpServlet {
 			}
 			
 		
-		//deal.jsp에서 거래취소 눌렀을시 거래테이블 삭제
+		//거래취소 눌렀을시 거래테이블 삭제
 		}else if(command.equals("dealTableDelete")) {
 			
 			int dealno = Integer.parseInt(request.getParameter("dealno"));
@@ -261,6 +261,76 @@ public class DealController extends HttpServlet {
 			}else {
 				System.out.println("거래 테이블 삭제 실패");
 			}
+			
+		
+		//거래상태페이지에서 구매자가 구매확정을 누를경우(잔금 결제)
+		}else if(command.equals("deal_status_buyer")) {
+			
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			
+			DealBoardDto dealdto = new DealBoardDto();
+			
+			//거래정보(구매자정보)
+			dealdto = biz.selectOne(dealno);
+			String bid = dealdto.getDeal_bid();
+			
+			//결제금액 받아오기
+			int restPrice = Integer.parseInt(request.getParameter("restPrice"));
+			System.out.println("결제금액: " + restPrice);
+						
+			//구매자 정보
+			MemberDto biddto = new MemberDto();
+			biddto = memBiz.selectOne(bid);
+			
+			request.setAttribute("restPrice", restPrice);
+			request.setAttribute("biddto", biddto);			
+			request.setAttribute("dealdto", dealdto);
+			dispatch("deal_status_buyer.jsp", request, response);
+		
+			
+		//잔금 결제 후 거래 상태 변경(결제 완료)
+		}else if(command.equals("deal_status_update_restPrice")) {
+			
+			//결제금액 받아오기
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			String status = "결제완료";
+			
+			//거래날짜(SYSDATE)
+			Date date = new Date();
+			long timeInMilliSeconds = date.getTime();
+			java.sql.Date eDate = new java.sql.Date(timeInMilliSeconds);
+			
+			//상품금액 가져오기
+			DealBoardDto dealdto = new DealBoardDto();				
+			//거래 정보 가지고 와서
+			dealdto = biz.selectOne(dealno);
+			int productno = dealdto.getDeal_productNo();
+			//상품 정보 가지고오고
+			ProductBoardDto ptdto = new ProductBoardDto();
+			ptdto = ptBiz.selectOne(productno);
+			//상품금액 불러온다.
+			int ptPrice = ptdto.getProduct_price();
+			System.out.println("상품금액: " + ptPrice);
+			
+			int resStatus = biz.updateStatus(dealno, status, eDate);
+			
+			if(resStatus > 0) {
+				System.out.println("거래상태 수정(결제 완료)");
+			}else {
+				System.out.println("거래상태 수정실패(결제 완료)");
+			}
+			
+			//결제금액 수정
+			int resPrice = biz.updatePrice(dealno, ptPrice);
+			
+			if(resPrice>0) {
+				System.out.println("결제금액 수정(결제완료)");
+				response.sendRedirect("deal.do?command=deal_status&dealno="+dealno);
+			}else {
+				System.out.println("결제금액 수정 실패(결제완료)");
+			}
+			
+			
 			
 			
 		}
