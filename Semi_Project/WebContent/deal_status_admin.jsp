@@ -30,7 +30,8 @@
 
    	<!-- header 공간 확보 -->
     <article class="container">
-        <form action="#">
+        <form action="deal.do?command=adminChk&dealno=${dealdto.deal_no }" method="post">
+        <input type="hidden" name="id" value="${id }">
             <section class="left">
                 <div class="btns gap-2">
                     <button type="button" class="oper-btn btn btn-primary">검수시작</button>
@@ -59,7 +60,7 @@
 		            <!--업로드 api-->
 		            <input type="hidden" role="uploadcare-uploader" name="my_file" id="uploadedImage" />
 		            
-		            <textarea id="ckeditor" class="ckeditor" name="content" ></textarea>
+		            <textarea id="ckeditor" class="ckeditor" name="content" >${chkdto.check_content }</textarea>
 		            <script type="text/javascript">
 		                
 		                CKEDITOR.replace( 'ckeditor' ,
@@ -99,27 +100,23 @@
 
                             <tr>
                                 <td >상품</td>
-                                <td class="td2"><a href="#" style="color: white;">123</a></td>
+                                <td class="td2"><a href="#" style="color: white;">${ptdto.product_title }</a></td>
                             </tr>
                             <tr>
                                 <td >판매자</td>
-                                <td class="td2">누구누구</td>
+                                <td class="td2">${siddto.mb_id }</td>
                             </tr>
                             <tr>
                                 <td >구매자</td>
-                                <td class="td2">누구누구</td>
+                                <td class="td2">${biddto.mb_id }</td>
                             </tr>
                             <tr>
                                 <td>배송상태</td>
                                 <td class="td2">검수시작</td>                               </td>
-                            </tr>
-                            <tr>
-                                <td >예약금</td>
-                                <td class="td2">얼마</td>
-                            </tr>                        
+                            </tr>      
                             <tr class="tr-price">
                                 <td>검수자</td>
-                                <td class="td2">누구</td>
+                                <td class="td2">${id }</td>
                             </tr>
                             
                         </table>      

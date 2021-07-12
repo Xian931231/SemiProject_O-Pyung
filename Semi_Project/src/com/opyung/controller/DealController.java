@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.opyung.biz.DealBiz;
 import com.opyung.biz.MemberinfoBiz;
 import com.opyung.biz.ProductBiz;
+import com.opyung.dto.CheckBoardDto;
 import com.opyung.dto.DealBoardDto;
 import com.opyung.dto.MemberDto;
 import com.opyung.dto.ProductBoardDto;
@@ -332,6 +333,66 @@ public class DealController extends HttpServlet {
 			
 			
 			
+		//관리자 수정페이지
+		}else if(command.equals("admin")) {
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			
+			
+			DealBoardDto dealdto = new DealBoardDto();
+			
+			//거래정보
+			dealdto = biz.selectStatus(dealno);
+			String bid = dealdto.getDeal_bid();
+			String sid = dealdto.getDeal_sid();
+			int productno = dealdto.getDeal_productNo();
+			
+			//상품정보
+			ProductBoardDto ptdto = new ProductBoardDto();
+			ptdto = ptBiz.selectOne(productno);
+			
+			//유저정보
+			MemberDto siddto = new MemberDto();
+			siddto = memBiz.selectOne(sid);
+			MemberDto biddto = new MemberDto();
+			biddto = memBiz.selectOne(bid);
+			
+			//검수내역 조회
+			CheckBoardDto chkdto = new CheckBoardDto();
+			chkdto = biz.selectChk(dealno);
+			
+			
+			
+			
+			request.setAttribute("dealdto", dealdto);
+			request.setAttribute("ptdto", ptdto);
+			request.setAttribute("siddto", siddto);
+			request.setAttribute("biddto", biddto);
+			request.setAttribute("chkdto", chkdto);
+			dispatch("deal_status_admin.jsp", request, response);
+			
+			
+			
+		//검수내역 작성	
+		}else if(command.equals("adminChk")) {
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			String id = request.getParameter("id");
+			String content = request.getParameter("content");
+			
+			System.out.println(dealno+", "+content);
+			
+			CheckBoardDto chkdto = new CheckBoardDto();
+			chkdto.setCheck_dealNo(dealno);
+			chkdto.setCheck_id(id);
+			chkdto.setCheck_content(content);
+			
+			int res = biz.updateCheck(dealno,chkdto);
+			if(res >0) {
+				System.out.println("성공");
+				response.sendRedirect("deal.do?command=admin&dealno="+dealno);
+			}else {
+				System.out.println("실패");
+				response.sendRedirect("deal.do?command=admin&dealno="+dealno);
+			}
 			
 		}
 		
