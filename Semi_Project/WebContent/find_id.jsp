@@ -13,17 +13,16 @@
 	<!-- css -->
 	<link rel="stylesheet" href="./css/find_id.css"/>
 	
-	<!--  -->
-	<link rel="stylesheet" href="./js/find_id.js"/>
-
 </head>
 <body>
+	
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="find_id.do?command=find_id" method="post">
 					<span class="login100-form-title p-b-26">
-						이메일 찾기
+						아이디 찾기
 					</span>
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
@@ -42,12 +41,11 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<a class="login100-form-btn" href="http://localhost:8383/Semi_Project/found_id.jsp">
 								NEXT
-							</button>
+							</a>
 						</div>
-					</div>					
-
+					</div>
 					
 				</form>
 			</div>
