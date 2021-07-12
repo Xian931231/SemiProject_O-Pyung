@@ -64,6 +64,17 @@
  		}
  		
  	}
+ 	
+ 	
+ 	function dealFinish(){
+ 		
+ 		var bankName = 	$("#bankName option:selected").val();
+ 		
+ 		
+ 		
+ 		
+ 		
+ 	}
     
     
     
@@ -102,7 +113,7 @@
 
             <h3>진행 상태</h3>
             <div class="status-img">
-                <img src="#" alt="">
+                <img src="" alt="">
             </div>
             
             <h3>거래 일정</h3>
@@ -186,7 +197,7 @@
             <form>
             <div class="mb-3">
                 <label for="bank-name" class="col-form-label">은행:</label>
-                <select name="bank-name" class="form-select" id="">
+                <select name="bank-name" class="form-select" id="bankName">
                     <option value="" selected>은행선택</option>
                     <option value="kb">KB국민은행</option>
                     <option value="keb">KEB하나은행</option>
@@ -208,7 +219,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-            <button type="button" class="btn btn-primary">완료</button>
+            <button type="button" class="btn btn-primary" onclick="dealFinish();">완료</button>
         </div>
         </div>
     </div>

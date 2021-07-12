@@ -92,12 +92,14 @@ $('.oper-btn').on('click',function(){
 
 
 
-$('.td2:eq(3)').on("DOMSubtreeModified",function(){
+$(function(){
     var str = $('.td2:eq(3)').text();
-    switch (str) {
+	switch (str) {
+		case "":
+		    $('.status-img img').attr("src","./img/deal_status/거래신청.png");
+			break;
         case "검수시작":
             $('.status-img img').attr("src","status/2.png");
-            
             break;
         case "검수완료":
             $('.status-img img').attr("src","status/3.png");
