@@ -32,8 +32,20 @@
     <script src = "./ckeditor/ckeditor.js"></script>
     
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript">
-    
+   <script type="text/javascript">
+   	window.onload = function() {
+		
+   		today new Date();
+   		
+   		today = today.toISOString().slice(0,10);
+   		
+   		bir = document.getElementById("today");
+   		
+   		bir.value = today;
+   		
+   		
+	}
+    	
     </script>
 </head>
 <body>
@@ -50,7 +62,7 @@
     
     <div id="main">
         <div id="sidebar">
-           <h2 class="side_maintitle">ADMIN</h2>
+           <h2 class="side_maintitle"><a href="admin.do?command=admin">ADMIN</a></h2>
             
             <ul class="side_ul">
                 <li class="side_li" id="userinfo"><a href="admin.do?command=userInfo">유저정보</a></li>
@@ -70,7 +82,7 @@
                             검수대기
                         </dt>
                         <dd class="tap_count">
-                            ${deal_countready }
+                            ${countready }
                         </dd>
                     </dl>
                 </div>
@@ -80,7 +92,7 @@
                             검수중
                         </dt>
                         <dd class="tap_count">
-                            ${deal_counting }
+                            ${counting }
                         </dd>
                     </dl>
                 </div>
@@ -90,7 +102,7 @@
                             검수완료
                         </dt>
                         <dd class="tap_count">
-                            ${deal_countgo }
+                            ${countgo }
                         </dd>
                     </dl>
                 </div>
@@ -120,42 +132,46 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <form action="admin.do" method="get" name="deal">
-                    <input type="hidden" name="command" value="deal">
+                    
                     <c:choose>
-                        <c:when test="${empty list }">
+                        <c:when test="${empty deal }">
 							<tr>
 								<td colspan="9">-------------진행 중인 거래가 없습니다.-------------</td>
 							</tr>                            	
                          </c:when>
                          <c:otherwise>
-                     <c:forEach var="dto" items="${deal }">
-                    
-                    
-                    
-                    <tr class="Ts_tr">
+                     	<c:forEach var="dto" items="${deal }">
+                    	<tr class="Ts_tr">
                     	
                         <td>${dto.deal_no }</td>
                         <td>${dto.product_title }</td>
                         <td>${dto.deal_sid }</td>
                         <td>${dto.deal_bid }</td>
            
-                       
+                       <form action="admin.do" method="get" name="dealInfo">
+                    	<input type="hidden" name="command" value="dealInfo">
+                       	<input type="hidden" name="sche_no" value="${dto.deal_no }" >
                         <td><select name="dealselect">
                             <option value="ready">판매자 발송준비</option>
                             <option value="ing">검수중</option>
                             <option value="go">구매자 발송준비</option>
-                        </select></td>
-                          
-                        <td><input type="date" name="start" value="${dto.sdate }"></td>
-                        <td><input type="date" name="end" value="${dto.edate }"></td>
+                            <option value="finish">배송완료</option>
+                            
+                        	</select></td>
+                       
+                        <td><input id="today"type="date" name="start" ></td>
+                       
+                        <td><input id="today"type="date" name="end" ></td>
+             
                         <td>admin</td>
                         <td><input type="submit" value="수정"></td>
-                    </tr>
-                </form>
-                </c:forEach>
+                    	</tr>
+                    	</form>
+                    	</c:forEach>
                   </c:otherwise>
                   </c:choose>
+                
+                
                     </tbody>
                 </table>
             </div>
