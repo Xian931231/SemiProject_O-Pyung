@@ -113,7 +113,7 @@ $(function(){
         case "구매자 발송준비":
             $('.status-img img').attr("src","./img/deal_status/구매자에게 배송.png");
             break;   
-        case "배송완료":
+        case "결제완료":
             $('.status-img img').attr("src","./img/deal_status/배송완료.png");
             break;           
         default:
