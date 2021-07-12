@@ -9,9 +9,13 @@ import com.opyung.dto.ReportBoardDto;
 import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -169,7 +173,7 @@ public class AdminDao {
 			ResultSet rs = null;
 			List<DealBoardDto> res = new ArrayList<DealBoardDto>();
 			
-			String sql = " SELECT DEAL_NO,PRODUCT_TITLE,DEAL_SID,DEAL_BID,SCHEDULE_STATUS,SCHEDULE_SDATE,SCHEDULE_EDATE FROM DEALBOARD INNER JOIN dealscheduleboard  ON(DEAL_NO=schedule_dealno) INNER JOIN productboard ON(DEAL_NO=PRODUCT_NO) ";
+			String sql = " SELECT DEAL_NO,PRODUCT_TITLE,DEAL_SID,DEAL_BID,SCHEDULE_STATUS,SCHEDULE_SDATE,SCHEDULE_EDATE FROM DEALBOARD INNER JOIN DEALSCHEDULEBOARD ON(DEAL_NO=SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD ON(dealboard.deal_productno=PRODUCT_NO)";
 			
 			try {
 				pstm = con.prepareStatement(sql);
@@ -197,12 +201,12 @@ public class AdminDao {
 			return res;
 		}
 		
-		public int deal_countready(Connection con) {
+		public List<DealBoardDto> countready(Connection con) {
 			PreparedStatement pstm = null;
 			ResultSet rs = null;
-			int res = 0;
+			List<DealBoardDto> res = new ArrayList<DealBoardDto>();
 			
-			String sql = "SELECT COUNT(*) FROM DEALBOARD WHERE SCHEDULE_STATUS IS NULL ";
+			String sql = "SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS IS NULL ";
 			
 			try {
 				pstm = con.prepareStatement(sql);
@@ -211,7 +215,46 @@ public class AdminDao {
 				rs = pstm.executeQuery();
 				System.out.println("04. query 실행 및 리턴");
 				
-				res = rs.getInt(1);
+				while(rs.next()) {
+					DealBoardDto dto = new DealBoardDto(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6),rs.getDate(7));
+				
+					res.add(dto);
+					
+				}
+				
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstm);
+			}
+			
+			
+			return res;
+		}
+		
+		public List<DealBoardDto> counting(Connection con) {
+			PreparedStatement pstm = null;
+			ResultSet rs = null;
+			List<DealBoardDto> res = new ArrayList<DealBoardDto>();
+			
+			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS ='ing' ";
+			
+			try {
+				pstm = con.prepareStatement(sql);
+				System.out.println("03. query 준비 : " +sql);
+			
+				rs = pstm.executeQuery();
+				System.out.println("04. query 실행 및 리턴");
+				
+				while(rs.next()) {
+					DealBoardDto dto = new DealBoardDto(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6),rs.getDate(7));
+				
+					res.add(dto);
+					
+				}
 				
 				
 				
@@ -227,12 +270,14 @@ public class AdminDao {
 			return res;
 		}
 		
-		public int deal_counting(Connection con) {
+		
+		
+		public List<DealBoardDto> countgo(Connection con) {
 			PreparedStatement pstm = null;
 			ResultSet rs = null;
-			int res = 0;
+			List<DealBoardDto> res = new ArrayList<DealBoardDto>();
 			
-			String sql = "SELECT COUNT(*) FROM DEALBOARD WHERE SCHEDULE_STATUS = 'ing' ";
+			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS ='go' ";
 			
 			try {
 				pstm = con.prepareStatement(sql);
@@ -241,8 +286,12 @@ public class AdminDao {
 				rs = pstm.executeQuery();
 				System.out.println("04. query 실행 및 리턴");
 				
-				res = rs.getInt(1);
+				while(rs.next()) {
+					DealBoardDto dto = new DealBoardDto(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6),rs.getDate(7));
 				
+					res.add(dto);
+					
+				}
 				
 				
 				
@@ -257,37 +306,81 @@ public class AdminDao {
 			return res;
 		}
 		
-		
-		
-		public int deal_countgo(Connection con) {
+		public DealBoardDto dealselect(Connection con, int sche_no) {
 			PreparedStatement pstm = null;
 			ResultSet rs = null;
-			int res = 0;
+			DealBoardDto res = null;
 			
-			String sql = "SELECT COUNT(*) FROM DEALBOARD WHERE SCHEDULE_STATUS IS 'go' ";
+			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE D.deal_no=? ";
 			
 			try {
 				pstm = con.prepareStatement(sql);
-				System.out.println("03. query 준비 : " +sql);
-			
+				pstm.setInt(1, sche_no);
+				System.out.println("03. query 준비: "+sql);
+				
 				rs = pstm.executeQuery();
-				System.out.println("04. query 실행 및 리턴");
+				System.out.println("04.query 실행 및 리턴");
 				
-				res = rs.getInt(1);
-				
-				
-				
+				if(rs.next()) {
+					res = new DealBoardDto(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6),rs.getDate(7));
+				}
 				
 			} catch (SQLException e) {
+				System.out.println("3/4단계");
 				e.printStackTrace();
 			}finally {
 				close(rs);
 				close(pstm);
+				System.out.println("05. db종료\n");
 			}
-			
 			
 			return res;
 		}
+		
+		public boolean dealupdate(Connection con, String dealselect, String start, String end, int sche_no) {
+			PreparedStatement pstm = null;
+			int res = 0;
+			
+			
+			
+			
+				
+			
+			//sql에 date값을 넣으려면 java.sql.Date로 형변환 하여야한다.	
+			
+			java.sql.Date sqlstart =  java.sql.Date.valueOf(start);
+			java.sql.Date sqlend =   java.sql.Date.valueOf(end);
+			
+			
+				String sql = " UPDATE DEALSCHEDULEBOARD SET SCHEDULE_STATUS= ? , SCHEDULE_SDATE= ?, SCHEDULE_EDATE= ? WHERE SCHEDULE_DEALNO = ? ";
+			
+			try {
+				pstm = con.prepareStatement(sql);
+				pstm.setString(1, dealselect);
+				pstm.setDate(2, sqlstart);
+				pstm.setDate(3, sqlend);
+				pstm.setInt(4, sche_no);
+				System.out.println("03.query 준비: "+sql);
+				
+				res = pstm.executeUpdate();
+				System.out.println("04. query 실행 및 리턴");
+				
+				
+			} catch (SQLException e) {
+				System.out.println("3/4단계 오류");
+				e.printStackTrace();
+			}finally {
+
+				close(pstm);
+				System.out.println("05.db종료\n");
+			}
+			
+			
+			return (res>0)?true:false;
+		}
+		
+		
+		
 	
 	/////////////////////user_report///////////////////////////////////
 	//신고 전체 출력

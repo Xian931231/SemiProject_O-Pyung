@@ -1,6 +1,10 @@
 package com.opyung.biz;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
@@ -81,29 +85,61 @@ public class AdminBiz {
 		
 		return list;
 	}
-	
-	public int deal_countready() {
+	public DealBoardDto dealselect(int sche_no) {
 		Connection con = getConnection();
 		
-		int deal_countready = dao.count(con);
+		DealBoardDto dto = dao.dealselect(con,sche_no);
+		
+		close(con);
+		
+		return dto;
+	}
+	
+	public boolean dealupdate(String dealselect,String start,String end, int sche_no) {
+		
+		
+		
+		Connection con = getConnection();
+		
+		boolean res = dao.dealupdate(con,dealselect,start,end,sche_no);
+		
+		
+		if(res) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		
+		
+		close(con);
+		
+		return res;
+	}
+	
+	
+	public List<DealBoardDto> countready() {
+		Connection con = getConnection();
+		
+		List<DealBoardDto> deal_countready = dao.countready(con);
 		
 		close(con);
 		
 		return deal_countready;
 	}
-	public int deal_counting() {
+	public List<DealBoardDto> counting() {
 		Connection con = getConnection();
 		
-		int deal_counting = dao.count(con);
+		List<DealBoardDto> deal_counting = dao.counting(con);
 		
 		close(con);
 		
 		return deal_counting;
 	}
-	public int deal_countgo() {
+	public List<DealBoardDto> countgo() {
 		Connection con = getConnection();
 		
-		int deal_countgo = dao.count(con);
+		List<DealBoardDto> deal_countgo = dao.countgo(con);
 		
 		close(con);
 		

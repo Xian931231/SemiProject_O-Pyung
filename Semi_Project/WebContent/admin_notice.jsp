@@ -45,7 +45,7 @@
     
     <div id="main">
         <div id="sidebar">
-           <h2 class="side_maintitle">ADMIN</h2>
+           <h2 class="side_maintitle"><a href="admin.do?command=admin">ADMIN</a></h2>
             
             <ul class="side_ul">
                 <li class="side_li" id="userinfo"><a href="#">유저정보</a></li>

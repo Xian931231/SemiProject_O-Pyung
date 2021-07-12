@@ -31,7 +31,18 @@
     
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-   
+   	window.onload = function() {
+		
+   		today new Date();
+   		
+   		today = today.toISOString().slice(0,10);
+   		
+   		bir = document.getElementById("today");
+   		
+   		bir.value = today;
+   		
+   		
+	}
     	
     </script>
 </head>
@@ -157,19 +168,19 @@
                         <div class="item">
                             <dl>
                                 <dt class="title">검수 대기</dt>
-                                <dd class="count" id="count_sell_all">${deal_countready }</dd>
+                                <dd class="count" id="count_sell_all">${countready }</dd>
                             </dl>
                         </div>
                         <div class="item">
                             <dl>
                                 <dt class="title">검수 중</dt>
-                                <dd class="count">${deal_counting }</dd>
+                                <dd class="count">${counting }</dd>
                             </dl>
                         </div>
                         <div class="item">
                             <dl>
                                 <dt class="title">검수 완료</dt>
-                                <dd class="count">${deal_countgo }</dd>
+                                <dd class="count">${countgo }</dd>
                             </dl>
                         </div>
                     </div>
@@ -200,18 +211,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                            <c:choose>
-                        <c:when test="${empty list }">
+                        <c:choose>
+                        <c:when test="${empty deal }">
 							<tr>
 								<td colspan="9">-------------진행 중인 거래가 없습니다.-------------</td>
 							</tr>                            	
                          </c:when>
+                         
+                         
                          <c:otherwise>
-                     <c:forEach var="dto" items="${deal }">
-                    
-                    
-                    
-                    <tr class="Ts_tr">
+                     	<c:forEach var="dto" items="${deal }">
+                    	<tr class="Ts_tr">
                     	
                         <td>${dto.deal_no }</td>
                         <td>${dto.product_title }</td>
@@ -225,8 +235,8 @@
                             <option value="go">구매자 발송준비</option>
                         </select></td>
                           
-                        <td><input type="date" name="start" value="${dto.sdate }"></td>
-                        <td><input type="date" name="end" value="${dto.edate }"></td>
+                        <td><input id="today" type="date" name="start" value="${dto.sdate }"></td>
+                        <td><input id="today" type="date" name="end" value="${dto.edate }"></td>
                         <td>admin</td>
                         <td><input type="submit" value="수정"></td>
                     </tr>

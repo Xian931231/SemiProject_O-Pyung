@@ -2,6 +2,7 @@ package com.opyung.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -54,16 +55,19 @@ public class AdminConrtoller extends HttpServlet {
 					
 					int count = biz.count();
 					int countnull = biz.countnull();
-					int deal_countready = biz.deal_countready();
-					int deal_counting = biz.deal_counting();
-					int deal_countgo = biz.deal_countgo();
+					List<DealBoardDto> countready = biz.countready(); 
+					int countready1 = countready.size();
+					List<DealBoardDto> counting = biz.counting();
+					int counting1 = counting.size();
+					List<DealBoardDto> countgo = biz.countgo();
+					int countgo1 = countgo.size();
 					
 					request.setAttribute("countnull", countnull);
 					request.setAttribute("count", count);
 					request.setAttribute("list", relist);
-					request.setAttribute("deal_countready", deal_countready);
-					request.setAttribute("deal_counting", deal_counting);
-					request.setAttribute("deal_countgo", deal_countgo);
+					request.setAttribute("countready", countready1);
+					request.setAttribute("counting", counting1);
+					request.setAttribute("countgo", countgo1);
 					request.setAttribute("deal", list);
 					dispatch("admin.jsp", request, response);
 				
@@ -121,17 +125,37 @@ public class AdminConrtoller extends HttpServlet {
 					List<DealBoardDto> list = biz.dealAll();
 					
 					
-					int deal_countready = biz.deal_countready();
-					int deal_counting = biz.deal_counting();
-					int deal_countgo = biz.deal_countgo();
+					List<DealBoardDto> countready = biz.countready(); 
+					int countready1 = countready.size();
+					List<DealBoardDto> counting = biz.counting();
+					int counting1 = counting.size();
+					List<DealBoardDto> countgo = biz.countgo();
+					int countgo1 = countgo.size();
 					
 					
-					request.setAttribute("deal_countready", deal_countready);
-					request.setAttribute("deal_counting", deal_counting);
-					request.setAttribute("deal_countgo", deal_countgo);
+					request.setAttribute("countready", countready1);
+					request.setAttribute("counting", counting1);
+					request.setAttribute("countgo", countgo1);
 					request.setAttribute("deal", list);
 					dispatch("admin_deal.jsp", request, response);
 					
+					
+				}
+				else if(command.equals("dealInfo")) {
+					int sche_no = Integer.parseInt(request.getParameter("sche_no"));
+					String dealselect = request.getParameter("dealselect");
+					String start = request.getParameter("start");
+					String end = request.getParameter("end");
+					
+					DealBoardDto dto = biz.dealselect(sche_no);
+					
+					boolean res = biz.dealupdate(dealselect,start,end,sche_no);
+					
+					if(res) {
+						jsResponse("입력이 완료되었습니다.", "admin.do?command=deal", response);
+					}else {
+						dispatch("admin.do?command=deal", request, response);
+					}
 					
 				}
 				
