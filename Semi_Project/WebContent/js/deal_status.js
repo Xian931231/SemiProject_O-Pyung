@@ -102,20 +102,26 @@ $(function(){
             $('.status-img img').attr("src","./img/deal_status/예약금결제.png");
             break;
         case "검수신청":
-            $('.status-img img').attr("src","./img/deal_status/판매자배송시작.png");
+            $('.status-img img').attr("src","./img/deal_status/검수신청.png");
             break;
         case "판매자 발송준비":
-            $('.status-img img').attr("src","./img/deal_status/판매자배송시작.png");
+            $('.status-img img').attr("src","./img/deal_status/판매자발송준비.png");
             break;
         case "검수중":
-            $('.status-img img').attr("src","./img/deal_status/검수시작.png");
+            $('.status-img img').attr("src","./img/deal_status/검수중.png");
             break;
         case "구매자 발송준비":
-            $('.status-img img').attr("src","./img/deal_status/구매자에게 배송.png");
+            $('.status-img img').attr("src","./img/deal_status/구매자발송준비.png");
             break;   
         case "결제완료":
+            $('.status-img img').attr("src","./img/deal_status/결제완료.png");
+            break;
+        case "배송완료":
             $('.status-img img').attr("src","./img/deal_status/배송완료.png");
-            break;           
+            break;   
+        case "거래확정":
+            $('.status-img img').attr("src","./img/deal_status/거래확정.png");
+            break;              
         default:
             $('.status-img img').attr("src","./img/deal_status/거래없음.png");
             break;
