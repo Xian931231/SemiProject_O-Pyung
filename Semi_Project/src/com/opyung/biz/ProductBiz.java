@@ -174,11 +174,30 @@ Connection con = getConnection();
 
 	//버튼 클릭 검색
 	public List<ProductBoardDto> searchBtn(String category) {
-Connection con = getConnection();
+		Connection con = getConnection();
 		
 		List<ProductBoardDto> list = dao.searchBtn(con,category);
 		close(con);
 		return list;
+	}
+	
+	
+	//거래확정시 판매상태 판매완료로 변경
+	public int updatePtStatus(int productno, String ptStatus) {
+		
+		Connection con = getConnection();
+		
+		int res = dao.updatePtStatus(con, productno, ptStatus);
+		
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+	
+		close(con);
+		
+		return res;
 	}
 
 

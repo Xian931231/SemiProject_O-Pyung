@@ -114,7 +114,7 @@ $(function(){
             $('.status-img img').attr("src","./img/deal_status/구매자에게 배송.png");
             break;   
         case "결제완료":
-            $('.status-img img').attr("src","./img/deal_status/배송완료.png");
+            $('.status-img img').attr("src","./img/deal_status/배송 완료.png");
             break;           
         default:
             $('.status-img img').attr("src","./img/deal_status/거래없음.png");

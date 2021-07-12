@@ -285,7 +285,7 @@
 	            <div id="button_area">
 	                <input type="button" value="거래취소" onclick="location.href='deal.do?command=dealTableDelete&dealno=${dealdto.deal_no}'">
 	                <input type="button" value="검수신청" onclick="confirmProduct();" >
-	                <input type="button" value="거래신청" onclick="location.href='deal.do?command=deal_buyer&dealno=${dealdto.deal_no}'" >
+	                <input type="button" value="예약금결제" onclick="location.href='deal.do?command=deal_buyer&dealno=${dealdto.deal_no}'" >
 	            </div>
 	
 	        </div>

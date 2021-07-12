@@ -394,6 +394,72 @@ public class DealController extends HttpServlet {
 				response.sendRedirect("deal.do?command=admin&dealno="+dealno);
 			}
 			
+			
+		//거래확정버튼	
+		}else if(command.equals("dealFinish")) {
+			
+			//계좌 생성
+			String id = request.getParameter("member_id"); 
+			int bank_no = Integer.parseInt(request.getParameter("bank_no"));
+			String used_bankname = request.getParameter("used_bankname");
+			String account_num = request.getParameter("account_num");
+			String account_owner = request.getParameter("account_owner");
+			
+			MemberDto memdto = new MemberDto();
+			
+			memdto.setMb_no(bank_no);
+			memdto.setBank_name(used_bankname);
+			memdto.setBank_account(account_num);
+			memdto.setBank_memname(account_owner);
+			
+			MemberinfoBiz bizMember = new MemberinfoBiz();
+			int resBank = bizMember.bankInsert(memdto);
+			
+			if(resBank>0) {
+				System.out.println("계좌등록 성공");
+			}else {
+				System.out.println("실패");
+			}
+			
+			//거래상태 변경(거래 확정)
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			String status = "거래확정";
+			
+			Date date = new Date();
+			long timeInMilliSeconds = date.getTime();
+			java.sql.Date eDate = new java.sql.Date(timeInMilliSeconds);
+			
+			int resStatus = biz.updateStatus(dealno, status, eDate);
+			
+			if(resStatus>0) {
+				System.out.println("거래상태 변경 성공(거래확정)");
+			}else {
+				System.out.println("거래상태 변경 실패(거래확정)");
+			}
+			
+			//삼풍 판매상태 변경
+			
+			DealBoardDto dealdto = new DealBoardDto();
+			
+			dealdto = biz.selectStatus(dealno);
+			String bid = dealdto.getDeal_bid();
+			String sid = dealdto.getDeal_sid();
+			int productno = dealdto.getDeal_productNo();
+			
+			ProductBoardDto ptdto = new ProductBoardDto();
+			ptdto = ptBiz.selectOne(productno);
+			
+			String ptStatus = "판매완료";
+			int resProduct = ptBiz.updatePtStatus(productno, ptStatus);
+			
+			if(resProduct>0) {
+				System.out.println("상품 상태 변경 성공(판매완료)");
+				response.sendRedirect("memberinfo.do?command=mypage&id="+id);
+			}else {
+				System.out.println("상품 상태 변경 실패(판매완료)");
+			}
+			
+			
 		}
 		
 		

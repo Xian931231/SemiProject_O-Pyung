@@ -564,6 +564,37 @@ public class ProductDao extends JDBCTemplate{
 		}
 		return res;
 	}
+	
+	
+	
+	
+	//판매상태 판매완료로 변경
+	public int updatePtStatus(Connection con, int productno, String ptStatus) {
+		
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE PRODUCTBOARD SET PRODUCT_STATUS=? WHERE PRODUCT_NO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, ptStatus);
+			pstm.setInt(2, productno);
+			System.out.println("03. query 준비: " + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. 실행 및 리턴");
+			
+		} catch (SQLException e) {
+			System.out.println("3/4단계 에러");
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			System.out.println("05. db종료\n");
+		}
+		
+		return res;
+	}
 
 
 	
