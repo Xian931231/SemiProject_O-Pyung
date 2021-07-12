@@ -106,7 +106,7 @@ public class DealBiz extends JDBCTemplate{
 	}
 
 
-	//전체 판매 내역 조회
+	//판매중인 상품  조회
 	public List<DealBoardDto> sidListAll(String id) {
 		Connection con = getConnection();
 		

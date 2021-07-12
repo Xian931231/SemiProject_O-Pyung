@@ -55,19 +55,28 @@ public class MemberinfoController extends HttpServlet {
 		
 		//마이페이지 홈
 		if(command.equals("mypage")) {
+			//판매중인 상품
 			List<DealBoardDto> sidlist = dealbiz.sidListAll(id);
-			List<DealBoardDto> bidlist = dealbiz.bidListAll(id);
+			//판매중인 상품 수
 			int sidlistNum = sidlist.size();
-			int bidlistNum = bidlist.size();
 			
-			
+			//판매자 거래진행중 조회
 			List<DealBoardDto> siddealList = dealbiz.selectSidAll(id);
+			//판매자 거래진행중인 상품 수
 			int siddealListNum = siddealList.size();
+			
+			//판매자 거래 종료 수
 			List<DealBoardDto> sidendList = dealbiz.selectSidEnd(id);
 			int sidendListNum = sidendList.size();
 			
+			
+			List<DealBoardDto> bidlist = dealbiz.bidListAll(id);
+			int bidlistNum = bidlist.size();
+			
 			List<DealBoardDto> biddealList = dealbiz.selectBidAll(id);
 			int biddealListNum = biddealList.size();
+			
+			//구매자 종료 수
 			List<DealBoardDto> bidendList = dealbiz.selectBidEnd(id);
 			int bidendListNum = bidendList.size();
 			

@@ -275,7 +275,7 @@ public class DealDao extends JDBCTemplate{
 		return res;
 	}
 
-	//진행중인 판매 내역 조회
+	//거래중인 판매 내역 조회
 	public List<DealBoardDto> selectSidAll(Connection con, String id) {
 		PreparedStatement pstm=null;
 		ResultSet rs = null;
@@ -330,7 +330,18 @@ public class DealDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<DealBoardDto> res = new ArrayList<DealBoardDto>();		
 		
-		String sql = "SELECT ROWNUM,DEAL_NO,PRODUCT_NO,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,DEAL_BID,DEAL_SID,DEAL_PRICE,PRODUCT_PRICE,SCHEDULE_STATUS,SCHEDULE_SDATE,SCHEDULE_EDATE,CHECK_ID,PRODUCT_STATUS FROM DEALBOARD LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO JOIN PRODUCTBOARD ON PRODUCT_NO = DEAL_PRODUCTNO JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO WHERE DEAL_SID=? AND SCHEDULE_STATUS='거래완료' AND PRODUCT_STATUS='판매완료'";
+		//String sql = "SELECT ROWNUM,DEAL_NO,PRODUCT_NO,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,DEAL_BID,DEAL_SID,DEAL_PRICE,PRODUCT_PRICE,SCHEDULE_STATUS,SCHEDULE_SDATE,SCHEDULE_EDATE,CHECK_ID,PRODUCT_STATUS FROM DEALBOARD LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO JOIN PRODUCTBOARD ON PRODUCT_NO = DEAL_PRODUCTNO JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO WHERE DEAL_SID=? AND SCHEDULE_STATUS='거래완료' AND PRODUCT_STATUS='판매완료'";
+		
+		String sql = " SELECT ROWNUM,DEAL_NO,PRODUCT_NO,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,DEAL_BID,DEAL_SID,DEAL_PRICE,PRODUCT_PRICE,SCHEDULE_STATUS,SCHEDULE_SDATE,SCHEDULE_EDATE,CHECK_ID,PRODUCT_STATUS " + 
+					 " FROM DEALBOARD " + 
+					 " LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO " + 
+					 " JOIN PRODUCTBOARD ON PRODUCT_NO = DEAL_PRODUCTNO " + 
+					 " JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO " + 
+					 " LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO " + 
+					 " WHERE DEAL_SID=? " + 
+					 " AND SCHEDULE_STATUS='거래확정' " + 
+					 " AND PRODUCT_STATUS='판매완료' ";
+		
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -355,6 +366,7 @@ public class DealDao extends JDBCTemplate{
 				dto.setEdate(rs.getDate(13));
 				dto.setCheck_id(rs.getString(14));
 				dto.setProduct_status(rs.getString(15));
+				
 				res.add(dto);
 			}
 		} catch (SQLException e) {
@@ -367,7 +379,7 @@ public class DealDao extends JDBCTemplate{
 		return res;
 	}
 
-	//전체 판매 내역 조회
+	//판매중인 상품 내역 조회
 	public List<DealBoardDto> sidListAll(Connection con, String id) {
 		PreparedStatement pstm=null;
 		ResultSet rs = null;
@@ -375,13 +387,22 @@ public class DealDao extends JDBCTemplate{
 		
 		//String sql = "SELECT ROWNUM,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,PRODUCT_PRICE,PRODUCT_STATUS,DEALBOARD.*,CHECK_ID FROM DEALBOARD LEFT JOIN PRODUCTBOARD ON DEAL_PRODUCTNO = PRODUCT_NO JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO WHERE DEAL_SID=?";
 		
-		String sql = " SELECT ROWNUM,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,PRODUCT_PRICE,PRODUCT_STATUS,DEALBOARD.*,CHECK_ID,DEALSCHEDULEBOARD.*,PRODUCT_NO " +
+		/*String sql = " SELECT ROWNUM,PRODUCT_TITLE,PTIMG_NAME,PTIMG_TYPE,PRODUCT_PRICE,PRODUCT_STATUS,DEALBOARD.*,CHECK_ID,DEALSCHEDULEBOARD.*,PRODUCT_NO " +
 				     " FROM PRODUCTBOARD " +
 				     " LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO " +
 				     " LEFT JOIN DEALBOARD ON PRODUCT_NO = DEAL_PRODUCTNO " +
 				     " LEFT JOIN DEALSCHEDULEBOARD ON DEAL_NO = SCHEDULE_DEALNO " +
 				     " LEFT JOIN CHECKBOARD ON DEAL_NO = CHECK_DEALNO " +
 				     " WHERE PRODUCT_ID=? ";
+		*/
+		
+		String sql = " SELECT ROWNUM, PTIMG_NAME, PTIMG_TYPE, PRODUCT_NO, PRODUCT_TITLE, PRODUCT_PRICE, PRODUCT_STATUS, DEAL_BID " + 
+					 " FROM PRODUCTBOARD " + 
+					 " LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO " + 
+					 " LEFT JOIN DEALBOARD ON PRODUCT_NO = DEAL_PRODUCTNO " + 
+					 " WHERE PRODUCT_ID = ? " + 
+					 " AND PRODUCT_STATUS = '판매등록' ";
+		
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -392,19 +413,14 @@ public class DealDao extends JDBCTemplate{
 			while(rs.next()) {
 				DealBoardDto dto = new DealBoardDto();
 				dto.setRownum(rs.getInt(1));
-				dto.setProduct_title(rs.getString(2));
-				dto.setPtimg_name(rs.getString(3));
-				dto.setPtimg_type(rs.getString(4));
-				dto.setProduct_price(rs.getInt(5));
-				dto.setProduct_status(rs.getString(6));
-				dto.setDeal_no(rs.getInt(7));
-				dto.setDeal_productNo(rs.getInt(8));
-				dto.setDeal_sid(rs.getString(9));
-				dto.setDeal_bid(rs.getString(10));
-				dto.setDeal_price(rs.getInt(11));
-				dto.setCheck_id(rs.getString(12));
-				dto.setSchedule_status(rs.getString(15));
-				dto.setProduct_no(rs.getInt(18));
+				dto.setPtimg_name(rs.getString(2));
+				dto.setPtimg_type(rs.getString(3));
+				dto.setProduct_no(rs.getInt(4));
+				dto.setProduct_title(rs.getString(5));
+				dto.setProduct_price(rs.getInt(6));
+				dto.setProduct_status(rs.getString(7));
+				dto.setDeal_bid(rs.getString(8));
+				
 				res.add(dto);
 			}
 		} catch (SQLException e) {

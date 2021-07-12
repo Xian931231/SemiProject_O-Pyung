@@ -6,10 +6,9 @@
 <!-- 인코딩 처리 -->    
 <%
     	request.setCharacterEncoding("UTF-8");
-    %>    
-<%
     	response.setContentType("text/html; charset=UTF-8");
-    %>    
+%>
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +32,7 @@
 <body>
     <div id="mypage">
         <nav id="list">
-            <a href="memberinfo.do?command=mypage&id=ADMIN" id="list_title"><h2>MY PAGE</h2></a>
+            <h2><a href="memberinfo.do?command=mypage&id=${id }" id="list_title">MY PAGE</a></h2>
             <div id="shop_list">
                 <strong class="info">거래 정보</strong>
                 <ul>
@@ -166,7 +165,7 @@
                 <!--판매 내역 이름-->
                 <div class="tit">
                     <div>
-                        <h3>판매 내역</h3>
+                        <h3>판매 상품</h3>
                     </div>
                     <div class="add">
                         <a href="" class="add_text">더보기 ></a>
@@ -178,13 +177,13 @@
                     <div class="table">
                         <div class="item">
                             <dl>
-                                <dt class="title">전체</dt>
+                                <dt class="title">판매 상품</dt>
                                 <dd class="count" id="count_sell_all">${sidlistNum }</dd>
                             </dl>
                         </div>
                         <div class="item">
                             <dl>
-                                <dt class="title">진행 중</dt>
+                                <dt class="title">거래진행 중</dt>
                                 <dd class="count">${siddealListNum }</dd>
                             </dl>
                         </div>
@@ -197,8 +196,6 @@
                     </div>
                     <!--판매내역 -->
                     <div>
-                        
-                        
                         <c:choose>
 	                    	<c:when test="${ empty sidlist}">
 	                    		<div class="empty_area" id="empty_area_selling">
@@ -214,7 +211,7 @@
 	                    				<th>이미지</th>
 	                    				<th>상품명</th>
 	                    				<th>가격</th>
-	                    				<th>거래상태</th>
+	                    				<th>상품 상태</th>
 	                    				<th>구매자</th>
 	                    			</tr>
 	                    		<c:forEach items="${sidlist }" var="sidlist">
