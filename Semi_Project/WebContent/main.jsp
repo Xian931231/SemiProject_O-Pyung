@@ -115,7 +115,7 @@
 					       	var ptid = '${list.product_id}'
 					       	if(id == null || id == "" || ptid == id){
 					       	}else{
-					       		isLike(id,listNo,ptno);
+					       		isLikeList(id,listNo,ptno);
 					       	}
 					       		
 					</script>
@@ -196,7 +196,7 @@
 					       	var ptid = '${list2.product_id}'
 					       	if(id == null || id == "" || ptid == id){
 					       	}else{
-					       		isLike(id,listNo,ptno);
+					       		isLikeList(id,listNo,ptno);
 					       	}
 					       		
 					</script>
@@ -282,7 +282,7 @@
 					       	var ptid = '${list3.product_id}'
 					       	if(id == null || id == "" || ptid == id){
 					       	}else{
-					       		isLike(id,listNo,ptno);
+					       		isLikeList(id,listNo,ptno);
 					       	}
 					       		
 					</script>
@@ -358,7 +358,7 @@
 					       	var ptid = '${list4.product_id}'
 					       	if(id == null || id == "" || ptid == id){
 					       	}else{
-					       		isLike(id,listNo,ptno);
+					       		isLikeList(id,listNo,ptno);
 					       	}
 					       		
 					</script>
@@ -435,7 +435,7 @@
 					       	var ptid = '${list5.product_id}'
 					       	if(id == null || id == "" || ptid == id){
 					       	}else{
-					       		isLike(id,listNo,ptno);
+					       		isLikeList(id,listNo,ptno);
 					       	}
 					       		
 					</script>

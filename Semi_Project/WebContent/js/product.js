@@ -39,7 +39,7 @@ function isLike(id,ptno){
 }
 
 
-function isLike(id,listNo,ptno){
+function isLikeList(id,listNo,ptno){
 	$.ajax({
 		url:"memberinfo.do?command=isLike",
 		type:"post",
