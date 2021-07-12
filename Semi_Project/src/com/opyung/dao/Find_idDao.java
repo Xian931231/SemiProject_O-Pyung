@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 import com.opyung.dto.MemberDto;
 
-public class find_idDao {
+public class Find_idDao {
     public MemberDto find_id(String name, String phone) {
     	Connection con = getConnection();
     	PreparedStatement pstm = null;
@@ -55,7 +55,6 @@ public class find_idDao {
     }
 
 	private Connection getConnection() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

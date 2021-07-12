@@ -8,7 +8,8 @@ import com.opyung.dto.MemberDto;
 import common.JDBCTemplate;
 
 public class Find_pwBiz {
-	public MemberDto find_id(String id, String phone) {
+	//
+	public MemberDto find_pw(String id, String phone) {
 		Connection con = getConnection();
 		
 		Find_pwDao dao = new Find_pwDao();

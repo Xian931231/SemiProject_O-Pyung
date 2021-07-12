@@ -8,8 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<!-- css -->
+	<!--  -->
 	<link rel="stylesheet" href="./css/find_id.css"/>
 
 </head>
@@ -38,7 +37,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<a class="login100-form-btn" href="">
+							<a class="login100-form-btn" href="http://localhost:8383/Semi_Project/found_pw.jsp">
 								NEXT
 							</a>
 						</div>

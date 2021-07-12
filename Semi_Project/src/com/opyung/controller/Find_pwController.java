@@ -13,9 +13,9 @@ import com.opyung.biz.Find_pwBiz;
 import com.opyung.dto.MemberDto;
 
 @WebServlet("/Find_pwController")
-public class Find_pwController {
+public class Find_pwController extends HttpServlet{
 private static final long serialVersionUID = 1L;
-	
+	//
     
     public Find_pwController() {
         super();
@@ -32,10 +32,10 @@ private static final long serialVersionUID = 1L;
 
 		
 		if(command.equals("find_pw")) {
-			String name = request.getParameter("id");
+			String id = request.getParameter("id");
 			String phone = request.getParameter("phone");
 			
-			Find_pwBiz biz = new Find_pwBiz(); 
+			Find_pwBiz biz = new Find_pwBiz();
 			MemberDto memdto = biz.find_pw(id,phone);
 			
 			if(memdto.getMb_id() != null) {
@@ -54,4 +54,5 @@ private static final long serialVersionUID = 1L;
 		doGet(request, response);
 
 	}
+	//
 }

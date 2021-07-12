@@ -1,6 +1,6 @@
 package com.opyung.dao;
 
-import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,7 +55,6 @@ public class Find_pwDao {
     }
 
 	private Connection getConnection() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

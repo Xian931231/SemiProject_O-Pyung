@@ -10,7 +10,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	
-	<!-- css -->
 	<link rel="stylesheet" href="./css/find_id.css"/>
 	
 </head>

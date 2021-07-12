@@ -25,7 +25,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-26">
-						<!-- 아이디 보여줄 곳 -->
+						[아이디]
 					</span>
 					
 					<div class="container-login100-form-btn">
