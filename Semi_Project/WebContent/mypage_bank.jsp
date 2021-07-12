@@ -59,7 +59,7 @@
         <nav id="list">
             <a href="memberinfo.do?command=mypage&id=ADMIN" id="list_title"><h2>MY PAGE</h2></a>
             <div id="shop_list">
-                <strong class="info">쇼핑 정보</strong>
+                <strong class="info">거래 정보</strong>
                 <ul>
                     <li class="menu_item">
                         <a href="memberinfo.do?command=purchase&id=${id }" class="menu_link">구매 내역</a>
@@ -67,15 +67,15 @@
                     <li class="menu_item">
                         <a href="memberinfo.do?command=sell&id=${id }" class="menu_link">판매 내역</a>
                     </li>
-                    <li class="menu_item">
-                        <a href="memberinfo.do?command=likeList&id=${id }" class="menu_link">관심 상품</a>
-                    </li>
                 </ul>
             </div>
 
             <div id="my_list">
                 <strong class="info">내 정보</strong>
                 <ul>
+                	<li class="menu_item">
+                        <a href="memberinfo.do?command=likeList&id=${id }" class="menu_link">관심 상품</a>
+                    </li>
                     <li class="menu_item">
                         <a href="memberinfo.do?command=memupdate&id=${id }" class="menu_link">프로필 정보</a>
                     </li>
