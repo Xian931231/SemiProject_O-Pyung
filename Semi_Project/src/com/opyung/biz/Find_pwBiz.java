@@ -7,16 +7,16 @@ import com.opyung.dto.MemberDto;
 
 import common.JDBCTemplate;
 
-public class Find_pwBiz {
+public class Find_pwBiz extends JDBCTemplate {
 	//
-	public MemberDto find_pw(String id, String phone) {
+	public String find_pw(String id, String phone) {
 		Connection con = getConnection();
 		
 		Find_pwDao dao = new Find_pwDao();
-		MemberDto dto = dao.find_pw(id,phone);
+		String find_pw = dao.find_pw(con,id,phone);
 		
 		close(con);
-		return dto;
+		return find_pw;
 	}
 
 }

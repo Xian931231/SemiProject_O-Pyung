@@ -36,14 +36,11 @@ private static final long serialVersionUID = 1L;
 			String phone = request.getParameter("phone");
 			
 			Find_pwBiz biz = new Find_pwBiz();
-			MemberDto memdto = biz.find_pw(id,phone);
+			String find_pw = biz.find_pw(id,phone);
+			System.out.println(id+phone);
 			
-			if(memdto.getMb_id() != null) {
-				session.setAttribute("id", memdto.getMb_id());
-				session.setAttribute("phone", memdto.getMb_phone());
-				session.setAttribute("role", memdto.getMb_role());
-				session.setMaxInactiveInterval(60*60);
-						
+			if(find_pw != null || find_pw !="") {
+				request.setAttribute("find_pw", find_pw);
 				response.sendRedirect("find_pw.do?command=found_pw");
 			}else {
 				response.sendRedirect("find_pw.do?command=find_pw");
@@ -54,5 +51,5 @@ private static final long serialVersionUID = 1L;
 		doGet(request, response);
 
 	}
-	//
+	
 }

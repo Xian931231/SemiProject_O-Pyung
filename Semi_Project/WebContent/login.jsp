@@ -84,10 +84,10 @@
 						
 						
 						<li class="look_list">
-							<a href="http://localhost:8383/Semi_Project/find_id.jsp" class="look_link">이메일 찾기</a>
+							<a href="http://localhost:8383/Semi_Project/find_id.jsp" class="look_link">아이디 찾기</a>
 						</li>
 						<li class="look_list">
-							<a href="" class="look_link">비밀번호 찾기</a>
+							<a href="http://localhost:8383/Semi_Project/find_pw.jsp" class="look_link">비밀번호 찾기</a>
 						</li>
 						
 					</ul>

@@ -37,14 +37,11 @@ public class Find_idController extends HttpServlet {
 			String phone = request.getParameter("phone");
 			
 			Find_idBiz biz = new Find_idBiz(); 
-			MemberDto memdto = biz.find_id(name,phone);
-			
-			if(memdto.getMb_name() != null) {
-				session.setAttribute("name", memdto.getMb_name());
-				session.setAttribute("phone", memdto.getMb_phone());
-				session.setAttribute("role", memdto.getMb_role());
-				session.setMaxInactiveInterval(60*60);
+			String find_id = biz.find_id(name,phone);
+			System.out.println(name+phone);
+			if(find_id != null || find_id != "") {
 						
+				request.setAttribute("find_id", find_id);
 				response.sendRedirect("find_id.do?command=found_id");
 			}else {
 				response.sendRedirect("find_id.do?command=find_id");
