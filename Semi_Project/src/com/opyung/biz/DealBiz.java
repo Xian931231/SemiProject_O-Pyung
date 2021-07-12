@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.opyung.dao.DealDao;
+import com.opyung.dto.CheckBoardDto;
 import com.opyung.dto.DealBoardDto;
 import com.opyung.dto.ProductBoardDto;
 
@@ -160,9 +161,29 @@ Connection con = getConnection();
 		return res;
 	}
 	
+
+	//검수 내역 작성
+	public int updateCheck(int dealno, CheckBoardDto chkdto) {
+		Connection con = getConnection();
+		
+		int res = dao.updateCheck(con,dealno,chkdto);
+
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return res;
+	}
+	
+	
+	
+	
 	//거래일정 조회
 	public DealBoardDto selectStatus(int dealno) {
-		
 		Connection con = getConnection();
 		
 		DealBoardDto res = dao.selectStatus(con, dealno);
@@ -172,6 +193,15 @@ Connection con = getConnection();
 		return res;
 	}
 	
+
+	//검수내역 조회
+	public CheckBoardDto selectChk(int dealno) {
+		Connection con = getConnection();
+		
+		CheckBoardDto dto = dao.selectChk(con,dealno);
+		close(con);
+		return dto;
+	}
 	
 	//거래일정 수정(거래상태 변경) / 재사용가능
 	public int updateStatus(int dealno, String status, Date eDate) {
@@ -228,6 +258,9 @@ Connection con = getConnection();
 		
 		return res;
 	}
+
+
+
 	
 
 

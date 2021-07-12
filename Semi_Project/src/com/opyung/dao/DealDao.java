@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.opyung.dto.CheckBoardDto;
 import com.opyung.dto.DealBoardDto;
 import com.opyung.dto.ProductBoardDto;
 
@@ -522,6 +523,34 @@ public class DealDao extends JDBCTemplate{
 	}
 	
 	
+	//검수내역 작성
+		public int updateCheck(Connection con, int dealno, CheckBoardDto chkdto) {
+			PreparedStatement pstm =null;
+			int res = 0;
+			
+			String sql ="UPDATE CHECKBOARD SET CHECK_ID = ?, CHECK_CONTENT = ? WHERE CHECK_DEALNO = ?";
+			
+			try {
+				pstm = con.prepareStatement(sql);
+				pstm.setString(1, chkdto.getCheck_id());
+				pstm.setString(2, chkdto.getCheck_content());
+				pstm.setInt(3, dealno);
+				System.out.println("03"+ sql);
+				
+				res = pstm.executeUpdate();
+				System.out.println("04");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstm);
+			}
+			
+			return res;
+		}
+		
+	
+	
 	//거래일정 조회
 	public DealBoardDto selectStatus(Connection con, int dealno) {
 		
@@ -565,6 +594,41 @@ public class DealDao extends JDBCTemplate{
 		return res;
 	}
 	
+
+	//검수내역 조회
+	public CheckBoardDto selectChk(Connection con, int dealno) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		CheckBoardDto res = new CheckBoardDto();
+		
+		String sql = "SELECT * FROM CHECKBOARD WHERE CHECK_DEALNO = ?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dealno);
+			System.out.println("03" + sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04");
+			
+			while(rs.next()) {
+				res.setCheck_no(rs.getInt(1));
+				res.setCheck_dealNo(rs.getInt(2));
+				res.setCheck_id(rs.getString(3));
+				res.setCheck_content(rs.getString(4));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		
+		
+		return res;
+	}
 	
 	//거래상태 수정
 	public int updateStatus(Connection con, int dealno, String status, Date eDate) {
@@ -649,7 +713,9 @@ public class DealDao extends JDBCTemplate{
 		
 		return res;
 	}
-	
+
+
+
 	
 	
 	

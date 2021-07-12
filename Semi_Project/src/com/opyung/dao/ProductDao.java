@@ -463,7 +463,7 @@ public class ProductDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
 		
-		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY IN (?,?,?,?,?,?,?,?,?) AND PRODUCT_BRAND IN (?,?,?,?,?,?,?,?,?) AND PRODUCT_ADDR IN (?,?,?,?,?,?) AND PRODUCT_NEW IN (?,?) AND (PRODUCT_PRICE BETWEEN ? AND ?)";
+		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY IN (?,?,?,?,?,?,?,?,?) AND PRODUCT_BRAND IN (?,?,?,?,?,?,?,?,?) AND (PRODUCT_ADDR LIKE ? AND PRODUCT_ADDR LIKE ? AND PRODUCT_ADDR LIKE ? AND PRODUCT_ADDR LIKE ? AND PRODUCT_ADDR LIKE ? AND PRODUCT_ADDR LIKE ?) AND PRODUCT_NEW IN (?,?) AND (PRODUCT_PRICE BETWEEN ? AND ?)";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -472,11 +472,11 @@ public class ProductDao extends JDBCTemplate{
 				System.out.println(category[i]);
 			}
 			for(int i=0;i<brand.length;i++) {
-				pstm.setString(i+10, brand[i]);
+				pstm.setString(i+10,brand[i]);
 				System.out.println(brand[i]);
 			}
 			for(int i=0;i<addr.length;i++) {
-				pstm.setString(i+19, addr[i]);
+				pstm.setString(i+19,"%"+addr[i]+"%");
 				System.out.println(addr[i]);
 			}
 			pstm.setString(25, newvar[0]);
