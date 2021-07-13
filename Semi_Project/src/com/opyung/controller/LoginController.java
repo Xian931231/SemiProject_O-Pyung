@@ -151,7 +151,7 @@ public class LoginController extends HttpServlet {
 			
 			if(res>0) {
 				System.out.println("성공");
-				response.sendRedirect("login.do?command=login");
+				response.sendRedirect("login.jsp");
 			}else {
 				System.out.println("실패");
 				response.sendRedirect("signup.jsp");
