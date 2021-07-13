@@ -57,7 +57,7 @@
 <body>
     <div id="mypage">
         <nav id="list">
-            <a href="memberinfo.do?command=mypage&id=ADMIN" id="list_title"><h2>MY PAGE</h2></a>
+            <a href="memberinfo.do?command=mypage&id=${id }" id="list_title"><h2>MY PAGE</h2></a>
             <div id="shop_list">
                 <strong class="info">거래 정보</strong>
                 <ul>

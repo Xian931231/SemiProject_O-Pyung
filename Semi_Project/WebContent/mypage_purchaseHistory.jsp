@@ -56,7 +56,7 @@
 <body>
     <div id="purchase_history">
         <nav id="list">
-            <a href="memberinfo.do?command=mypage&id=ADMIN" id="list_title"><h2>MY PAGE</h2></a>
+            <a href="memberinfo.do?command=mypage&id=${id }" id="list_title"><h2>MY PAGE</h2></a>
             <div id="shop_list">
                 <strong class="info">거래 정보</strong>
                 <ul>
@@ -215,7 +215,7 @@
                     			<tr class="ph_content">
 			                       	<td>${endList.rownum }</td>
 			                        <td><img src="upload/${endList.ptimg_name }${endList.ptimg_type } "></td>
-			                        <td><a href="deal.do?command=deal&dealno=${endList.deal_no }">${endList.deal_no}</a></td>
+			                        <td><a href="deal.do?command=deal_status&dealno=${endList.deal_no }">${endList.deal_no}</a></td>
 			                        <td><a href="product.do?command=detail&ptno=${endList.deal_productNo }" id="product_click">${endList.product_title }</a></td>
 			                        <td>${endList.deal_sid }</td>
 			                        <td>${endList.product_price }원</td>
