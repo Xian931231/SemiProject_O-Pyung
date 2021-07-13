@@ -160,9 +160,9 @@
 	        	</li>
 	        </ul>
 	        <input class="btn btn-outline-secondary" type="submit" value="검색">
-	        <button class="btn btn-outline-secondary" onclick="location.href='product.do?command=shop'">리셋</button>
   		</div> 
   	</form>	
+	        <button class="btn btn-outline-secondary" onclick="location.href='product.do?command=shop'">리셋</button>
   </div>
 
   <!-- main (content)영역 -->

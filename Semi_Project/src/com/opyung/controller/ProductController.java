@@ -442,7 +442,7 @@ public class ProductController extends HttpServlet {
 			//주소대입
 			String[] addr = new String[6];
 			for (int i = 0; i < addr.length; i++) {
-				addr[i] = "";
+				addr[i] = "#";
 			}
 			if(request.getParameterValues("addr") == null) {
 				addr[0] = "서울";
@@ -495,6 +495,7 @@ public class ProductController extends HttpServlet {
 			//리스트 객체
 			List<ProductBoardDto> list = new ArrayList<ProductBoardDto>();
 			list = biz.searchChk(category,brand,addr,newvar,min,max);
+			System.out.println(list.size());
 			request.setAttribute("list", list);
 			dispatch("shop.jsp", request, response);
 		
