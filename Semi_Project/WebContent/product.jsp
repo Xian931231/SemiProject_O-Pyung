@@ -186,7 +186,8 @@
 </div>
 
 
-        <div class="footer">footer</div>
+	     <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %> 
 
 </body>
 </html>

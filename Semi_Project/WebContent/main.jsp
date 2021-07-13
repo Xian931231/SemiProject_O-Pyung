@@ -32,7 +32,7 @@
 			<div id="header_space" style="background-color: black"></div>
 
             <!-- 배너-->
-            <div class="banner" style="background-color: aqua;">
+            <div class="banner" style="background-color: white;">
                 <img src="" alt="">
             </div>
 
@@ -466,8 +466,8 @@
 
         </div>
     </div>
+    
+    <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %> 
 </body>
-</html>
-	
-	</body>
 </html>
