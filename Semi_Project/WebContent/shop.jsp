@@ -224,11 +224,12 @@
   </div>
 </div>
 </div>
-  <!-- footer 영역 -->
-  <div class="footer">Footer</div>
 </div>
 
 </body>
+		<br><br><br><br><br><br><br><br>
+	     <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %> 
 </html>
 
     

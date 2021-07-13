@@ -250,4 +250,9 @@
    
 
 </body>
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br>
+	     <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %> 
 </html>
