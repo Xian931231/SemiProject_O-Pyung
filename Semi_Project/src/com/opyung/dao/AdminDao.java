@@ -209,7 +209,7 @@ public class AdminDao {
 			ResultSet rs = null;
 			List<DealBoardDto> res = new ArrayList<DealBoardDto>();
 			
-			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS IS NULL ";
+			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS='' ";
 			
 			try {
 				pstm = con.prepareStatement(sql);
@@ -237,13 +237,33 @@ public class AdminDao {
 			
 			return res;
 		}
+//				=거래신청
+//				거래 신청
+//
+//				=결제완료
+//				예약금결제
+//				검수신청
+//				판매자 발송준비
+//
+//				=검수시작
+//				검수중
+//
+//				=검수완료
+//				구매자 발송준비
+//
+//				=배송시작
+//				결제완료
+//
+//				=배송완료
+//				배송완료
+//				거래확정
 		
 		public List<DealBoardDto> counting(Connection con) {
 			PreparedStatement pstm = null;
 			ResultSet rs = null;
 			List<DealBoardDto> res = new ArrayList<DealBoardDto>();
 			
-			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS ='ing' ";
+			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS ='검수중' ";
 			
 			try {
 				pstm = con.prepareStatement(sql);
@@ -280,7 +300,7 @@ public class AdminDao {
 			ResultSet rs = null;
 			List<DealBoardDto> res = new ArrayList<DealBoardDto>();
 			
-			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS ='go' ";
+			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS ='구매자발송준비' ";
 			
 			try {
 				pstm = con.prepareStatement(sql);
