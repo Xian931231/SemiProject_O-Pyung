@@ -60,7 +60,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button class="login100-form-btn" type="submit">
 								Login
 							</button>
 						</div>
@@ -72,7 +72,7 @@
 							<div id="naver_id_login" class="NVlogin-form-btn">NAVER LOGIN</div>
 							
 							<script type="text/javascript">
-								var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "http://localhost:8383/Semi_Project/main.jsp");
+								var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "login.do?command=login&id=");
 								var state = naver_id_login.getUniqState();
 								naver_id_login.setDomain(".service.com");
 								naver_id_login.setState(state);
@@ -84,10 +84,10 @@
 						
 						
 						<li class="look_list">
-							<a href="http://localhost:8383/Semi_Project/find_id.jsp" class="look_link">아이디 찾기</a>
+							<a href="login.do?command=find_id_form" class="look_link">아이디 찾기</a>
 						</li>
 						<li class="look_list">
-							<a href="http://localhost:8383/Semi_Project/find_pw.jsp" class="look_link">비밀번호 찾기</a>
+							<a href="login.do?command=find_pw_form" class="look_link">비밀번호 찾기</a>
 						</li>
 						
 					</ul>

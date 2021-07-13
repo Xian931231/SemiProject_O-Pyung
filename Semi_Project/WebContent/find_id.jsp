@@ -33,7 +33,9 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
+						
 						<input class="input100" type="text" name="phone">
+						
 						<span class="focus-input100" data-placeholder="Phone Number"></span>
 					</div>
 
