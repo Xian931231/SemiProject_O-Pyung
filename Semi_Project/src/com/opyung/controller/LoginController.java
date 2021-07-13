@@ -65,8 +65,8 @@ public class LoginController extends HttpServlet {
 			  String name = request.getParameter("name");
 			  String phone = request.getParameter("phone");
 			
-			  Find_idBiz biz = new Find_idBiz(); 
-			  String find_id = biz.find_id(name,phone);
+			  Find_idBiz findbiz = new Find_idBiz(); 
+			  String find_id = findbiz.find_id(name,phone);
 			
 			  System.out.println(name+phone);
 			  System.out.println("id : " +find_id);
@@ -84,8 +84,8 @@ public class LoginController extends HttpServlet {
 			String id = request.getParameter("id");
 			String phone = request.getParameter("phone");
 			
-			Find_pwBiz biz = new Find_pwBiz();
-			String find_pw = biz.find_pw(id,phone);
+			Find_pwBiz findbiz = new Find_pwBiz();
+			String find_pw = findbiz.find_pw(id,phone);
 			
 			System.out.println(id+phone);
 			System.out.println("pw : " +find_pw);
@@ -97,7 +97,7 @@ public class LoginController extends HttpServlet {
 			}else {
 				System.out.println("없음");
 				response.sendRedirect("find_pw.jsp");
-
+			}
 		
 		//회원가입 페이지로 이동
 		}else if(command.equals("signupform")) {
