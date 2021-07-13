@@ -83,8 +83,15 @@
             		</c:when>
             		<c:otherwise>
             			<div class="btns">
-                        <button class="btn btn-info btn-lg text-white" id="likeBtn" onclick="likeProduct('${id}','${ptdto.product_no }');">관심상품</button>
-                        <button class="btn btn-primary btn-lg" onclick="location.href='deal.do?command=insert&ptno=${ptdto.product_no}&id=${id }'">구매신청</button>                        
+            			<c:choose>
+            				<c:when test="${ptdto.product_status ne '판매완료' }">
+		                        <button class="btn btn-info btn-lg text-white" id="likeBtn" onclick="likeProduct('${id}','${ptdto.product_no }');">관심상품</button>
+		                        <button class="btn btn-primary btn-lg" onclick="location.href='deal.do?command=insert&ptno=${ptdto.product_no}&id=${id }'">구매신청</button>     
+            				</c:when>
+            				<c:otherwise>
+	                        	<button type="button" class="btn btn-secondary" disabled>판매완료</button>
+            				</c:otherwise>
+            			</c:choose>
                     	</div>
             		</c:otherwise>
             	</c:choose>
