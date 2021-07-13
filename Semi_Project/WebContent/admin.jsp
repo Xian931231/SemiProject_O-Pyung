@@ -25,13 +25,14 @@
     <title>admin_main</title>
     <link rel="stylesheet" type="text/css" href="./css/adminpage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <script src = "./ckeditor/ckeditor.js"></script>
     
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-   	window.onload = function() {
+   	
+    window.onload = function() {
 		
    		today new Date();
    		
@@ -40,9 +41,13 @@
    		bir = document.getElementById("today");
    		
    		bir.value = today;
-   		
+   	
    		
 	}
+    
+    
+    
+    
     	
     </script>
 </head>
@@ -188,61 +193,67 @@
                     <div>
                         <div class="empty_area" id="empty_area_selling">
                          <table >
-                    <col width="50px">
-                    <col width="300px">
-                    <col width="100px">
-                    <col width="100px">
-                    <col width="200px">
-                    <col width="150px">
-                    <col width="150px">
-                    <col width="100px">
-                    <col width="50px">
-                    <thead>
-                    <tr>
-                        <th>NO</th>
-                        <th>상품</th>
-                        <th>판매자</th>
-                        <th>구매자</th>
-                        <th>거래상태</th>
-                        <th>검수시작</th>
-                        <th>검수완료</th>
-                        <th>검수자</th>
-                        <th>수정</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <c:choose>
-                        <c:when test="${empty deal }">
-							<tr>
-								<td colspan="9">-------------진행 중인 거래가 없습니다.-------------</td>
-							</tr>                            	
-                         </c:when>
-                         
-                         
-                         <c:otherwise>
+		                    <col width="50px">
+		                    <col width="300px">
+		                    <col width="100px">
+		                    <col width="100px">
+		                    <col width="200px">
+		                    <col width="150px">
+		                    <col width="150px">
+		                    <col width="100px">
+		                    <col width="50px">
+		                    <thead>
+                    			<tr>
+			                        <th>거래번호</th>
+			                        <th>상품</th>
+			                        <th>판매자</th>
+			                        <th>구매자</th>
+			                        <th>거래상태</th>
+			                        <th>검수시작</th>
+			                        <th>검수완료</th>
+			                        <th>검수자</th>
+			                        <th>수정</th>
+                    			</tr>
+                    		</thead>
+                    		<tbody>
+                        		<c:choose>
+                        			<c:when test="${empty deal }">
+										<tr>
+											<td colspan="9">-------------진행 중인 거래가 없습니다.-------------</td>
+										</tr>                            	
+                         			</c:when>
+
+                        <c:otherwise>
                      	<c:forEach var="dto" items="${deal }">
-                    	<tr class="Ts_tr">
-                    	
-                        <td>${dto.deal_no }</td>
-                        <td>${dto.product_title }</td>
-                        <td>${dto.deal_sid }</td>
-                        <td>${dto.deal_bid }</td>
-           
-                       
-                        <td><select name="dealselect">
-                            <option value="ready">판매자 발송준비</option>
-                            <option value="ing">검수중</option>
-                            <option value="go">구매자 발송준비</option>
-                        </select></td>
-                          
-                        <td><input id="today" type="date" name="start" value="${dto.sdate }"></td>
-                        <td><input id="today" type="date" name="end" value="${dto.edate }"></td>
-                        <td>admin</td>
-                        <td><input type="submit" value="수정"></td>
-                    </tr>
-                </form>
-                </c:forEach>
-                  </c:otherwise>
+
+                    	<form action="deal.do" method="post">
+                    		<input type="hidden" name="command" value="dealStatusAdminUpdate">
+                    		<input type="hidden" name="dealno" value="${dto.deal_no }">
+                    		<tr class="Ts_tr">
+	                        	<td>${dto.deal_no }</td>
+	                        	<td>${dto.product_title }</td>
+	                        	<td>${dto.deal_sid }</td>
+	                        	<td>${dto.deal_bid }</td>
+	                        	<td>
+	                        		<select name="dealselect" >
+	                        			<option value="거래신청" <c:if test="${dto.schedule_status=='거래신청'}">selected</c:if>>거래신청</option>
+	                        			<option value="예약금결제" <c:if test="${dto.schedule_status=='예약금결제'}">selected</c:if>>예약금결제</option>
+	                        			<option value="검수신청" <c:if test="${dto.schedule_status=='검수신청'}">selected</c:if>>검수신청</option>
+	                        			<option value="검수중" <c:if test="${dto.schedule_status=='검수중'}">selected</c:if>>검수중</option>
+	                        			<option value="구매자발송준비" <c:if test="${dto.schedule_status=='구매자발송준비'}">selected</c:if>>구매자발송준비</option>
+	                        			<option value="결제완료" <c:if test="${dto.schedule_status=='결제완료'}">selected</c:if>>결제완료</option>
+	                            		<option value="거래확정" <c:if test="${dto.schedule_status=='거래확정'}">selected</c:if>>거래확정</option>
+	                       			 </select>
+	                       		 </td>
+	                          
+		                        <td><input id="today" type="date" name="sDate" value="${dto.sdate }"></td>
+		                        <td><input id="today" type="date" name="eDate" value="${dto.edate }"></td>
+		                        <td>admin</td>
+		                        <td><input type="submit" value="수정"></td>
+                    		</tr>
+                		</form>
+                		</c:forEach>
+                  		</c:otherwise>
                   </c:choose>
                      </tbody>
                 </table>

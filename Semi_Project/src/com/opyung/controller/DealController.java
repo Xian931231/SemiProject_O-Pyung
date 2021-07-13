@@ -465,6 +465,25 @@ public class DealController extends HttpServlet {
 			}
 			
 			
+		//관리자 거래상태 수정
+		}else if(command.equals("dealStatusAdminUpdate")) {
+			
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			String status = request.getParameter("dealselect");
+			String eDateS = request.getParameter("eDate");
+			
+			//sql Date 형변환
+			java.sql.Date eDate = java.sql.Date.valueOf(eDateS);
+			
+			int res = biz.updateStatus(dealno, status, eDate);
+			
+			if(res>0) {
+				System.out.println("거래상태 변경 성공(관리자)");
+				response.sendRedirect("admin.do?command=admin");
+			}else {
+				System.out.println("거래상태 변경 실패(관리자)");
+			}
+			
 		}
 		
 		

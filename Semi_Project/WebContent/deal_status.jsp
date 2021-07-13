@@ -31,7 +31,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calender');
-
+        
         var calendar = new FullCalendar.Calendar(calendarEl, {
           headerToolbar: {
             left: 'prev,next',
