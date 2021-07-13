@@ -162,6 +162,7 @@
 </script>
 <!-- //네이버아디디로로그인 Callback페이지 처리 Script -->
 
-	
+	     <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %>  
 </body>
 </html>

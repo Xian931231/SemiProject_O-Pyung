@@ -250,9 +250,9 @@
 
 </div>
 
-
-        <div class="footer">footer</div>
-
     </form>
 </body>
+
+	     <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %> 
 </html>

@@ -216,7 +216,8 @@
 	<!-- 컨테이너 종료div -->
     </div>
 
-    
+         <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %>  
 
 </body>
 </html>
