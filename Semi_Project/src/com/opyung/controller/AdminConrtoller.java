@@ -134,6 +134,10 @@ public class AdminConrtoller extends HttpServlet {
 					int countgo1 = countgo.size();
 					
 					
+					
+					request.setAttribute("ingAll", counting);
+					request.setAttribute("goAll", countgo);
+					
 					request.setAttribute("countready", countready1);
 					request.setAttribute("counting", counting1);
 					request.setAttribute("countgo", countgo1);

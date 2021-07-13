@@ -107,7 +107,7 @@
                     </dl>
                 </div>
                 </div>
-            <div class="TS_table">
+            <div class="TS_table" id="selectready">
                 <table >
                     <col width="50px">
                     <col width="300px">
@@ -175,6 +175,143 @@
                     </tbody>
                 </table>
             </div>
+            <div class="TS_table" id="selecting">
+                <table >
+                    <col width="50px">
+                    <col width="300px">
+                    <col width="100px">
+                    <col width="100px">
+                    <col width="200px">
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="100px">
+                    <col width="50px">
+                    <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>상품</th>
+                        <th>판매자</th>
+                        <th>구매자</th>
+                        <th>거래상태</th>
+                        <th>검수시작</th>
+                        <th>검수완료</th>
+                        <th>검수자</th>
+                        <th>수정</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                    <c:choose>
+                        <c:when test="${empty ingAll }">
+							<tr>
+								<td colspan="9">-------------진행 중인 거래가 없습니다.-------------</td>
+							</tr>                            	
+                         </c:when>
+                         <c:otherwise>
+                     	<c:forEach var="dto" items="${ingAll }">
+                    	<tr class="Ts_tr">
+                    	
+                        <td>${ingAll.deal_no }</td>
+                        <td>${ingAll.product_title }</td>
+                        <td>${ingAll.deal_sid }</td>
+                        <td>${ingAll.deal_bid }</td>
+           
+                       <form action="admin.do" method="get" name="dealInfo">
+                    	<input type="hidden" name="command" value="dealInfo">
+                       	<input type="hidden" name="sche_no" value="${ingAll.deal_no }" >
+                        <td><select name="dealselect">
+                            <option value="ready">판매자 발송준비</option>
+                            <option value="ing">검수중</option>
+                            <option value="go">구매자 발송준비</option>
+                            <option value="finish">배송완료</option>
+                            
+                        	</select></td>
+                       
+                        <td><input id="today"type="date" name="start" ></td>
+                       
+                        <td><input id="today"type="date" name="end" ></td>
+             
+                        <td>admin</td>
+                        <td><input type="submit" value="수정"></td>
+                    	</tr>
+                    	</form>
+                    	</c:forEach>
+                  </c:otherwise>
+                  </c:choose>
+                
+                
+                    </tbody>
+                </table>
+            </div>
+             <div class="TS_table" id="selectgo">
+                <table >
+                    <col width="50px">
+                    <col width="300px">
+                    <col width="100px">
+                    <col width="100px">
+                    <col width="200px">
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="100px">
+                    <col width="50px">
+                    <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>상품</th>
+                        <th>판매자</th>
+                        <th>구매자</th>
+                        <th>거래상태</th>
+                        <th>검수시작</th>
+                        <th>검수완료</th>
+                        <th>검수자</th>
+                        <th>수정</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                    <c:choose>
+                        <c:when test="${empty goAll }">
+							<tr>
+								<td colspan="9">-------------진행 중인 거래가 없습니다.-------------</td>
+							</tr>                            	
+                         </c:when>
+                         <c:otherwise>
+                     	<c:forEach var="dto" items="${goAll }">
+                    	<tr class="Ts_tr">
+                    	
+                        <td>${goAll.deal_no }</td>
+                        <td>${goAll.product_title }</td>
+                        <td>${goAll.deal_sid }</td>
+                        <td>${goAll.deal_bid }</td>
+           
+                       <form action="admin.do" method="get" name="dealInfo">
+                    	<input type="hidden" name="command" value="dealInfo">
+                       	<input type="hidden" name="sche_no" value="${goAll.deal_no }" >
+                        <td><select name="dealselect">
+                            <option value="ready">판매자 발송준비</option>
+                            <option value="ing">검수중</option>
+                            <option value="go">구매자 발송준비</option>
+                            <option value="finish">배송완료</option>
+                            
+                        	</select></td>
+                       
+                        <td><input id="today"type="date" name="start" ></td>
+                       
+                        <td><input id="today"type="date" name="end" ></td>
+             
+                        <td>admin</td>
+                        <td><input type="submit" value="수정"></td>
+                    	</tr>
+                    	</form>
+                    	</c:forEach>
+                  </c:otherwise>
+                  </c:choose>
+                
+                
+                    </tbody>
+                </table>
+            </div>
+            
             </div>
             
        
