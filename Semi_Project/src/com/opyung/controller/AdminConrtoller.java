@@ -47,7 +47,7 @@ public class AdminConrtoller extends HttpServlet {
 				
 				
 				///////////////////admin_main/////////////////////
-				
+				//검수대기만보이게 '검수신청'
 				if(command.equals("admin")){
 					List<DealBoardDto> list = biz.dealAll();
 					List<ReportBoardDto> relist = biz.reportAll();
@@ -75,7 +75,8 @@ public class AdminConrtoller extends HttpServlet {
 				
 				
 				///////////////////admin_user/////////////////////
-				//유저 정보 전체 출력
+				//유저 정보 전체 출력 
+				
 				else if(command.equals("userInfo")) {
 					
 					List<MemberDto> list = biz.selectAll();

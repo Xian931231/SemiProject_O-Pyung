@@ -228,19 +228,25 @@
                         <td>${dto.deal_sid }</td>
                         <td>${dto.deal_bid }</td>
            
-                       
+                       <form action="admin.do" method="get" name="dealInfo">
+                    	<input type="hidden" name="command" value="dealInfo">
+                       	<input type="hidden" name="sche_no" value="${dto.deal_no }" >
                         <td><select name="dealselect">
                             <option value="ready">판매자 발송준비</option>
                             <option value="ing">검수중</option>
                             <option value="go">구매자 발송준비</option>
-                        </select></td>
-                          
-                        <td><input id="today" type="date" name="start" value="${dto.sdate }"></td>
-                        <td><input id="today" type="date" name="end" value="${dto.edate }"></td>
+                            <option value="finish">배송완료</option>
+                            
+                        	</select></td>
+                       
+                        <td><input id="today"type="date" name="start" ></td>
+                       
+                        <td><input id="today"type="date" name="end" ></td>
+             
                         <td>admin</td>
                         <td><input type="submit" value="수정"></td>
-                    </tr>
-                </form>
+                    	</tr>
+                    	</form>
                 </c:forEach>
                   </c:otherwise>
                   </c:choose>
