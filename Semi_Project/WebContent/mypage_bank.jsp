@@ -123,7 +123,7 @@
 						$("#delete_btn").hide();
 					}else{
 						$.ajax({
-							url:"memberinfo.do?command=bankSelect&id=ADMIN",
+							url:"memberinfo.do?command=bankSelect&id=${id}",
 							type:"post",
 							data:{
 								bankno : $("select[name=account]").val()
@@ -149,7 +149,7 @@
 			<hr>
 			
             <br>
-			<form action="memberinfo.do?command=bankInsert&id=ADMIN" method="post">
+			<form action="memberinfo.do?command=bankInsert&id=${id }" method="post">
             <div id="mypage_account_bank">
             <input type="hidden" name="bankno" id="bankno"value="">
                 <p>은행명</p>
@@ -232,7 +232,7 @@
             <script type="text/javascript">
 				$("#delete_btn").click(function(){
 					$.ajax({
-						url:"memberinfo.do?command=bankDelete&id=ADMIN",
+						url:"memberinfo.do?command=bankDelete&id=${id}",
 						type:"post",
 						data:{
 							bankno : $("#bankno").val()

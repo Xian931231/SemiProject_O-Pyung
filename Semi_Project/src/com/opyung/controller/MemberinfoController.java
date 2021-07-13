@@ -251,10 +251,10 @@ public class MemberinfoController extends HttpServlet {
 			
 			if(res>0) {
 				System.out.println("계좌등록 성공");
-				response.sendRedirect("memberinfo.do?command=bank&id=${id}");
+				response.sendRedirect("memberinfo.do?command=bank&id="+id);
 			}else {
 				System.out.println("실패");
-				response.sendRedirect("memberinfo.do?command=bank&id=${id}");
+				response.sendRedirect("memberinfo.do?command=bank&id="+id);
 			}
 		
 
