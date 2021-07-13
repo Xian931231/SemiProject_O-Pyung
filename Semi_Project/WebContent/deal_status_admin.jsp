@@ -21,6 +21,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="./css/deal_status_admin.css">
     <script src="./js/deal_status.js" defer></script>
+    <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -29,7 +30,8 @@
 
    	<!-- header 공간 확보 -->
     <article class="container">
-        <form action="#">
+        <form action="deal.do?command=adminChk&dealno=${dealdto.deal_no }" method="post">
+        <input type="hidden" name="id" value="${id }">
             <section class="left">
                 <div class="btns gap-2">
                     <button type="button" class="oper-btn btn btn-primary">검수시작</button>
@@ -53,7 +55,36 @@
 
                 </div>
                 <h3>검수 내역</h3>
-                <textarea class="check"></textarea>
+                <!-- web_edotor -->
+		        <div class="web_editor">
+		            <!--업로드 api-->
+		            <input type="hidden" role="uploadcare-uploader" name="my_file" id="uploadedImage" />
+		            
+		            <textarea id="ckeditor" class="ckeditor" name="content" >${chkdto.check_content }</textarea>
+		            <script type="text/javascript">
+		                
+		                CKEDITOR.replace( 'ckeditor' ,
+		                                {height: 400});
+		                
+		            </script>
+		            <script>
+					  UPLOADCARE_PUBLIC_KEY = 'b0d4d56a64e1f511c63f';
+					</script>
+		            <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+		            <script type="text/javascript">
+	
+			            var singleWidget = uploadcare.SingleWidget('[role=uploadcare-uploader]')
+			            	
+			            singleWidget.onUploadComplete(function(info){
+			                var oEditorData = CKEDITOR.instances.ckeditor.getData();
+			                var imgUrl = '<br><img src="'+info.cdnUrl+'" style="width:100%;object-fit:cover;">';
+			                CKEDITOR.instances.ckeditor.setData(oEditorData + imgUrl);	    
+	
+			            });
+			            
+		            
+		            </script>
+		        </div>
                 
             
             </section>
@@ -69,27 +100,23 @@
 
                             <tr>
                                 <td >상품</td>
-                                <td class="td2"><a href="#" style="color: white;">123</a></td>
+                                <td class="td2"><a href="#" style="color: white;">${ptdto.product_title }</a></td>
                             </tr>
                             <tr>
                                 <td >판매자</td>
-                                <td class="td2">누구누구</td>
+                                <td class="td2">${siddto.mb_id }</td>
                             </tr>
                             <tr>
                                 <td >구매자</td>
-                                <td class="td2">누구누구</td>
+                                <td class="td2">${biddto.mb_id }</td>
                             </tr>
                             <tr>
                                 <td>배송상태</td>
                                 <td class="td2">검수시작</td>                               </td>
-                            </tr>
-                            <tr>
-                                <td >예약금</td>
-                                <td class="td2">얼마</td>
-                            </tr>                        
+                            </tr>      
                             <tr class="tr-price">
                                 <td>검수자</td>
-                                <td class="td2">누구</td>
+                                <td class="td2">${id }</td>
                             </tr>
                             
                         </table>      

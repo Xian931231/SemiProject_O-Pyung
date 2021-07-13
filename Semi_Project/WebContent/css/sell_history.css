@@ -1,0 +1,164 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+
+#sell_history {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.5fr 3.5fr;
+}
+
+#list {
+    top: 200px;
+    width: 300px;
+    font-size: 20px;
+    position: absolute;
+}
+
+#list_title {
+    font-size: 25px;
+    text-decoration-line: none;
+    color: black;
+}
+
+#shop_list {
+    margin: 0;
+    padding: 0;
+}
+
+.info {
+    margin-bottom: 0px;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: -.16px;
+}
+
+ul,li, ol {
+    list-style: none;
+}
+
+ul {
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.menu_item{
+    margin-top: 8px;
+}
+
+.menu_link {
+    text-decoration-line: none;
+    font-size: 18px;
+    letter-spacing: -.15px;
+    color: gray;
+}
+
+#my_list {
+    margin-top: 40px;
+}
+
+#my_info{
+    margin-bottom: 0px;
+    display: inline-block;
+    font-size: 18px;
+    letter-spacing: -.16px;
+}
+
+#list_title:hover {
+    text-decoration-line: underline;
+}
+
+.menu_link:hover {
+    text-decoration-line: underline;
+}
+
+
+
+#sh_area {
+    left: 300px;
+    top: 200px;
+    position: relative;
+    width: 1000px;
+}
+
+#sh_title{
+    text-align: left;
+    margin-bottom: 80px;
+    border-bottom: 3px solid black;
+    text-align: left;
+}
+
+#sh_list {
+    margin-top: 20px;
+    display: table;
+    table-layout: fixed;
+    width: 750px;
+    background-color: whitesmoke;
+    border-radius: 12px;
+}
+
+#sh_continue {
+    display: table-cell;
+}
+
+#sh_end{
+    display: table-cell;
+}
+
+#sh_con_link{
+    text-align: center;
+    position: relative;
+    display: block;
+}
+
+#sh_end_link{
+    text-align: center;
+    position: relative;
+    display: block;
+}
+
+
+.sh_title {
+    font-weight: 700;
+    color: black;
+    font-size: 20px;
+}
+
+.sh_count{
+    font-weight: 700;
+    color: black;
+    font-size: 20px;
+}
+
+
+#sh_continue_table {
+    margin-top: 50px;
+    color: black;
+}
+
+.sh_head{
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.sh_content{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+#sh_end_table{
+    margin-top: 50px;
+    color: black;
+}
+
+#sh_area{
+	text-align: center;
+}
+
+table img{
+	height: 50px;
+}

@@ -34,12 +34,13 @@ public class LoginController extends HttpServlet {
 		System.out.println("[command:"+command+"]");
 
 		
+		LoginBiz biz = new LoginBiz();
+		
 		//로그인 기능
 		if(command.equals("login")) {
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
 			
-			LoginBiz biz = new LoginBiz();
 			MemberDto memdto = biz.login(id,pw);
 			
 			if(memdto.getMb_id() != null) {
@@ -58,20 +59,19 @@ public class LoginController extends HttpServlet {
 			//세션 정보 삭제
 			session.invalidate();
 			response.sendRedirect("main.do?command=main");
+
+		
+      }else if(command.equals("find_id")) {
+			  String name = request.getParameter("name");
+			  String phone = request.getParameter("phone");
 			
+			  Find_idBiz biz = new Find_idBiz(); 
+			  String find_id = biz.find_id(name,phone);
 			
+			  System.out.println(name+phone);
+			  System.out.println("id : " +find_id);
 			
-		}else if(command.equals("find_id")) {
-			String name = request.getParameter("name");
-			String phone = request.getParameter("phone");
-			
-			Find_idBiz biz = new Find_idBiz(); 
-			String find_id = biz.find_id(name,phone);
-			
-			System.out.println(name+phone);
-			System.out.println("id : " +find_id);
-			if(find_id != "") {
-						
+      if(find_id != "") {
 				System.out.println("조건"+find_id);
 				request.setAttribute("find_id", find_id);
 				dispatch("found_id.jsp", request, response);
@@ -79,7 +79,6 @@ public class LoginController extends HttpServlet {
 				System.out.println("없음");
 				response.sendRedirect("find_id.jsp");
 			}
-			
 			
 		}else if(command.equals("find_pw")) {
 			String id = request.getParameter("id");
@@ -90,14 +89,55 @@ public class LoginController extends HttpServlet {
 			
 			System.out.println(id+phone);
 			System.out.println("pw : " +find_pw);
-			if(find_pw != "") {
-				
+			
+      if(find_pw != "") {
 				System.out.println("조건"+find_pw);
 				request.setAttribute("find_pw", find_pw);
 				dispatch("found_pw.jsp",request, response);
 			}else {
 				System.out.println("없음");
 				response.sendRedirect("find_pw.jsp");
+
+		
+		//회원가입 페이지로 이동
+		}else if(command.equals("signupform")) {
+			response.sendRedirect("signup.jsp");
+		
+		//회원가입
+		}else if(command.equals("signup")){
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pwd");
+			String email = request.getParameter("email");
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			String postcode = request.getParameter("postcode");
+			String address = request.getParameter("address");
+			String extraAddress = request.getParameter("extraAddress");
+			String detailAddress = request.getParameter("detailAddress");
+			String addr = postcode+ " " + address + extraAddress + " " +detailAddress;
+			String latitude = request.getParameter("latitude");
+			String longitude = request.getParameter("longitude");
+			System.out.println(addr);
+			
+			MemberDto memdto = new MemberDto();
+			memdto.setMb_id(id);
+			memdto.setMb_pw(pw);
+			memdto.setMb_name(name);
+			memdto.setMb_email(email);
+			memdto.setMb_phone(phone);
+			memdto.setMb_addr(addr);
+			memdto.setMb_addr_latitude(latitude);
+			memdto.setMb_addr_longitude(longitude);
+			
+			int res = biz.signup(memdto);
+			
+			if(res>0) {
+				System.out.println("성공");
+				response.sendRedirect("login.do?command=login");
+			}else {
+				System.out.println("실패");
+				response.sendRedirect("signup.jsp");
+
 			}
 		}
 	}

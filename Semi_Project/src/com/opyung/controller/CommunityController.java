@@ -50,12 +50,6 @@ public class CommunityController extends HttpServlet {
 			request.setAttribute("list", list);
 			dispatch("community.jsp", request, response);
 			
-		//인기순	
-		}else if(command.equals("commulike")) {	
-			List<CommuBoardDto> list = biz.selectlikeAll();
-			
-			request.setAttribute("list", list);
-			dispatch("community.jsp", request, response);
 
 		//디테일 화면
 		}else if(command.equals("detail")) {
@@ -101,8 +95,8 @@ public class CommunityController extends HttpServlet {
 		 
 		                if (item.isFormField()) {
 		                    // file 형식이 아닐 때
-		                	System.out.println(item.getFieldName());
-		                	System.out.println(item.getString());
+		                	//System.out.println(item.getFieldName());
+		                	//System.out.println(item.getString());
 		                	if(item.getFieldName().equals("id")) {
 		                		id = item.getString();
 		                	}else {
@@ -131,30 +125,31 @@ public class CommunityController extends HttpServlet {
 		                    
 		                }
 		            }
+		            CommuBoardDto dto = new CommuBoardDto();
+			        dto.setCmb_no(cmb_no);
+	                dto.setCmb_id(id);
+	                dto.setCmb_content(content);
+	                dto.setCimg_name(imgname);
+	                dto.setCimg_size(size);
+	                dto.setCimg_type(type);
+	                dto.setCimg_src(saveDir);
+	                int res1 = biz.insert(dto);
+	                
+	                
+	                if(res1>0) {
+	                	int res2 = biz.insertImg(dto);
+	                	if(res2>0) {
+	                		System.out.println("성공");
+	                		response.sendRedirect("community.do?command=detail&cmb_no="+cmb_no);
+	                	}else {
+	                	System.out.println("업로드실패");
+	                	response.sendRedirect("community.do?command=detail&cmb_no="+(cmb_no));
+	                	}
+	                }else {
+	                	response.sendRedirect("main.do?command=comunity");
+	                }
 		        }
-		        CommuBoardDto dto = new CommuBoardDto();
-		        dto.setCmb_no(cmb_no);
-                dto.setCmb_id(id);
-                dto.setCmb_content(content);
-                dto.setCimg_name(imgname);
-                dto.setCimg_size(size);
-                dto.setCimg_type(type);
-                dto.setCimg_src(saveDir);
-                int res1 = biz.insert(dto);
-                
-                
-                if(res1>0) {
-                	int res2 = biz.insertImg(dto);
-                	if(res2>0) {
-                		System.out.println("성공");
-                		response.sendRedirect("community.do?command=detail&cmb_no="+cmb_no);
-                	}else {
-                	System.out.println("업로드실패");
-                	response.sendRedirect("community.do?command=detail&cmb_no="+(cmb_no));
-                	}
-                }else {
-                	response.sendRedirect("main.do?command=comunity");
-                }
+		        
 		    }
 		    catch ( Exception e ) { System.out.println(e); }
 		    
@@ -238,21 +233,20 @@ public class CommunityController extends HttpServlet {
 		                	}
 		                }
 		            }
+		            dto.setCmb_content(content);
+	                int res = biz.update(dto);
+			        
+	                
+	                
+	                if(res>0) {
+	                	System.out.println("성공");
+	                	response.sendRedirect("community.do?command=detail&cmb_no="+cmb_no);
+	                }else {
+	                	System.out.println("업로드실패");
+	                	response.sendRedirect("community.do?command=updateform&cmb_no="+cmb_no);
+	                }
 		        }
 		        
-
-        		dto.setCmb_content(content);
-                int res = biz.update(dto);
-		        
-                
-                
-                if(res>0) {
-                	System.out.println("성공");
-                	response.sendRedirect("community.do?command=detail&cmb_no="+cmb_no);
-                }else {
-                	System.out.println("업로드실패");
-                	response.sendRedirect("community.do?command=updateform&cmb_no="+cmb_no);
-                }
 		    }
 		    catch ( Exception e ) { System.out.println(e); }
 		 
@@ -264,7 +258,7 @@ public class CommunityController extends HttpServlet {
 			
 			if(res) {
 				System.out.println("성공");
-				response.sendRedirect("community.do?command=commulist");
+				response.sendRedirect("community.do?command=commu");
 			}else {
 				System.out.println("실패");
 				response.sendRedirect("community.do?command=detail&cmb_no="+cmb_no);

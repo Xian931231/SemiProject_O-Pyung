@@ -15,6 +15,7 @@ local.properties
 .loadpath
 .recommenders
 .classpath
+build/*
 
 # External tool builders
 .externalToolBuilders/
@@ -114,5 +115,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+build/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,java,java-web

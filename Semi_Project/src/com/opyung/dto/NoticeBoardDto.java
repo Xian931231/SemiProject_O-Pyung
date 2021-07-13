@@ -17,6 +17,15 @@ public class NoticeBoardDto {
 		super();
 	}
 	
+	//update용 매개변수 3개 생성자
+	public NoticeBoardDto(int notice_no, String notice_title, String notice_content) {
+		super();
+		this.notice_no = notice_no;
+		this.notice_title = notice_title;
+		this.notice_content = notice_content;
+	}
+
+	
 	//매개변수 생성자
 	public NoticeBoardDto(int notice_no, String notice_title, String notice_content, String notice_id, Date notice_date,
 			int notice_cnt) {
@@ -29,7 +38,6 @@ public class NoticeBoardDto {
 		this.notice_cnt = notice_cnt;
 	}
 
-	
 	//getter & setter
 	public int getNotice_no() {
 		return notice_no;

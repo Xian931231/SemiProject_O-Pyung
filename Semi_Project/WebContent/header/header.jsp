@@ -7,7 +7,7 @@
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html; charset=UTF-8");
 %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.opyung.dto.MemberDto"%>
 
 
@@ -24,6 +24,7 @@
 	String id = (String)session.getAttribute("id");
 	String name = (String)session.getAttribute("name");
 	String role = (String)session.getAttribute("role");
+	System.out.print(role);
 %>
 
 <div class="header_body">
@@ -38,8 +39,12 @@
 		<%
 			}
 		%>
-		<a href="main.do?command=notice">고객센터</a>
-		<a href="main.do?command=mypage">마이페이지</a>
+		<c:if test="${role eq 'ADMIN' }">
+			<a href="admin.do?command=admin">관리자 페이지</a>
+		</c:if>
+		
+		<a href="notice.do?command=noticelist">고객센터</a>
+		<a href="memberinfo.do?command=mypage&id=${id }">마이페이지</a>
 		<%
 			if(id == null){
 		%>
@@ -62,18 +67,18 @@
         </div>
         
         <div class="navbar_search">
-        <form action="" method="post">
+        <form action="product.do?command=search" method="post">
         	<ul class="navbar_search_bar">
 	        	<li ><i class="fas fa-search"></i></li>
-	        	<li class="navbar_search_li"><input type="text"></li>  
+	        	<li class="navbar_search_li"><input type="text" name="searchVal"></li>  
         	</ul>      	
         </form>
         </div>
         
         
         <ul class="navbar_menu">
-            <li><a href="community.do?command=commulike"><span class="navbar_submenu">COMMUNITY</span></a></li>
-            <li><a href="main.do?command=shop"><span class="navbar_submenu">SHOP</span></a></li>
+            <li><a href="community.do?command=commu"><span class="navbar_submenu">COMMUNITY</span></a></li>
+            <li><a href="product.do?command=shop"><span class="navbar_submenu">SHOP</span></a></li>
         </ul>
 
         

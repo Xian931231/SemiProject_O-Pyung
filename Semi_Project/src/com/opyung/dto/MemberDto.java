@@ -12,13 +12,19 @@ public class MemberDto {
 	private String mb_email;
 	private String mb_phone;
 	private String mb_addr;
+	private String mb_addr_latitude;
+	private String mb_addr_longitude;
 	private String mb_able;
 	private String mb_role;
-	
+	private int mb_score;
+	private String mb_grade;
+
 	//BankBoard(계좌 테이블)
 	private int bank_no;
 	private int bank_id;
+	private String bank_name;
 	private String bank_account;
+	private String bank_memname;
 	
 	//LikeProductBoard(관심상품)
 	private int likept_memberNo;		//좋아요 누른 사용자
@@ -28,11 +34,28 @@ public class MemberDto {
 	public MemberDto() {
 		super();
 	}
+	
+	
+	//admin 유저 정보 매개변수 생성자
+	
+	public MemberDto(String mb_id, String mb_pw, String mb_name, String mb_email, String mb_phone, String mb_able,
+			int mb_score) {
+		super();
+		this.mb_id = mb_id;
+		this.mb_pw = mb_pw;
+		this.mb_name = mb_name;
+		this.mb_email = mb_email;
+		this.mb_phone = mb_phone;
+		this.mb_able = mb_able;
+		this.mb_score = mb_score;
+	}
+	
+
 
 	//매개변수 생성자
 	public MemberDto(int mb_no, String mb_id, String mb_pw, String mb_name, String mb_email, String mb_phone,
-			String mb_addr, String mb_able, String mb_role, int bank_no, int bank_id, String bank_account,
-			int likept_memberNo, int likept_productNo) {
+			String mb_addr, String mb_addr_latitude, String mb_addr_longitude, String mb_able, String mb_role,
+			int bank_no, int bank_id, String bank_account, int likept_memberNo, int likept_productNo) {
 		super();
 		this.mb_no = mb_no;
 		this.mb_id = mb_id;
@@ -41,6 +64,8 @@ public class MemberDto {
 		this.mb_email = mb_email;
 		this.mb_phone = mb_phone;
 		this.mb_addr = mb_addr;
+		this.mb_addr_latitude = mb_addr_latitude;
+		this.mb_addr_longitude = mb_addr_longitude;
 		this.mb_able = mb_able;
 		this.mb_role = mb_role;
 		this.bank_no = bank_no;
@@ -49,8 +74,17 @@ public class MemberDto {
 		this.likept_memberNo = likept_memberNo;
 		this.likept_productNo = likept_productNo;
 	}
+	
+	
 
 	
+	
+
+
+
+
+
+
 	//getter & setter
 	public int getMb_no() {
 		return mb_no;
@@ -108,6 +142,22 @@ public class MemberDto {
 		this.mb_addr = mb_addr;
 	}
 
+	public String getMb_addr_latitude() {
+		return mb_addr_latitude;
+	}
+
+	public void setMb_addr_latitude(String mb_addr_latitude) {
+		this.mb_addr_latitude = mb_addr_latitude;
+	}
+
+	public String getMb_addr_longitude() {
+		return mb_addr_longitude;
+	}
+
+	public void setMb_addr_longitude(String mb_addr_longitude) {
+		this.mb_addr_longitude = mb_addr_longitude;
+	}
+
 	public String getMb_able() {
 		return mb_able;
 	}
@@ -162,6 +212,38 @@ public class MemberDto {
 
 	public void setLikept_productNo(int likept_productNo) {
 		this.likept_productNo = likept_productNo;
+	}
+	
+	public int getMb_score() {
+		return mb_score;
+	}
+
+	public void setMb_score(int mb_score) {
+		this.mb_score = mb_score;
+	}
+
+	public String getMb_grade() {
+		return mb_grade;
+	}
+
+	public void setMb_grade(String mb_grade) {
+		this.mb_grade = mb_grade;
+	}
+
+	public String getBank_name() {
+		return bank_name;
+	}
+
+	public void setBank_name(String bank_name) {
+		this.bank_name = bank_name;
+	}
+
+	public String getBank_memname() {
+		return bank_memname;
+	}
+
+	public void setBank_memname(String bank_memname) {
+		this.bank_memname = bank_memname;
 	}
 	
 	

@@ -118,3 +118,41 @@ hr{
     }
 
 }
+
+/* notice detail */
+.content_date{
+    font-size: 12px;
+}
+
+.content_title{
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.content_content{
+    font-size: 14px;
+    background-color: whitesmoke;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.submit_btn{
+	width: 100px;
+	height: 30px;
+	display: inline-block;
+	border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.3);
+	cursor: pointer;
+}
+
+.boardsubmit{
+	margin-top: 20px;
+	text-align: center;
+	
+}
+
+table, th, td{
+    border: 1px solid #bcbcbc;
+    background-color: whitesmoke;
+}
+

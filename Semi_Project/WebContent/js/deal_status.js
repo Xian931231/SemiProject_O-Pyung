@@ -92,24 +92,38 @@ $('.oper-btn').on('click',function(){
 
 
 
-$('.td2:eq(3)').on("DOMSubtreeModified",function(){
+$(function(){
     var str = $('.td2:eq(3)').text();
-    switch (str) {
-        case "검수시작":
-            $('.status-img img').attr("src","status/2.png");
-            
+	switch (str) {
+		case "거래신청":
+		    $('.status-img img').attr("src","./img/deal_status/거래신청.png");
+			break;
+        case "예약금결제":
+            $('.status-img img').attr("src","./img/deal_status/예약금결제.png");
             break;
-        case "검수완료":
-            $('.status-img img').attr("src","status/3.png");
+        case "검수신청":
+            $('.status-img img').attr("src","./img/deal_status/검수신청.png");
             break;
-        case "배송시작":
-            $('.status-img img').attr("src","status/4.png");
+        case "판매자 발송준비":
+            $('.status-img img').attr("src","./img/deal_status/판매자발송준비.png");
+            break;
+        case "검수중":
+            $('.status-img img').attr("src","./img/deal_status/검수중.png");
+            break;
+        case "구매자 발송준비":
+            $('.status-img img').attr("src","./img/deal_status/구매자발송준비.png");
+            break;   
+        case "결제완료":
+            $('.status-img img').attr("src","./img/deal_status/결제완료.png");
             break;
         case "배송완료":
-            $('.status-img img').attr("src","status/5.png");
-            break;        
+            $('.status-img img').attr("src","./img/deal_status/배송완료.png");
+            break;   
+        case "거래확정":
+            $('.status-img img').attr("src","./img/deal_status/거래확정.png");
+            break;              
         default:
-            $('.status-img img').attr("src","status/1.png");
+            $('.status-img img').attr("src","./img/deal_status/거래없음.png");
             break;
     }
 });

@@ -5,7 +5,7 @@
 <!-- 인코딩 처리 -->    
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <title>main페이지</title>
     <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="./js/product.js"></script>
 </head>
 <body>
 	<!-- header 추가 -->
@@ -78,131 +79,52 @@
                         </div>
                     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <!--프로그래밍 제품-->
+				<c:forEach items="${list }" var="list">
+					<!-- 첫 제품-->
                     <div class="product_list list_frist">
                         <div class="product_item">
-                            <a href="#" class="item_inner">
+                            <a href="product.do?command=detail&ptno=${list.product_no }" class="item_inner">
                                 <div class="product">
-                                    <img src="" alt="" class="product_img">
+                                    <img src="upload/${list.ptimg_name }${list.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
-                                        <p>브랜드</p>
+                                        <p>${list.product_brand }</p>
                                     </div>
-                                    <p class="name">TEST</p>
+                                    <pre class="name">${list.product_title }</pre>
                                 </div>
                                 <div class="price">
                                     <div class="amount">
                                         <em class="num">
-                                            200,000
+                                            ${list.product_price }
                                         </em>
                                         <span class="won">원</span>
                                     </div>
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
+                            <a href="#" class="btn_wish" id="1ptno${list.product_no }" onclick="likeProduct('${id}','${list.product_no }');">
+                               
                             </a>
                         </div>
                     </div>
-
-                    <!--프로그래밍 제품-->
-                    <div class="product_list list_frist">
-                        <div class="product_item">
-                            <a href="#" class="item_inner">
-                                <div class="product">
-                                    <img src="" alt="" class="product_img">
-                                </div>
-                                <div class="info_box">
-                                    <div class="brand">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <p class="name">TEST</p>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <em class="num">
-                                            200,000
-                                        </em>
-                                        <span class="won">원</span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--프로그래밍 제품-->
-                    <div class="product_list list_frist">
-                        <div class="product_item">
-                            <a href="#" class="item_inner">
-                                <div class="product">
-                                    <img src="" alt="" class="product_img">
-                                </div>
-                                <div class="info_box">
-                                    <div class="brand">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <p class="name">TEST</p>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <em class="num">
-                                            200,000
-                                        </em>
-                                        <span class="won">원</span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        </div>
-                    </div>
+                    <script type="text/javascript">
+					       	var id = '${id}';
+					       	var listNo = 1;
+					       	var ptno = '${list.product_no}'
+					       	var ptid = '${list.product_id}'
+					       	if(id == null || id == "" || ptid == id){
+					       	}else{
+					       		isLikeList(id,listNo,ptno);
+					       	}
+					       		
+					</script>
+				</c:forEach>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    
 
                 </div>
 
@@ -239,137 +161,46 @@
 
                 <!-- 제품박스 -->
                 <div class="product_list_wrap">
+                    <c:forEach items="${list2 }" var="list2">
+					<!-- 첫 제품-->
                     <div class="product_list list_frist">
                         <div class="product_item">
-                            <a href="#" class="item_inner">
+                            <a href="product.do?command=detail&ptno=${list2.product_no }" class="item_inner">
                                 <div class="product">
-                                    <img src="" alt="" class="product_img">
+                                    <img src="upload/${list2.ptimg_name }${list2.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
-                                        <p>브랜드</p>
+                                        <p>${list2.product_brand }</p>
                                     </div>
-                                    <p class="name">TEST</p>
+                                    <pre class="name">${list2.product_title }</pre>
                                 </div>
                                 <div class="price">
                                     <div class="amount">
                                         <em class="num">
-                                            100,000
+                                            ${list2.product_price }
                                         </em>
                                         <span class="won">원</span>
                                     </div>
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
+                            <a href="#" class="btn_wish" id="2ptno${list2.product_no }" onclick="likeProduct('${id}','${list2.product_no }');">
                             </a>
                         </div>
                     </div>
-
-                    <!-- 첫 제품-->
-                    <div class="product_list list_frist">
-                        <div class="product_item">
-                            <a href="#" class="item_inner">
-                                <div class="product">
-                                    <img src="./img/main/1.jpg" alt="" class="product_img">
-                                </div>
-                                <div class="info_box">
-                                    <div class="brand">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <p class="name">TEST</p>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <em class="num">
-                                            100,000
-                                        </em>
-                                        <span class="won">원</span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- 첫 제품-->
-                    <div class="product_list list_frist">
-                        <div class="product_item">
-                            <a href="#" class="item_inner">
-                                <div class="product">
-                                    <img src="./img/main/1.jpg" alt="" class="product_img">
-                                </div>
-                                <div class="info_box">
-                                    <div class="brand">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <p class="name">TEST</p>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <em class="num">
-                                            100,000
-                                        </em>
-                                        <span class="won">원</span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-
-                    <!--프로그래밍 제품-->
-                    <div class="product_list list_frist">
-                        <div class="product_item">
-                            <a href="#" class="item_inner">
-                                <div class="product">
-                                    <img src="" alt="" class="product_img">
-                                </div>
-                                <div class="info_box">
-                                    <div class="brand">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <p class="name">TEST</p>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <em class="num">
-                                            200,000
-                                        </em>
-                                        <span class="won">원</span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <script type="text/javascript">
+					       	var id = '${id}';
+					       	var listNo = 2;
+					       	var ptno = '${list2.product_no}'
+					       	var ptid = '${list2.product_id}'
+					       	if(id == null || id == "" || ptid == id){
+					       	}else{
+					       		isLikeList(id,listNo,ptno);
+					       	}
+					       		
+					</script>
+				</c:forEach>
 
 
 
@@ -416,33 +247,46 @@
 
                 <!-- 제품박스 -->
                 <div class="product_list_wrap">
+                    <c:forEach items="${list3 }" var="list3">
+					<!-- 첫 제품-->
                     <div class="product_list list_frist">
                         <div class="product_item">
-                            <a href="#" class="item_inner">
+                            <a href="product.do?command=detail&ptno=${list3.product_no }" class="item_inner">
                                 <div class="product">
-                                    <img src="" alt="" class="product_img">
+                                    <img src="upload/${list3.ptimg_name }${list3.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
-                                        <p>브랜드</p>
+                                        <p>${list3.product_brand }</p>
                                     </div>
-                                    <p class="name">TEST</p>
+                                    <pre class="name">${list3.product_title }</pre>
                                 </div>
                                 <div class="price">
                                     <div class="amount">
                                         <em class="num">
-                                            100,000
+                                            ${list3.product_price }
                                         </em>
                                         <span class="won">원</span>
                                     </div>
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
+                            <a href="#" class="btn_wish" id="3ptno${list3.product_no }" onclick="likeProduct('${id}','${list3.product_no }');">
                             </a>
                         </div>
                     </div>
+                    <script type="text/javascript">
+					       	var id = '${id}';
+					       	var listNo = 3;
+					       	var ptno = '${list3.product_no}'
+					       	var ptid = '${list3.product_id}'
+					       	if(id == null || id == "" || ptid == id){
+					       	}else{
+					       		isLikeList(id,listNo,ptno);
+					       	}
+					       		
+					</script>
+					</c:forEach>
                 </div>
 
                 <!-- 더보기 -->
@@ -479,33 +323,46 @@
 
                 <!-- 제품박스 -->
                 <div class="product_list_wrap">
+                    <c:forEach items="${list4 }" var="list4">
+					<!-- 첫 제품-->
                     <div class="product_list list_frist">
                         <div class="product_item">
-                            <a href="#" class="item_inner">
+                            <a href="product.do?command=detail&ptno=${list4.product_no }" class="item_inner">
                                 <div class="product">
-                                    <img src="" alt="" class="product_img">
+                                    <img src="upload/${list4.ptimg_name }${list4.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
-                                        <p>브랜드</p>
+                                        <p>${list4.product_brand }</p>
                                     </div>
-                                    <p class="name">TEST</p>
+                                    <pre class="name">${list4.product_title }</pre>
                                 </div>
                                 <div class="price">
                                     <div class="amount">
                                         <em class="num">
-                                            100,000
+                                            ${list4.product_price }
                                         </em>
                                         <span class="won">원</span>
                                     </div>
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
+                            <a href="#" class="btn_wish" id="4ptno${list4.product_no }" onclick="likeProduct('${id}','${list4.product_no }');">
                             </a>
                         </div>
                     </div>
+                    <script type="text/javascript">
+					       	var id = '${id}';
+					       	var listNo = 4;
+					       	var ptno = '${list4.product_no}'
+					       	var ptid = '${list4.product_id}'
+					       	if(id == null || id == "" || ptid == id){
+					       	}else{
+					       		isLikeList(id,listNo,ptno);
+					       	}
+					       		
+					</script>
+					</c:forEach>
                 </div>
 
                 <!-- 더보기 -->
@@ -543,33 +400,46 @@
 
                 <!-- 제품박스 -->
                 <div class="product_list_wrap">
+                    <c:forEach items="${list5 }" var="list5">
+					<!-- 첫 제품-->
                     <div class="product_list list_frist">
                         <div class="product_item">
-                            <a href="#" class="item_inner">
+                            <a href="product.do?command=detail&ptno=${list5.product_no }" class="item_inner">
                                 <div class="product">
-                                    <img src="" alt="" class="product_img">
+                                    <img src="upload/${list5.ptimg_name }${list5.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
                                     <div class="brand">
-                                        <p>브랜드</p>
+                                        <p>${list5.product_brand }</p>
                                     </div>
-                                    <p class="name">TEST</p>
+                                    <pre class="name">${list5.product_title }</pre>
                                 </div>
                                 <div class="price">
                                     <div class="amount">
                                         <em class="num">
-                                            100,000
+                                            ${list5.product_price }
                                         </em>
                                         <span class="won">원</span>
                                     </div>
                                     <div class="desc">즉시 구매가</div>
                                 </div>
                             </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
+                            <a href="#" class="btn_wish" id="5ptno${list5.product_no }" onclick="likeProduct('${id}','${list5.product_no }');">
                             </a>
                         </div>
                     </div>
+                    <script type="text/javascript">
+					       	var id = '${id}';
+					       	var listNo = 5;
+					       	var ptno = '${list5.product_no}'
+					       	var ptid = '${list5.product_id}'
+					       	if(id == null || id == "" || ptid == id){
+					       	}else{
+					       		isLikeList(id,listNo,ptno);
+					       	}
+					       		
+					</script>
+					</c:forEach>
                 </div>
 
                 <!-- 더보기 -->

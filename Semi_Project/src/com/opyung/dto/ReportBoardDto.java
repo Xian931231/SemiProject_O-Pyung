@@ -18,6 +18,18 @@ public class ReportBoardDto {
 		super();
 	}
 	
+	//admin 신고 처리 매개변수 생성자
+	
+	public ReportBoardDto(int report_no, String report_tid, String report_id, String report_content,
+			Date report_sdate) {
+		super();
+		this.report_no = report_no;
+		this.report_tid = report_tid;
+		this.report_id = report_id;
+		this.report_content = report_content;
+		this.report_sdate = report_sdate;
+	}
+
 	//매개변수 생성자
 	public ReportBoardDto(int report_no, String report_tid, String report_id, String report_title,
 			String report_content, Date report_sdate, Date report_edate) {

@@ -27,3 +27,8 @@ $("input:text[numberOnly]").on("keyup", function() {
     $(this).val($(this).val().replace(/[^0-9]/g,""));
 });
 
+
+
+window.onload = function(){
+	console.log(content+"1");	
+}
