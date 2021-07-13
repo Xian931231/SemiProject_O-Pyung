@@ -57,7 +57,7 @@
 <body>
     <div id="mypage">
         <nav id="list">
-            <a href="memberinfo.do?command=mypage&id=ADMIN" id="list_title"><h2>MY PAGE</h2></a>
+            <a href="memberinfo.do?command=mypage&id=${id }" id="list_title"><h2>MY PAGE</h2></a>
             <div id="shop_list">
                 <strong class="info">거래 정보</strong>
                 <ul>
@@ -123,7 +123,7 @@
 						$("#delete_btn").hide();
 					}else{
 						$.ajax({
-							url:"memberinfo.do?command=bankSelect&id=ADMIN",
+							url:"memberinfo.do?command=bankSelect&id=${id}",
 							type:"post",
 							data:{
 								bankno : $("select[name=account]").val()
@@ -149,7 +149,7 @@
 			<hr>
 			
             <br>
-			<form action="memberinfo.do?command=bankInsert&id=ADMIN" method="post">
+			<form action="memberinfo.do?command=bankInsert&id=${id }" method="post">
             <div id="mypage_account_bank">
             <input type="hidden" name="bankno" id="bankno"value="">
                 <p>은행명</p>
@@ -232,7 +232,7 @@
             <script type="text/javascript">
 				$("#delete_btn").click(function(){
 					$.ajax({
-						url:"memberinfo.do?command=bankDelete&id=ADMIN",
+						url:"memberinfo.do?command=bankDelete&id=${id}",
 						type:"post",
 						data:{
 							bankno : $("#bankno").val()
