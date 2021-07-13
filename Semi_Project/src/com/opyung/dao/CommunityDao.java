@@ -59,51 +59,6 @@ public class CommunityDao extends JDBCTemplate{
 		return res;
 	}
 	
-	//인기순
-
-	public List<CommuBoardDto> selectlikeAll(Connection con) {
-		PreparedStatement pstm = null;
-		ResultSet rs = null;
-		List<CommuBoardDto> res = new ArrayList<CommuBoardDto>();
-		
-		String sql = "SELECT COMMUBOARD.*,CMBIMGBOARD.*,(SELECT COUNT(*) FROM CMBCOMMENTBOARD WHERE CCOM_CMBNO=CMB_NO) AS CCOM_CNT FROM COMMUBOARD,CMBIMGBOARD  WHERE CMB_NO = CIMG_CMBNO ORDER BY CMB_NO DESC";
-		
-		try {
-			pstm = con.prepareStatement(sql);
-			System.out.println("03" + sql);
-			
-			rs = pstm.executeQuery();
-			System.out.println("04");
-
-			while(rs.next()) {
-				CommuBoardDto dto = new CommuBoardDto();
-				dto.setCmb_no(rs.getInt(1));
-				dto.setCmb_content(rs.getString(2));
-				dto.setCmb_id(rs.getString(3));
-				dto.setCmb_date(rs.getDate(4));
-				dto.setCmb_like(rs.getInt(5));
-				dto.setCmb_cnt(rs.getInt(6));
-				dto.setCimg_no(rs.getInt(7));
-				dto.setCimg_cmbNo(rs.getInt(8));
-				dto.setCimg_src(rs.getString(9));
-				dto.setCimg_name(rs.getString(10));
-				dto.setCimg_type(rs.getString(11));
-				dto.setCimg_size(rs.getInt(12));
-				dto.setCcom_cnt(rs.getInt(13));
-				res.add(dto);
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstm);
-		}
-		
-		return res;
-	}
-	
 	
 	//디테일 화면
 	public CommuBoardDto selectOne(Connection con,int cmb_no) {

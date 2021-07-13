@@ -96,12 +96,7 @@
                                         <div class="card-date">${commudto.cmb_date }</div>
                                     </div>    
                                 </a>
-                                <c:if test="${id != NULL }">
-	                                <!--신고 버튼-->
-	                                <div class="card-user-report" data-bs-toggle="modal" data-bs-target="#report-madal" data-bs-whatever="${commudto.cmb_id }">
-	                                	<i class="fas fa-paper-plane fa-2x"></i>
-	                                </div>
-                                </c:if>
+                                
                             </div>
                             <!--본문 사진-->
                             <img src="upload/${commudto.cimg_name}${commudto.cimg_type}" class="card-img-top" alt="...">
@@ -110,14 +105,12 @@
                                 <p class="card-text">${commudto.cmb_content }</p>
                                 <!--하단 아이콘 세션-->
                                 <section class="card-icons">
-                                    <!--좋아요 아이콘-->
-                                    <a href="#" class="card-footer-heart">
-                                        <div class="card-icon-btn">
-                                            <span>
-                                                <i class="far fa-heart fa-2x" ></i>
-                                            </span>
-                                        </div>
-                                    </a>
+                                    <c:if test="${id != NULL }">
+	                                <!--신고 버튼-->
+	                                <div class="card-user-report" data-bs-toggle="modal" data-bs-target="#report-madal" data-bs-whatever="${commudto.cmb_id }" style="margin-right: 8px;">
+	                                	<i class="fas fa-paper-plane fa-2x"></i>
+	                                </div>
+                                	</c:if>
                                     <!--댓글 아이콘-->
                                     <a href="#" class="card-footer-comment" id="commentlibtn">
                                         <div class="card-icon-btn">
@@ -126,11 +119,6 @@
                                             </span>
                                         </div>
                                     </a>        
-                                </section> 
-                                <!--좋아요 수 세션-->
-                                <section class="card-like-cnt">
-                                   	좋아요 <span class="like-cnt">${commudto.cmb_like }</span>개
-                                </section>
 
                             </div>
                             <!-- 댓글 리스트 -->

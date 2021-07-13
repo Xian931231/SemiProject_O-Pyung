@@ -24,15 +24,6 @@ public class CommunityBiz extends JDBCTemplate{
 		return list;
 	}
 
-	//인기순
-	public List<CommuBoardDto> selectlikeAll() {
-		Connection con = getConnection();
-		List<CommuBoardDto> list = dao.selectlikeAll(con);
-		
-		
-		close(con);
-		return list;
-	}
 	
 	
 	//디테일 화면
