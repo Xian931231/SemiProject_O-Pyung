@@ -114,6 +114,13 @@
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
 	
+	<!-- 로그인 유무 확인 -->
+	<%
+		if(id == null || id == "" ){
+			response.sendRedirect("login.jsp");
+		}
+	%>
+	
 	<!-- 정보 -->
     <form action="product.do?command=insert" method="post" enctype="multipart/form-data" id="check">
     <input type="hidden" name="id" value="${id }">
