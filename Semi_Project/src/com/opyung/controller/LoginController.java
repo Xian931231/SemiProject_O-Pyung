@@ -43,16 +43,25 @@ public class LoginController extends HttpServlet {
 			
 			MemberDto memdto = biz.login(id,pw);
 			
+			System.out.println(memdto.getMb_able());
+			
+			
 			if(memdto.getMb_id() != null) {
-				session.setAttribute("id", memdto.getMb_id());
-				session.setAttribute("name", memdto.getMb_name());
-				session.setAttribute("role", memdto.getMb_role());
-				session.setMaxInactiveInterval(60*60);
-						
-				response.sendRedirect("main.do?command=main");
+				
+				if(memdto.getMb_able().equals("Y")){
+					session.setAttribute("id", memdto.getMb_id());
+					session.setAttribute("name", memdto.getMb_name());
+					session.setAttribute("role", memdto.getMb_role());
+					session.setMaxInactiveInterval(60*60);
+					
+					response.sendRedirect("main.do?command=main");
+				}else {
+					response.sendRedirect("login_block.jsp");
+				}
 			}else {
-				response.sendRedirect("main.do?command=login");
+				response.sendRedirect("login_error.jsp");
 			}
+			
 				
 		//로그아웃 기능
 		}else if(command.equals("logout")) {

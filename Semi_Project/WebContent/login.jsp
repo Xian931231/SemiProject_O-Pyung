@@ -44,11 +44,14 @@
 						O-PYUNG
 					</span>
 					
+					<!-- id -->
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
 						<input class="input100" type="text" name="id">
 						<span class="focus-input100" data-placeholder="Id"></span>
 					</div>
 
+
+					<!-- pw -->
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
