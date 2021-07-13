@@ -44,11 +44,14 @@
 						O-PYUNG
 					</span>
 					
+					<!-- id -->
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
 						<input class="input100" type="text" name="id">
 						<span class="focus-input100" data-placeholder="Id"></span>
 					</div>
 
+
+					<!-- pw -->
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
@@ -60,7 +63,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button class="login100-form-btn" type="submit">
 								Login
 							</button>
 						</div>
@@ -73,7 +76,7 @@
 							<div id="naver_id_login" class="NVlogin-form-btn">NAVER LOGIN</div>
 							
 							<script type="text/javascript">
-								var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "http://localhost:8383/Semi_Project/main.jsp");
+								var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "login.do?command=login&id=");
 								var state = naver_id_login.getUniqState();
 								naver_id_login.setDomain(".service.com");
 								naver_id_login.setState(state);
@@ -85,10 +88,10 @@
 						
 						
 						<li class="look_list">
-							<a href="http://localhost:8383/Semi_Project/find_id.jsp" class="look_link">아이디 찾기</a>
+							<a href="login.do?command=find_id_form" class="look_link">아이디 찾기</a>
 						</li>
 						<li class="look_list">
-							<a href="http://localhost:8383/Semi_Project/find_pw.jsp" class="look_link">비밀번호 찾기</a>
+							<a href="login.do?command=find_pw_form" class="look_link">비밀번호 찾기</a>
 						</li>
 						
 					</ul>
@@ -163,6 +166,7 @@
 </script>
 <!-- //네이버아디디로로그인 Callback페이지 처리 Script -->
 
-	
+	     <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %>  
 </body>
 </html>

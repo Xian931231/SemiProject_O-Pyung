@@ -31,7 +31,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calender');
-
+        
         var calendar = new FullCalendar.Calendar(calendarEl, {
           headerToolbar: {
             left: 'prev,next',
@@ -111,10 +111,10 @@
             <h3>검수 내역</h3>
             <div class="checker">
                 <span>검수자 :</span>
-                <span>누구</span>
+                <span>${chkdto.check_id }</span>
             </div>
             <div class="check">
-
+				${chkdto.check_content }
             </div>
             
         

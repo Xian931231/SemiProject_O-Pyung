@@ -10,7 +10,7 @@
 <%
     	response.setContentType("text/html; charset=UTF-8");
     %>    
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,14 +28,23 @@
     
 </head>
 <body>
-<%
-	CommuBoardDto commudto = (CommuBoardDto)request.getAttribute("commudto");
-%>
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
-	
+	<!-- 로그인 유무 확인 -->
+	<%
+		if(id == null || id == ""){
+			response.sendRedirect("login.jsp");
+		}else{
+		//작성자 확인
+		%>
+			<c:if test="${commudto.cmb_id != id }">
+			<% response.sendRedirect("index.jsp"); %>
+			</c:if>
+		<%
+		}
+	%>
     <article class="container">
-        <form action="community.do?command=update&cmb_no=<%=commudto.getCmb_no() %>" method="post" enctype="multipart/form-data">>
+        <form action="community.do?command=update&cmb_no=${commudto.cmb_no}" method="post" enctype="multipart/form-data">>
             <div class="card-detail">
                 <!-- 여기부터 쭉 반복문 코딩 -->
                 <div class="card-post" >
@@ -51,19 +60,19 @@
                                     <!--작성자 정보-->
                                     <div class="card-user-div">
                                         <!--작성자 이름-->
-                                        <div class="card-user-name"><%=commudto.getCmb_id() %></div>
+                                        <div class="card-user-name">${commudto.cmb_id}</div>
                                     </div> 
                                 </a>
                             </div>
                             <div>
                                 <!--본문 사진 src에 이미지 주소/이름.확장자 전송-->
-                                <img class="modal-img" src="upload/<%=commudto.getCimg_name() %><%=commudto.getCimg_type() %>" alt="image" id="imgPreview">
+                                <img class="modal-img" src="upload/${commudto.cimg_name}${commudto.cimg_type}" alt="image" id="imgPreview">
                             </div>
                             <!--본문 내용-->
                             
                             <div class="card-body">    
                                 
-                                <textarea id="conmentarea" class="card-write-text" name="content"><%=commudto.getCmb_content() %></textarea>
+                                <textarea id="conmentarea" class="card-write-text" name="content">${commudto.cmb_content}</textarea>
                             </div>
                             <div class="card-footer">
                                 <input type="file" accept="image/*" name="file" id="imageupload" onchange="getImage(this.value);">
@@ -75,7 +84,7 @@
                                 </span>                          
                             </label>
                             <div class="opration">                            
-                                <button type="button" class="btn btn-primary" onclick="location.href='community.do?command=detail&cmb_no=<%=commudto.getCmb_no()%>'">취소하기</button>
+                                <button type="button" class="btn btn-primary" onclick="location.href='community.do?command=detail&cmb_no=${commudto.cmb_no}'">취소하기</button>
                                 <input type="submit" class="btn btn-primary" value="수정하기">
                             </div>
 
@@ -88,5 +97,8 @@
                 
         </form>
     </article>
+    
+         <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %>  
 </body>
 </html>

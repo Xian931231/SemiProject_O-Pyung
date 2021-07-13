@@ -53,6 +53,13 @@
 	<%@ include file="header/header.jsp" %> 
 
 <body>
+	<!-- 로그인 유무 확인 -->
+	<%
+		if(id == null || id == ""){
+			response.sendRedirect("login.jsp");
+		}
+	%>
+	<!-- 마이페이지 기능 -->
     <div id="sell_history">
         <nav id="list">
             <a href="memberinfo.do?command=mypage&id=${id }" id="list_title"><h2>MY PAGE</h2></a>
@@ -229,4 +236,10 @@
         </div>
     </div>
 </body>
+
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br>
+	     <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %> 
 </html>
