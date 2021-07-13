@@ -8,30 +8,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>오늘도 평화로운</title>
 
-	<link rel="stylesheet" href="./css/find_id.css"/>
-
+	<link rel="stylesheet" href="./css/found.css"/>
+	
+	<link rel="icon" type="image/png" href="./img/icons/111.ico"/>
 </head>
 <body>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="login.do?command=login" method="post">
 					<span class="login100-form-title p-b-26">
 						사용자의 비밀번호는 ${find_pw } 입니다.
- 					</span>
-					
+					</span>
+				
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn">
-								<a class="login100-form-btn" href="http://localhost:8383/Semi_Project/login.jsp">
-									Re-Login
-								</a>
-							</div>
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn">
+								Re-Login
+							</button>
 						</div>
 					</div>
-					
+	
 				</form>
 			</div>
 		</div>
