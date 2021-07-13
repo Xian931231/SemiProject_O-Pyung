@@ -29,6 +29,10 @@
 	<link rel="stylesheet" type="text/css" href="./css/login/util.css">
 	<link rel="stylesheet" type="text/css" href="./css/login/main.css">
 <!--===============================================================================================-->
+	
+<!-- NAVER LOGIN===================================================================================-->
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 	
@@ -64,19 +68,26 @@
 					<div class="container-NVlogin-form-btn">
 						<div class="wrap-NVlogin-form-btn">
 							<div class="NVlogin-form-bgbtn"></div>
-							<button class="NVlogin-form-btn">
-								NAVER Login
-							</button>
+							
+							<div id="naver_id_login" class="NVlogin-form-btn">NAVER LOGIN</div>
+							
+							<script type="text/javascript">
+								var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "http://localhost:8383/Semi_Project/main.jsp");
+								var state = naver_id_login.getUniqState();
+								naver_id_login.setDomain(".service.com");
+								naver_id_login.setState(state);
+								naver_id_login.init_naver_id_login();
+							</script>
 						</div>
 					</div>
 					<ul class="Test">
 						
 						
 						<li class="look_list">
-							<a href="" class="look_link">이메일 찾기</a>
+							<a href="http://localhost:8383/Semi_Project/find_id.jsp" class="look_link">아이디 찾기</a>
 						</li>
 						<li class="look_list">
-							<a href="" class="look_link">비밀번호 찾기</a>
+							<a href="http://localhost:8383/Semi_Project/find_pw.jsp" class="look_link">비밀번호 찾기</a>
 						</li>
 						
 					</ul>
@@ -96,7 +107,7 @@
 		</div>
 	</div>
 	
-
+	
 	<div id="dropDownSelect1"></div>
 	
 <!--===============================================================================================-->
@@ -116,5 +127,41 @@
 <!--===============================================================================================-->
 	<script src="./js/login.js"></script>
 
+<!-- NAVER LOGIN CALLBACK==========================================================================-->
+<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+<div id="naver_id_login"></div>
+<!-- //네이버아이디로로그인 버튼 노출 영역 -->
+
+
+<!-- 네이버아디디로로그인 초기화 Script -->
+<script type="text/javascript">
+	var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "http://localhost:8383/Semi_Project/main.jsp");
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("white", 2,40);
+	naver_id_login.setDomain(".service.com");
+	naver_id_login.setState(state);
+	naver_id_login.init_naver_id_login();
+</script>
+<!-- //네이버아디디로로그인 초기화 Script -->
+
+
+<!-- 네이버아디디로로그인 Callback페이지 처리 Script -->
+<script type="text/javascript">
+	// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+	function naverSignInCallback() {
+		// naver_id_login.getProfileData('프로필항목명');
+		// 프로필 항목은 개발가이드를 참고하시기 바랍니다.
+		alert(naver_id_login.getProfileData('email'));
+		alert(naver_id_login.getProfileData('nickname'));
+		alert(naver_id_login.getProfileData('age'));
+	}
+
+
+	// 네이버 사용자 프로필 조회
+	naver_id_login.get_naver_userprofile("naverSignInCallback()");
+</script>
+<!-- //네이버아디디로로그인 Callback페이지 처리 Script -->
+
+	
 </body>
 </html>
