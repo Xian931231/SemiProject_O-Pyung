@@ -172,6 +172,10 @@ public class DealController extends HttpServlet {
 			MemberDto biddto = new MemberDto();
 			biddto = memBiz.selectOne(bid);
 			
+			//검수 내용 출력
+			//검수내역 조회
+			CheckBoardDto chkdto = new CheckBoardDto();
+			chkdto = biz.selectChk(dealno);
 			//판매금액
 			int ptPrice = ptdto.getProduct_price();
 			System.out.println("상품금액: " + ptPrice);
@@ -184,6 +188,7 @@ public class DealController extends HttpServlet {
 			//남은 결제금액
 			int restPrice = (ptPrice - dealPrice);
 			
+			request.setAttribute("chkdto", chkdto);
 			request.setAttribute("dealdto", dealdto);
 			request.setAttribute("ptdto", ptdto);
 			request.setAttribute("siddto", siddto);

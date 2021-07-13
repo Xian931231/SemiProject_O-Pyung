@@ -60,8 +60,12 @@ public class LoginController extends HttpServlet {
 			session.invalidate();
 			response.sendRedirect("main.do?command=main");
 
-		
-      }else if(command.equals("find_id")) {
+		//아이디 찾기
+		}else if(command.equals("find_id_form")) {
+			
+			response.sendRedirect("find_id.jsp");
+			
+		}else if(command.equals("find_id")) {
 			  String name = request.getParameter("name");
 			  String phone = request.getParameter("phone");
 			
@@ -71,16 +75,21 @@ public class LoginController extends HttpServlet {
 			  System.out.println(name+phone);
 			  System.out.println("id : " +find_id);
 			
-      if(find_id != "") {
+			  if(find_id != "") {
 				System.out.println("조건"+find_id);
 				request.setAttribute("find_id", find_id);
 				dispatch("found_id.jsp", request, response);
-			}else {
+			  }else {
 				System.out.println("없음");
-				response.sendRedirect("find_id.jsp");
-			}
+				response.sendRedirect("find_id_error.jsp");
+			  }
+		
+		//비밀번호 찾기
+		}else if(command.equals("find_pw_form")) {
 			
-		}else if(command.equals("find_pw")) {
+			response.sendRedirect("find_pw.jsp");
+			  
+	  	}else if(command.equals("find_pw")) {
 			String id = request.getParameter("id");
 			String phone = request.getParameter("phone");
 			
@@ -90,13 +99,13 @@ public class LoginController extends HttpServlet {
 			System.out.println(id+phone);
 			System.out.println("pw : " +find_pw);
 			
-      if(find_pw != "") {
+			if(find_pw != "") {
 				System.out.println("조건"+find_pw);
 				request.setAttribute("find_pw", find_pw);
 				dispatch("found_pw.jsp",request, response);
 			}else {
 				System.out.println("없음");
-				response.sendRedirect("find_pw.jsp");
+				response.sendRedirect("find_pw_error.jsp");
 			}
 		
 		//회원가입 페이지로 이동

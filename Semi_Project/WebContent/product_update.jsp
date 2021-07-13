@@ -69,6 +69,19 @@
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
 	
+	<!-- 로그인 유무 확인 -->
+	<%
+		if(id == null || id == ""){
+			response.sendRedirect("login.jsp");
+		}else{
+		//작성자 확인
+		%>
+			<c:if test="${ptdto.product_id != id }">
+			<% response.sendRedirect("index.jsp"); %>
+			</c:if>
+		<%
+		}
+	%>
 	<!-- 정보 -->
     <form action="product.do?command=update&ptno=${ptdto.product_no }" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${id }">
