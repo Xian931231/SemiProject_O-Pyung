@@ -32,7 +32,7 @@
 							</button>
 							<div class="login100-form-bgbtn">
 								<a class="login100-form-btn" href="main.do?command=login">
-									Re-Login
+									
 								</a>
 							</div>
 						</div>
