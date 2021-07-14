@@ -45,11 +45,16 @@ public class DealController extends HttpServlet {
 		//구매요청왔을시 테이블 추가 (DEALBOARD + DEAL_SCHEDULEBOARD + CHECKBOARD)
 		if(command.equals("insert")) {
 			System.out.println("insert 접속");
+			
+			if(request.getParameter("id") == null || request.getParameter("id") == "") {
+				response.sendRedirect("main.do?command=login");
+			}
+
+			
 			int ptno = Integer.parseInt(request.getParameter("ptno"));
 			int dealno = (biz.lastno())+1;
 			String bid = request.getParameter("id");
 			System.out.println(bid+ptno);
-
 			
 			ProductBoardDto ptdto = ptBiz.selectOne(ptno);
 			String sid = ptdto.getProduct_id();
