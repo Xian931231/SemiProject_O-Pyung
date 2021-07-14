@@ -232,9 +232,9 @@
 					 	}
 	                    
 	                    //마커 위에 유저 1,2 표시하기
-	                    var iwContent0 = '<div style="font-size:13px; margin-top:27px; background-color: white;">'+'${biddto.mb_id }'+'</div>', 
+	                    var iwContent0 = '<div style="font-size:15px; margin-top:27px; background-color: white; border: 1px solid black;">'+'${biddto.mb_id }'+'</div>', 
 	                    	iwPosition0 = new kakao.maps.LatLng(user1_latitude, user1_longitude);
-	                    var iwContent1 = '<div style="font-size:13px; margin-top:27px; background-color: white;">'+'${siddto.mb_id }'+'</div>', 
+	                    var iwContent1 = '<div style="font-size:15spx; margin-top:27px; background-color: white; border: 1px solid black;">'+'${siddto.mb_id }'+'</div>', 
 	                    	iwPosition1 = new kakao.maps.LatLng(user2_latitude, user2_longitude);
 	                    
 	                    var customOverlay0 = new kakao.maps.CustomOverlay({
@@ -264,7 +264,7 @@
 						});
 	                    
 						var distance = Math.round(line.getLength()),
-							content = '<div style="background-color:white; font-size:10px">총거리 <span style="font-size:10px;">' + distance + '</span>m</div>';
+							content = '<div style="background-color:white; font-size:10px; border: 1px solid black;">총거리 <span style="font-size:10px; ">' + distance + '</span>m</div>';
 				
 							
 						var middle = new kakao.maps.LatLng(middle_latitude, middle_longitude);
