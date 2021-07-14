@@ -73,11 +73,7 @@
 
            var Chat = {};
 
-   
-
            Chat.socket = null;
-
-   
 
            // connect() 함수 정의
 
@@ -103,13 +99,11 @@
 
                }
 
-   
-
                 // 서버에 접속이 되면 호출되는 콜백함수
 
                Chat.socket.onopen = function () {
 
-                   Console.log('Info: WebSocket connection opened.');
+                   Console.log('Info: 상대방과 자유롭게 얘기하세요!');
 
                    // 채팅입력창에 메시지를 입력하기 위해 키를 누르면 호출되는 콜백함수
 
@@ -251,12 +245,12 @@
             <div class="chat" id="console">
                 채팅내역
             </div>
-            <form action="#">
+            <!--  <form action="#"> -->
                 <div class="chat-write" ></div>
                 
                 <input type="text" class="chat-content" name="" id="chat">
                 <!-- <input class="btn btn-outline-dark" type="submit" value="전송" > -->
-            </form>
+            <!--  </form> -->
             
             <div style="height: 100px">
             	<div style="background-color: white">

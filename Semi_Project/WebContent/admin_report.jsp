@@ -125,8 +125,8 @@
 			                                <input type="hidden" name="report_no" value="${dto.report_no }">
 			                                <input type="hidden" name="report_tid" value="${dto.report_tid }">
 			                                <td><select class="dd" name="report_treat">
-			                                    <option value="no">정상</option>
-			                                    <option value="yes">블랙</option>
+			                                    <option value="no">무시</option>
+			                                    <option value="yes">처리</option>
 			                                    
 			                                </select><input type="submit" value="처리" id="aa"></td>
 			                                </form>

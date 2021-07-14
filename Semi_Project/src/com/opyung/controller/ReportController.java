@@ -37,6 +37,7 @@ public class ReportController extends HttpServlet {
 			String content = request.getParameter("content");
 			String referer = request.getHeader("Referer");
 			
+			
 			ReportBoardDto reportDto = new ReportBoardDto();
 			reportDto.setReport_tid(tid);
 			reportDto.setReport_id(id);

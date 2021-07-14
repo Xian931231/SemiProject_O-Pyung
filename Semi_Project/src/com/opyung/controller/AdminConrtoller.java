@@ -210,7 +210,7 @@ public class AdminConrtoller extends HttpServlet {
 					
 					if(report_treat.equals("yes"))
 						if(res) {
-							jsResponse("날짜처리완료", "admin.do?command=minus&report_tid="+report_tid, response);
+							response.sendRedirect("admin.do?command=minus&report_tid="+report_tid);
 						}else {
 							dispatch("admin.do?command=report", request, response);
 					}else {
@@ -227,7 +227,7 @@ public class AdminConrtoller extends HttpServlet {
 					
 					
 					if(res) {
-						jsResponse("블랙처리되었습니다.", "admin.do?command=report", response);
+						jsResponse("점수 차감 처리되었습니다.", "admin.do?command=report", response);
 					}else {
 						dispatch("admin.do?command=report", request, response);
 					}

@@ -110,7 +110,7 @@ $(function(){
         case "검수중":
             $('.status-img img').attr("src","./img/deal_status/검수중.png");
             break;
-        case "구매자 발송준비":
+        case "구매자발송준비":
             $('.status-img img').attr("src","./img/deal_status/구매자발송준비.png");
             break;   
         case "결제완료":

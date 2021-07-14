@@ -169,7 +169,7 @@
                     		<input type="hidden" name="command" value="dealInfo">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
                     		<tr class="Ts_tr">
-	                        	<td>${dto.deal_no }</td>
+	                        	<td><a href="deal.do?command=admin&dealno=${dto.deal_no }">${dto.deal_no }</a></td>
 	                        	<td>${dto.product_title }</td>
 	                        	<td>${dto.deal_sid }</td>
 	                        	<td>${dto.deal_bid }</td>
@@ -238,7 +238,7 @@
                     		<input type="hidden" name="command" value="dealInfo">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
                     		<tr class="Ts_tr">
-	                        	<td>${dto.deal_no }</td>
+	                        	<td><a href="deal.do?command=admin&dealno=${dto.deal_no }">${dto.deal_no }</a></td>
 	                        	<td>${dto.product_title }</td>
 	                        	<td>${dto.deal_sid }</td>
 	                        	<td>${dto.deal_bid }</td>
@@ -309,7 +309,7 @@
                     		<input type="hidden" name="command" value="dealInfo">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
                     		<tr class="Ts_tr">
-	                        	<td>${dto.deal_no }</td>
+	                        	<td><a href="deal.do?command=admin&dealno=${dto.deal_no }">${dto.deal_no }</a></td>
 	                        	<td>${dto.product_title }</td>
 	                        	<td>${dto.deal_sid }</td>
 	                        	<td>${dto.deal_bid }</td>

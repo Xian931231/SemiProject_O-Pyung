@@ -140,8 +140,8 @@
 			                                <input type="hidden" name="report_no" value="${dto.report_no }">
 			                                <input type="hidden" name="report_tid" value="${dto.report_tid }">
 			                                <td><select class="dd" name="report_treat">
-			                                    <option value="no">정상</option>
-			                                    <option value="yes">블랙</option>
+			                                    <option value="no">무시</option>
+			                                    <option value="yes">처리</option>
 			                                    
 			                                </select><input type="submit" value="처리" id="aa"></td>
 			                                </form>
@@ -224,18 +224,11 @@
                         <c:otherwise>
                      	<c:forEach var="dto" items="${deal }">
 
-                    	<tr class="Ts_tr">
-                    	
-                        <td>${dto.deal_no }</td>
-                        <td>${dto.product_title }</td>
-                        <td>${dto.deal_sid }</td>
-                        <td>${dto.deal_bid }</td>
-           
                     	<form action="admin.do" method="post">
                     		<input type="hidden" name="command" value="dealInfo">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
                     		<tr class="Ts_tr">
-	                        	<td>${dto.deal_no }</td>
+	                        	<td><a href="deal.do?command=admin&dealno=${dto.deal_no }">${dto.deal_no }</a></td>
 	                        	<td>${dto.product_title }</td>
 	                        	<td>${dto.deal_sid }</td>
 	                        	<td>${dto.deal_bid }</td>

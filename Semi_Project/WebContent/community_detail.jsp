@@ -50,7 +50,7 @@
 		    	</select>
 	      	</p>
 	      	<p><b>신고 내용 </b> : 
-	      		<textarea class="form-control" name="content" rows="5" placeholder="해당 게시글의 주소와 신고내용을 적어주세요"></textarea>
+	      		<textarea class="form-control" name="content" rows="5" placeholder="해당 게시글과 신고내용을 적어주세요"></textarea>
 	      	</p>     		
 	      </div>
 	      <div class="modal-footer">
