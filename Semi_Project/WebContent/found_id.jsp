@@ -26,18 +26,15 @@
 					
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
-<<<<<<< HEAD
 							<div class="login100-form-bgbtn"></div>
 							<button class="login100-form-btn">
 								Re-Login
 							</button>
-=======
 							<div class="login100-form-bgbtn">
 								<a class="login100-form-btn" href="main.do?command=login">
 									Re-Login
 								</a>
 							</div>
->>>>>>> 72f6399af6ae900b9f5fa75e034466316007da2a
 						</div>
 					</div>
 					
