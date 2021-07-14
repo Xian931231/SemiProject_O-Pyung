@@ -203,7 +203,7 @@ public class AdminDao {
 			ResultSet rs = null;
 			List<DealBoardDto> res = new ArrayList<DealBoardDto>();
 			
-			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS = '검수신청'  ";
+			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS='검수신청' ";
 			
 			try {
 				pstm = con.prepareStatement(sql);
@@ -236,7 +236,9 @@ public class AdminDao {
 			ResultSet rs = null;
 			List<DealBoardDto> res = new ArrayList<DealBoardDto>();
 			
-			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS='' ";
+			
+			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS = '검수신청' OR S.SCHEDULE_STATUS = '거래신청' OR S.SCHEDULE_STATUS = '예약금결제'   ";
+			
 			
 			try {
 				pstm = con.prepareStatement(sql);
@@ -247,7 +249,8 @@ public class AdminDao {
 				
 				while(rs.next()) {
 					DealBoardDto dto = new DealBoardDto(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6),rs.getDate(7));
-				
+					System.out.println(dto);
+					
 					res.add(dto);
 					
 				}
@@ -327,7 +330,7 @@ public class AdminDao {
 			ResultSet rs = null;
 			List<DealBoardDto> res = new ArrayList<DealBoardDto>();
 			
-			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS ='구매자발송준비' ";
+			String sql = " SELECT D.DEAL_NO,P.PRODUCT_TITLE,D.DEAL_SID,D.DEAL_BID,S.SCHEDULE_STATUS,S.SCHEDULE_SDATE,S.SCHEDULE_EDATE FROM DEALBOARD D INNER JOIN DEALSCHEDULEBOARD S ON(D.DEAL_NO=S.SCHEDULE_DEALNO) INNER JOIN PRODUCTBOARD P ON(D.deal_productno=P.PRODUCT_NO) WHERE S.SCHEDULE_STATUS = '구매자발송준비' OR S.SCHEDULE_STATUS = '결제완료' OR S.SCHEDULE_STATUS = '거래확정' ";
 			
 			try {
 				pstm = con.prepareStatement(sql);
@@ -391,7 +394,7 @@ public class AdminDao {
 			PreparedStatement pstm = null;
 			int res = 0;
 			
-			
+
 			//sql에 date값을 넣으려면 java.sql.Date로 형변환 하여야한다.	
 			
 			java.sql.Date sqlstart =  java.sql.Date.valueOf(start);

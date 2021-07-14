@@ -33,18 +33,40 @@
     
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
    <script type="text/javascript">
-   	window.onload = function() {
-		
-   		today new Date();
-   		
-   		today = today.toISOString().slice(0,10);
-   		
-   		bir = document.getElementById("today");
-   		
-   		bir.value = today;
-   		
-   		
-	}
+   $(function() {
+       $("#selecting").css("display","none");
+       $("#selectgo").css("display","none");
+       $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+       $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+       $("#readyShow").click(function() {
+           $("#selectready").show();
+           $("#selecting").hide();
+           $("#selectgo").hide();
+            
+           $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+           $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+           $("#readyShow").css("background-color","whitesmoke");
+        });
+       $("#ingShow").click(function() {
+          $("#selectready").hide();
+          $("#selectgo").hide();
+          $("#selecting").show();
+           
+          $("#readyShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+          $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+          $("#ingShow").css("background-color","whitesmoke");
+       });
+       $("#goShow").click(function() {
+           $("#selectready").hide();
+           $("#selecting").hide();
+           $("#selectgo").show();
+            
+           $("#readyShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+           $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+           $("#goShow").css("background-color","whitesmoke");
+        });
+       
+   });
     	
     </script>
 </head>
@@ -76,7 +98,7 @@
             <h2>거래상태 </h2>
             <hr>
             <div class="list_tap">
-                <div class="tap_item">
+                <div class="tap_item" id="readyShow">
                     <dl>
                         <dt class="tap_title">
                             검수대기
@@ -86,7 +108,7 @@
                         </dd>
                     </dl>
                 </div>
-                <div class="tap_item">
+                <div class="tap_item" id="ingShow">
                     <dl>
                         <dt class="tap_title">
                             검수중
@@ -96,9 +118,9 @@
                         </dd>
                     </dl>
                 </div>
-                <div class="tap_item">
+                <div class="tap_item" id="goShow">
                     <dl>
-                        <dt class="tap_title">
+                        <dt class="tap_title" >
                             검수완료
                         </dt>
                         <dd class="tap_count">
@@ -141,32 +163,34 @@
                          </c:when>
                          <c:otherwise>
                      	<c:forEach var="dto" items="${deal }">
-                    	<tr class="Ts_tr">
                     	
-                        <td>${dto.deal_no }</td>
-                        <td>${dto.product_title }</td>
-                        <td>${dto.deal_sid }</td>
-                        <td>${dto.deal_bid }</td>
            
-                       <form action="admin.do" method="get" name="dealInfo">
-                    	<input type="hidden" name="command" value="dealInfo">
-                       	<input type="hidden" name="sche_no" value="${dto.deal_no }" >
-                        <td><select name="dealselect">
-                            <option value="ready">판매자 발송준비</option>
-                            <option value="ing">검수중</option>
-                            <option value="go">구매자 발송준비</option>
-                            <option value="finish">배송완료</option>
-                            
-                        	</select></td>
-                       
-                        <td><input id="today"type="date" name="start" ></td>
-                       
-                        <td><input id="today"type="date" name="end" ></td>
-             
-                        <td>admin</td>
-                        <td><input type="submit" value="수정"></td>
-                    	</tr>
-                    	</form>
+                       <form action="admin.do" method="post">
+                    		<input type="hidden" name="command" value="dealInfo">
+                    		<input type="hidden" name="dealno" value="${dto.deal_no }">
+                    		<tr class="Ts_tr">
+	                        	<td>${dto.deal_no }</td>
+	                        	<td>${dto.product_title }</td>
+	                        	<td>${dto.deal_sid }</td>
+	                        	<td>${dto.deal_bid }</td>
+	                        	<td>
+	                        		<select name="dealselect" >
+	                        			<option value="거래신청" <c:if test="${dto.schedule_status=='거래신청'}">selected</c:if>>거래신청</option>
+	                        			<option value="예약금결제" <c:if test="${dto.schedule_status=='예약금결제'}">selected</c:if>>예약금결제</option>
+	                        			<option value="검수신청" <c:if test="${dto.schedule_status=='검수신청'}">selected</c:if>>검수신청</option>
+	                        			<option value="검수중" <c:if test="${dto.schedule_status=='검수중'}">selected</c:if>>검수중</option>
+	                        			<option value="구매자발송준비" <c:if test="${dto.schedule_status=='구매자발송준비'}">selected</c:if>>구매자발송준비</option>
+	                        			<option value="결제완료" <c:if test="${dto.schedule_status=='결제완료'}">selected</c:if>>결제완료</option>
+	                            		<option value="거래확정" <c:if test="${dto.schedule_status=='거래확정'}">selected</c:if>>거래확정</option>
+	                       			 </select>
+	                       		 </td>
+	                          
+		                         <td><input id="today" type="date" name="start" value="${dto.sdate }"></td>
+		                        <td><input id="today" type="date" name="end" value="${dto.edate }"></td>
+		                        <td>admin</td>
+		                        <td><input type="submit" value="수정"></td>
+                    		</tr>
+                		</form>
                     	</c:forEach>
                   </c:otherwise>
                   </c:choose>
@@ -209,32 +233,34 @@
                          </c:when>
                          <c:otherwise>
                      	<c:forEach var="dto" items="${ingAll }">
-                    	<tr class="Ts_tr">
-                    	
-                        <td>${ingAll.deal_no }</td>
-                        <td>${ingAll.product_title }</td>
-                        <td>${ingAll.deal_sid }</td>
-                        <td>${ingAll.deal_bid }</td>
-           
-                       <form action="admin.do" method="get" name="dealInfo">
-                    	<input type="hidden" name="command" value="dealInfo">
-                       	<input type="hidden" name="sche_no" value="${ingAll.deal_no }" >
-                        <td><select name="dealselect">
-                            <option value="ready">판매자 발송준비</option>
-                            <option value="ing">검수중</option>
-                            <option value="go">구매자 발송준비</option>
-                            <option value="finish">배송완료</option>
-                            
-                        	</select></td>
-                       
-                        <td><input id="today"type="date" name="start" ></td>
-                       
-                        <td><input id="today"type="date" name="end" ></td>
              
-                        <td>admin</td>
-                        <td><input type="submit" value="수정"></td>
-                    	</tr>
-                    	</form>
+                       <form action="admin.do" method="get">
+                    		<input type="hidden" name="command" value="dealInfo">
+                    		<input type="hidden" name="dealno" value="${dto.deal_no }">
+                    		<tr class="Ts_tr">
+	                        	<td>${dto.deal_no }</td>
+	                        	<td>${dto.product_title }</td>
+	                        	<td>${dto.deal_sid }</td>
+	                        	<td>${dto.deal_bid }</td>
+	                        	<td>
+	                        		<select name="dealselect" >
+	                        			<option value="거래신청" <c:if test="${dto.schedule_status=='거래신청'}">selected</c:if>>거래신청</option>
+	                        			<option value="예약금결제" <c:if test="${dto.schedule_status=='예약금결제'}">selected</c:if>>예약금결제</option>
+	                        			<option value="검수신청" <c:if test="${dto.schedule_status=='검수신청'}">selected</c:if>>검수신청</option>
+	                        			<option value="검수중" <c:if test="${dto.schedule_status=='검수중'}">selected</c:if>>검수중</option>
+	                        			<option value="구매자발송준비" <c:if test="${dto.schedule_status=='구매자발송준비'}">selected</c:if>>구매자발송준비</option>
+	                        			<option value="결제완료" <c:if test="${dto.schedule_status=='결제완료'}">selected</c:if>>결제완료</option>
+	                            		<option value="거래확정" <c:if test="${dto.schedule_status=='거래확정'}">selected</c:if>>거래확정</option>
+	                       			 </select>
+	                       		 </td>
+	                       		 
+	                       		
+		                        <td><input id="today" type="date" name="start" value="${dto.sdate }"></td>
+		                        <td><input id="today" type="date" name="end" value="${dto.edate }"></td> 
+		                        <td>admin</td>
+		                        <td><input type="submit" value="수정"></td>
+                    		</tr>
+                		</form>
                     	</c:forEach>
                   </c:otherwise>
                   </c:choose>
@@ -277,32 +303,34 @@
                          </c:when>
                          <c:otherwise>
                      	<c:forEach var="dto" items="${goAll }">
-                    	<tr class="Ts_tr">
                     	
-                        <td>${goAll.deal_no }</td>
-                        <td>${goAll.product_title }</td>
-                        <td>${goAll.deal_sid }</td>
-                        <td>${goAll.deal_bid }</td>
            
-                       <form action="admin.do" method="get" name="dealInfo">
-                    	<input type="hidden" name="command" value="dealInfo">
-                       	<input type="hidden" name="sche_no" value="${goAll.deal_no }" >
-                        <td><select name="dealselect">
-                            <option value="ready">판매자 발송준비</option>
-                            <option value="ing">검수중</option>
-                            <option value="go">구매자 발송준비</option>
-                            <option value="finish">배송완료</option>
-                            
-                        	</select></td>
-                       
-                        <td><input id="today"type="date" name="start" ></td>
-                       
-                        <td><input id="today"type="date" name="end" ></td>
-             
-                        <td>admin</td>
-                        <td><input type="submit" value="수정"></td>
-                    	</tr>
-                    	</form>
+                       <form action="admin.do" method="post">
+                    		<input type="hidden" name="command" value="dealInfo">
+                    		<input type="hidden" name="dealno" value="${dto.deal_no }">
+                    		<tr class="Ts_tr">
+	                        	<td>${dto.deal_no }</td>
+	                        	<td>${dto.product_title }</td>
+	                        	<td>${dto.deal_sid }</td>
+	                        	<td>${dto.deal_bid }</td>
+	                        	<td>
+	                        		<select name="dealselect" >
+	                        			<option value="거래신청" <c:if test="${dto.schedule_status=='거래신청'}">selected</c:if>>거래신청</option>
+	                        			<option value="예약금결제" <c:if test="${dto.schedule_status=='예약금결제'}">selected</c:if>>예약금결제</option>
+	                        			<option value="검수신청" <c:if test="${dto.schedule_status=='검수신청'}">selected</c:if>>검수신청</option>
+	                        			<option value="검수중" <c:if test="${dto.schedule_status=='검수중'}">selected</c:if>>검수중</option>
+	                        			<option value="구매자발송준비" <c:if test="${dto.schedule_status=='구매자발송준비'}">selected</c:if>>구매자발송준비</option>
+	                        			<option value="결제완료" <c:if test="${dto.schedule_status=='결제완료'}">selected</c:if>>결제완료</option>
+	                            		<option value="거래확정" <c:if test="${dto.schedule_status=='거래확정'}">selected</c:if>>거래확정</option>
+	                       			 </select>
+	                       		 </td>
+	                          
+		                        <td><input id="today" type="date" name="start" value="${dto.sdate }"></td>
+		                        <td><input id="today" type="date" name="end" value="${dto.edate }"></td>
+		                        <td>admin</td>
+		                        <td><input type="submit" value="수정"></td>
+                    		</tr>
+                		</form>
                     	</c:forEach>
                   </c:otherwise>
                   </c:choose>

@@ -231,8 +231,8 @@
                         <td>${dto.deal_sid }</td>
                         <td>${dto.deal_bid }</td>
            
-                    	<form action="deal.do" method="post">
-                    		<input type="hidden" name="command" value="dealStatusAdminUpdate">
+                    	<form action="admin.do" method="post">
+                    		<input type="hidden" name="command" value="dealInfo">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
                     		<tr class="Ts_tr">
 	                        	<td>${dto.deal_no }</td>
@@ -251,8 +251,8 @@
 	                       			 </select>
 	                       		 </td>
 	                          
-		                        <td><input id="today" type="date" name="sDate" value="${dto.sdate }"></td>
-		                        <td><input id="today" type="date" name="eDate" value="${dto.edate }"></td>
+		                        <td><input id="today" type="date" name="start" value="${dto.sdate }"></td>
+		                        <td><input id="today" type="date" name="end" value="${dto.edate }"></td>
 		                        <td>admin</td>
 		                        <td><input type="submit" value="수정"></td>
                     		</tr>
