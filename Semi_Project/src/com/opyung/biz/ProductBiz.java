@@ -200,6 +200,22 @@ Connection con = getConnection();
 		return res;
 	}
 
+	//탈퇴시 상품 전체 삭제
+	public void deletePtAll(String id) {
+		Connection con = getConnection();
+		
+		int res =dao.deletePtAll(con,id);
+		
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+	
+		close(con);
+		
+	}
+
 
 
 

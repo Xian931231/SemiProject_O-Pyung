@@ -91,16 +91,34 @@ public class AdminConrtoller extends HttpServlet {
 				//블랙 처리	
 				}else if(command.equals("black")) {
 					String mb_id = request.getParameter("mb_id");
+					String blackStatus = request.getParameter("blackStatus");
 					
 					MemberDto dto = biz.selectOne(mb_id);
-					
-					boolean res = biz.black(dto);
-					
-					if(res) {
-						jsResponse("블랙처리되었습니다.", "admin.do?command=userInfo", response);
+	
+					if(blackStatus.equals("black")) {
+
+						boolean res = biz.black(dto);
+						
+						if(res) {
+							jsResponse("블랙처리되었습니다.", "admin.do?command=userInfo", response);
+						}else {
+							dispatch("admin.do?command=userInfo", request, response);
+						}
+						
 					}else {
-						dispatch("admin.do?command=userInfo", request, response);
+						
+						int res = biz.blackCancel(dto);
+						
+						if(res>0) {
+							jsResponse("블랙해지 처리되었습니다.", "admin.do?command=userInfo", response);
+						}else {
+							dispatch("admin.do?command=userInfo", request, response);
+						}
+						
 					}
+					
+					
+					
 				
 				
 				//검색창 통한 정렬 및 검색

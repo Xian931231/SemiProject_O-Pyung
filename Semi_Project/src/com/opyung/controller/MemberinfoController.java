@@ -128,11 +128,12 @@ public class MemberinfoController extends HttpServlet {
 			}
 		
 		}else if(command.equals("memberDelete")) {
+			ProductBiz ptbiz = new ProductBiz();
+			ptbiz.deletePtAll(id);
 			int res = biz.memberDelete(memdto);
-			
 			if(res>0) {
 				System.out.println("삭제 성공");
-				response.sendRedirect("main.do?command=login");
+				response.sendRedirect("login.do?command=logout");
 			}else {
 				System.out.println("삭제 실패");
 				response.sendRedirect("memberinfo.do?command=memupdate&id="+id);
@@ -293,7 +294,54 @@ public class MemberinfoController extends HttpServlet {
 			}else {
 				System.out.println("삭제실패");
 			}
+		
+		//상품등록할때
+		}else if(command.equals("updateScore")) {
+			
+			int ptno = Integer.parseInt(request.getParameter("ptno"));
+			
+			//회원 현재 점수
+			int score = memdto.getMb_score();
+			//업데이트 할 점수
+			int scoreUpdate = score + 1;
+			System.out.println("업데이트할 점수: " + scoreUpdate + "회원 점수: " + score);
+			
+			int res = biz.updateScore(id, scoreUpdate);
+			
+			if(res>0) {
+				System.out.println("점수 수정 성공");
+				response.sendRedirect("product.do?command=detail&ptno="+ptno);
+			}else {
+				System.out.println("점수 수정 실패");
+			}
+			
+		//커뮤니티에서 만들때
+		}else if(command.equals("updateScoreCommu")) {
+			
+			int cmb_no = Integer.parseInt(request.getParameter("cmb_no"));
+			
+			//회원 현재 점수
+			int score = memdto.getMb_score();
+			//업데이트 할 점수
+			int scoreUpdate = score + 1;
+			System.out.println("업데이트할 점수: " + scoreUpdate + "회원 점수: " + score);
+			
+			int res = biz.updateScore(id, scoreUpdate);
+			
+			if(res>0) {
+				System.out.println("점수 수정 성공");
+				response.sendRedirect("community.do?command=detail&cmb_no="+cmb_no);
+			}else {
+				System.out.println("점수 수정 실패");
+			}
+			
 		}
+
+		
+		
+		
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

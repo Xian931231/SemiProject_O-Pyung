@@ -393,7 +393,7 @@ public class DealController extends HttpServlet {
 			int res = biz.updateCheck(dealno,chkdto);
 			if(res >0) {
 				System.out.println("성공");
-				response.sendRedirect("deal.do?command=admin&dealno="+dealno);
+				response.sendRedirect("admin.do?command=admin");
 			}else {
 				System.out.println("실패");
 				response.sendRedirect("deal.do?command=admin&dealno="+dealno);
@@ -470,10 +470,12 @@ public class DealController extends HttpServlet {
 			
 			int dealno = Integer.parseInt(request.getParameter("dealno"));
 			String status = request.getParameter("dealselect");
+			String sDateS = request.getParameter("sDate");
 			String eDateS = request.getParameter("eDate");
 			
 			//sql Date 형변환
 			java.sql.Date eDate = java.sql.Date.valueOf(eDateS);
+			java.sql.Date SDate = java.sql.Date.valueOf(sDateS);
 			
 			int res = biz.updateStatus(dealno, status, eDate);
 			

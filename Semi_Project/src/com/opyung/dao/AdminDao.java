@@ -117,6 +117,33 @@ public class AdminDao {
 		return (res>0)?true:false;
 	}
 	
+	//black 해지
+	public int blackCancel(Connection con, MemberDto dto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE MEMBERBOARD SET MB_ABLE='Y' WHERE MB_ID=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getMb_id());
+			System.out.println("03. query준비: " + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. 실행 및 리턴");
+			
+			
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			System.out.println("05. db종료\n");
+		}
+		
+		return res;
+	}
+	
 	
 	
 	
@@ -367,6 +394,7 @@ public class AdminDao {
 			PreparedStatement pstm = null;
 			int res = 0;
 			
+
 			//sql에 date값을 넣으려면 java.sql.Date로 형변환 하여야한다.	
 			
 			java.sql.Date sqlstart =  java.sql.Date.valueOf(start);

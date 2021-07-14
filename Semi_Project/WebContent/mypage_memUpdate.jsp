@@ -239,7 +239,7 @@
 
                 <br><br>
 
-                <a href="memberinfo.do?command=memberDelete&id=${memdto.mb_id }" class="user_out">회원탈퇴</a>
+                <a href="memberinfo.do?command=memberDelete&id=${id }" class="user_out">회원탈퇴</a>
 
                 <br><br><br><br>
 

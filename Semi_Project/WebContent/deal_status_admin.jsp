@@ -32,17 +32,6 @@
     <article class="container">
         <form action="deal.do?command=adminChk&dealno=${dealdto.deal_no }" method="post">
         <input type="hidden" name="id" value="${id }">
-            <section class="left">
-                <div class="btns gap-2">
-                    <button type="button" class="oper-btn btn btn-primary">검수시작</button>
-                    <button type="button" class="oper-btn btn btn-primary">검수완료</button>
-                    <button type="button" class="oper-btn btn btn-primary">배송시작</button>
-                    <button type="button" class="oper-btn btn btn-primary">배송완료</button>
-                </div>
-                
-            </section>
-
-
 
             <section class="status">
 
@@ -50,10 +39,7 @@
                 <div class="status-img">
                     <img src="#" alt="">
                 </div>
-                <h3>거래 일정</h3>
-                <div class="calendar">
 
-                </div>
                 <h3>검수 내역</h3>
                 <!-- web_edotor -->
 		        <div class="web_editor">
@@ -112,7 +98,7 @@
                             </tr>
                             <tr>
                                 <td>배송상태</td>
-                                <td class="td2">검수시작</td>                               </td>
+                                <td class="td2">${dealdto.schedule_status }</td>
                             </tr>      
                             <tr class="tr-price">
                                 <td>검수자</td>

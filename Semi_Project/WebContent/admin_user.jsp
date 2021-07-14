@@ -6,10 +6,8 @@
 <!-- 인코딩 처리 -->    
 <%
     	request.setCharacterEncoding("UTF-8");
-    %>    
-<%
     	response.setContentType("text/html; charset=UTF-8");
-    %>    
+%>    
     
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
  <%@ page import="com.opyung.dto.MemberDto" %>
@@ -64,6 +62,7 @@
                     <form action="admin.do" method="post" name='search'>
      				<input type="hidden" name="command" value="search">
                     <input type="submit" value="검색" class="search" id="searchbnt" >
+                    
                     <!-- 검색컬럼 -->
                     <select id="searchSelect" name="keyField">
                         <option value="MB_ID">ID</option>
@@ -74,9 +73,8 @@
                       </select>
                     <input type="text" name="keyword"  class="search" id="searchbox" >
 					</form>
-    
-                    
-                    </div>
+                </div>
+                
                 <div class="user_table" >
                     <table border="1">
                         <col width="50px">
@@ -114,22 +112,30 @@
                        		</c:when>
                         <c:otherwise>
                         	<c:forEach var="dto" items="${list }">
-                        		
-                        		
-                        		<tr>
-		                            <td><input type="checkbox"></td>
-		                            <td>${dto.mb_id }</td>
-		                            <td>${dto.mb_pw }</td>
-		                            <td>${dto.mb_name }</td>
-		                            <td>${dto.mb_email }</td>
-		                            <td>${dto.mb_phone }</td>
-		                            <td>${dto.mb_score }</td>
-		                            <td><a>${dto.mb_able }</a></td>
-		                           
-		                            <td><input type="button" value="블랙처리" id="bl_btn" 
-		                            onclick="location.href='admin.do?command=black&mb_id=${dto.mb_id}'" ></td>
-	                        	</tr>
-	                        	
+                        		<form action="admin.do" method="post">
+                        			<input type="hidden" name="command" value="black">
+                        			<input type="hidden" name="mb_id" value="${dto.mb_id }">
+	                        		<tr>
+			                            <td><input type="checkbox"></td>
+			                            <td>${dto.mb_id }</td>
+			                            <td>${dto.mb_pw }</td>
+			                            <td>${dto.mb_name }</td>
+			                            <td>${dto.mb_email }</td>
+			                            <td>${dto.mb_phone }</td>
+			                            <td>${dto.mb_score }</td>
+			                            <td><a>${dto.mb_able }</a></td>
+			                           
+			                            <td>
+			                            	<select name="blackStatus">
+			                            		<option value="black" <c:if test="${dto.mb_able=='N'}">selected</c:if>>정지</option>
+			                            		<option value="cancel" <c:if test="${dto.mb_able=='Y'}">selected</c:if>>해지</option>
+			                            	</select>
+			                            </td>
+			                            <td>
+			                            	<input type="submit" value="수정">
+			                            </td>
+		                        	</tr>
+								</form>                        	
                         	</c:forEach>
                         </c:otherwise>
                         </c:choose>

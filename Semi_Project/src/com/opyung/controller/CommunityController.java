@@ -59,6 +59,8 @@ public class CommunityController extends HttpServlet {
 			
 			request.setAttribute("commudto", commudto);
 			dispatch("community_detail.jsp", request, response);
+		
+		
 		//커뮤니티 게시글등록
 		}else if(command.equals("write")) {
 			int cmb_no = (biz.lastno())+1;
@@ -140,7 +142,8 @@ public class CommunityController extends HttpServlet {
 	                	int res2 = biz.insertImg(dto);
 	                	if(res2>0) {
 	                		System.out.println("성공");
-	                		response.sendRedirect("community.do?command=detail&cmb_no="+cmb_no);
+	                		response.sendRedirect("memberinfo.do?command=updateScoreCommu&id="+dto.getCmb_id()+"&cmb_no="+cmb_no);
+	                		//response.sendRedirect("community.do?command=detail&cmb_no="+cmb_no);
 	                	}else {
 	                	System.out.println("업로드실패");
 	                	response.sendRedirect("community.do?command=detail&cmb_no="+(cmb_no));
