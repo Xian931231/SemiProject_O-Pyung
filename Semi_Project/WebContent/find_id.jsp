@@ -46,12 +46,11 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-<<<<<<< HEAD
-=======
+
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
->>>>>>> 72f6399af6ae900b9f5fa75e034466316007da2a
+
 						
 						<input class="input100" type="text" name="phone">
 						

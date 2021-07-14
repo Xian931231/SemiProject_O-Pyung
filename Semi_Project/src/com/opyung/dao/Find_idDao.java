@@ -18,7 +18,7 @@ public class Find_idDao{
     	ResultSet rs = null;
     	String find_id = "";
     	
-    	String sql = "SELECT MB_ID FROM MEMBERBOARD WHERE MB_NAME=? AND MB_PHONE=?";
+    	String sql = " SELECT MB_ID FROM MEMBERBOARD WHERE MB_NAME=? AND MB_PHONE=? ";
     	
     	try {
     		pstm = con.prepareStatement(sql);
@@ -46,10 +46,6 @@ public class Find_idDao{
     	
 		return find_id;
     }
-
-	private Connection getConnection() {
-		return null;
-	}
 
 
 }
