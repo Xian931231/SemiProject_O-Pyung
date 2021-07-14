@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.opyung.biz.ChatBiz;
 import com.opyung.biz.DealBiz;
 import com.opyung.biz.MemberinfoBiz;
 import com.opyung.biz.ProductBiz;
@@ -45,11 +46,16 @@ public class DealController extends HttpServlet {
 		//구매요청왔을시 테이블 추가 (DEALBOARD + DEAL_SCHEDULEBOARD + CHECKBOARD)
 		if(command.equals("insert")) {
 			System.out.println("insert 접속");
+			
+			if(request.getParameter("id") == null || request.getParameter("id") == "") {
+				response.sendRedirect("main.do?command=login");
+			}
+
+			
 			int ptno = Integer.parseInt(request.getParameter("ptno"));
 			int dealno = (biz.lastno())+1;
 			String bid = request.getParameter("id");
 			System.out.println(bid+ptno);
-
 			
 			ProductBoardDto ptdto = ptBiz.selectOne(ptno);
 			String sid = ptdto.getProduct_id();
@@ -75,10 +81,18 @@ public class DealController extends HttpServlet {
 				System.out.println("거래 일정 테이블 실패");
 			}
 			
+			//채팅방 생성
+			ChatBiz chatbiz = new ChatBiz();
+			int reschat =  chatbiz.insertChat(dealno,sid,bid);
 			
 			//검수 내역 테이블 생성
 			int resCheck = biz.insertCheck(dealno);
 			
+			if(resCheck>0) {
+				System.out.println("채팅방 생성");
+			}else {
+				System.out.println("채팅방 생성실패");
+			}
 			if(resCheck>0) {
 				System.out.println("거래 내역 테이블 생성");
 				response.sendRedirect("deal.do?command=deal&dealno="+dealno);

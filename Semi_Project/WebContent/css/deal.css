@@ -25,7 +25,7 @@
 	margin-top: 100px;
 }
 
-.container>div div{
+.divBoudary{
 	border: 1px solid black;
 }
 
@@ -117,6 +117,7 @@
 /* 판매상품 영역 */
 #deal_area{
 
+
     
 }
 
@@ -156,6 +157,7 @@
     width: 51.5vw;
     /* max-width: 990px; */
     margin: 5px;
+    border: 1px solid black;
 }
 
 #map_area{

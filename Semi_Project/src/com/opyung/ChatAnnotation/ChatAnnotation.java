@@ -43,7 +43,7 @@ public class ChatAnnotation {
 
 
 
-    private static final String GUEST_PREFIX = "Guest";
+    //private static final String GUEST_PREFIX = "Guest";
 
     // AtomicInteger 클래스는 getAndIncrement()를 호출할 때마다 카운터를 1씩 증가하는 기능을 가지고 있다
 
@@ -59,7 +59,7 @@ public class ChatAnnotation {
 
 
 
-    private final String nickname;
+    //private final String nickname;
 
     // 클라이언트가 새로 접속할 때마다 한개의 Session 객체가 생성된다.
 
@@ -77,9 +77,8 @@ public class ChatAnnotation {
 
        // getAndIncrement()은 카운트를 1 증가하고 증가된 숫자를 리턴한다
 
-        nickname = GUEST_PREFIX + connectionIds.getAndIncrement();
 
-        System.out.println(threadName+", "+nickname);
+        //System.out.println(threadName+", "+nickname);
 
     }
 
@@ -101,7 +100,9 @@ public class ChatAnnotation {
 
         connections.add(this);
 
-        String message = String.format("* %s %s", nickname, " 님이 입장하셨습니다.");
+
+        String message = String.format("* %s", "has joined.");
+        //String message = String.format("* %s %s", nickname, "has joined.");
 
         broadcast(message);
 
@@ -117,7 +118,10 @@ public class ChatAnnotation {
 
         connections.remove(this);
 
-        String message = String.format("* %s %s", nickname, " 님이 나가셨습니다.");
+
+        String message = String.format("*  %s", "has disconnected.");
+        //String message = String.format("* %s %s", nickname, "has disconnected.");
+
 
         broadcast(message);
 
@@ -133,13 +137,14 @@ public class ChatAnnotation {
 
        
 
-       String threadName = "Thread-Name:"+Thread.currentThread().getName();
+       //String threadName = "Thread-Name:"+Thread.currentThread().getName();
 
-       System.out.println(threadName+", "+nickname);
+       //System.out.println(threadName+", "+nickname);
 
-        if(message==null || message.trim().equals("")) return;
-
-        String filteredMessage = String.format("%s: %s", nickname, message);
+        //if(message==null || message.trim().equals("")) return;
+    	
+        //String filteredMessage = String.format("%s: %s", nickname, message);
+        String filteredMessage = String.format(" %s", message);
 
         broadcast(filteredMessage);
 
@@ -245,9 +250,10 @@ public class ChatAnnotation {
 
                 // 한 클라이언트의 퇴장을 모든 이용자에게 알린다
 
-                String message = String.format("* %s %s",
+                String message = String.format("*  %s",
 
-                        client.nickname, "has been disconnected.");
+                         "has been disconnected.");
+                		//client.nickname, "has been disconnected.");
 
                 broadcast(message);
 

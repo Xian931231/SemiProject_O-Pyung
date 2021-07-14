@@ -19,8 +19,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오늘도 평화로운</title>
-    <link rel="icon" type="image/png" href="./img/notice/111.ico"/>
+    <title>O_PYUNG</title>
+	<link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
     <link rel="stylesheet" type="text/css" href="./css/notice.css">
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">

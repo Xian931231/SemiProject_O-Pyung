@@ -10,11 +10,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>오늘도 평화로운</title>
+	<title>O_PYUNG</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="./img/icons/111.ico"/>
+	<link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="./css/login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -76,7 +76,7 @@
 							<div id="naver_id_login" class="NVlogin-form-btn">NAVER LOGIN</div>
 							
 							<script type="text/javascript">
-								var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "login.do?command=login&id=");
+								var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "http://localhost:8383/Semi_Project/main.jsp");
 								var state = naver_id_login.getUniqState();
 								naver_id_login.setDomain(".service.com");
 								naver_id_login.setState(state);

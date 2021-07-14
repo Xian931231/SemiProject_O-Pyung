@@ -15,12 +15,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <title>거래 창</title>
+    <title>O_PYUNG</title>
 
 <link rel="stylesheet" href="./css/deal.css">
 
@@ -232,9 +233,9 @@
 					 	}
 	                    
 	                    //마커 위에 유저 1,2 표시하기
-	                    var iwContent0 = '<div style="font-size:13px; margin-top:27px; background-color: white;">'+'${biddto.mb_id }'+'</div>', 
+	                    var iwContent0 = '<div style="font-size:15px; margin-top:27px; background-color: white; border: 1px solid black;">'+'${biddto.mb_id }'+'</div>', 
 	                    	iwPosition0 = new kakao.maps.LatLng(user1_latitude, user1_longitude);
-	                    var iwContent1 = '<div style="font-size:13px; margin-top:27px; background-color: white;">'+'${siddto.mb_id }'+'</div>', 
+	                    var iwContent1 = '<div style="font-size:15spx; margin-top:27px; background-color: white; border: 1px solid black;">'+'${siddto.mb_id }'+'</div>', 
 	                    	iwPosition1 = new kakao.maps.LatLng(user2_latitude, user2_longitude);
 	                    
 	                    var customOverlay0 = new kakao.maps.CustomOverlay({
@@ -264,7 +265,7 @@
 						});
 	                    
 						var distance = Math.round(line.getLength()),
-							content = '<div style="background-color:white; font-size:10px">총거리 <span style="font-size:10px;">' + distance + '</span>m</div>';
+							content = '<div style="background-color:white; font-size:10px; border: 1px solid black;">총거리 <span style="font-size:10px; ">' + distance + '</span>m</div>';
 				
 							
 						var middle = new kakao.maps.LatLng(middle_latitude, middle_longitude);

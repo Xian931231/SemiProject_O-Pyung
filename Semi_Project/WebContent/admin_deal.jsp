@@ -24,8 +24,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>admin_deal</title>
+    <title>O_PYUNG</title>
     <link rel="stylesheet" type="text/css" href="./css/adminpage.css">
+    <link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -169,7 +170,7 @@
                     		<input type="hidden" name="command" value="dealInfo">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
                     		<tr class="Ts_tr">
-	                        	<td>${dto.deal_no }</td>
+	                        	<td><a href="deal.do?command=admin&dealno=${dto.deal_no }">${dto.deal_no }</a></td>
 	                        	<td>${dto.product_title }</td>
 	                        	<td>${dto.deal_sid }</td>
 	                        	<td>${dto.deal_bid }</td>
@@ -238,7 +239,7 @@
                     		<input type="hidden" name="command" value="dealInfo">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
                     		<tr class="Ts_tr">
-	                        	<td>${dto.deal_no }</td>
+	                        	<td><a href="deal.do?command=admin&dealno=${dto.deal_no }">${dto.deal_no }</a></td>
 	                        	<td>${dto.product_title }</td>
 	                        	<td>${dto.deal_sid }</td>
 	                        	<td>${dto.deal_bid }</td>
@@ -309,7 +310,7 @@
                     		<input type="hidden" name="command" value="dealInfo">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
                     		<tr class="Ts_tr">
-	                        	<td>${dto.deal_no }</td>
+	                        	<td><a href="deal.do?command=admin&dealno=${dto.deal_no }">${dto.deal_no }</a></td>
 	                        	<td>${dto.product_title }</td>
 	                        	<td>${dto.deal_sid }</td>
 	                        	<td>${dto.deal_bid }</td>
