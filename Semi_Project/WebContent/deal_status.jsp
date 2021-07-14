@@ -68,14 +68,23 @@
  	
  	window.onload = function(){
 	 		  var dealno = '${dealdto.deal_no}';
+	 		  
 	 		 $.ajax({
 	    			url:"chat.do?command=selectDealno",
 	    			type:"post",
 	    			data:{
 	    				dealno : dealno
-	    			},			
+	    			},
+	    			dataType:"json",
 	    			success: function(data){
-	    				alert("성공");
+	    				$('#console').empty();
+	    				 $.each(data, function(key, val){
+	    		             console.log('key:' + key + ' / ' + 'ccb_no:' + val['ccb_no'] + ', ccb_chatno :' + val['ccb_chatno']
+	    								 + ', ccb_id:' + val['ccb_id'] + ', ccb_content:' + val['ccb_content'] + ', ccb_date:' + val['ccb_date']);
+	    					$('#console').append('<p>'+val['ccb_id']+' : '+val['ccb_content']+'</p>');
+	    						
+	    					});
+	    				 document.getElementById("console").scrollTop = document.getElementById("console").scrollHeight;
 	    			},
 	    			error:function(data){
 	    				alert("실패");
@@ -180,9 +189,9 @@
                    //Chat.connect('ws://' + window.location.host + '/websocket/chat');
 
                   Chat.connect('ws://localhost:8383/Semi_Project/websocket/chat');
-
+                  Console.log('Info: WebSocket .');
                } else {
-
+            	   Console.log('Info: WebSocket.');
                    Chat.connect('wss://' + window.location.host + '/websocket/chat');
 
                }
@@ -277,21 +286,10 @@
             <div class="chat" id="console">
                 채팅내역
             </div>
-<<<<<<< HEAD
-            
-=======
-            <!--  <form action="#"> -->
->>>>>>> 9a2abf51890971355b8602fb3433c7844c531d6d
                 <div class="chat-write" ></div>
                 
                 <input type="text" class="chat-content" name="" id="chat">
                 <!-- <input class="btn btn-outline-dark" type="submit" value="전송" > -->
-<<<<<<< HEAD
-            
-=======
-            <!--  </form> -->
->>>>>>> 9a2abf51890971355b8602fb3433c7844c531d6d
-            
             <div style="height: 100px">
             	<div style="background-color: white">
             	</div>

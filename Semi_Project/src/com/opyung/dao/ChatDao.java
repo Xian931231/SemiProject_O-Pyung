@@ -2,7 +2,12 @@ package com.opyung.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.opyung.dto.ChatBoardDto;
 
 import common.JDBCTemplate;
 
@@ -55,6 +60,40 @@ public class ChatDao extends JDBCTemplate{
 			close(pstm);
 		}
 		
+		return res;
+	}
+	
+	//채팅내역조회
+	public List<ChatBoardDto> selectDealno(Connection con, int dealno) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<ChatBoardDto> res = new ArrayList<ChatBoardDto>();
+		
+		String sql = "SELECT * FROM CHATCONTENTBOARD WHERE CCB_CHATNO=?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, dealno);
+			
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				ChatBoardDto dto = new ChatBoardDto();
+				dto.setCcb_no(rs.getInt(1));
+				dto.setCcb_chatNo(rs.getInt(2));
+				dto.setCcb_id(rs.getString(3));
+				dto.setCcb_content(rs.getString(4));
+				dto.setCcb_date(rs.getDate(5));
+				
+				res.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
 		return res;
 	}
 	

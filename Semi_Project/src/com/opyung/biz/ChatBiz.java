@@ -1,8 +1,10 @@
 package com.opyung.biz;
 
 import java.sql.Connection;
+import java.util.List;
 
 import com.opyung.dao.ChatDao;
+import com.opyung.dto.ChatBoardDto;
 
 import common.JDBCTemplate;
 
@@ -37,6 +39,16 @@ public class ChatBiz extends JDBCTemplate{
 		
 		close(con);
 		return res;
+	}
+	
+	//채팅내역조회
+	public List<ChatBoardDto> selectDealno(int dealno){
+		Connection con = getConnection();
+		
+		List<ChatBoardDto> list = dao.selectDealno(con,dealno);
+		close(con);
+		
+		return list;
 	}
 
 }
