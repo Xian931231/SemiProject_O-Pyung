@@ -44,6 +44,8 @@ $(function(){
     $("#check_all").prop("checked", is_checked);
     });
 	
+    
+	
 	
 	//주소 -> 좌표 변환, input태그에 담아서 db에 저장
 	$("#sample6_detailAddress").on("propertychange change keyup paste input", function(){
