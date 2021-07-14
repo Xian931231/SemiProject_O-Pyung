@@ -226,6 +226,13 @@
                         <c:otherwise>
                      	<c:forEach var="dto" items="${deal }">
 
+                    	<tr class="Ts_tr">
+                    	
+                        <td>${dto.deal_no }</td>
+                        <td>${dto.product_title }</td>
+                        <td>${dto.deal_sid }</td>
+                        <td>${dto.deal_bid }</td>
+           
                     	<form action="deal.do" method="post">
                     		<input type="hidden" name="command" value="dealStatusAdminUpdate">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
