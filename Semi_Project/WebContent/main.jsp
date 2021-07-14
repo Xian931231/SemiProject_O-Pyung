@@ -17,6 +17,72 @@
     <title>main페이지</title>
     <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="./js/product.js"></script>
+	<script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+	window.onload = function () {
+		$(function(){
+			$('.list1').slice(0,4).show();
+			
+			$('#btn1').click(function(e){
+				e.preventDefault();
+				$('.list1:hidden').slice(0,4).show();
+				if( $('.list1:hidden').length == 0){
+					$('#btn1').remove();
+				}else if($('.list1').length >11){
+					$('#btn1').remove();
+				}
+			});
+			
+			$('.list2').slice(0,4).show();
+			
+			$('#btn2').click(function(e){
+				e.preventDefault();
+				$('.list2:hidden').slice(0,4).show();
+				if( $('.list2:hidden').length == 0){
+					$('#btn2').remove();
+				}else if($('.list2').length >11){
+					$('#btn2').remove();
+				}
+			});
+			
+			$('.list3').slice(0,4).show();
+			
+			$('#btn3').click(function(e){
+				e.preventDefault();
+				$('.list3:hidden').slice(0,4).show();
+				if( $('.list3:hidden').length == 0){
+					$('#btn3').remove();
+				}else if($('.list3').length >11){
+					$('#btn3').remove();
+				}
+			});
+			
+			$('.list4').slice(0,4).show();
+			
+			$('#btn4').click(function(e){
+				e.preventDefault();
+				$('.list4:hidden').slice(0,4).show();
+				if( $('.list4:hidden').length == 0){
+					$('#btn4').remove();
+				}else if($('.list4').length >11){
+					$('#btn4').remove();
+				}
+			});
+			
+			$('.list5').slice(0,4).show();
+			
+			$('#btn5').click(function(e){
+				e.preventDefault();
+				$('.list5:hidden').slice(0,4).show();
+				if( $('.list5:hidden').length == 0){
+					$('#btn5').remove();
+				}else if($('.list5').length >11){
+					$('#btn5').remove();
+				}
+			});
+		});
+	}
+	</script>
 </head>
 <body>
 	<!-- header 추가 -->
@@ -41,17 +107,17 @@
                 <!-- 카테고리네임-->
                 <div class="product_title">
                     <div class="title">
-                        최신순
+                       	 최신순
                     </div>
                     <div class="sub_title">
-                        발매상품
+                       	 발매상품
                     </div>
                 </div>                
 
                 <!-- 제품박스 -->
                 <div class="product_list_wrap">
                     <!-- 첫 제품-->
-                    <div class="product_list list_frist">
+                    <div class="product_list list_frist list1">
                         <div class="product_item">
                             <a href="#" class="item_inner">
                                 <div class="product">
@@ -81,7 +147,7 @@
 
 				<c:forEach items="${list }" var="list">
 					<!-- 첫 제품-->
-                    <div class="product_list list_frist">
+                    <div class="product_list list_frist list1">
                         <div class="product_item">
                             <a href="product.do?command=detail&ptno=${list.product_no }" class="item_inner">
                                 <div class="product">
@@ -130,7 +196,7 @@
 
                 <!-- 더보기 -->
                 <div class="btn_product">
-                    <button class="btn outlinegrey medium">더보기</button>
+                    <button class="btn outlinegrey medium" id="btn1">더보기</button>
                 </div>
             </div>
 
@@ -163,7 +229,7 @@
                 <div class="product_list_wrap">
                     <c:forEach items="${list2 }" var="list2">
 					<!-- 첫 제품-->
-                    <div class="product_list list_frist">
+                    <div class="product_list list_frist list2">
                         <div class="product_item">
                             <a href="product.do?command=detail&ptno=${list2.product_no }" class="item_inner">
                                 <div class="product">
@@ -216,7 +282,7 @@
 
                 <!-- 더보기 -->
                 <div class="btn_product">
-                    <button class="btn outlinegrey medium">더보기</button>
+                    <button class="btn outlinegrey medium" id="btn2">더보기</button>
                 </div>
             </div>
 
@@ -249,7 +315,7 @@
                 <div class="product_list_wrap">
                     <c:forEach items="${list3 }" var="list3">
 					<!-- 첫 제품-->
-                    <div class="product_list list_frist">
+                    <div class="product_list list_frist list3">
                         <div class="product_item">
                             <a href="product.do?command=detail&ptno=${list3.product_no }" class="item_inner">
                                 <div class="product">
@@ -291,7 +357,7 @@
 
                 <!-- 더보기 -->
                 <div class="btn_product">
-                    <button class="btn outlinegrey medium" >더보기</button>
+                    <button class="btn outlinegrey medium" id="btn3">더보기</button>
                 </div>
             </div>
 
@@ -325,7 +391,7 @@
                 <div class="product_list_wrap">
                     <c:forEach items="${list4 }" var="list4">
 					<!-- 첫 제품-->
-                    <div class="product_list list_frist">
+                    <div class="product_list list_frist list4">
                         <div class="product_item">
                             <a href="product.do?command=detail&ptno=${list4.product_no }" class="item_inner">
                                 <div class="product">
@@ -367,7 +433,7 @@
 
                 <!-- 더보기 -->
                 <div class="btn_product">
-                    <button class="btn outlinegrey medium">더보기</button>
+                    <button class="btn outlinegrey medium" id="btn4">더보기</button>
                 </div>
             </div>
 
@@ -402,7 +468,7 @@
                 <div class="product_list_wrap">
                     <c:forEach items="${list5 }" var="list5">
 					<!-- 첫 제품-->
-                    <div class="product_list list_frist">
+                    <div class="product_list list_frist list5">
                         <div class="product_item">
                             <a href="product.do?command=detail&ptno=${list5.product_no }" class="item_inner">
                                 <div class="product">
@@ -444,7 +510,7 @@
 
                 <!-- 더보기 -->
                 <div class="btn_product">
-                    <button class="btn outlinegrey medium">더보기</button>
+                    <button class="btn outlinegrey medium" id="btn5">더보기</button>
                 </div>
             </div>
 
