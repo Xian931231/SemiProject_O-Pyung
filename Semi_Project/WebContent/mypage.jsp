@@ -69,7 +69,6 @@
         </nav>
 
 
-
         <div id="content_area">
             <div id="my_home">
                 <div id="profile">
@@ -77,7 +76,7 @@
                         <div id="profile_name">
                             <h2 id="id">${memdto.mb_id }</h2>
                             <p id="email">${memdto.mb_email }</p>
-                            <button>프로필 수정</button>
+                            <button onclick="location.href='memberinfo.do?command=memupdate&id=${id }'">프로필 수정</button>
                         </div>
                     </div>
 
@@ -100,10 +99,7 @@
                 <!--구매 내역 이름-->
                 <div class="tit">
                     <div>
-                        <h3>구매 내역</h3>
-                    </div>
-                    <div class="add">
-                        <a href="" class="add_text">더보기 ></a>
+                        <h3>구매 상품</h3>
                     </div>
                 </div>
 
@@ -173,9 +169,6 @@
                 <div class="tit">
                     <div>
                         <h3>판매 상품</h3>
-                    </div>
-                    <div class="add">
-                        <a href="" class="add_text">더보기 ></a>
                     </div>
                 </div>
 

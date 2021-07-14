@@ -393,7 +393,7 @@ public class DealController extends HttpServlet {
 			int res = biz.updateCheck(dealno,chkdto);
 			if(res >0) {
 				System.out.println("성공");
-				response.sendRedirect("deal.do?command=admin&dealno="+dealno);
+				response.sendRedirect("admin.do?command=admin");
 			}else {
 				System.out.println("실패");
 				response.sendRedirect("deal.do?command=admin&dealno="+dealno);
