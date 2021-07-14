@@ -22,7 +22,7 @@
 <body>
 <div class="footer_body" style="font-family: 'Noto Sans KR', sans-serif;">
         
-        <footer class="footer" style="padding: 30px;">
+        <footer style="padding: 30px;">
             <hr id="footer_hrtag" style="opacity: 30%;">
             <br>
             

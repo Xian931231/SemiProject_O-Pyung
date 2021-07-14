@@ -158,7 +158,7 @@ $(function(){
             </div>
             <div class="textbox">
                 <h3>전화번호</h3>
-                <input type="text" placeholder="010-00000000" name="phone" id="phone">
+                <input type="text" placeholder="'-'를 제외하고 입력해주세요" name="phone">
             </div>
             <!--주소 api 찾아서 구현해보기-->
             <div class="textbox_addr">

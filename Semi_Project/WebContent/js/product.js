@@ -1,4 +1,7 @@
 function likeProduct(id,product_no){
+	if(id == null || id == ""){
+		location.href='main.do?command=login';
+	}else{
 	$.ajax({
 		url:"memberinfo.do?command=like",
 		type:"post",
@@ -14,6 +17,7 @@ function likeProduct(id,product_no){
 			alert("실패");
 		}
 	})
+	}
 }
 
 function isLike(id,ptno){
