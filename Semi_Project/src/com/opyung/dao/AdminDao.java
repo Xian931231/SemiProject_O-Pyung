@@ -453,65 +453,6 @@ public class AdminDao {
 					res.add(dto);
 				}
 				
-			} catch (SQLException e) {
-				System.out.println("3/4단계 에러");
-				e.printStackTrace();
-			}finally {
-				close(rs);
-				close(pstm);
-				System.out.println("05. db종료\n");
-				
-			}
-			
-			return res;
-			
-			
-		}
-		public int count(Connection con) {
-			PreparedStatement pstm = null;
-			ResultSet rs = null;
-			int res = 0;
-			
-			String sql =" SELECT COUNT(*) FROM REPORTBOARD WHERE REPORT_EDATE IS NOT NULL ";
-			
-			try {
-				pstm = con.prepareStatement(sql);
-				System.out.println("03.query 준비 : " +sql);
-				
-				rs=pstm.executeQuery();
-				System.out.println("04.query 실행 및 리턴");
-				
-				if(rs.next()) {
-					res = rs.getInt(1);
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}finally {
-				close(rs);
-				close(pstm);
-			}
-			
-			
-			return res;
-		}
-		public int countnull(Connection con) {
-			PreparedStatement pstm = null;
-			ResultSet rs = null;
-			int res = 0;
-			
-			String sql =" SELECT COUNT(*) FROM REPORTBOARD WHERE REPORT_EDATE IS NULL ";
-			
-			try {
-				pstm = con.prepareStatement(sql);
-				System.out.println("03.query 준비 : " +sql);
-				
-				rs=pstm.executeQuery();
-				System.out.println("04.query 실행 및 리턴");
-				
-				if(rs.next()) {
-					res = rs.getInt(1);
-				}
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -524,7 +465,38 @@ public class AdminDao {
 			return res;
 		}
 		
-		
+		public List<ReportBoardDto> count(Connection con) {
+			PreparedStatement pstm = null;
+			ResultSet rs = null;
+			List<ReportBoardDto> res = new ArrayList<ReportBoardDto>();
+			
+			
+			String sql =" SELECT REPORT_NO, REPORT_TID, REPORT_ID, REPORT_CONTENT, REPORT_SDATE FROM REPORTBOARD WHERE REPORT_EDATE IS NOT NULL ORDER BY REPORT_NO ";
+			
+			try {
+				pstm = con.prepareStatement(sql);
+				System.out.println("03.query 준비 : " +sql);
+				
+				rs=pstm.executeQuery();
+				System.out.println("04.query 실행 및 리턴");
+				
+				while(rs.next()) {
+					ReportBoardDto dto = new ReportBoardDto(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5));
+
+					res.add(dto);
+				}
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstm);
+			}
+			
+			
+			return res;
+		}
 		
 		
 		

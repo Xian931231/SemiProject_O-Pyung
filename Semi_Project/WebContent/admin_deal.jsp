@@ -36,15 +36,15 @@
    $(function() {
        $("#selecting").css("display","none");
        $("#selectgo").css("display","none");
-       $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
-       $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+       $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"373px"});
+       $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"373px"});
        $("#readyShow").click(function() {
            $("#selectready").show();
            $("#selecting").hide();
            $("#selectgo").hide();
             
-           $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
-           $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+           $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"373px"});
+           $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"373px"});
            $("#readyShow").css("background-color","whitesmoke");
         });
        $("#ingShow").click(function() {
@@ -52,8 +52,8 @@
           $("#selectgo").hide();
           $("#selecting").show();
            
-          $("#readyShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
-          $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+          $("#readyShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"373px"});
+          $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"373px"});
           $("#ingShow").css("background-color","whitesmoke");
        });
        $("#goShow").click(function() {
@@ -61,8 +61,8 @@
            $("#selecting").hide();
            $("#selectgo").show();
             
-           $("#readyShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
-           $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+           $("#readyShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"373px"});
+           $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"373px"});
            $("#goShow").css("background-color","whitesmoke");
         });
        

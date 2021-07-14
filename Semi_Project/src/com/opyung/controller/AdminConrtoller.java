@@ -50,11 +50,13 @@ public class AdminConrtoller extends HttpServlet {
 				//검수대기만보이게 '검수신청'
 				if(command.equals("admin")){
 					List<DealBoardDto> list = biz.dealAll();
+					
 					List<ReportBoardDto> relist = biz.reportAll();
+					int countnull1 = relist.size();
 					
+					List<ReportBoardDto> count = biz.count();
+					int count1 = count.size();
 					
-					int count = biz.count();
-					int countnull = biz.countnull();
 					List<DealBoardDto> countready = biz.countready(); 
 					int countready1 = countready.size();
 					List<DealBoardDto> counting = biz.counting();
@@ -62,8 +64,8 @@ public class AdminConrtoller extends HttpServlet {
 					List<DealBoardDto> countgo = biz.countgo();
 					int countgo1 = countgo.size();
 					
-					request.setAttribute("countnull", countnull);
-					request.setAttribute("count", count);
+					request.setAttribute("countnull", countnull1);
+					request.setAttribute("count", count1);
 					request.setAttribute("list", relist);
 					request.setAttribute("countready", countready1);
 					request.setAttribute("counting", counting1);
@@ -190,12 +192,15 @@ public class AdminConrtoller extends HttpServlet {
 				/*전체를 보내지말고 완료 날짜에 null값인 데이터들만 불러온다.(처리완료)*/
 				else if(command.equals("report")) {
 					List<ReportBoardDto> list = biz.reportAll();
+					int countnull1 = list.size();
+					List<ReportBoardDto> count = biz.count();
+					int count1 = count.size();
 					
-					int count = biz.count();
-					int countnull = biz.countnull();
 					
-					request.setAttribute("countnull", countnull);
-					request.setAttribute("count", count);
+					
+					request.setAttribute("countnull", countnull1);
+					request.setAttribute("count", count1);
+					request.setAttribute("count1", count);
 					request.setAttribute("list", list);
 					dispatch("admin_report.jsp", request, response);
 					/*처리버튼를 하면 완료날짜업데이트하고 score에 점수를 -1 한다.*/
