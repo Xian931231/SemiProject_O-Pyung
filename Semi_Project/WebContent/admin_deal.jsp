@@ -148,25 +148,32 @@
                         <td>${dto.deal_sid }</td>
                         <td>${dto.deal_bid }</td>
            
-                       <form action="admin.do" method="get" name="dealInfo">
-                    	<input type="hidden" name="command" value="dealInfo">
-                       	<input type="hidden" name="sche_no" value="${dto.deal_no }" >
-                        <td><select name="dealselect">
-                            <option value="ready">판매자 발송준비</option>
-                            <option value="ing">검수중</option>
-                            <option value="go">구매자 발송준비</option>
-                            <option value="finish">배송완료</option>
-                            
-                        	</select></td>
-                       
-                        <td><input id="today"type="date" name="start" ></td>
-                       
-                        <td><input id="today"type="date" name="end" ></td>
-             
-                        <td>admin</td>
-                        <td><input type="submit" value="수정"></td>
-                    	</tr>
-                    	</form>
+                       <form action="deal.do" method="post">
+                    		<input type="hidden" name="command" value="dealInfo">
+                    		<input type="hidden" name="dealno" value="${dto.deal_no }">
+                    		<tr class="Ts_tr">
+	                        	<td>${dto.deal_no }</td>
+	                        	<td>${dto.product_title }</td>
+	                        	<td>${dto.deal_sid }</td>
+	                        	<td>${dto.deal_bid }</td>
+	                        	<td>
+	                        		<select name="dealselect" >
+	                        			<option value="거래신청" <c:if test="${dto.schedule_status=='거래신청'}">selected</c:if>>거래신청</option>
+	                        			<option value="예약금결제" <c:if test="${dto.schedule_status=='예약금결제'}">selected</c:if>>예약금결제</option>
+	                        			<option value="검수신청" <c:if test="${dto.schedule_status=='검수신청'}">selected</c:if>>검수신청</option>
+	                        			<option value="검수중" <c:if test="${dto.schedule_status=='검수중'}">selected</c:if>>검수중</option>
+	                        			<option value="구매자발송준비" <c:if test="${dto.schedule_status=='구매자발송준비'}">selected</c:if>>구매자발송준비</option>
+	                        			<option value="결제완료" <c:if test="${dto.schedule_status=='결제완료'}">selected</c:if>>결제완료</option>
+	                            		<option value="거래확정" <c:if test="${dto.schedule_status=='거래확정'}">selected</c:if>>거래확정</option>
+	                       			 </select>
+	                       		 </td>
+	                          
+		                        <td><input id="today" type="date" name="sDate" value="${dto.sdate }"></td>
+		                        <td><input id="today" type="date" name="eDate" value="${dto.edate }"></td>
+		                        <td>admin</td>
+		                        <td><input type="submit" value="수정"></td>
+                    		</tr>
+                		</form>
                     	</c:forEach>
                   </c:otherwise>
                   </c:choose>
@@ -216,25 +223,32 @@
                         <td>${ingAll.deal_sid }</td>
                         <td>${ingAll.deal_bid }</td>
            
-                       <form action="admin.do" method="get" name="dealInfo">
-                    	<input type="hidden" name="command" value="dealInfo">
-                       	<input type="hidden" name="sche_no" value="${ingAll.deal_no }" >
-                        <td><select name="dealselect">
-                            <option value="ready">판매자 발송준비</option>
-                            <option value="ing">검수중</option>
-                            <option value="go">구매자 발송준비</option>
-                            <option value="finish">배송완료</option>
-                            
-                        	</select></td>
-                       
-                        <td><input id="today"type="date" name="start" ></td>
-                       
-                        <td><input id="today"type="date" name="end" ></td>
-             
-                        <td>admin</td>
-                        <td><input type="submit" value="수정"></td>
-                    	</tr>
-                    	</form>
+                       <form action="deal.do" method="post">
+                    		<input type="hidden" name="command" value="dealInfo">
+                    		<input type="hidden" name="dealno" value="${dto.deal_no }">
+                    		<tr class="Ts_tr">
+	                        	<td>${dto.deal_no }</td>
+	                        	<td>${dto.product_title }</td>
+	                        	<td>${dto.deal_sid }</td>
+	                        	<td>${dto.deal_bid }</td>
+	                        	<td>
+	                        		<select name="dealselect" >
+	                        			<option value="거래신청" <c:if test="${dto.schedule_status=='거래신청'}">selected</c:if>>거래신청</option>
+	                        			<option value="예약금결제" <c:if test="${dto.schedule_status=='예약금결제'}">selected</c:if>>예약금결제</option>
+	                        			<option value="검수신청" <c:if test="${dto.schedule_status=='검수신청'}">selected</c:if>>검수신청</option>
+	                        			<option value="검수중" <c:if test="${dto.schedule_status=='검수중'}">selected</c:if>>검수중</option>
+	                        			<option value="구매자발송준비" <c:if test="${dto.schedule_status=='구매자발송준비'}">selected</c:if>>구매자발송준비</option>
+	                        			<option value="결제완료" <c:if test="${dto.schedule_status=='결제완료'}">selected</c:if>>결제완료</option>
+	                            		<option value="거래확정" <c:if test="${dto.schedule_status=='거래확정'}">selected</c:if>>거래확정</option>
+	                       			 </select>
+	                       		 </td>
+	                          
+		                        <td><input id="today" type="date" name="sDate" value="${dto.sdate }"></td>
+		                        <td><input id="today" type="date" name="eDate" value="${dto.edate }"></td>
+		                        <td>admin</td>
+		                        <td><input type="submit" value="수정"></td>
+                    		</tr>
+                		</form>
                     	</c:forEach>
                   </c:otherwise>
                   </c:choose>
@@ -284,25 +298,32 @@
                         <td>${goAll.deal_sid }</td>
                         <td>${goAll.deal_bid }</td>
            
-                       <form action="admin.do" method="get" name="dealInfo">
-                    	<input type="hidden" name="command" value="dealInfo">
-                       	<input type="hidden" name="sche_no" value="${goAll.deal_no }" >
-                        <td><select name="dealselect">
-                            <option value="ready">판매자 발송준비</option>
-                            <option value="ing">검수중</option>
-                            <option value="go">구매자 발송준비</option>
-                            <option value="finish">배송완료</option>
-                            
-                        	</select></td>
-                       
-                        <td><input id="today"type="date" name="start" ></td>
-                       
-                        <td><input id="today"type="date" name="end" ></td>
-             
-                        <td>admin</td>
-                        <td><input type="submit" value="수정"></td>
-                    	</tr>
-                    	</form>
+                       <form action="deal.do" method="post">
+                    		<input type="hidden" name="command" value="dealInfo">
+                    		<input type="hidden" name="dealno" value="${dto.deal_no }">
+                    		<tr class="Ts_tr">
+	                        	<td>${dto.deal_no }</td>
+	                        	<td>${dto.product_title }</td>
+	                        	<td>${dto.deal_sid }</td>
+	                        	<td>${dto.deal_bid }</td>
+	                        	<td>
+	                        		<select name="dealselect" >
+	                        			<option value="거래신청" <c:if test="${dto.schedule_status=='거래신청'}">selected</c:if>>거래신청</option>
+	                        			<option value="예약금결제" <c:if test="${dto.schedule_status=='예약금결제'}">selected</c:if>>예약금결제</option>
+	                        			<option value="검수신청" <c:if test="${dto.schedule_status=='검수신청'}">selected</c:if>>검수신청</option>
+	                        			<option value="검수중" <c:if test="${dto.schedule_status=='검수중'}">selected</c:if>>검수중</option>
+	                        			<option value="구매자발송준비" <c:if test="${dto.schedule_status=='구매자발송준비'}">selected</c:if>>구매자발송준비</option>
+	                        			<option value="결제완료" <c:if test="${dto.schedule_status=='결제완료'}">selected</c:if>>결제완료</option>
+	                            		<option value="거래확정" <c:if test="${dto.schedule_status=='거래확정'}">selected</c:if>>거래확정</option>
+	                       			 </select>
+	                       		 </td>
+	                          
+		                        <td><input id="today" type="date" name="sDate" value="${dto.sdate }"></td>
+		                        <td><input id="today" type="date" name="eDate" value="${dto.edate }"></td>
+		                        <td>admin</td>
+		                        <td><input type="submit" value="수정"></td>
+                    		</tr>
+                		</form>
                     	</c:forEach>
                   </c:otherwise>
                   </c:choose>
