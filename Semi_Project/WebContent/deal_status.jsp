@@ -16,6 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="./css/deal_status.css">
@@ -90,11 +91,7 @@
 
            var Chat = {};
 
-   
-
            Chat.socket = null;
-
-   
 
            // connect() 함수 정의
 
@@ -120,13 +117,11 @@
 
                }
 
-   
-
                 // 서버에 접속이 되면 호출되는 콜백함수
 
                Chat.socket.onopen = function () {
 
-                   Console.log('Info: WebSocket connection opened.');
+                   Console.log('Info: 상대방과 자유롭게 얘기하세요!');
 
                    // 채팅입력창에 메시지를 입력하기 위해 키를 누르면 호출되는 콜백함수
 
@@ -270,7 +265,7 @@
 
        </script>
     
-    <title>Document</title>
+    <title>O_PYUNG</title>
 </head>
 <body>
 	<!-- header 추가 -->
@@ -282,12 +277,20 @@
             <div class="chat" id="console">
                 채팅내역
             </div>
+<<<<<<< HEAD
             
+=======
+            <!--  <form action="#"> -->
+>>>>>>> 9a2abf51890971355b8602fb3433c7844c531d6d
                 <div class="chat-write" ></div>
                 
                 <input type="text" class="chat-content" name="" id="chat">
                 <!-- <input class="btn btn-outline-dark" type="submit" value="전송" > -->
+<<<<<<< HEAD
             
+=======
+            <!--  </form> -->
+>>>>>>> 9a2abf51890971355b8602fb3433c7844c531d6d
             
             <div style="height: 100px">
             	<div style="background-color: white">

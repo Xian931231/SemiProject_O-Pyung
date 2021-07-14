@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
+<title>O_PYUNG</title>
 </head>
 <body>
 	
