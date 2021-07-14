@@ -46,9 +46,11 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
+
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
+
 						
 						<input class="input100" type="text" name="phone">
 						

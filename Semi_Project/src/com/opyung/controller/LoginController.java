@@ -78,10 +78,11 @@ public class LoginController extends HttpServlet {
 			  String name = request.getParameter("name");
 			  String phone = request.getParameter("phone");
 			
+			  System.out.println(name+phone);
+
 			  Find_idBiz findbiz = new Find_idBiz(); 
 			  String find_id = findbiz.find_id(name,phone);
 			
-			  System.out.println(name+phone);
 			  System.out.println("id : " +find_id);
 			
 			  if(find_id != "") {
