@@ -15,7 +15,34 @@
  <%@ page import="com.opyung.dto.MemberDto" %>
  
  <%@ page import = "java.util.List" %>
-    
+  <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
+   <script type="text/javascript">  
+   $(function() {
+       $("#selectnotnull").css("display","none");
+       
+       $("#notnullShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"560px"});
+       $("#nullShow").css("background-color","whitesmoke");
+       
+       $("#notnullShow").click(function() {
+           $("#selectnotnull").show();
+           $("#selectnull").hide();
+          
+            
+           $("#nullShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"560px"});
+           $("#notnullShow").css("background-color","whitesmoke");
+        });
+       $("#nullShow").click(function() {
+          $("#selectnotnull").hide();
+          $("#selectnull").show();
+           
+          $("#notnullShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"560px"});
+          $("#nullShow").css("background-color","whitesmoke");
+       });
+       
+   });
+    	
+    </script>
+  
     
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +88,7 @@
                     <h2>신고</h2>
                     <hr>
                     <div class="list_tap">
-                    <div class="tap_item">
+                    <div class="tap_item" id="nullShow">
                         <dl>
                             <dt class="tap_title">
                               	  신고처리 요청
@@ -74,7 +101,7 @@
                             </dd>
                         </dl>
                     </div>
-                    <div class="tap_item">
+                    <div class="tap_item" id="notnullShow">
                         <dl>
                             <dt class="tap_title">
                                 	신고처리 완료
@@ -86,7 +113,7 @@
                         </dl>
                     </div>
                     </div>
-                    <div class="user_table" >
+                    <div class="user_table" id="selectnull" >
                         <table border="1">
                             <col width="50px">
                             <col width="450px">
@@ -139,7 +166,59 @@
                             </tbody>
                         </table>
                     </div>
-                    
+                    <div class="user_table" id="selectnotnull" >
+                        <table border="1">
+                            <col width="50px">
+                            <col width="450px">
+                            <col width="150px">
+                            <col width="150px">
+                            <col width="150px">
+                            <col width="150px">
+                            
+                            <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>신고사유</th>
+                                <th>신고자</th>
+                                <th>신고대상자</th>
+                                <th>신고날짜</th>
+                                <th>처리상태</th>
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:choose>
+                            	<c:when test="${empty count1 }">
+									<tr>
+										<td colspan="6">-------------등록된 신고글이 없습니다.-------------</td>
+									</tr>                            	
+                            	</c:when>
+                            	<c:otherwise>
+                            		<c:forEach var="dto" items="${count1 }">
+                            			<tr>
+			                                <td>${dto.report_no }</td>
+			                                <td>${dto.report_content }</td>
+			                                <td>${dto.report_id }</td>
+			                                <td>${dto.report_tid }</td>
+			                                <td>${dto.report_sdate }</td>
+			                                <form action="admin.do" method="get" name="treat">
+			                                <input type="hidden" name="command" value="treat">
+			                                <input type="hidden" name="report_no" value="${dto.report_no }">
+			                                <input type="hidden" name="report_tid" value="${dto.report_tid }">
+			                                <td><select class="dd" name="report_treat">
+			                                    <option value="no">정상</option>
+			                                    <option value="yes">블랙</option>
+			                                    
+			                                </select><input type="submit" value="처리" id="aa"></td>
+			                                </form>
+                            			</tr>
+                            		</c:forEach>
+                            	</c:otherwise>
+                            </c:choose>
+                            
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             
     <div id="footer">푸터 영역입니다.</div>

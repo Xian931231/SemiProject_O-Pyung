@@ -180,25 +180,17 @@ public class AdminBiz {
 		return list;
 	}
 	
-	public int count() {
+	public List<ReportBoardDto> count() {
 		Connection con = getConnection();
 		
-		int count = dao.count(con);
+		List<ReportBoardDto> count = dao.count(con);
 		
 		close(con);
 		
 		return count;
 	}
 	
-	public int countnull() {
-		Connection con = getConnection();
-		
-		int countnull = dao.countnull(con);
-		
-		close(con);
-		
-		return countnull;
-	}
+	
 	
 	public ReportBoardDto reselect(int report_no) {
 		Connection con = getConnection();

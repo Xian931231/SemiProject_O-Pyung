@@ -100,6 +100,7 @@ public class ChatAnnotation {
 
         connections.add(this);
 
+
         String message = String.format("* %s", "has joined.");
         //String message = String.format("* %s %s", nickname, "has joined.");
 
@@ -117,8 +118,10 @@ public class ChatAnnotation {
 
         connections.remove(this);
 
+
         String message = String.format("*  %s", "has disconnected.");
         //String message = String.format("* %s %s", nickname, "has disconnected.");
+
 
         broadcast(message);
 
