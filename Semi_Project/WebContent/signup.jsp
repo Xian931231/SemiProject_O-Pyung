@@ -16,8 +16,8 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/signup.css" type="text/css">
-<link rel="icon" type="image/png" href="img/topLogo.ico"/>
-<title>오늘도 평화로운</title>
+<link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
+<title>O_PYUNG</title>
 	
 	<!-- 카카오맵 api 추가 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8582c94d0c3acdae42928406badb7847&libraries=services"></script> 
