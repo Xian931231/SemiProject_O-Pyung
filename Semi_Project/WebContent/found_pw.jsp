@@ -8,11 +8,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>오늘도 평화로운</title>
+<title>O_PYUNG</title>
 
 	<link rel="stylesheet" href="./css/found.css"/>
 	
-	<link rel="icon" type="image/png" href="./img/icons/111.ico"/>
+	<link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
 </head>
 <body>
 	<div class="limiter">

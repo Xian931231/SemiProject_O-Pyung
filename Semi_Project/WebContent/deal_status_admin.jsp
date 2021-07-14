@@ -20,9 +20,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="./css/deal_status_admin.css">
+    <link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
     <script src="./js/deal_status.js" defer></script>
     <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
-    <title>Document</title>
+    <title>O_PYUNG</title>
 </head>
 <body>
 	<!-- header 추가 -->

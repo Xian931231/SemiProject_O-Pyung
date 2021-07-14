@@ -10,11 +10,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>오늘도 평화로운</title>
+	<title>O_PYUNG</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="./img/icons/111.ico"/>
+	<link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="./css/login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->

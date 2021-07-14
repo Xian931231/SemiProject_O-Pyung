@@ -11,11 +11,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>O_PYUNG</title>
 
 <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-
+<link rel="icon" type="image/x-icon" href="./img/product/assets/2222.ico" />
 </head>
 <body>
 
