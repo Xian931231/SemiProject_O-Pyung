@@ -147,10 +147,12 @@ public class AdminConrtoller extends HttpServlet {
 					
 				}
 				else if(command.equals("dealInfo")) {
-					int sche_no = Integer.parseInt(request.getParameter("sche_no"));
+					int sche_no = Integer.parseInt(request.getParameter("dealno"));
 					String dealselect = request.getParameter("dealselect");
 					String start = request.getParameter("start");
 					String end = request.getParameter("end");
+					
+					
 					
 					DealBoardDto dto = biz.dealselect(sche_no);
 					

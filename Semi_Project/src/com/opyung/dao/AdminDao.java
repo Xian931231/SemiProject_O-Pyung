@@ -367,11 +367,6 @@ public class AdminDao {
 			PreparedStatement pstm = null;
 			int res = 0;
 			
-			
-			
-			
-				
-			
 			//sql에 date값을 넣으려면 java.sql.Date로 형변환 하여야한다.	
 			
 			java.sql.Date sqlstart =  java.sql.Date.valueOf(start);

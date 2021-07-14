@@ -33,18 +33,40 @@
     
     <script type="text/javascript" src="./jQuery/jquery-3.6.0.min.js"></script>
    <script type="text/javascript">
-   	window.onload = function() {
-		
-   		today new Date();
-   		
-   		today = today.toISOString().slice(0,10);
-   		
-   		bir = document.getElementById("today");
-   		
-   		bir.value = today;
-   		
-   		
-	}
+   $(function() {
+       $("#selecting").css("display","none");
+       $("#selectgo").css("display","none");
+       $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+       $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+       $("#readyShow").click(function() {
+           $("#selectready").show();
+           $("#selecting").hide();
+           $("#selectgo").hide();
+            
+           $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+           $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+           $("#readyShow").css("background-color","whitesmoke");
+        });
+       $("#ingShow").click(function() {
+          $("#selectready").hide();
+          $("#selectgo").hide();
+          $("#selecting").show();
+           
+          $("#readyShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+          $("#goShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+          $("#ingShow").css("background-color","whitesmoke");
+       });
+       $("#goShow").click(function() {
+           $("#selectready").hide();
+           $("#selecting").hide();
+           $("#selectgo").show();
+            
+           $("#readyShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+           $("#ingShow").css({"background-color":"rgb(219,219,219)","border-radius":"12px","width":"365px"});
+           $("#goShow").css("background-color","whitesmoke");
+        });
+       
+   });
     	
     </script>
 </head>
@@ -76,7 +98,7 @@
             <h2>거래상태 </h2>
             <hr>
             <div class="list_tap">
-                <div class="tap_item">
+                <div class="tap_item" id="readyShow">
                     <dl>
                         <dt class="tap_title">
                             검수대기
@@ -86,7 +108,7 @@
                         </dd>
                     </dl>
                 </div>
-                <div class="tap_item">
+                <div class="tap_item" id="ingShow">
                     <dl>
                         <dt class="tap_title">
                             검수중
@@ -96,9 +118,9 @@
                         </dd>
                     </dl>
                 </div>
-                <div class="tap_item">
+                <div class="tap_item" id="goShow">
                     <dl>
-                        <dt class="tap_title">
+                        <dt class="tap_title" >
                             검수완료
                         </dt>
                         <dd class="tap_count">
@@ -141,14 +163,9 @@
                          </c:when>
                          <c:otherwise>
                      	<c:forEach var="dto" items="${deal }">
-                    	<tr class="Ts_tr">
                     	
-                        <td>${dto.deal_no }</td>
-                        <td>${dto.product_title }</td>
-                        <td>${dto.deal_sid }</td>
-                        <td>${dto.deal_bid }</td>
            
-                       <form action="deal.do" method="post">
+                       <form action="admin.do" method="post">
                     		<input type="hidden" name="command" value="dealInfo">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
                     		<tr class="Ts_tr">
@@ -168,8 +185,8 @@
 	                       			 </select>
 	                       		 </td>
 	                          
-		                        <td><input id="today" type="date" name="sDate" value="${dto.sdate }"></td>
-		                        <td><input id="today" type="date" name="eDate" value="${dto.edate }"></td>
+		                         <td><input id="today" type="date" name="start" value="${dto.sdate }"></td>
+		                        <td><input id="today" type="date" name="end" value="${dto.edate }"></td>
 		                        <td>admin</td>
 		                        <td><input type="submit" value="수정"></td>
                     		</tr>
@@ -216,14 +233,8 @@
                          </c:when>
                          <c:otherwise>
                      	<c:forEach var="dto" items="${ingAll }">
-                    	<tr class="Ts_tr">
-                    	
-                        <td>${ingAll.deal_no }</td>
-                        <td>${ingAll.product_title }</td>
-                        <td>${ingAll.deal_sid }</td>
-                        <td>${ingAll.deal_bid }</td>
-           
-                       <form action="deal.do" method="post">
+             
+                       <form action="admin.do" method="get">
                     		<input type="hidden" name="command" value="dealInfo">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
                     		<tr class="Ts_tr">
@@ -242,9 +253,10 @@
 	                            		<option value="거래확정" <c:if test="${dto.schedule_status=='거래확정'}">selected</c:if>>거래확정</option>
 	                       			 </select>
 	                       		 </td>
-	                          
-		                        <td><input id="today" type="date" name="sDate" value="${dto.sdate }"></td>
-		                        <td><input id="today" type="date" name="eDate" value="${dto.edate }"></td>
+	                       		 
+	                       		
+		                        <td><input id="today" type="date" name="start" value="${dto.sdate }"></td>
+		                        <td><input id="today" type="date" name="end" value="${dto.edate }"></td> 
 		                        <td>admin</td>
 		                        <td><input type="submit" value="수정"></td>
                     		</tr>
@@ -291,14 +303,9 @@
                          </c:when>
                          <c:otherwise>
                      	<c:forEach var="dto" items="${goAll }">
-                    	<tr class="Ts_tr">
                     	
-                        <td>${goAll.deal_no }</td>
-                        <td>${goAll.product_title }</td>
-                        <td>${goAll.deal_sid }</td>
-                        <td>${goAll.deal_bid }</td>
            
-                       <form action="deal.do" method="post">
+                       <form action="admin.do" method="post">
                     		<input type="hidden" name="command" value="dealInfo">
                     		<input type="hidden" name="dealno" value="${dto.deal_no }">
                     		<tr class="Ts_tr">
@@ -318,8 +325,8 @@
 	                       			 </select>
 	                       		 </td>
 	                          
-		                        <td><input id="today" type="date" name="sDate" value="${dto.sdate }"></td>
-		                        <td><input id="today" type="date" name="eDate" value="${dto.edate }"></td>
+		                        <td><input id="today" type="date" name="start" value="${dto.sdate }"></td>
+		                        <td><input id="today" type="date" name="end" value="${dto.edate }"></td>
 		                        <td>admin</td>
 		                        <td><input type="submit" value="수정"></td>
                     		</tr>
