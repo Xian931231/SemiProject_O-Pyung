@@ -39,10 +39,7 @@
                 <div class="status-img">
                     <img src="#" alt="">
                 </div>
-                <h3>거래 일정</h3>
-                <div class="calendar">
 
-                </div>
                 <h3>검수 내역</h3>
                 <!-- web_edotor -->
 		        <div class="web_editor">

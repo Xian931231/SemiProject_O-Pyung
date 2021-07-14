@@ -91,7 +91,7 @@ public class NoticeDao extends JDBCTemplate{
 		PreparedStatement pstm = null;
 		int res = 0;
 		
-		String sql = " INSERT INTO NOTICEBOARD VALUES((SELECT MAX(NOTICE_NO) FROM NOTICEBOARD)+1,?,?,'ADMIN',SYSDATE,DEFAULT) ";
+		String sql = " INSERT INTO NOTICEBOARD VALUES(NVL((SELECT MAX(NOTICE_NO) FROM NOTICEBOARD)+1,0),?,?,'ADMIN',SYSDATE,DEFAULT) ";
 		
 		
 		

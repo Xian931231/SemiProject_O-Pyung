@@ -142,6 +142,25 @@ public class MemberinfoBiz extends JDBCTemplate{
 		close(con);
 		return res;
 	}
+	
+	
+	//회원점수 +1
+	public int updateScore(String id, int score) {
+		
+		Connection con = getConnection();
+		
+		int res = dao.updateScore(con, id, score);
+		
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return res;
+	}
 
 
 

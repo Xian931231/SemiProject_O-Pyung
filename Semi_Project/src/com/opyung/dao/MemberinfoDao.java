@@ -314,7 +314,39 @@ public class MemberinfoDao extends JDBCTemplate{
 		
 		return res;
 	}
+	
+	
 
+	//회원점수 + 1
+	public int updateScore(Connection con, String id, int score) {
+		
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE MEMBERBOARD SET MB_SCORE=? WHERE MB_ID =? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, score);
+			pstm.setString(2, id);
+			System.out.println("03. query 작성:" + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. 실행");
+			
+			
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			System.out.println("05. db 종료\n");
+		}
+		
+		return res;
+	}
+	
+	
 
 
 	
