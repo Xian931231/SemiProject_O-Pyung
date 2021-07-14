@@ -212,7 +212,6 @@ public class ProductController extends HttpServlet {
 	                	if(res2>0) {
 	                		System.out.println("이미지성공");
 	                		response.sendRedirect("memberinfo.do?command=updateScore&id="+dto.getProduct_id()+"&ptno="+product_no);
-	                		//response.sendRedirect("product.do?command=detail&ptno="+product_no);
 	                	}else {
 	                		System.out.println("이미지 실패");
 	                	}
