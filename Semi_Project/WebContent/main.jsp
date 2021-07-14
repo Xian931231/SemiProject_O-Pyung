@@ -28,8 +28,6 @@
 				$('.list1:hidden').slice(0,4).show();
 				if( $('.list1:hidden').length == 0){
 					$('#btn1').remove();
-				}else if($('.list1').length >11){
-					$('#btn1').remove();
 				}
 			});
 			
@@ -39,8 +37,6 @@
 				e.preventDefault();
 				$('.list2:hidden').slice(0,4).show();
 				if( $('.list2:hidden').length == 0){
-					$('#btn2').remove();
-				}else if($('.list2').length >11){
 					$('#btn2').remove();
 				}
 			});
@@ -52,8 +48,6 @@
 				$('.list3:hidden').slice(0,4).show();
 				if( $('.list3:hidden').length == 0){
 					$('#btn3').remove();
-				}else if($('.list3').length >11){
-					$('#btn3').remove();
 				}
 			});
 			
@@ -64,8 +58,6 @@
 				$('.list4:hidden').slice(0,4).show();
 				if( $('.list4:hidden').length == 0){
 					$('#btn4').remove();
-				}else if($('.list4').length >11){
-					$('#btn4').remove();
 				}
 			});
 			
@@ -75,8 +67,6 @@
 				e.preventDefault();
 				$('.list5:hidden').slice(0,4).show();
 				if( $('.list5:hidden').length == 0){
-					$('#btn5').remove();
-				}else if($('.list5').length >11){
 					$('#btn5').remove();
 				}
 			});
