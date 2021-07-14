@@ -65,7 +65,24 @@
  		
  	}
  	
-    
+ 	window.onload = function(){
+	 		  var dealno = '${dealdto.deal_no}';
+	 		 $.ajax({
+	    			url:"chat.do?command=selectDealno",
+	    			type:"post",
+	    			data:{
+	    				dealno : dealno
+	    			},			
+	    			success: function(data){
+	    				alert("성공");
+	    			},
+	    			error:function(data){
+	    				alert("실패");
+	    			}
+	 			})
+ 	
+ 		
+ 	}
     </script>
      <script type="application/javascript">
 			//web소켓 연결 및 chating 연결
@@ -184,13 +201,27 @@
            Chat.sendMessage = (function() {
 
                var message = document.getElementById('chat').value;
-
+			   var id = '${id }'
+			   var dealno = '${dealdto.deal_no}'
                if (message != '') {
 
-                   Chat.socket.send(message);
-
+                   Chat.socket.send(id+" : "+message);
                    document.getElementById('chat').value = '';
-
+                   
+                   $.ajax({
+           			url:"chat.do?command=insertMsg",
+           			type:"post",
+           			data:{
+           				id : id,
+           				msg : message,
+           				dealno : dealno
+           			},			
+           			success: function(data){
+           			},
+           			error:function(data){
+           				alert("실패");
+           			}
+           		})
                }
 
            });
@@ -251,12 +282,12 @@
             <div class="chat" id="console">
                 채팅내역
             </div>
-            <form action="#">
+            
                 <div class="chat-write" ></div>
                 
                 <input type="text" class="chat-content" name="" id="chat">
                 <!-- <input class="btn btn-outline-dark" type="submit" value="전송" > -->
-            </form>
+            
             
             <div style="height: 100px">
             	<div style="background-color: white">

@@ -36,7 +36,7 @@ public class CommentController extends HttpServlet {
 		CommentBiz biz = new CommentBiz();
 		
 		//댓글 작성
-		if(command.equals("insert")) {
+		if(command.equals("insertMsg")) {
 			System.out.println("insert 접속");
 			int cmb_no = Integer.parseInt(request.getParameter("cmb_no"));
 			String id = request.getParameter("id");
