@@ -130,8 +130,10 @@
 
 	</form>
 
-    <div id="footer">푸터 영역입니다.</div>
+
 </body>
-</html>
-</body>
+
+
+	     <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %> 
 </html>

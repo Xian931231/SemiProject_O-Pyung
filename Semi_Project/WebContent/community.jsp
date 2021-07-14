@@ -103,10 +103,6 @@
                     <h3 style="font-weight: bold;">COMMUNITY</h3>
                 </div>
                 <!--인기순 최신순-->
-                <div class="commu-btn-li">
-                    <a href="#" class="commu-btn" id="like-btn"><p class="commu-p">인기</p></a>
-                    <a href="#" class="commu-btn" id="date-btn"><p class="commu-p">최신</p></a>
-                </div>
             </div>
         </div>
 
@@ -147,11 +143,6 @@
 			                        <!--아이콘 부분-->
 			                        <div class="card-footer">
 			                            <!--좋아요 아이콘-->
-			                            <span class="card-footer-heart">
-			                                <i class="far fa-heart"></i>
-			                                <!--좋아요 숫자-->
-			                                <span class="card-heart-cnt">${commudto.cmb_like }</span>
-			                            </span>
 			                            <!-- 댓글 아이콘-->
 			                            <span class="card-footer-comment">
 			                                <i class="far fa-comment"></i>
@@ -225,7 +216,8 @@
 	<!-- 컨테이너 종료div -->
     </div>
 
-    
+         <!-- footer 추가 -->
+	<%@ include file="./footer/footer.jsp" %>  
 
 </body>
 </html>

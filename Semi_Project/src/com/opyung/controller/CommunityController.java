@@ -50,12 +50,6 @@ public class CommunityController extends HttpServlet {
 			request.setAttribute("list", list);
 			dispatch("community.jsp", request, response);
 			
-		//인기순	
-		}else if(command.equals("commulike")) {	
-			List<CommuBoardDto> list = biz.selectlikeAll();
-			
-			request.setAttribute("list", list);
-			dispatch("community.jsp", request, response);
 
 		//디테일 화면
 		}else if(command.equals("detail")) {

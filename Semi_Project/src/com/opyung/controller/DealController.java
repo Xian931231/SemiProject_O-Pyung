@@ -172,6 +172,10 @@ public class DealController extends HttpServlet {
 			MemberDto biddto = new MemberDto();
 			biddto = memBiz.selectOne(bid);
 			
+			//검수 내용 출력
+			//검수내역 조회
+			CheckBoardDto chkdto = new CheckBoardDto();
+			chkdto = biz.selectChk(dealno);
 			//판매금액
 			int ptPrice = ptdto.getProduct_price();
 			System.out.println("상품금액: " + ptPrice);
@@ -184,6 +188,7 @@ public class DealController extends HttpServlet {
 			//남은 결제금액
 			int restPrice = (ptPrice - dealPrice);
 			
+			request.setAttribute("chkdto", chkdto);
 			request.setAttribute("dealdto", dealdto);
 			request.setAttribute("ptdto", ptdto);
 			request.setAttribute("siddto", siddto);
@@ -459,6 +464,25 @@ public class DealController extends HttpServlet {
 				System.out.println("상품 상태 변경 실패(판매완료)");
 			}
 			
+			
+		//관리자 거래상태 수정
+		}else if(command.equals("dealStatusAdminUpdate")) {
+			
+			int dealno = Integer.parseInt(request.getParameter("dealno"));
+			String status = request.getParameter("dealselect");
+			String eDateS = request.getParameter("eDate");
+			
+			//sql Date 형변환
+			java.sql.Date eDate = java.sql.Date.valueOf(eDateS);
+			
+			int res = biz.updateStatus(dealno, status, eDate);
+			
+			if(res>0) {
+				System.out.println("거래상태 변경 성공(관리자)");
+				response.sendRedirect("admin.do?command=admin");
+			}else {
+				System.out.println("거래상태 변경 실패(관리자)");
+			}
 			
 		}
 		

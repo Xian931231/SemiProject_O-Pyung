@@ -49,7 +49,7 @@ public class ProductDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
 		
-		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO";
+		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_STATUS <> '판매완료'";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -142,7 +142,7 @@ public class ProductDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
 		
-		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY=?";
+		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY=? AND PRODUCT_STATUS != '판매완료'";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -386,7 +386,7 @@ public class ProductDao extends JDBCTemplate{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
 		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
-		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_TITLE LIKE ? OR PRODUCT_CATEGORY LIKE ? OR PRODUCT_BRAND LIKE ? OR PRODUCT_ADDR LIKE ? OR PRODUCT_CONTENT LIKE ?";
+		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_TITLE LIKE ? OR PRODUCT_CATEGORY LIKE ? OR PRODUCT_BRAND LIKE ? OR PRODUCT_ADDR LIKE ? OR PRODUCT_CONTENT LIKE ? AND PRODUCT_STATUS != '판매완료'";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -463,7 +463,7 @@ public class ProductDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
 		
-		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY IN (?,?,?,?,?,?,?,?,?) AND PRODUCT_BRAND IN (?,?,?,?,?,?,?,?,?) AND (PRODUCT_ADDR LIKE ? AND PRODUCT_ADDR LIKE ? AND PRODUCT_ADDR LIKE ? AND PRODUCT_ADDR LIKE ? AND PRODUCT_ADDR LIKE ? AND PRODUCT_ADDR LIKE ?) AND PRODUCT_NEW IN (?,?) AND (PRODUCT_PRICE BETWEEN ? AND ?)";
+		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY IN (?,?,?,?,?,?,?,?,?) AND PRODUCT_BRAND IN (?,?,?,?,?,?,?,?,?) AND (PRODUCT_ADDR LIKE ? OR PRODUCT_ADDR LIKE ? OR PRODUCT_ADDR LIKE ? OR PRODUCT_ADDR LIKE ? OR PRODUCT_ADDR LIKE ? OR PRODUCT_ADDR LIKE ?) AND PRODUCT_NEW IN (?,?) AND (PRODUCT_PRICE BETWEEN ? AND ?) AND PRODUCT_STATUS != '판매완료'";
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -480,7 +480,9 @@ public class ProductDao extends JDBCTemplate{
 				System.out.println(addr[i]);
 			}
 			pstm.setString(25, newvar[0]);
+			System.out.println(newvar[0]);
 			pstm.setString(26, newvar[1]);
+			System.out.println(newvar[1]);
 			pstm.setInt(27, min);
 			pstm.setInt(28, max);
 			System.out.println("03"+sql);
@@ -514,6 +516,7 @@ public class ProductDao extends JDBCTemplate{
 		}finally {
 			close(rs);
 			close(pstm);
+			System.out.println(res.size());
 		}
 		return res;
 	}
@@ -525,7 +528,7 @@ public class ProductDao extends JDBCTemplate{
 		ResultSet rs = null;
 		List<ProductBoardDto> res = new ArrayList<ProductBoardDto>();
 		
-		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY = ?";
+		String sql = "SELECT * FROM PRODUCTBOARD LEFT JOIN PTIMGBOARD ON PRODUCT_NO = PTIMG_PRODUCTNO WHERE PRODUCT_CATEGORY = ? AND PRODUCT_STATUS != '판매완료'";
 		
 		try {
 			pstm =con.prepareStatement(sql);
