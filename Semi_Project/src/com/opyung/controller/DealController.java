@@ -470,10 +470,12 @@ public class DealController extends HttpServlet {
 			
 			int dealno = Integer.parseInt(request.getParameter("dealno"));
 			String status = request.getParameter("dealselect");
+			String sDateS = request.getParameter("sDate");
 			String eDateS = request.getParameter("eDate");
 			
 			//sql Date 형변환
 			java.sql.Date eDate = java.sql.Date.valueOf(eDateS);
+			java.sql.Date SDate = java.sql.Date.valueOf(sDateS);
 			
 			int res = biz.updateStatus(dealno, status, eDate);
 			
