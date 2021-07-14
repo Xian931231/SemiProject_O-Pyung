@@ -269,7 +269,7 @@ public class ProductDao extends JDBCTemplate{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			close(con);
+			close(pstm);
 		}
 		
 		return res;
@@ -594,6 +594,28 @@ public class ProductDao extends JDBCTemplate{
 		} finally {
 			close(pstm);
 			System.out.println("05. db종료\n");
+		}
+		
+		return res;
+	}
+
+	//탈퇴시 상품 전체 삭제
+	public int deletePtAll(Connection con, String id) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = "DELETE FROM PRODUCTBOARD WHERE PRODUCT_ID = ?";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, id);
+			
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstm);
 		}
 		
 		return res;

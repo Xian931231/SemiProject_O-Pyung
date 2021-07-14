@@ -128,11 +128,12 @@ public class MemberinfoController extends HttpServlet {
 			}
 		
 		}else if(command.equals("memberDelete")) {
+			ProductBiz ptbiz = new ProductBiz();
+			ptbiz.deletePtAll(id);
 			int res = biz.memberDelete(memdto);
-			
 			if(res>0) {
 				System.out.println("삭제 성공");
-				response.sendRedirect("main.do?command=login");
+				response.sendRedirect("login.do?command=logout");
 			}else {
 				System.out.println("삭제 실패");
 				response.sendRedirect("memberinfo.do?command=memupdate&id="+id);

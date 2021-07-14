@@ -142,29 +142,29 @@ public class AdminBiz {
 	public List<DealBoardDto> countready() {
 		Connection con = getConnection();
 		
-		List<DealBoardDto> deal_countready = dao.countready(con);
+		List<DealBoardDto> countready = dao.countready(con);
 		
 		close(con);
 		
-		return deal_countready;
+		return countready;
 	}
 	public List<DealBoardDto> counting() {
 		Connection con = getConnection();
 		
-		List<DealBoardDto> deal_counting = dao.counting(con);
+		List<DealBoardDto> counting = dao.counting(con);
 		
 		close(con);
 		
-		return deal_counting;
+		return counting;
 	}
 	public List<DealBoardDto> countgo() {
 		Connection con = getConnection();
 		
-		List<DealBoardDto> deal_countgo = dao.countgo(con);
+		List<DealBoardDto> countgo = dao.countgo(con);
 		
 		close(con);
 		
-		return deal_countgo;
+		return countgo;
 	}
 	
 	////////////////////////user_report///////////////////////////////////
