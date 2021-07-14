@@ -293,7 +293,34 @@ public class MemberinfoController extends HttpServlet {
 			}else {
 				System.out.println("삭제실패");
 			}
+		
+		
+		}else if(command.equals("updateScore")) {
+			
+			int ptno = Integer.parseInt(request.getParameter("ptno"));
+			
+			//회원 현재 점수
+			int score = memdto.getMb_score();
+			//업데이트 할 점수
+			int scoreUpdate = score + 1;
+			System.out.println("업데이트할 점수: " + scoreUpdate + "회원 점수: " + score);
+			
+			int res = biz.updateScore(id, scoreUpdate);
+			
+			if(res>0) {
+				System.out.println("점수 수정 성공");
+				response.sendRedirect("product.do?command=detail&ptno="+ptno);
+			}else {
+				System.out.println("점수 수정 실패");
+			}
+			
 		}
+
+		
+		
+		
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
