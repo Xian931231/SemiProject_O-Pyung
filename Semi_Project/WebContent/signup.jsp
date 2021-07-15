@@ -65,9 +65,63 @@ $(function(){
 		
 	});
 	
-	
 });
     
+		function check(){
+			
+			if($("#id").val() == ''){
+			alert("아이디를 입력해주세요.");
+			$("#id").focus();
+			return false;
+			
+		}else if($("#pw").val() == ''){
+			alert("비밀번호를 입력해주세요.");
+			$("#pw").focus();
+			return false;
+		
+		}else if($("#email").val() == ''){
+			alert("이메일을 입력해주세요.");
+			$("#email").focus();
+			return false;
+			
+		}else if($("#name").val() == ''){
+			alert("이름을 입력해주세요.");
+			$("#name").focus();
+			return false;
+			
+		}else if($("#phone").val() == ''){
+			alert("전화번호를 입력해주세요.");
+			$("#phone").focus();
+			return false;
+		
+		}else if($("#sample6_postcode").val() == ''){
+			alert("주소를 선택해주세요.");
+			$(".btn").focus();
+			return false;
+			
+		}else if($("#sample6_detailAddress").val() == ''){
+			alert("상세주소를 입력해주세요.");
+			$("#sample6_detailAddress").focus();
+			return false;
+		
+		}else if($("#check_1").is(":checked") == false){
+			alert("필수항목을 체크해주세요.");
+			$("#check_1").focus();
+			return false;
+			
+		}else if($("#check_2").is(":checked") == false){
+			alert("필수항목을 체크해주세요.");
+			$("#check_2").focus();
+			return false;
+			
+		}else if($("#check_3").is(":checked") == false){
+			alert("필수항목을 체크해주세요.");
+			$("#check_3").focus();
+			return false;
+		}	
+			return true;
+}
+
     
     </script>
 </head>
@@ -87,24 +141,24 @@ $(function(){
             </div>
             <div class="textbox">
                 <h3>아이디</h3>
-                <input type="text" placeholder="id" name="id">
+                <input type="text" placeholder="id" name="id" id="id">
             </div>
             <div class="textbox">
                 <h3>비밀번호</h3>
-                <input type="password" placeholder="password" name="pwd">
+                <input type="password" placeholder="password" name="pwd" id="pw">
             </div>
             <!-- 이메일 인증 버튼 구현 해보기-->
             <div class="textbox">
                 <h3>이메일 주소</h3>
-                <input type="text" placeholder="Opyung@Oyung.com" name="email">
+                <input type="text" placeholder="Opyung@Oyung.com" name="email" id="email">
             </div>
             <div class="textbox">
                 <h3>이름</h3>
-                <input type="text" placeholder="오평화" name="name">
+                <input type="text" placeholder="오평화" name="name" id="name">
             </div>
             <div class="textbox">
                 <h3>전화번호</h3>
-                <input type="text" placeholder="'-'를 제외하고 입력해주세요" name="phone">
+                <input type="text" placeholder="'-'를 제외하고 입력해주세요" name="phone" id="phone">
             </div>
             <!--주소 api 찾아서 구현해보기-->
             <div class="textbox_addr">
@@ -196,7 +250,7 @@ $(function(){
                 </label>
               </div>
             <div class="button" >
-                <input type="submit" value="Sign-up">
+                <input type="submit" value="Sign-up" onclick="return check();">
             </div>
         </div>
         </form>
