@@ -279,31 +279,40 @@
 	        <div id="deal_area" class="common">
 	
 	            <table>
+	                <col width="80px">
+	                <col width="300px">
 	                
-	                <tr>
-	                    <th>판매자: &nbsp&nbsp</th>
-	                    <td>${siddto.mb_id }</td>
-	                </tr>
-	                <tr>
-	                    <th>구매자: &nbsp&nbsp</th>
-	                    <td>${biddto.mb_id }</td>
-	                </tr>
 	                <tr >
-	                    <th>상품: &nbsp&nbsp</th>
-	                    <td id="product_name"><a>${ptdto.product_title } </a></td>
+	                    <th>상품</th>
+	                    <td style="font-size: 20px;" id="product_name">: <a href="product.do?command=detail&ptno=${ptdto.product_no }">${ptdto.product_title }</a></td>
 	                </tr>
 	                <tr>
-	                    <th>가격: &nbsp&nbsp</th>
-	                    <td>${ptdto.product_price }</td>
+	                    <th>판매자</th>
+	                    <td>: ${siddto.mb_id }</td>
 	                </tr>
 	                <tr>
-	                    <th>미개봉: &nbsp&nbsp</th>
-	                    <td>${ptdto.product_new }</td>
+	                    <th>구매자</th>
+	                    <td>: ${biddto.mb_id }</td>
 	                </tr>
-	
-	
+	                <tr>
+	                    <th>가격</th>
+	                    <td>: ${ptdto.product_price } 원</td>
+	                </tr>
 	            </table>
 	
+	
+				 <!-- 검수버튼 & 거래하기 버튼 영역 -->
+	            <div id="button_area">
+	            	<c:choose>
+	            		<c:when test="${id eq siddto.mb_id }">
+			                <input class="btn btn-primary" type="button" value="예약금결제" onclick="location.href='deal.do?command=deal_buyer&dealno=${dealdto.deal_no}'" >
+	            		</c:when>
+	            		<c:otherwise>
+			                <input class="btn btn-primary" type="button" value="검수신청" onclick="confirmProduct();" >
+	            		</c:otherwise>
+	            	</c:choose>
+	                <input class="btn btn-secondary" type="button" value="거래취소" onclick="location.href='deal.do?command=dealTableDelete&dealno=${dealdto.deal_no}'">
+	            </div>
 	        </div>
 	
 	        <!--공지사항 및 검수방식/패널티 영역-->
@@ -485,12 +494,7 @@
 	                </script>
 	            </div>
 	
-	            <!-- 검수버튼 & 거래하기 버튼 영역 -->
-	            <div id="button_area">
-	                <input type="button" value="거래취소" onclick="location.href='deal.do?command=dealTableDelete&dealno=${dealdto.deal_no}'">
-	                <input type="button" value="검수신청" onclick="confirmProduct();" >
-	                <input type="button" value="예약금결제" onclick="location.href='deal.do?command=deal_buyer&dealno=${dealdto.deal_no}'" >
-	            </div>
+	           
 	
 	        </div>
 	        

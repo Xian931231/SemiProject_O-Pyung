@@ -363,11 +363,15 @@
                 </div>
         
                 <div class="btns gap-2">
-                    <button class="btn btn-danger" onclick="location.href='deal.do?command=deal_status_buyer&dealno=${dealdto.deal_no}&restPrice=${restPrice }'">구매확정</button>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=".modal" >거래확정</button>
-
+                <c:choose>
+                	<c:when test="${id eq siddto.mb_id }">
+	                    <button class="btn btn-danger" onclick="location.href='deal.do?command=deal_status_buyer&dealno=${dealdto.deal_no}&restPrice=${restPrice }'">구매확정</button>
+                	</c:when>
+                	<c:otherwise>
+	                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=".modal" >거래확정</button>
+                	</c:otherwise>
+                </c:choose>
                     <button  class="btn btn-primary" onclick="confirmCancel();">구매취소</button>
-                    
                 </div>
             </div>
             

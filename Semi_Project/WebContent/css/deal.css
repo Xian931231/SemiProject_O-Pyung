@@ -25,6 +25,11 @@
 	margin-top: 100px;
 }
 
+.container>div>div{
+	border : 5px solid var(--black-color);
+	padding : 12px;
+	border-radius: 5px;
+}	
 .divBoudary{
 	border: 1px solid black;
 }
@@ -137,7 +142,7 @@
 #notice_area{
 
     left: 0.1vw;
-    height: 320px;
+    height: 300px;
     overflow: scroll;
     
 
@@ -148,9 +153,6 @@
 #map_button_area{
 	display: flex;
 	flex-direction: row;
-  
-    
-
 }
 
 .common{
@@ -158,22 +160,22 @@
     /* max-width: 990px; */
     margin: 5px;
     border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #map_area{
-
-    width: 31.5vw;
+	width : 100%;
     height: 360px;
    
     
 }
 
 #button_area{
-    top: 320px;
-    left: 31.8vw;
-    width: 19.7vw;
-    height: 40px;
-
+	display : flex;
+	flex-direction : column;
+	width: 295px;
 }
 
 #button_area > input {
@@ -184,7 +186,9 @@
  
 }
 
-
+#deal_area{
+		align-items: center;
+}
 
 
 /* 세로 사이즈는 고정, 가로 사이즈는 비율에 맞춰 줄어들다가 브라우저창이 1500px보다 작아질시 고정 */
@@ -215,7 +219,6 @@
     }
 
     #deal_area{
-
         left: 217px;
 
     }
@@ -240,15 +243,7 @@
         width: 771px;
     }
 
-    #map_area{
-
-        width: 472px;
-        
-    }
-
     #button_area{
-        top: 320px;
-        left: 475px;
         width: 295px;
     }
     
