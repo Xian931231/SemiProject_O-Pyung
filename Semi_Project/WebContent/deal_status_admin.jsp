@@ -29,6 +29,14 @@
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
 
+		<!-- 관리자 확인 -->
+	<%
+		if(role == null ||!role.equals("ADMIN")){
+			response.sendRedirect("index.jsp");
+		}
+	%>
+
+	
    	<!-- header 공간 확보 -->
     <article class="container">
         <form action="deal.do?command=adminChk&dealno=${dealdto.deal_no }" method="post">

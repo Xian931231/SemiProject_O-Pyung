@@ -70,6 +70,13 @@
 	<!-- header 공간 확보 -->
 	<div id="header_space" style="background-color: black; width: 100%; height:100px"></div>
  
+ 	<!-- 관리자 확인 -->
+	<%
+		if(role == null ||!role.equals("ADMIN")){
+			response.sendRedirect("index.jsp");
+		}
+	%>
+ 
     
     <div id="main">
         <div id="sidebar">

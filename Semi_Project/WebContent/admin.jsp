@@ -57,8 +57,12 @@
 
 	<!-- header 공간 확보 -->
 	<div id="header_space" style="background-color: black; width: 100%; height:100px"></div>
- 
-    
+	<%
+		System.out.print("롤 : "+role);
+		if(role == null ||!role.equals("ADMIN")){
+			response.sendRedirect("index.jsp");
+		}
+	%>
     <div id="main">
         <div id="sidebar">
            <h2 class="side_maintitle"><a href="admin.do?command=admin">ADMIN</a></h2>
