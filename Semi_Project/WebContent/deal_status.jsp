@@ -280,6 +280,21 @@
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
 
+	<script type="text/javascript">
+		var id = '${id}';
+		if(id == null || id ==""){
+			alert('잘못된 접근 방식입니다.');
+			location.href='main.do?command=login';
+		}else{
+		var sid = '${siddto.mb_id}';
+		var bid = '${biddto.mb_id}';
+			if(sid == id || bid == id){
+			}else{
+				alert('잘못된 접근 방식입니다.');
+				location.href='index.jsp';
+			}
+		}
+	</script>
    	<!-- header 공간 확보 -->
     <article class="container">
         <section class="left">
