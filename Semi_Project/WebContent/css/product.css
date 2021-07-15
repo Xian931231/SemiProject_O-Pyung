@@ -81,6 +81,7 @@
     max-height: 662px;
 
   }
+  
 
   /* content 영역 ------------------------------------------------------*/
   .content{
@@ -100,7 +101,14 @@
     margin-top: 3rem;
     text-align: right;
   }
-
+  
+  
+  .title{
+  	display: flex;
+  	justify-content : space-between;
+  	align-items: flex-end;
+  	flex-direction: row;
+  }
 
   .row{
     width: 100%;
