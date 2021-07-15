@@ -38,6 +38,13 @@
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
 
+	<!-- 관리자 확인 -->
+	<%
+		if(role == null ||!role.equals("ADMIN")){
+			response.sendRedirect("index.jsp");
+		}
+	%>
+	
 	<!-- header 공간 확보 -->
 	<div id="header_space" style="background-color: black; width: 100%; height:100px"></div>
  

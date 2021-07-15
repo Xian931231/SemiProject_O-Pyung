@@ -10,11 +10,9 @@ function likeProduct(id,product_no){
 			ptno : product_no
 		},
 		success : function(data){
-			alert("성공");
 			location.reload();
 		},
 		error:function(){
-			alert("실패");
 		}
 	})
 	}
@@ -37,7 +35,6 @@ function isLike(id,ptno){
 			}
 		},
 		error:function(){
-			alert("실패");
 		}
 	})
 }
@@ -60,7 +57,6 @@ function isLikeList(id,listNo,ptno){
 			}
 		},
 		error:function(){
-			alert("실패");
 		}
 	})
 }

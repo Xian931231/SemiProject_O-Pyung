@@ -106,31 +106,6 @@
                     <p>관심 상품</p>
                 </div>
 
-                <div class="product_info">
-                    <div class="product_list">
-                        <div class="product_item">
-                            <a class="item_inner">
-                                <div class="product">
-                                    <img class="product_img" src="image/프로필.png">
-                                </div>
-                                <div class="infobox">
-                                    <div class="브랜드">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <a href="" class="name">Just Pink Keyboard</a>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <b class="num">10,000</b>
-                                    <span class="won"><b>원</b></span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                        </div>
-                   </div>
-                </div>
-          	</div>
           	
           	
           	

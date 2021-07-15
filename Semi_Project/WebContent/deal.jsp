@@ -40,6 +40,8 @@
  		}
  		
  	}
+ 	
+ 		//채팅기록가져오기
 		  var dealno = '${dealdto.deal_no}';
 		 $.ajax({
   			url:"chat.do?command=selectDealno",
@@ -61,7 +63,6 @@
   			}
 			})
 
-	
  	
 </script>
 <script type="application/javascript">
@@ -251,7 +252,21 @@
 	<!-- header 추가 -->
 	<%@ include file="header/header.jsp" %> 
 	
-	
+	<script type="text/javascript">
+		var id = '${id}';
+		if(id == null || id ==""){
+			alert('잘못된 접근 방식입니다.');
+			location.href='main.do?command=login';
+		}else{
+		var sid = '${siddto.mb_id}';
+		var bid = '${biddto.mb_id}';
+			if(sid == id || bid == id){
+			}else{
+				alert('잘못된 접근 방식입니다.');
+				location.href='index.jsp';
+			}
+		}
+	</script>
     <div class="container">
          <section class="left">
             <div class="chat" id="console">
@@ -279,31 +294,40 @@
 	        <div id="deal_area" class="common">
 	
 	            <table>
+	                <col width="80px">
+	                <col width="300px">
 	                
-	                <tr>
-	                    <th>판매자: &nbsp&nbsp</th>
-	                    <td>${siddto.mb_id }</td>
-	                </tr>
-	                <tr>
-	                    <th>구매자: &nbsp&nbsp</th>
-	                    <td>${biddto.mb_id }</td>
-	                </tr>
 	                <tr >
-	                    <th>상품: &nbsp&nbsp</th>
-	                    <td id="product_name"><a>${ptdto.product_title } </a></td>
+	                    <th>상품</th>
+	                    <td style="font-size: 20px;" id="product_name">: <a href="product.do?command=detail&ptno=${ptdto.product_no }">${ptdto.product_title }</a></td>
 	                </tr>
 	                <tr>
-	                    <th>가격: &nbsp&nbsp</th>
-	                    <td>${ptdto.product_price }</td>
+	                    <th>판매자</th>
+	                    <td>: ${siddto.mb_id }</td>
 	                </tr>
 	                <tr>
-	                    <th>미개봉: &nbsp&nbsp</th>
-	                    <td>${ptdto.product_new }</td>
+	                    <th>구매자</th>
+	                    <td>: ${biddto.mb_id }</td>
 	                </tr>
-	
-	
+	                <tr>
+	                    <th>가격</th>
+	                    <td>: ${ptdto.product_price } 원</td>
+	                </tr>
 	            </table>
 	
+	
+				 <!-- 검수버튼 & 거래하기 버튼 영역 -->
+	            <div id="button_area">
+	            	<c:choose>
+	            		<c:when test="${id eq siddto.mb_id }">
+			                <input class="btn btn-primary" type="button" value="검수신청" onclick="confirmProduct();" >
+	            		</c:when>
+	            		<c:otherwise>
+			                <input class="btn btn-primary" type="button" value="예약금결제" onclick="location.href='deal.do?command=deal_buyer&dealno=${dealdto.deal_no}'" >
+	            		</c:otherwise>
+	            	</c:choose>
+	                <input class="btn btn-secondary" type="button" value="거래취소" onclick="location.href='deal.do?command=dealTableDelete&dealno=${dealdto.deal_no}'">
+	            </div>
 	        </div>
 	
 	        <!--공지사항 및 검수방식/패널티 영역-->
@@ -485,12 +509,7 @@
 	                </script>
 	            </div>
 	
-	            <!-- 검수버튼 & 거래하기 버튼 영역 -->
-	            <div id="button_area">
-	                <input type="button" value="거래취소" onclick="location.href='deal.do?command=dealTableDelete&dealno=${dealdto.deal_no}'">
-	                <input type="button" value="검수신청" onclick="confirmProduct();" >
-	                <input type="button" value="예약금결제" onclick="location.href='deal.do?command=deal_buyer&dealno=${dealdto.deal_no}'" >
-	            </div>
+	           
 	
 	        </div>
 	        

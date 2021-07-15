@@ -107,34 +107,6 @@
 
                 <!-- 제품박스 -->
                 <div class="product_list_wrap">
-                    <!-- 첫 제품-->
-                    <div class="product_list list_frist list1">
-                        <div class="product_item">
-                            <a href="#" class="item_inner">
-                                <div class="product">
-                                    <img src="./img/main/1.jpg" alt="" class="product_img">
-                                </div>
-                                <div class="info_box">
-                                    <div class="brand">
-                                        <p>브랜드</p>
-                                    </div>
-                                    <pre class="name">TESTasfasdfasdfasdfsadfasdfsdfasfasdfsdafsda</pre>
-                                </div>
-                                <div class="price">
-                                    <div class="amount">
-                                        <em class="num">
-                                            100,000
-                                        </em>
-                                        <span class="won">원</span>
-                                    </div>
-                                    <div class="desc">즉시 구매가</div>
-                                </div>
-                            </a>
-                            <a href="" class="btn_wish">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        </div>
-                    </div>
 
 				<c:forEach items="${list }" var="list">
 					<!-- 첫 제품-->

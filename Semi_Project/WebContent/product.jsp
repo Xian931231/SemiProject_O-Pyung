@@ -55,11 +55,14 @@
             <div class="content">
                 <div class="row">
                     <div class="col">
+                    	<div class="title">
                         <h3>${ptdto.product_title }</h3>
+                        <p><b>${ptdto.product_date }</b></p>
+                        </div>
                         <hr>
                         <div class="userinfo">
                             <p><b>${ptdto.product_id }</b></p>
-                            <p><b>등급</b></p>
+                            <p><b>${ptdto.product_status }</b></p>
                         </div>
                         <hr>
                         <p> <b>제조사</b> : ${ptdto.product_brand } </p>
