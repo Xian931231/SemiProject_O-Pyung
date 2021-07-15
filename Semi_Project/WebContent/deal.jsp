@@ -321,6 +321,7 @@
 	            	<c:choose>
 	            		<c:when test="${id eq siddto.mb_id }">
 			                <input class="btn btn-primary" type="button" value="검수신청" onclick="confirmProduct();" >
+			                <input class="btn btn-secondary" type="button" value="직거래 완료" onclick="location.href='deal.do?command=directDeal&dealno=${dealdto.deal_no}&id=${siddto.mb_id }'">
 	            		</c:when>
 	            		<c:otherwise>
 			                <input class="btn btn-primary" type="button" value="예약금결제" onclick="location.href='deal.do?command=deal_buyer&dealno=${dealdto.deal_no}'" >

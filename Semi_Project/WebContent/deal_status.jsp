@@ -404,8 +404,7 @@
             	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         	</div>
         	
-        <!-- 나중에 post로 바꿔줄것 -->
-        <form action="deal.do" method="get">
+        <form action="deal.do" method="post">
         	<input type="hidden" name="command" value="dealFinish">
         	<input type="hidden" name="bank_no" value=${siddto.mb_no } >
         	<input type="hidden" name="member_id" value=${siddto.mb_id }>

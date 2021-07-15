@@ -479,25 +479,47 @@ public class DealController extends HttpServlet {
 			}
 			
 			
-		//관리자 거래상태 수정
-		}else if(command.equals("dealStatusAdminUpdate")) {
+		//직거래 거래확정 상태 변경
+		}else if(command.equals("directDeal")) {
 			
+			String id = request.getParameter("id");
+			
+			//거래상태 변경(거래 확정)
 			int dealno = Integer.parseInt(request.getParameter("dealno"));
-			String status = request.getParameter("dealselect");
-			String sDateS = request.getParameter("sDate");
-			String eDateS = request.getParameter("eDate");
+			String status = "거래확정";
 			
-			//sql Date 형변환
-			java.sql.Date eDate = java.sql.Date.valueOf(eDateS);
-			java.sql.Date SDate = java.sql.Date.valueOf(sDateS);
+			Date date = new Date();
+			long timeInMilliSeconds = date.getTime();
+			java.sql.Date eDate = new java.sql.Date(timeInMilliSeconds);
 			
-			int res = biz.updateStatus(dealno, status, eDate);
+			int resStatus = biz.updateStatus(dealno, status, eDate);
 			
-			if(res>0) {
-				System.out.println("거래상태 변경 성공(관리자)");
-				response.sendRedirect("admin.do?command=admin");
+			if(resStatus>0) {
+				System.out.println("거래상태 변경 성공(거래확정)");
 			}else {
-				System.out.println("거래상태 변경 실패(관리자)");
+				System.out.println("거래상태 변경 실패(거래확정)");
+			}
+			
+			//삼풍 판매상태 변경
+			
+			DealBoardDto dealdto = new DealBoardDto();
+			
+			dealdto = biz.selectStatus(dealno);
+			String bid = dealdto.getDeal_bid();
+			String sid = dealdto.getDeal_sid();
+			int productno = dealdto.getDeal_productNo();
+			
+			ProductBoardDto ptdto = new ProductBoardDto();
+			ptdto = ptBiz.selectOne(productno);
+			
+			String ptStatus = "판매완료";
+			int resProduct = ptBiz.updatePtStatus(productno, ptStatus);
+			
+			if(resProduct>0) {
+				System.out.println("상품 상태 변경 성공(판매완료)");
+				response.sendRedirect("memberinfo.do?command=mypage&id="+id);
+			}else {
+				System.out.println("상품 상태 변경 실패(판매완료)");
 			}
 			
 		}
