@@ -136,7 +136,6 @@
 <div id="naver_id_login"></div>
 <!-- //네이버아이디로로그인 버튼 노출 영역 -->
 
-
 <!-- 네이버아디디로로그인 초기화 Script -->
 <script type="text/javascript">
 	var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "http://localhost:8383/Semi_Project/main.do?command=main");

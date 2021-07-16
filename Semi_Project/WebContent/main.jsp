@@ -113,7 +113,8 @@
                     <div class="product_list list_frist list1">
                         <div class="product_item">
                             <a href="product.do?command=detail&ptno=${list.product_no }" class="item_inner">
-                                <div class="product" id="product_al1"> <!-- @@@@@ -->
+                            	
+                                <div class="product" >
                                     <img src="upload/${list.ptimg_name }${list.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
