@@ -101,6 +101,7 @@
                         <option value="그래픽카드">그래픽카드</option>
                         <option value="메인보드">메인보드</option>
                         <option value="케이스">케이스</option>
+                        <option value="기타">기타</option>
                     </select>
                     <label for="" class="form-label">주변기기</label>
                     <select name="catogory-out" id="catogory-out" class="form-select">
@@ -108,6 +109,7 @@
                         <option value="모니터">모니터</option>
                         <option value="키보드">키보드</option>
                         <option value="마우스">마우스</option>
+                         <option value="기타">기타</option>
                     </select>
                     <label for="" class="form-label">브랜드</label>
                     <select class="form-select" id="brand" name="brand">
@@ -120,6 +122,7 @@
                         <option value="SAMSUNG">SAMSUNG</option>
                         <option value="BENQ">BENQ</option>
                         <option value="LG">LG</option>
+                         <option value="기타">기타</option>
                     </select>
                     
                 </div>
