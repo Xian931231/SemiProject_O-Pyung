@@ -259,63 +259,8 @@
 				var content = $("#ckeditor").val()
 	            CKEDITOR.instances.ckeditor.setData(content);
             </script>
-            
 
-        <!-- naver_blog -->
-        <div class="naver_blog" name="naver_blog">
-        
-            <div class="naver_blog_title">
-                <p>블로그 리뷰</p>
-            </div>
 
-            <div class="naver_blog_info">
-            <!-- 블로그 첫번째  -->
-            <hr>
-            <div class="bloggername" name="bloggername">
-                <p>파란멜의 꿈꾸는 블로그</p>
-                </div>
-
-            <div class="postdate" name="postdate">
-                22년전
-            </div>
-
-            <div class="bloggerlink" name="bloggerlink">
-                <a href="">블루투스 키보드 심플하게 사용하는 로지텍 K580 K380</a>
-            </div>
-
-            <div class="blog_img" name="blog_img">
-                <img src="/img/littledeep_puppy_style1.png" onerror="">
-            </div>
-
-            <div class="blog_info" name="blog_info">
-                <p>게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!!</p>
-            </div>
-            <hr>
-
-            <!-- 블로그 두번째  -->
-            <div class="bloggername" name="bloggername">
-            <p>파란멜의 꿈꾸는 블로그</p>
-            </div>
-
-            <div class="postdate" name="postdate">
-                22년전
-            </div>
-
-            <div class="bloggerlink" name="bloggerlink">
-                <a href="">블루투스 키보드 심플하게 사용하는 로지텍 K580 K380</a>
-            </div>
-
-            <div class="blog_img" name="blog_img">
-                <img src="#" onerror="">
-            </div>
-
-            <div class="blog_info" name="blog_info">
-                <p>게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!! 게이밍 마우슨 역시 로지텍!!</p>
-            </div>
-            <hr>
-
-        </div>
-    </div>
 </div>
 
     </form>

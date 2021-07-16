@@ -162,50 +162,6 @@
 			</c:choose>
 
             
-            <!-- 여기부터 쭉 반복문 코딩 -->
-
-
-            <div class="card-post" >
-                <a href="" class="card-item">
-                    <div class="card" >
-                        <!--게시글 사진-->
-                        <img src="./img/community/1.jpg" class="card-img-top" alt="...">
-                        <!--게시글 사진 아래부분-->
-                        <div class="card-body">
-                            <div class="card-body-user">
-                                <!--작성자 프로필 사진-->
-                                <div class="profile-user-img">
-                                    <img src="./img/community/grphic.png" alt="" class="profile-user-img-img">
-                                </div>          
-                                <!--작성자 이름-->              
-                                <h5 class="card-user">UserName</h5>
-                            </div>
-                            <!--게시글 내용-->
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <!--아이콘 부분-->
-                        <div class="card-footer">
-                            <!--좋아요 아이콘-->
-                            <span class="card-footer-heart">
-                                <i class="far fa-heart"></i>
-                                <!--좋아요 숫자-->
-                                <span class="card-heart-cnt">13</span>
-                            </span>
-                            <!-- 댓글 아이콘-->
-                            <span class="card-footer-comment">
-                                <i class="far fa-comment"></i>
-                                <!--댓글 숫자-->
-                                <span class="card-comment-cnt">123</span>
-                            </span>                
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <!-- 여기까지가 하나 -->
-			
-                
-
 
         <!-- 카드리스트 종료div -->    
 		</div>
