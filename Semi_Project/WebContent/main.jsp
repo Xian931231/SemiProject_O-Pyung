@@ -113,7 +113,7 @@
                     <div class="product_list list_frist list1">
                         <div class="product_item">
                             <a href="product.do?command=detail&ptno=${list.product_no }" class="item_inner">
-                                <div class="product">
+                                <div class="product" id="product_al1"> <!-- @@@@@ -->
                                     <img src="upload/${list.ptimg_name }${list.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
@@ -195,7 +195,7 @@
                     <div class="product_list list_frist list2">
                         <div class="product_item">
                             <a href="product.do?command=detail&ptno=${list2.product_no }" class="item_inner">
-                                <div class="product">
+                                <div class="product" id="graphic_background" >
                                     <img src="upload/${list2.ptimg_name }${list2.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
@@ -281,7 +281,7 @@
                     <div class="product_list list_frist list3">
                         <div class="product_item">
                             <a href="product.do?command=detail&ptno=${list3.product_no }" class="item_inner">
-                                <div class="product">
+                                <div class="product" id="mouse_background">
                                     <img src="upload/${list3.ptimg_name }${list3.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
@@ -357,7 +357,7 @@
                     <div class="product_list list_frist list4">
                         <div class="product_item">
                             <a href="product.do?command=detail&ptno=${list4.product_no }" class="item_inner">
-                                <div class="product">
+                                <div class="product" id="ram_background">
                                     <img src="upload/${list4.ptimg_name }${list4.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">
@@ -434,7 +434,7 @@
                     <div class="product_list list_frist list5">
                         <div class="product_item">
                             <a href="product.do?command=detail&ptno=${list5.product_no }" class="item_inner">
-                                <div class="product">
+                                <div class="product" id="case_background">
                                     <img src="upload/${list5.ptimg_name }${list5.ptimg_type}" alt="" class="product_img">
                                 </div>
                                 <div class="info_box">

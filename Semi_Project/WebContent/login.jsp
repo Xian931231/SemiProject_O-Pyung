@@ -76,7 +76,7 @@
 							<div id="naver_id_login" class="NVlogin-form-btn">NAVER LOGIN</div>
 							
 							<script type="text/javascript">
-								var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "http://localhost:8383/Semi_Project/main.jsp");
+								var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "http://localhost:8383/Semi_Project/main.do?command=main");
 								var state = naver_id_login.getUniqState();
 								naver_id_login.setDomain(".service.com");
 								naver_id_login.setState(state);
@@ -139,7 +139,7 @@
 
 <!-- 네이버아디디로로그인 초기화 Script -->
 <script type="text/javascript">
-	var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "http://localhost:8383/Semi_Project/main.jsp");
+	var naver_id_login = new naver_id_login("xeg7vCgB949ezCPPrU5G", "http://localhost:8383/Semi_Project/main.do?command=main");
 	var state = naver_id_login.getUniqState();
 	naver_id_login.setButton("white", 2,40);
 	naver_id_login.setDomain(".service.com");

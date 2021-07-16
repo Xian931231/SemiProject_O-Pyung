@@ -235,6 +235,10 @@ img{
     background-image: url('../img/main/casebackgroundcolor.png');
 }
 
+#product_al1{
+	background-image: url('../img/main/whitebackground.png');
+}
+
 /* 카테고리 이미지 수정(끝) */
 
 @media screen and ( max-width: 480px){
