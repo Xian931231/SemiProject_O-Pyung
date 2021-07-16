@@ -74,7 +74,7 @@
                     <!-- 검색컬럼 -->
                     <select id="searchSelect" name="keyField">
                         <option value="MB_ID">ID</option>
-                        <option value="MB_PW">NAME</option>
+                        <option value="MB_NAME">NAME</option>
                         <option value="MB_EMAIL">EMAIL</option>
                         <option value="MB_PHONE">PHONE</option>
                         <option value="MB_ABLE">BLACK</option>
@@ -154,6 +154,5 @@
                 
     
 
-    <div id="footer">푸터 영역입니다.</div>
 </body>
 </html>
