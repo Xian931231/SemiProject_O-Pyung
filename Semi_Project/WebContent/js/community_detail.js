@@ -94,7 +94,7 @@ $(document).on('click','#comment-btn',function(){
 		$("#comment-content").val("").focus();
 	}else{
 		$.ajax({
-			url:"comment.do?command=insert",
+			url:"comment.do?command=insertMsg",
 			type:"post",
 			data:{
 				cmb_no : $("#cmb_no").val(),
